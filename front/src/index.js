@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import AppChat from 'src/components/AppChat';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppChat />
   </React.StrictMode>,
   document.getElementById('root')
 );
