@@ -2,8 +2,8 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 
 // == Import
-import Form from 'src/components/Form';
-import Messages from 'src/components/Messages';
+import Form from '../../components/Form';
+import Messages from '../../components/Messages';
 
 
 // import './style.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppChat from 'src/components/AppChat';
+import AppChat from './components/AppChat';
 
 ReactDOM.render(
   <React.StrictMode>
