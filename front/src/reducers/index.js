@@ -1,4 +1,4 @@
-// import { combineReducers } from 'redux';
-// // import <reducerName> from './pathtoreducer';
+import { combineReducers } from 'redux';
+import chat from './chat';
 
-// export default combineReducers(/* reducers...*/);
+export default combineReducers({ chat });

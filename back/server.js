@@ -4,20 +4,16 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const RTCMultiConnectionServer = require('rtcmulticonnection-server');
+
 const PORT = process.env.PORT || 8080;
-
-// const { User, Post } = require('./api/models');
-
-// const model = User;
-// for (let assoc of Object.keys(model.associations)) {
-//   for (let accessor of Object.keys(model.associations[assoc].accessors)) {
-//     console.log(model.name + '.' + model.associations[assoc].accessors[accessor] + '()');
-//   }
-// }
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
+  RTCMultiConnectionServer.addSocket(socket);
+  // const params = socket.handshake.query;
+
   console.log('User is connected');
 
   socket.on('disconnect', () => {
