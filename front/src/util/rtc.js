@@ -8,6 +8,7 @@ export default (connection, videoStreamContainer) => {
     screen: true,
     audio: true,
     oneway: true,
+    data: true,
   };
 
   connection.language = 'fr';
@@ -64,10 +65,6 @@ export default (connection, videoStreamContainer) => {
       connection.getAllParticipants().forEach((pid) => {
         connection.disconnectWith(pid);
       });
-      // Removes the local video tag
-      if (videoStreamContainer.current.querySelector('video')) {
-        videoStreamContainer.current.querySelector('video').remove();
-      }
       // Closes the connection
       connection.closeSocket();
     }

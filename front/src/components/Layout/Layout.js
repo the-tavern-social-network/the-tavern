@@ -31,6 +31,9 @@ const Layout = ({ section, children }) => {
   return <>{layout}</>;
 };
 
-Layout.propTypes = {};
+Layout.propTypes = {
+  section: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+};
 
 export default Layout;

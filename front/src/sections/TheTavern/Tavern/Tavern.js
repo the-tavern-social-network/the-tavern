@@ -1,16 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
+import Chat from '../../../containers/TheTavern/Tavern/Chat';
 
-const Tavern = (props) => {
+const Tavern = () => {
+  const [connection] = useState(new RTCMultiConnection());
+
   return (
     <div>
-      <ScreenShare />
+      <ScreenShare connection={connection} />
+      <Chat connection={connection} />
     </div>
   );
 };
-
-Tavern.propTypes = {};
 
 export default Tavern;

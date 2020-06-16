@@ -8,6 +8,19 @@ const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 
 const PORT = process.env.PORT || 8080;
 
+function findRooms() {
+  var availableRooms = [];
+  var rooms = io.sockets.adapter.rooms;
+  if (rooms) {
+    for (var room in rooms) {
+      if (!rooms[room].hasOwnProperty(room)) {
+        availableRooms.push(room);
+      }
+    }
+  }
+  return availableRooms;
+}
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {

@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Auth from '../sections/Auth/Auth';
 import TheTavern from '../sections/TheTavern/TheTavern';
 
-const App = (props) => {
+const App = () => {
   return (
     <>
       <Router>
@@ -20,7 +19,5 @@ const App = (props) => {
     </>
   );
 };
-
-App.propTypes = {};
 
 export default App;

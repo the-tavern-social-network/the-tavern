@@ -11,7 +11,7 @@ import Thread from './Thread/Thread';
 const TheTavern = (props) => {
   return (
     <>
-      <Layout>
+      <Layout section="TheTavern">
         <Link to="/">Thread</Link>
         <Link to="/tavern">Tavern</Link>
         <Link to="/compte">Compte</Link>
