@@ -1,3 +1,4 @@
+const models = require('../models');
 const capitalize = require('../util/capitalize');
 
 module.exports = {
