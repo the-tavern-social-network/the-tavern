@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Field = ({ type, placeholder, reducerName, name, value, changeValue, cssClass }) => {
+import { getDate } from '../../util';
+
+const Field = ({ type, placeholder, reducerName, name, value, inputChange, cssClass }) => {
   let field;
 
+  const { year, month, day } = getDate();
+
   const inputChangeHandler = (event) => {
-    changeValue(event.target.value);
+    inputChange(name, event.target.value, reducerName);
   };
 
   switch (type) {
@@ -24,6 +28,32 @@ const Field = ({ type, placeholder, reducerName, name, value, changeValue, cssCl
         <input
           className={cssClass}
           type="password"
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={inputChangeHandler}
+        />
+      );
+      break;
+    case 'email':
+      field = (
+        <input
+          className={cssClass}
+          type="email"
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={inputChangeHandler}
+        />
+      );
+      break;
+    case 'date':
+      field = (
+        <input
+          className={cssClass}
+          type="date"
+          min={`${year - 80}-01-01`}
+          max={`${year - 16}-${month}-${day}`}
           placeholder={placeholder}
           name={name}
           value={value}
@@ -53,7 +83,7 @@ Field.propTypes = {
   reducerName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool]).isRequired,
-  changeValue: PropTypes.func.isRequired,
+  inputChange: PropTypes.func.isRequired,
   cssClass: PropTypes.string,
 };
 

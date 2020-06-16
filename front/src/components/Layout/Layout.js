@@ -8,7 +8,7 @@ const Layout = ({ section, children }) => {
     case 'auth':
       layout = (
         <>
-          <header>AUTH HEADER</header>
+          <header>LOGO</header>
           <main>{children}</main>
           <footer>AUTH FOOTER</footer>
         </>

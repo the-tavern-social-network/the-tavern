@@ -1,4 +1,4 @@
-import { CHANGE_VALUE, ADD_CHAT_MESSAGE, RESET_FIELD } from '../actions';
+import { INPUT_CHANGE, ADD_CHAT_MESSAGE, RESET_FIELD } from '../actions';
 
 const INITIAL_STATE = {
   messages: [],
@@ -7,11 +7,14 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
-    case CHANGE_VALUE:
-      return {
-        ...state,
-        message: action.value,
-      };
+    case INPUT_CHANGE:
+      if (action.reducerName === 'chat') {
+        return {
+          ...state,
+          [action.name]: action.value,
+        };
+      }
+      return state;
     case ADD_CHAT_MESSAGE:
       return {
         ...state,

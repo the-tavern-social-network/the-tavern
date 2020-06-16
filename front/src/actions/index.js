@@ -1,7 +1,12 @@
 export * from './chat';
 
-export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const RESET_FIELD = 'RESET_FIELD';
 
-export const changeValue = (value) => ({ type: CHANGE_VALUE, value });
+export const inputChange = (name, value, reducerName) => ({
+  type: INPUT_CHANGE,
+  name,
+  value,
+  reducerName,
+});
 export const resetField = (reducer) => ({ type: RESET_FIELD, reducer });
