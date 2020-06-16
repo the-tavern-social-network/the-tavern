@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
 import TheTavern from '../sections/TheTavern/TheTavern';
@@ -13,7 +14,7 @@ const App = () => {
           {/* <Route path='/admin' component={Admin} /> */}
           <Route path="/auth" component={Auth} />
           {/* TODO protected Route */}
-          <Route path="/" component={TheTavern} />
+          <ProtectedRoute path="/" component={TheTavern} />
         </Switch>
       </Router>
     </>

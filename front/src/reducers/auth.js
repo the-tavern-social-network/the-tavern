@@ -1,17 +1,15 @@
 import { INPUT_CHANGE } from '../actions';
 
 const INITIAL_STATE = {
-  loggedUser: {},
-  isLoggedIn: false,
-  // connection form
-  connectionEmail: '',
-  connectionPassword: '',
-  //signin form
+  // signin form
   signinEmail: '',
-  signinUsername: '',
   signinPassword: '',
-  signinConfirmPassword: '',
-  signinBirthdate: '',
+  //signup form
+  signupEmail: '',
+  signupUsername: '',
+  signupPassword: '',
+  signupConfirmPassword: '',
+  signupBirthdate: '',
 };
 
 export default (state = INITIAL_STATE, action = {}) => {

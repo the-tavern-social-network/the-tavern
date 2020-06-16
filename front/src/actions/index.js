@@ -1,7 +1,10 @@
 export * from './chat';
+export * from './auth';
 
 export const INPUT_CHANGE = 'INPUT_CHANGE';
-export const RESET_FIELD = 'RESET_FIELD';
+export const RESET_FIELDS = 'RESET_FIELDS';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_ERROR = 'SET_ERROR';
 
 export const inputChange = (name, value, reducerName) => ({
   type: INPUT_CHANGE,
@@ -9,4 +12,6 @@ export const inputChange = (name, value, reducerName) => ({
   value,
   reducerName,
 });
-export const resetField = (reducer) => ({ type: RESET_FIELD, reducer });
+export const resetFields = (reducer) => ({ type: RESET_FIELDS, reducer });
+export const setLoading = () => ({ type: SET_LOADING });
+export const setError = () => ({ type: SET_ERROR });

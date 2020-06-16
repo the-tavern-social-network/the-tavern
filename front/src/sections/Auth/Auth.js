@@ -4,8 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
 import Home from '../../sections/Auth/Home/Home';
-import Connection from '../../sections/Auth/Connection/Connection';
-import Signin from '../../sections/Auth/Signin/Signin';
+import Signin from '../../containers/Auth/Signin';
+import Signup from '../../containers/Auth/Signup';
 
 const Auth = ({ match }) => {
   return (
@@ -13,8 +13,8 @@ const Auth = ({ match }) => {
       <Layout section="auth">
         <Switch>
           <Route exact path={`${match.path}`} component={Home} />
-          <Route path={`${match.path}/connexion`} component={Connection} />
-          <Route path={`${match.path}/inscription`} component={Signin} />
+          <Route path={`${match.path}/connexion`} component={Signin} />
+          <Route path={`${match.path}/inscription`} component={Signup} />
         </Switch>
       </Layout>
     </>

@@ -1,4 +1,4 @@
-import { INPUT_CHANGE, ADD_CHAT_MESSAGE, RESET_FIELD } from '../actions';
+import { INPUT_CHANGE, ADD_CHAT_MESSAGE, RESET_FIELDS } from '../actions';
 
 const INITIAL_STATE = {
   messages: [],
@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         messages: state.messages.concat(action.message),
       };
-    case RESET_FIELD:
+    case RESET_FIELDS:
       if (action.reducer === 'chat') {
         return {
           ...state,

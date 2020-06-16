@@ -1,21 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
 
-const Signin = (props) => {
+const Signin = ({ login, resetFields }) => {
+  const signinFormHandler = (event) => {
+    event.preventDefault();
+    login();
+    resetFields();
+  };
+
   return (
-    <form>
+    <form onSubmit={signinFormHandler}>
       <Field reducerName="auth" placeholder="Email" type="email" name="signinEmail" />
-      <Field reducerName="auth" placeholder="Pseudo" name="signinUsername" />
-      <Field reducerName="auth" type="date" name="signinBirthdate" />
       <Field reducerName="auth" placeholder="Mot de passe" type="password" name="signinPassword" />
-      <Field
-        reducerName="auth"
-        placeholder="Confirmation mot de passe"
-        type="password"
-        name="signinConfirmPassword"
-      />
+      <Link to="/auth/inscription">inscription</Link>
+      <button>Connexion</button>
     </form>
   );
 };

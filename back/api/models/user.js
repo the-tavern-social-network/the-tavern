@@ -21,33 +21,26 @@ User.init(
         notEmpty: true,
       },
     },
-    pseudo: {
+    username: {
       type: Sequelize.TEXT,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-    avatar: {
-      type: Sequelize.TEXT,
+    avatar: Sequelize.TEXT,
+    birthdate: {
+      type: Sequelize.DATE,
       allowNull: false,
       validate: {
         notEmpty: true,
+        isDate: true,
       },
     },
-    description: {
-      type: Sequelize.TEXT,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
+    description: Sequelize.TEXT,
     contact_count: {
       type: Sequelize.INTEGER,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      defaultValue: 0,
     },
   },
   {

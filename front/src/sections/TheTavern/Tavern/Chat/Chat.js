@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Field from '../../../../containers/components/Field';
 import { useEffect } from 'react';
 
-const Chat = ({ connection, message, messages, addChatMessage, resetField }) => {
+const Chat = ({ connection, message, messages, addChatMessage, resetFields }) => {
   useEffect(() => {
     connection.onmessage = (event) => {
       addChatMessage({ message: event.data.message, user: event.userid });
@@ -21,7 +21,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetField }) => 
     addChatMessage({ message, user: connection.userid });
     connection.send({ type: 'message', message });
     // connection.send({ type: 'diceRoll', message });
-    resetField('chat');
+    resetFields('chat');
   };
 
   return (
@@ -44,7 +44,7 @@ Chat.propTypes = {
   message: PropTypes.string.isRequired,
   messages: PropTypes.array.isRequired,
   addChatMessage: PropTypes.func.isRequired,
-  resetField: PropTypes.func.isRequired,
+  resetFields: PropTypes.func.isRequired,
 };
 
 export default Chat;

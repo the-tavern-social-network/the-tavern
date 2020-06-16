@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Chat from '../../../sections/TheTavern/Tavern/Chat/Chat';
-import { addChatMessage, resetField } from '../../../actions';
+import { addChatMessage, resetFields } from '../../../actions';
 
 const mapStateToProps = (state) => ({
   message: state.chat.message,
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addChatMessage: (message) => dispatch(addChatMessage(message)),
-  resetField: (reducer) => dispatch(resetField(reducer)),
+  resetFields: (reducer) => dispatch(resetFields(reducer)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

@@ -2,26 +2,32 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const app = express();
+const multer = require('multer');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
+const sequelize = require('./api/db/database');
+const authRoutes = require('./api/routes/auth');
+const mainRoutes = require('./api/routes');
 
 const PORT = process.env.PORT || 8080;
 
-function findRooms() {
-  var availableRooms = [];
-  var rooms = io.sockets.adapter.rooms;
-  if (rooms) {
-    for (var room in rooms) {
-      if (!rooms[room].hasOwnProperty(room)) {
-        availableRooms.push(room);
-      }
-    }
-  }
-  return availableRooms;
-}
-
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(multer().none());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  next();
+});
+
+const baseUrl = '/api/v1';
+app.use(`${baseUrl}/auth`, authRoutes);
+app.use(baseUrl, mainRoutes);
 
 io.on('connection', (socket) => {
   RTCMultiConnectionServer.addSocket(socket);

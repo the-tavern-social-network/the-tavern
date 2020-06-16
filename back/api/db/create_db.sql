@@ -12,10 +12,11 @@ CREATE TABLE IF NOT EXISTS "users" (
   "id" SERIAL PRIMARY KEY,
   "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
-  "pseudo" TEXT NOT NULL UNIQUE,
-  "avatar" TEXT NOT NULL,
-  "description" TEXT NOT NULL,
-  "contact_count" INT NOT NULL,
+  "username" TEXT NOT NULL UNIQUE,
+  "avatar" TEXT NULL,
+  "description" TEXT NULL,
+  "contact_count" INT DEFAULT 0,
+  "birthdate" DATE NOT NULL,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP NULL
 );
@@ -39,27 +40,5 @@ PRIMARY KEY ("contact_one","contact_two"),
 "created_at" TIMESTAMP DEFAULT NOW(),
 "updated_at" TIMESTAMP NULL
 );
-
-INSERT INTO "users" (
-  "email",
-  "password",
-  "pseudo",
-  "avatar",
-  "description",
-  "contact_count",
-  "created_at"
-)
-VALUES
-('test@test.com', 'test12345', 'edgeBG', 'path/to/some/random/pic', 'blablablablablbabalbal', 0, NOW()),
-('test2@test.fr', 'yyteyygd', 'Google4life', 'path/to/some/random/pic', 'blablabEDGEDIEbalbal', 0, NOW());
-
-INSERT INTO "contacts" (
-  "contact_one",
-  "contact_two",
-  "status",
-  "created_at"
-)
-VALUES
-(1, 2, '1', NOW());
 
 END;
