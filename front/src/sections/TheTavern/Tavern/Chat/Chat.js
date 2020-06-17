@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Field from '../../../../containers/components/Field';
 import { useEffect } from 'react';
 
-const Chat = ({ connection, message, messages, addChatMessage, resetFields }) => {
+const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
   useEffect(() => {
     connection.onmessage = (event) => {
-      addChatMessage({ message: event.data.message, user: event.userid });
+      addChatMessage({ message: event.data.message, user: user.username });
     };
     // eslint-disable-next-line
   }, []);
@@ -18,7 +18,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields }) =>
       return;
     }
 
-    addChatMessage({ message, user: connection.userid });
+    addChatMessage({ message, user: user.username });
     connection.send({ type: 'message', message });
     // connection.send({ type: 'diceRoll', message });
     resetFields('chat');

@@ -25,14 +25,14 @@ export const auth = (store) => (next) => async (action) => {
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
 
         delete user.password;
-        //? TODO send back user to login or thread page ???
+
+        store.dispatch(connect({ user, isLoggedIn: true }));
       } catch (err) {
         console.trace(err);
       }
       break;
     case LOGIN:
       try {
-        console.log(auth);
         store.dispatch(setLoading());
         const loginData = {
           email: auth.signinEmail,
@@ -42,6 +42,8 @@ export const auth = (store) => (next) => async (action) => {
         const { data } = await axios.post(`${apiUrl}/auth/login`, loginData, {
           withCredentials: true,
         });
+
+        delete data.user.password;
 
         store.dispatch(connect(data));
       } catch (err) {

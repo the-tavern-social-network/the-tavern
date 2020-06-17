@@ -4,13 +4,13 @@ import RTCMultiConnection from 'rtcmulticonnection';
 import ScreenShare from './ScreenShare/ScreenShare';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
 
-const Tavern = () => {
+const Tavern = ({ user }) => {
   const [connection] = useState(new RTCMultiConnection());
 
   return (
     <div>
-      <ScreenShare connection={connection} />
-      <Chat connection={connection} />
+      <ScreenShare user={user} connection={connection} />
+      <Chat user={user} connection={connection} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
 
-import Tavern from './Tavern/Tavern';
+import Tavern from '../../containers/TheTavern/Tavern/Tavern';
 import UserAccount from './UserAccount/UserAccount';
 import Thread from './Thread/Thread';
 

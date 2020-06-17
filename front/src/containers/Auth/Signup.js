@@ -4,7 +4,9 @@ import { signup, resetFields } from '../../actions';
 
 import Signup from '../../sections/Auth/Signup/Signup';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.user.isLoggedIn,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   signup: () => dispatch(signup()),

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest }) => {
-  console.log(isLoggedIn);
   return (
     <Route
       {...rest}
