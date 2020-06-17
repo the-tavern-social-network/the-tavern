@@ -1,0 +1,26 @@
+.Logo {
+  width: 50%;
+  max-width: 390px;
+  min-width: 220px;
+  // position: absolute;
+  padding-left: 0.5rem;
+}
+
+.Auth {
+  font-family: 'nunito sans', nunito;
+  font-weight: 200;
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url(../../assets/images/backgroundlight.jpg);
+  background-repeat: no-repeat;
+  background-position: 78% 50%;
+  background-size: cover;
+}
+
+.Footer {
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}

@@ -44,8 +44,6 @@ io.on('connection', (socket) => {
   console.log('User is connected');
   // const params = socket.handshake.query;
 
-  console.log(socket);
-
   socket.on('send_message', (message) => {
     io.emit('send_message', message);
   });

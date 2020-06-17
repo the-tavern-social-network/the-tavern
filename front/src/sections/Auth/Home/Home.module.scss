@@ -1,0 +1,54 @@
+@import '../../../assets/scss/variables';
+
+.Presentation {
+  font-family: 'nunito sans', nunito;
+  font-weight: 200;
+  height: fit-content;
+  width: 35%;
+  max-width: 400px;
+  min-width: 148px;
+  background-color: rgba(11, 5, 1, 0.7);
+  border-radius: 0 0 10px 10px;
+  margin-left: 2.5rem;
+  padding: 0.75rem;
+  border: 1px solid yellow;
+  margin-top: -3.3rem;
+  line-height: 1.4;
+}
+
+.Signature {
+  text-align: right;
+}
+
+.Desktop {
+  display: none;
+}
+
+.CrossSword {
+  display: none;
+
+  position: absolute;
+}
+
+.Connexion {
+  margin-left: 1rem;
+
+  &__Container {
+    @include flex(center, center, row-reverse wrap);
+    position: absolute;
+    right: -9rem;
+    bottom: 30%;
+    font-weight: 900;
+    font-size: 4rem;
+    transform: rotateZ(-90deg);
+  }
+}
+
+.Arrow {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 2.5rem;
+  height: 2rem;
+  border: 1px solid;
+  background-color: yellow;
+  transform: rotate(90deg);
+}

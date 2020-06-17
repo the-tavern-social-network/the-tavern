@@ -10,21 +10,6 @@ const Screen = ({ connection, user }) => {
     rtcConfig(connection, videoStream);
   }, [connection]);
 
-  useEffect(() => {
-    connection.checkPresence('tavern', (isRoomExist, roomid) => {
-      if (isRoomExist === true) {
-        connection.join(roomid);
-      } else {
-        connection.open(roomid);
-      }
-    });
-
-    return () => {
-      // stop all local cameras
-      connection.attachStreams.forEach((stream) => stream.stop());
-    };
-  }, []);
-
   return (
     <div>
       <div className={styles.ScreenContainer} ref={videoStream}></div>
