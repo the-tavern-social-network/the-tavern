@@ -6,6 +6,7 @@ import Field from '../../../../containers/components/Field';
 const PostForm = ({ post }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("j'ai envoyé un message que j'ai écrit dans mon formulaire post");
     post();
   };
 
@@ -23,8 +24,8 @@ const PostForm = ({ post }) => {
 };
 
 PostForm.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  changeText: PropTypes.func.isRequired,
+  //inputValue: PropTypes.string.isRequired,
+  //changeText: PropTypes.func.isRequired,
 };
 
 export default PostForm;
