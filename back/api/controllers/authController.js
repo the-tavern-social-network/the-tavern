@@ -40,8 +40,6 @@ module.exports = {
       });
     }
 
-    delete user.password;
-
     //	if the password matches, storing the user in the req.session (without the hashed password)
     req.session.user = user;
 
@@ -70,17 +68,4 @@ module.exports = {
       res.send({ user: {}, isLoggedIn: false });
     });
   },
-
-  // postCheckPassword : async (req, res, next) => {
-  // 	const checkPassword = req.body.checkPassword;
-
-  // 	bcrypt
-  // 		.hash(checkPassword, saltRounds)
-  // 		.then(hashedPassword => {
-  // 			User.findOne({ password: hashedPassword }).then(result => {
-  // 				res.send(result);
-  // 			});
-  // 		})
-  // 		.catch(err => {});
-  // };
 };

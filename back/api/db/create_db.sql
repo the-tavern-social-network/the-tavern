@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS "users" (
 
 CREATE TABLE IF NOT EXISTS "posts" (
   "id" SERIAL PRIMARY KEY,
-  "title" TEXT NOT NULL,
   "content" TEXT NOT NULL,
   "image" TEXT NULL,
   "color" TEXT NULL DEFAULT '#fff',

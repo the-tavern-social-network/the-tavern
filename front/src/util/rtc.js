@@ -12,7 +12,7 @@ export default (connection, videoStreamContainer) => {
   };
 
   connection.language = 'fr';
-  // connection.session.broadcast = true;
+  // connection.direction = 'one-to-many';
 
   connection.maxParticipantsAllowed = 8;
 
@@ -44,6 +44,8 @@ export default (connection, videoStreamContainer) => {
 
   // Set this line to close room as soon as owner leaves
   connection.autoCloseEntireSession = true;
+
+  console.log(connection);
 
   // Event triggered when the stream starts
   connection.onstream = (event) => {

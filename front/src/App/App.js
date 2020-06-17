@@ -6,9 +6,10 @@ import Auth from '../sections/Auth/Auth';
 import TheTavern from '../sections/TheTavern/TheTavern';
 import { useEffect } from 'react';
 
-const App = ({ isUserLogged }) => {
+const App = ({ isUserLogged, fetchPosts }) => {
   useEffect(() => {
     isUserLogged();
+    fetchPosts();
   }, []);
   return (
     <>

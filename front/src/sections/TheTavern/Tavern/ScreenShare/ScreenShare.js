@@ -23,7 +23,7 @@ const Screen = ({ connection, user }) => {
       // stop all local cameras
       connection.attachStreams.forEach((stream) => stream.stop());
     };
-  }, [connection]);
+  }, []);
 
   return (
     <div>

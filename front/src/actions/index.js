@@ -1,5 +1,6 @@
 export * from './chat';
 export * from './auth';
+export * from './post';
 
 export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const RESET_FIELDS = 'RESET_FIELDS';

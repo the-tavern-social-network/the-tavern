@@ -7,12 +7,14 @@ const session = require('express-session');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
+const morgan = require('morgan');
 const sequelize = require('./api/db/database');
 const authRoutes = require('./api/routes/auth');
 const mainRoutes = require('./api/routes');
 
 const PORT = process.env.PORT || 8080;
 
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,9 +41,14 @@ app.use(baseUrl, mainRoutes);
 
 io.on('connection', (socket) => {
   RTCMultiConnectionServer.addSocket(socket);
+  console.log('User is connected');
   // const params = socket.handshake.query;
 
-  console.log('User is connected');
+  console.log(socket);
+
+  socket.on('send_message', (message) => {
+    io.emit('send_message', message);
+  });
 
   socket.on('disconnect', () => {
     console.log('user disconnected');

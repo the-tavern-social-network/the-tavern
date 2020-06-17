@@ -6,8 +6,13 @@ import { useEffect } from 'react';
 
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
   useEffect(() => {
+    connection.getAllParticipants().forEach(function (participantId) {
+      console.log(participantId);
+    });
+
     connection.onmessage = (event) => {
-      addChatMessage({ message: event.data.message, user: user.username });
+      event.extra.user = user;
+      addChatMessage({ message: event.data.message, user: event.data.user.username });
     };
     // eslint-disable-next-line
   }, []);
@@ -19,7 +24,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
     }
 
     addChatMessage({ message, user: user.username });
-    connection.send({ type: 'message', message });
+    connection.send({ type: 'message', message, user });
     // connection.send({ type: 'diceRoll', message });
     resetFields('chat');
   };
