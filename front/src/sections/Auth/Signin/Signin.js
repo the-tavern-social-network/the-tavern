@@ -3,12 +3,19 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
+import { useEffect } from 'react';
 
-const Signin = ({ login, resetFields }) => {
+const Signin = ({ history, login, resetFields, isLoggedIn }) => {
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push('/');
+      resetFields('auth');
+    }
+  }, [isLoggedIn]);
+
   const signinFormHandler = (event) => {
     event.preventDefault();
     login();
-    resetFields();
   };
 
   return (

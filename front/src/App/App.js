@@ -4,8 +4,12 @@ import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
 import TheTavern from '../sections/TheTavern/TheTavern';
+import { useEffect } from 'react';
 
-const App = () => {
+const App = ({ isUserLogged }) => {
+  useEffect(() => {
+    isUserLogged();
+  }, []);
   return (
     <>
       <Router>

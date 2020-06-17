@@ -1,4 +1,4 @@
-import { INPUT_CHANGE } from '../actions';
+import { INPUT_CHANGE, RESET_FIELDS } from '../actions';
 
 const INITIAL_STATE = {
   // signin form
@@ -22,6 +22,19 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
+    case RESET_FIELDS:
+      if (action.reducer === 'auth') {
+        return {
+          ...state,
+          signinEmail: '',
+          signinPassword: '',
+          signupEmail: '',
+          signupUsername: '',
+          signupPassword: '',
+          signupConfirmPassword: '',
+          signupBirthdate: '',
+        };
+      }
     default:
       return state;
   }

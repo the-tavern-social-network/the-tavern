@@ -32,10 +32,11 @@ export const auth = (store) => (next) => async (action) => {
       break;
     case LOGIN:
       try {
+        console.log(auth);
         store.dispatch(setLoading());
         const loginData = {
-          email: auth.signInEmail,
-          password: auth.signInPassword,
+          email: auth.signinEmail,
+          password: auth.signinPassword,
         };
 
         const { data } = await axios.post(`${apiUrl}/auth/login`, loginData, {

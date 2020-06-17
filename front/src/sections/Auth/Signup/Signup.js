@@ -8,7 +8,7 @@ const Signup = ({ signup, resetFields }) => {
   const signupFormHandler = (event) => {
     event.preventDefault();
     signup();
-    resetFields();
+    resetFields('auth');
   };
 
   return (
