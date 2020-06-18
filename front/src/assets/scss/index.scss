@@ -1,6 +1,10 @@
 @import './variables';
 @import './reset.scss';
 
+.active {
+  border-bottom: 2px solid #f2af0d;
+}
+
 // @include lg {
 //   html ::-webkit-scrollbar {
 //     -webkit-appearance: none;
