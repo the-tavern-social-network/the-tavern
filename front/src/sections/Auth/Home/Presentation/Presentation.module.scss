@@ -1,0 +1,42 @@
+.Presentation {
+  font-family: 'nunito sans', nunito;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 200;
+  height: 21rem;
+  width: 9rem;
+  border-radius: 0 0 10px 10px;
+  padding: 0.75rem;
+  margin-top: -1rem;
+  line-height: 1.4;
+  background-color: rgba(11, 5, 1, 0.7);
+  border: 0.75rem solid rgba(11, 5, 1, 0.7);
+  outline: 1px solid #ffff00;
+  outline-offset: -8px;
+  -moz-outline-radius: 0 0 10px 10px;
+  overflow: auto;
+
+  .Signature {
+    text-align: right;
+    margin: 1rem 0;
+    font-style: italic;
+    font-weight: 900;
+    color: #ffff00;
+  }
+
+  .Desktop {
+    display: none;
+  }
+
+  .CrossSword {
+    margin-left: 40%;
+    width: 30%;
+    position: relative;
+    transition: all 1.8s cubic-bezier(0.51, 1.61, 0.46, 0.85);
+  }
+
+  .CrossSword:hover,
+  .CrossSword:active {
+    transform: rotate(360deg);
+  }
+}

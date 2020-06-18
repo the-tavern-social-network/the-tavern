@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "users", "posts", "contacts" CASCADE;
+DROP TABLE IF EXISTS "users", "posts", "contacts", "Session" CASCADE;
 
 DROP TYPE IF EXISTS status;
 -- Status 0 references to Pending Friend Request,
@@ -12,17 +12,17 @@ CREATE TABLE IF NOT EXISTS "users" (
   "id" SERIAL PRIMARY KEY,
   "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
-  "pseudo" TEXT NOT NULL UNIQUE,
-  "avatar" TEXT NOT NULL,
-  "description" TEXT NOT NULL,
-  "contact_count" INT NOT NULL,
+  "username" TEXT NOT NULL UNIQUE,
+  "avatar" TEXT NULL,
+  "description" TEXT NULL,
+  "contact_count" INT DEFAULT 0,
+  "birthdate" DATE NOT NULL,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP NULL
 );
 
 CREATE TABLE IF NOT EXISTS "posts" (
   "id" SERIAL PRIMARY KEY,
-  "title" TEXT NOT NULL,
   "content" TEXT NOT NULL,
   "image" TEXT NULL,
   "color" TEXT NULL DEFAULT '#fff',
@@ -40,26 +40,12 @@ PRIMARY KEY ("contact_one","contact_two"),
 "updated_at" TIMESTAMP NULL
 );
 
-INSERT INTO "users" (
-  "email",
-  "password",
-  "pseudo",
-  "avatar",
-  "description",
-  "contact_count",
-  "created_at"
-)
-VALUES
-('test@test.com', 'test12345', 'edgeBG', 'path/to/some/random/pic', 'blablablablablbabalbal', 0, NOW()),
-('test2@test.fr', 'yyteyygd', 'Google4life', 'path/to/some/random/pic', 'blablabEDGEDIEbalbal', 0, NOW());
-
-INSERT INTO "contacts" (
-  "contact_one",
-  "contact_two",
-  "status",
-  "created_at"
-)
-VALUES
-(1, 2, '1', NOW());
+CREATE TABLE "Session" (
+  "sid" TEXT NOT NULL,
+  "expires" TIMESTAMP WITH TIME ZONE NULL,
+  "data" TEXT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
+);
 
 END;
