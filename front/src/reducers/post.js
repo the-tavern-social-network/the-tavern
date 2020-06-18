@@ -1,4 +1,4 @@
-import { INPUT_CHANGE, RESET_FIELDS, SAVE_POSTS,} from '../actions';
+import { INPUT_CHANGE, RESET_FIELDS, SAVE_POSTS, REMOVE_POST} from '../actions';
 
 const INITIAL_STATE = {
     list: [],
@@ -16,6 +16,17 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
+    case REMOVE_POST:
+      const newArray = [
+        ...state.list
+      ];
+      const indexToDelete = state.list.findIndex((post) => post.id === action.id)
+      newArray.splice(indexToDelete, 1);
+      return {
+        ...state,
+        list: newArray,
+    };
+      break;
     case RESET_FIELDS:
       if (action.reducer === 'post') {
           return {

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Post = ({ title, content, image, color, deletePost, loggedUser, id  }) => {
-  console.log(loggedUser)
-  console.log(author)
+
+const Post = ({ title, content, author, image, color, deletePost, loggedUser, id  }) => {
   return (
     
     <div>
       <div>{author.username}</div>
       <p>{content}</p>
-  { author.username === loggedUser && <button onClick={deletePost(id)}> Supprimmer  </button> }
+  { author.username === loggedUser && <button type="button" onClick={() => deletePost(id)} > Supprimmer  </button> }
+  { author.username !== loggedUser && <button type="button" > Ajouter  </button> }
     </div>
   );
 }
@@ -20,7 +20,7 @@ Post.propTypes = {
     username: PropTypes.string.isRequired,
   }).isRequired,
   content: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   color: PropTypes.string.isRequired,
   deletePost : PropTypes.func.isRequired,
   loggedUser : PropTypes.string.isRequired,
