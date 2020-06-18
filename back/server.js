@@ -41,17 +41,17 @@ app.use(baseUrl, mainRoutes);
 
 io.on('connection', (socket) => {
   RTCMultiConnectionServer.addSocket(socket);
-  console.log('User is connected');
+  io.emit('connected_user','User is connected');
+
   // const params = socket.handshake.query;
 
-  console.log(socket);
 
-  socket.on('send_message', (message) => {
-    io.emit('send_message', message);
+  socket.on('add_post', (post) => {
+    io.emit('receive_post', post);
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    console.log('User disconnected');
   });
 });
 

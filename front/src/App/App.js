@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
-import TheTavern from '../sections/TheTavern/TheTavern';
-import { useEffect } from 'react';
+import TheTavern from '../containers/TheTavern/TheTavern'
 
 const App = ({ isUserLogged, fetchPosts }) => {
   useEffect(() => {
     isUserLogged();
     fetchPosts();
-  }, []);
+  }, [isUserLogged, fetchPosts]);
   return (
     <>
       <Router>

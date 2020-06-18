@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
 
-const PostForm = ({ post }) => {
+const PostForm = ({ post, resetFields }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("j'ai envoyé un message que j'ai écrit dans mon formulaire post");
     post();
+    resetFields("post")
   };
 
   return (

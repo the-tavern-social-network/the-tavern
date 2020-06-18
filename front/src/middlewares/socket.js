@@ -1,63 +1,23 @@
-// import { WS_CONNECT, SEND_MESSAGE, receiveMessage } from '../actions/webSocket';
-// import axios from 'axios';
+import { WS_CONNECT, SAVE_POST, addPost } from '../actions';
+import axios from 'axios';
 
-// // je prépare une let qui sera accessible dans tout se fichier qui contiendra mon canal
-// let socketCanal;
+let socketCanal;
 
-// const socket = (store) => (next) => (action) => {
-//   switch (action.type) {
-//     case WS_CONNECT:
-//       axios.get('http://localhost:3030/post')
-//       .then(res => {
-//         console.log(res);
-//         console.log(res.data);
-//       })
-//       .catch(res => {
-//         console.error(res);
-//         console.log(res);
-//       })
+export const socket = (store) => (next) => (action) => {
+  switch (action.type) {
+    case WS_CONNECT:
+      socketCanal = window.io('http://localhost:8080');
 
-//       socketCanal = window.io('http://localhost:8080');
+      socketCanal.on("connected_user", msg => console.log(msg));
 
-
-//       socketCanal.on('send_message', (message) => {
-        
-//         store.dispatch(receiveMessage(message));
-//       });
-    
-//       break;
-    
-//     case SEND_MESSAGE: {
-
-//       const state = store.getState();
-      
-//       if (!state.text) {
-//         return
-//       }
-
-//       const post = {
-//         title: state.pseudo,
-//         content: state.text,
-//       }
-
-//       // console.log(postData);
-//       axios.post('http://localhost:3030/post', post )
-//       .then(res => {
-//         console.log(res);
-//         console.log(res.data);
-//       })
-//       .catch(res => {
-//         console.error(res);
-//         console.log(res);
-//       })
-
-//       socketCanal.emit('send_message', post );
-//       break;
-//     }
-//     default:
-      
-//       next(action);
-//   }
-// };
-
-// export default socket;
+      socketCanal.on('receive_post', (post) => {
+      store.dispatch(addPost(post));
+      });
+      break;
+    case SAVE_POST:
+      console.log("SAVE_POST")
+      socketCanal.emit('add_post', action.post);
+    default:
+      next(action);
+  }
+};
