@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
 
@@ -8,13 +8,21 @@ import Tavern from '../../containers/TheTavern/Tavern/Tavern';
 import UserAccount from './UserAccount/UserAccount';
 import Thread from './Thread/Thread';
 
-const TheTavern = (props) => {
+const TheTavern = ({ logout }) => {
   return (
     <>
       <Layout section="TheTavern">
-        <Link to="/">Thread</Link>
-        <Link to="/tavern">Tavern</Link>
-        <Link to="/compte">Compte</Link>
+        <NavLink exact to="/">
+          Thread
+        </NavLink>
+        <NavLink exact to="/tavern">
+          Tavern
+        </NavLink>
+        <NavLink exact to="/compte">
+          Compte
+        </NavLink>
+        <button onClick={logout}>Déconnexion</button>
+
         <Switch>
           <Route path="/tavern" component={Tavern} />
           <Route path="/compte" component={UserAccount} />

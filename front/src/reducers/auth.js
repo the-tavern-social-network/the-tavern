@@ -1,4 +1,7 @@
 import { INPUT_CHANGE, RESET_FIELDS } from '../actions';
+import { getDate } from '../util';
+
+const { year } = getDate();
 
 const INITIAL_STATE = {
   // signin form
@@ -9,7 +12,7 @@ const INITIAL_STATE = {
   signupUsername: '',
   signupPassword: '',
   signupConfirmPassword: '',
-  signupBirthdate: '',
+  signupBirthdate: `${year - 16}-01-01`,
 };
 
 export default (state = INITIAL_STATE, action = {}) => {

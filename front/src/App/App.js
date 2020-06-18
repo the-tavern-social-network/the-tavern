@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
-import TheTavern from '../sections/TheTavern/TheTavern';
+import TheTavern from '../containers/TheTavern/TheTavern';
 import { useEffect } from 'react';
 
 const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }) => {
