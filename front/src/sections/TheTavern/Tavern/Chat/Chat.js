@@ -36,6 +36,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
         ))}
       </div>
       <Field reducerName="chat" name="message" />
+      <button>Envoyer</button>
     </form>
   );
 };

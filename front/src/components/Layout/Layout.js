@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import logo from '../../assets/images/logo1.svg';
 import styles from './Layout.module.scss';
@@ -15,7 +14,7 @@ const Layout = ({ section, children }) => {
           <header className={styles.Logo}>
             <img src={logo} />
           </header>
-          <main>{children}</main>
+          <main className={styles.Auth__Main}>{children}</main>
           <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
         </div>
       );

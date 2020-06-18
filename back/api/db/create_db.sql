@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "users", "posts", "contacts" CASCADE;
+DROP TABLE IF EXISTS "users", "posts", "contacts", "Session" CASCADE;
 
 DROP TYPE IF EXISTS status;
 -- Status 0 references to Pending Friend Request,
@@ -38,6 +38,14 @@ CREATE TABLE "contacts" (
 PRIMARY KEY ("contact_one","contact_two"),
 "created_at" TIMESTAMP DEFAULT NOW(),
 "updated_at" TIMESTAMP NULL
+);
+
+CREATE TABLE "Session" (
+  "sid" TEXT NOT NULL,
+  "expires" TIMESTAMP WITH TIME ZONE NULL,
+  "data" TEXT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
 END;

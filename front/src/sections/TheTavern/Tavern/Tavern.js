@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
 
-const Tavern = ({ user }) => {
+const Tavern = ({ history, user }) => {
   const [connection] = useState(new RTCMultiConnection());
 
   useEffect(() => {
@@ -23,10 +24,19 @@ const Tavern = ({ user }) => {
     };
   }, []);
 
+  const clickHandler = (event) => {
+    history.push('/');
+  };
+
   return (
     <div>
       <ScreenShare user={user} connection={connection} />
       <Chat user={user} connection={connection} />
+      <div>
+        // TODO door image
+        {/* <img src=""/> */}
+        <button onClick={clickHandler}>Quitter la tavern</button>
+      </div>
     </div>
   );
 };

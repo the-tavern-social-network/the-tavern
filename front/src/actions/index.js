@@ -4,6 +4,7 @@ export * from './post';
 
 export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const RESET_FIELDS = 'RESET_FIELDS';
+export const SET_INITIAL_LOADING = 'SET_INITIAL_LOADING';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_ERROR = 'SET_ERROR';
 
@@ -14,5 +15,6 @@ export const inputChange = (name, value, reducerName) => ({
   reducerName,
 });
 export const resetFields = (reducer) => ({ type: RESET_FIELDS, reducer });
+export const setInitialLoading = () => ({ type: SET_INITIAL_LOADING });
 export const setLoading = () => ({ type: SET_LOADING });
 export const setError = () => ({ type: SET_ERROR });

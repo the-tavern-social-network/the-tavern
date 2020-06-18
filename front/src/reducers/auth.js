@@ -35,6 +35,7 @@ export default (state = INITIAL_STATE, action = {}) => {
           signupBirthdate: '',
         };
       }
+      return state;
     default:
       return state;
   }

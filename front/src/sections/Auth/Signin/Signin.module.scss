@@ -1,0 +1,112 @@
+@import '../../../assets/scss/variables';
+
+.Signin {
+  position: relative;
+  background-color: rgba(#3a271d, 0.7);
+  clip-path: polygon(
+    0% 0%,
+    2% 2%,
+    4% 0%,
+    6% 1%,
+    8% 1%,
+    11% 0%,
+    12% 1%,
+    14% 0%,
+    16% 1%,
+    18% 1%,
+    20% 1%,
+    22% 1%,
+    24% 0%,
+    26% 0%,
+    28% 0%,
+    29% 2%,
+    30% 4%,
+    31% 0%,
+    34% 0%,
+    36% 1%,
+    39% 1%,
+    40% 0%,
+    42% 1%,
+    44% 1%,
+    47% 1%,
+    49% 0%,
+    52% 0%,
+    56% 0%,
+    58% 2%,
+    59% 0%,
+    62% 1%,
+    63% 4%,
+    65% 0%,
+    72% 0%,
+    74% 1%,
+    76% 0%,
+    78% 1%,
+    80% 0%,
+    83% 0%,
+    85% 1%,
+    88% 1%,
+    90% 0%,
+    94% 1%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+  width: 100%;
+  max-width: 35rem;
+  padding: $gutter;
+  margin-top: $gutter + 1rem;
+
+  &__Container {
+    @include flex(center, center, column nowrap);
+    max-width: 20rem;
+    margin: auto;
+    position: relative;
+  }
+
+  &__CrossSword {
+    width: 2rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.3rem;
+  }
+
+  & label {
+    align-self: flex-start;
+  }
+
+  &__Field {
+    border: none;
+    box-shadow: inset 1px 1px 6px rgba(11, 5, 1, 0.7);
+    border-radius: 3px;
+    padding: ($gutter/2.5);
+    margin: ($gutter/4) 0 ($gutter/2);
+    width: 100%;
+  }
+
+  &__Signup {
+    background-color: #03c9a5;
+  }
+
+  &__Signup,
+  &__Btn {
+    margin-top: ($gutter/5);
+    font-family: 'nunito sans', sans-serif;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    padding: ($gutter/4.5) 0.8rem;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+
+  &__Btn {
+    &__Container {
+      @include flex(center, space-between, row wrap);
+      width: 100%;
+    }
+
+    background-color: #f2af0d;
+    color: white;
+  }
+}

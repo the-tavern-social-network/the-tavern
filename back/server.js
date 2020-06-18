@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const multer = require('multer');
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
@@ -14,6 +15,12 @@ const mainRoutes = require('./api/routes');
 
 const PORT = process.env.PORT || 8080;
 
+const store = new SequelizeStore({
+  db: sequelize,
+  checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
+  expiration: 3600000 * 24 * 7, // The maximum age (in milliseconds) of a valid session.
+});
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -22,8 +29,10 @@ app.use(multer().none());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: true,
+    resave: false,
     saveUninitialized: true,
+    maxAge: 3600000 * 24 * 7,
+    store,
   }),
 );
 
@@ -44,8 +53,10 @@ io.on('connection', (socket) => {
   console.log('User is connected');
   // const params = socket.handshake.query;
 
-  socket.on('send_message', (message) => {
-    io.emit('send_message', message);
+  io.emit('connected_user', 'User is connected');
+
+  socket.on('add_post', (post) => {
+    io.emit('receive_post', post);
   });
 
   socket.on('disconnect', () => {
