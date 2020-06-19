@@ -7,19 +7,12 @@ export default (connection, videoStreamContainer) => {
   connection.session = {
     screen: true,
     audio: true,
-    oneway: true,
     data: true,
   };
 
   connection.language = 'fr';
-  // connection.direction = 'one-to-many';
 
   connection.maxParticipantsAllowed = 8;
-
-  // connection.sdpConstraints.mandatory = {
-  //   OfferToReceiveAudio: false,
-  //   OfferToReceiveVideo: false,
-  // };
 
   connection.iceServers = [
     {
@@ -43,9 +36,7 @@ export default (connection, videoStreamContainer) => {
   }
 
   // Set this line to close room as soon as owner leaves
-  connection.autoCloseEntireSession = true;
-
-  console.log(connection);
+  connection.autoCloseEntireSession = false;
 
   // Event triggered when the stream starts
   connection.onstream = (event) => {

@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import logo from '../../assets/images/logo1.svg';
+import styles from './Layout.module.scss';
+
 const Layout = ({ section, children }) => {
   let layout;
 
   switch (section) {
     case 'auth':
       layout = (
-        <>
-          <header>LOGO</header>
-          <main>{children}</main>
-          <footer>AUTH FOOTER</footer>
-        </>
+        <div className={styles.Auth}>
+          <header className={styles.Logo}>
+            <img src={logo} />
+          </header>
+          <main className={styles.Auth__Main}>{children}</main>
+          <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
+        </div>
       );
       break;
     case 'admin':
@@ -22,7 +27,7 @@ const Layout = ({ section, children }) => {
         <>
           <header>TAVERN HEADER</header>
           <main>{children}</main>
-          <footer>TAVERN FOOTER</footer>
+          <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
         </>
       );
       break;

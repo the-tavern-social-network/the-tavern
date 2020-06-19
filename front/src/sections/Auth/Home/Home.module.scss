@@ -1,0 +1,37 @@
+@import '../../../assets/scss/variables';
+
+.Connexion {
+  margin-left: 1rem;
+  font-weight: 400;
+  font-size: 5rem;
+
+  &__Container {
+    font-family: 'Josefin Sans', sans-serif;
+    @include flex(center, center, row-reverse wrap);
+    position: fixed;
+    right: -11.6rem;
+    bottom: 38%;
+    transform: rotateZ(-90deg);
+    cursor: pointer;
+  }
+}
+
+.Arrow {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 2.5rem;
+  height: 2rem;
+  background-color: rgb(199, 173, 27);
+  transform: rotate(90deg);
+  left: 0.6rem;
+  position: relative;
+
+  ~ div {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    width: 2.5rem;
+    height: 2rem;
+    background-color: yellow;
+    position: absolute;
+    left: 0.1rem;
+    transform: rotate(90deg);
+  }
+}

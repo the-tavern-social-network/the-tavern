@@ -6,10 +6,6 @@ import { useEffect } from 'react';
 
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
   useEffect(() => {
-    connection.getAllParticipants().forEach(function (participantId) {
-      console.log(participantId);
-    });
-
     connection.onmessage = (event) => {
       event.extra.user = user;
       addChatMessage({ message: event.data.message, user: event.data.user.username });
@@ -40,6 +36,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
         ))}
       </div>
       <Field reducerName="chat" name="message" />
+      <button>Envoyer</button>
     </form>
   );
 };

@@ -6,6 +6,7 @@ import {
   connect,
   disconnect,
   setLoading,
+  setInitialLoading,
   setError,
   SIGNUP,
 } from '../actions';
@@ -53,7 +54,7 @@ export const auth = (store) => (next) => async (action) => {
       }
       break;
     case IS_LOGGED_IN:
-      store.dispatch(setLoading());
+      store.dispatch(setInitialLoading());
       try {
         const { data } = await axios.post(
           `${apiUrl}/auth/is-logged-in`,
@@ -69,7 +70,7 @@ export const auth = (store) => (next) => async (action) => {
       } catch (err) {
         store.dispatch(setError());
       } finally {
-        store.dispatch(setLoading());
+        store.dispatch(setInitialLoading());
       }
       break;
     case LOGOUT:

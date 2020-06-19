@@ -1,16 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 
-const Home = (props) => {
+import Presentation from './Presentation/Presentation';
+import styles from './Home.module.scss';
+
+const Home = ({ history, match }) => {
+  const clickHandler = () => {
+    history.push(`${match.path}/connexion`);
+  };
+
   return (
     <>
-      <div>description</div>
-      <Link to="/auth/connexion">Connexion</Link>
+      <Presentation />
+      <div onClick={clickHandler} className={styles.Connexion__Container}>
+        <Link to="/auth/connexion" className={styles.Connexion}>
+          Connexion
+        </Link>
+        <div className={styles.Arrow}></div>
+        <div></div>
+      </div>
     </>
   );
 };
-
-Home.propTypes = {};
 
 export default Home;
