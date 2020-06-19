@@ -59,6 +59,10 @@ io.on('connection', (socket) => {
     io.emit('receive_post', post);
   });
 
+  socket.on('delete_post', (id_post) => {
+    io.emit('remove_post', id_post);
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
