@@ -20,8 +20,7 @@ export default (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         list: state.list.filter(post=> post.id !== action.id),
-    };
-      break;
+      };
     case RESET_FIELDS:
       if (action.reducer === 'post') {
         return {
@@ -36,7 +35,6 @@ export default (state = INITIAL_STATE, action = {}) => {
         list: action.posts,
       };
     case ADD_POST:
-      console.log({action})
       return {
         ...state,
         list: [...state.list, action.post],

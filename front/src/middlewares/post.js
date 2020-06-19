@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_POSTS, savePosts, savePost, setLoading, setError, POST, resetFields, DELETE_POST, removePost  } from '../actions';
+import { FETCH_POSTS, savePosts, savePost, setLoading, setError, POST, DELETE_POST, removePost  } from '../actions';
 import { apiUrl } from '../util/index';
 
 export const post = (store) => (next) => async (action) => {

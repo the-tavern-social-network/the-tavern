@@ -1,5 +1,4 @@
 import { WS_CONNECT, SAVE_POST, addPost } from '../actions';
-import axios from 'axios';
 
 let socketCanal;
 

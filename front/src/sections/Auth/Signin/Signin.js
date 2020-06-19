@@ -48,7 +48,7 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
         />
         <div className={styles.Signin__Btn__Container}>
           <Link className={styles.Signin__Signup} to="/auth/inscription">
-            Inscription
+          Je m'inscrit
           </Link>
           <button className={styles.Signin__Btn}>Connexion</button>
         </div>

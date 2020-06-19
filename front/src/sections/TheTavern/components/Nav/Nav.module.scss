@@ -1,0 +1,50 @@
+@import '../../../../assets/scss/variables';
+
+.Welcome{
+    margin-top: $gutter + 1.6;
+    margin-left: $gutter + 2.5;
+    position: absolute;
+    font-weight: 700;
+    &__User{
+      color: #FFF200;
+      font-size: 1.4rem;
+    }
+  }
+
+.Nav {
+  @include flex(center, space-between, row wrap);
+  padding: $gutter / 3;
+  position: relative;
+  overflow-x: hidden;
+  
+  &__Header{
+      grid-area: header;
+    }
+
+  &__Logo {
+    grid-area: header;
+    width: $gutter * 3;
+  }
+  
+  &__Menu {
+    @include flex(center,center,row wrap);
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background-color: #5B3D20;
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+    transition: 300ms ease-in-out;
+
+    &__Open {
+      @extend .Nav__Menu;
+      transform: scale(1.1);
+    }
+  }
+  
+  img {
+    width: 55%;
+  }
+;
+}

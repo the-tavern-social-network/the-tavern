@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
 
@@ -15,17 +16,6 @@ const TheTavern = ({ wsConnect, logout }) => {
   return (
     <>
       <Layout section="TheTavern">
-        <NavLink exact to="/">
-          Thread
-        </NavLink>
-        <NavLink exact to="/tavern">
-          Tavern
-        </NavLink>
-        <NavLink exact to="/compte">
-          Compte
-        </NavLink>
-        <button onClick={logout}>Déconnexion</button>
-
         <Switch>
           <Route path="/tavern" component={Tavern} />
           <Route path="/compte" component={UserAccount} />

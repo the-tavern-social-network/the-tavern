@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Nav from '../../containers/TheTavern/components/Nav';
+
 import logo from '../../assets/images/logo1.svg';
 import styles from './Layout.module.scss';
 
@@ -11,7 +13,7 @@ const Layout = ({ section, children }) => {
     case 'auth':
       layout = (
         <div className={styles.Auth}>
-          <header className={styles.Logo}>
+          <header className={styles.Auth__Logo}>
             <img src={logo} />
           </header>
           <main className={styles.Auth__Main}>{children}</main>
@@ -25,9 +27,11 @@ const Layout = ({ section, children }) => {
     default:
       layout = (
         <>
-          <header>TAVERN HEADER</header>
-          <main>{children}</main>
-          <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
+          <div className={styles.Main}>
+            <Nav />
+            <main className={styles.Main__Main}>{children}</main>
+            <footer className={styles.Main__Footer}>© thetavern | Tous droits réservés | 2020</footer>
+          </div>
         </>
       );
       break;

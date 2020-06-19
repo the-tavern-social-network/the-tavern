@@ -1,0 +1,14 @@
+.UserAccount {
+  background-color: #553719;
+
+  &__Description {
+    
+  }
+  
+  &__Avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+}
