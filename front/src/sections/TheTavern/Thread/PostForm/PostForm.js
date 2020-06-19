@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
 
-const PostForm = ({ post }) => {
+const PostForm = ({ post, resetFields }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
+    resetFields("post")
   };
 
   return (
@@ -23,8 +24,8 @@ const PostForm = ({ post }) => {
 };
 
 PostForm.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  changeText: PropTypes.func.isRequired,
+  //inputValue: PropTypes.string.isRequired,
+  //changeText: PropTypes.func.isRequired,
 };
 
 export default PostForm;

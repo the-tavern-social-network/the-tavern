@@ -1,24 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
-import TheTavern from '../containers/TheTavern/TheTavern';
-import { useEffect } from 'react';
+import TheTavern from '../containers/TheTavern/TheTavern'
+
 
 const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }) => {
   useEffect(() => {
     isUserLogged();
     fetchPosts();
-  }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      history.push('/');
-    }
-  }, [isLoggedIn]);
-
+  }, [isUserLogged, fetchPosts]);
   return (
     <>
       {!isInitialLoading && (

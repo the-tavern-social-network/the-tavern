@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Post from './Post/Post';
 
-const Posts = ({ posts }) => (
-  <section>{posts.map((post) => <Post key={post.id} {...post} />).reverse()}</section>
+const Posts = ({ posts, loggedUser, deletePost}) => (
+  <section>{posts.map((post) => <Post loggedUser={loggedUser} deletePost={deletePost} key={post.id} {...post} />).reverse()}</section>
 );
 
 Posts.propTypes = {

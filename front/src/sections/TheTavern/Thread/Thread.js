@@ -6,8 +6,8 @@ import PostForm from '../../../containers/TheTavern/Thread/PostForm';
 const Thread = () => {
   return (
     <>
-      <Posts />
       <PostForm />
+      <Posts />
     </>
   );
 };

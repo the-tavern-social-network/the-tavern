@@ -1,0 +1,1 @@
+export const isAuthor = (pseudo, author) => pseudo === author;

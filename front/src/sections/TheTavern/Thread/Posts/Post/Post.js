@@ -1,18 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Post = ({ title, content, image, color }) => (
-  <div>
-    <div>{title}</div>
-    <p>{content}</p>
-  </div>
-);
+
+const Post = ({ title, content, author, image, color, deletePost, loggedUser, id  }) => {
+  return (
+    
+    <div>
+      <div>{author.username}</div>
+      <p>{content}</p>
+  { author.username === loggedUser && <button type="button" onClick={() => deletePost(id)} > Supprimmer  </button> }
+  { author.username !== loggedUser && <button type="button" > Ajouter  </button> }
+    </div>
+  );
+}
+  
 
 Post.propTypes = {
-  title: PropTypes.string.isRequired,
+  author:  PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
   content: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   color: PropTypes.string.isRequired,
+  deletePost : PropTypes.func.isRequired,
+  loggedUser : PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 Post.defaultProps = {

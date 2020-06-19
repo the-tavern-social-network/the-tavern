@@ -1,6 +1,7 @@
 export * from './chat';
 export * from './auth';
 export * from './post';
+export * from './socket';
 
 export const INPUT_CHANGE = 'INPUT_CHANGE';
 export const RESET_FIELDS = 'RESET_FIELDS';
