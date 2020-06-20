@@ -23,8 +23,12 @@ module.exports = {
     //	Retrieve infos from the form
     const email = req.body.email;
     const password = req.body.password;
+
+    // Getting all user associations
+    const include = Object.keys(User.associations);
+
     //	Looking for a user with the same email
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ include, where: { email } });
     //	If no user found, send a 404 response
     if (!user) {
       return res.status(404).send({
@@ -53,9 +57,13 @@ module.exports = {
   isLoggedIn: async (req, res, next) => {
     //  Checks if the user property exists in the req.session
     if (req.session.user) {
+      // Getting all user associations
+      const include = Object.keys(User.associations);
+
+      const user = await User.findByPk(req.session.user.id, { include });
       //  if so sends back the user data to the client
       return res.status(200).send({
-        user: req.session.user,
+        user,
         isLoggedIn: true,
       });
     }
