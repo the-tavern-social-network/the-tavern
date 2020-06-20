@@ -11,7 +11,7 @@ export const user = (store) => (next) => async (action) => {
         let userData = {
           description: user.description,
         }
-        
+
         const { data: updatedUser } = await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userData)
         
         delete updatedUser.password;
