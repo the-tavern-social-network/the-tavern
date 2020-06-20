@@ -19,18 +19,18 @@ const NavLinks = ({ logout }) => {
       </li>
       <li>
         <NavLink exact to="/compte">
-        Compte
-      </NavLink>
+          Compte
+        </NavLink>
       </li>
       <li>
-        <button onClick={logout}>Déconnexion</button>  
+        <button onClick={logout}>Déconnexion</button>
       </li>
     </ul>
   );
 };
 
 NavLinks.propTypes = {
-  
+  logout: PropTypes.func.isRequired,
 };
 
 export default NavLinks;

@@ -14,7 +14,7 @@ const Signup = ({ history, signup, resetFields, isLoggedIn }) => {
   }, [isLoggedIn]);
 
   const clickHandler = (event) => {
-    history.goBack();
+    history.push('/auth');
   };
 
   const signupFormHandler = (event) => {
@@ -25,7 +25,12 @@ const Signup = ({ history, signup, resetFields, isLoggedIn }) => {
 
   return (
     <form onSubmit={signupFormHandler} className={styles.Signup}>
-      <img onClick={clickHandler} className={styles.Signup__CrossSword} src={CrossButton} />
+      <img
+        onClick={clickHandler}
+        alt="bouton de fermeture"
+        className={styles.Signup__CrossSword}
+        src={CrossButton}
+      />
       <div className={styles.Signup__Container}>
         <label htmlFor="email">Email</label>
         <Field

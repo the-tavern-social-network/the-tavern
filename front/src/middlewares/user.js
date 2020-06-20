@@ -10,16 +10,20 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
         let userData = {
           description: user.description,
-        }
+        };
 
-        const { data: updatedUser } = await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userData)
-        
+        const { data: updatedUser } = await axios.patch(
+          `${apiUrl}/user/${user.loggedUser.id}`,
+          userData,
+        );
+
         delete updatedUser.password;
-        
-        action.user = updatedUser
-        
-        next(action)
+
+        action.user = updatedUser;
+
+        next(action);
       } catch (err) {
+        store.dispatch(setError());
         console.trace(err);
       } finally {
         store.dispatch(setLoading());

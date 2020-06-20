@@ -12,7 +12,7 @@ const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest }) => {
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.object.isRequired,
   isLoggedIn: PropTypes.bool,
 };
 

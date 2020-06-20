@@ -7,7 +7,7 @@ const PostForm = ({ post, resetFields }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
-    resetFields("post")
+    resetFields('post');
   };
 
   return (
@@ -24,8 +24,8 @@ const PostForm = ({ post, resetFields }) => {
 };
 
 PostForm.propTypes = {
-  //inputValue: PropTypes.string.isRequired,
-  //changeText: PropTypes.func.isRequired,
+  post: PropTypes.func.isRequired,
+  resetFields: PropTypes.func.isRequired,
 };
 
 export default PostForm;

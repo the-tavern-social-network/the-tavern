@@ -30,7 +30,7 @@ const Presentation = () => {
         « Prenez place et mettez-vous à l'aise, il y a toujours une table de libre pour vous. »
       </p>
       <p className={styles.Signature}>Le tavernier</p>
-      <img className={styles.CrossSword} src={crossSword} />
+      <img className={styles.CrossSword} src={crossSword} alt="épées entrecroisées" />
     </div>
   );
 };

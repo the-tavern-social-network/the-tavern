@@ -33,8 +33,6 @@ const Tavern = ({ history, user }) => {
       <ScreenShare user={user} connection={connection} />
       <Chat user={user} connection={connection} />
       <div>
-        // TODO door image
-        {/* <img src=""/> */}
         <button onClick={clickHandler}>Quitter la tavern</button>
       </div>
     </div>

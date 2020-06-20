@@ -19,22 +19,22 @@ const Nav = ({ logout }) => {
         <h2 className={styles.Welcome__User}>Nom Utilisateur</h2>
       </div>
       <nav className={styles.Nav}>
-        <Link to='/' className={styles.Nav__Logo}>
-          <img src={logo} />
+        <Link to="/" className={styles.Nav__Logo}>
+          <img src={logo} alt="logo TheTavern" />
         </Link>
-        <div onClick={() => setIsOpen(!isOpen)} className={ isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
-          <img src={menu} />
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
+          <img src={menu} alt="menu de navigation" />
         </div>
-        {
-          isOpen && <NavLinks logout={logout} />
-        }
+        {isOpen && <NavLinks logout={logout} />}
       </nav>
     </div>
   );
 };
 
 Nav.propTypes = {
-  
+  logout: PropTypes.func.isRequired,
 };
 
 export default Nav;

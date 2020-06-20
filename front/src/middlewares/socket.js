@@ -7,15 +7,15 @@ export const socket = (store) => (next) => (action) => {
     case WS_CONNECT:
       socketCanal = window.io('http://localhost:8080');
 
-      socketCanal.on("connected_user", msg => console.log(msg));
+      socketCanal.on('connected_user', (msg) => console.log(msg));
 
       socketCanal.on('receive_post', (post) => {
-      store.dispatch(addPost(post));
+        store.dispatch(addPost(post));
       });
       break;
     case SAVE_POST:
-      console.log("SAVE_POST")
       socketCanal.emit('add_post', action.post);
+      break;
     default:
       next(action);
   }

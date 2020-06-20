@@ -14,7 +14,7 @@ const Layout = ({ section, children }) => {
       layout = (
         <div className={styles.Auth}>
           <header className={styles.Auth__Logo}>
-            <img src={logo} />
+            <img src={logo} alt="logo TheTavern" />
           </header>
           <main className={styles.Auth__Main}>{children}</main>
           <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
@@ -30,7 +30,9 @@ const Layout = ({ section, children }) => {
           <div className={styles.Main}>
             <Nav />
             <main className={styles.Main__Main}>{children}</main>
-            <footer className={styles.Main__Footer}>© thetavern | Tous droits réservés | 2020</footer>
+            <footer className={styles.Main__Footer}>
+              © thetavern | Tous droits réservés | 2020
+            </footer>
           </div>
         </>
       );
