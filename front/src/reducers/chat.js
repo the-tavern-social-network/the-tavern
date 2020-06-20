@@ -1,4 +1,4 @@
-import { INPUT_CHANGE, ADD_CHAT_MESSAGE, RESET_FIELDS } from '../actions';
+import { INPUT_CHANGE, ADD_CHAT_MESSAGE, RESET_FIELDS, RESET_CHAT } from '../actions';
 
 const INITIAL_STATE = {
   messages: [],
@@ -28,6 +28,11 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
+    case RESET_CHAT:
+      return {
+        ...state,
+        messages: [],
+      };
     default:
       return state;
   }

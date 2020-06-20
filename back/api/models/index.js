@@ -1,6 +1,7 @@
 // const Contact = require('./contact');
 const User = require('./user');
 const Post = require('./post');
+const TavernRequest = require('./tavernRequest');
 
 // POST 11 <-> 0N USER
 Post.belongsTo(User, {
@@ -29,7 +30,18 @@ User.belongsToMany(User, {
   as: 'friends',
 });
 
+// TAVERN_REQUEST 11 <-> 0N USER
+TavernRequest.belongsTo(User, {
+  onDelete: 'CASCADE',
+  as: 'participant',
+});
+
+User.hasMany(TavernRequest, {
+  as: 'tavernRequests',
+});
+
 module.exports = {
   User,
   Post,
+  TavernRequest
 };

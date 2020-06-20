@@ -3,6 +3,7 @@ import { CONNECT, DISCONNECT } from '../actions';
 const INITIAL_STATE = {
   loggedUser: {},
   isLoggedIn: false,
+  hasTriedToAuthenticate: false,
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
@@ -12,6 +13,7 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         loggedUser: action.response.user,
         isLoggedIn: action.response.isLoggedIn,
+        hasTriedToAuthenticate: true,
       };
     case DISCONNECT:
       return {

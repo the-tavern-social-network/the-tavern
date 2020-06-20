@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
   isInitialLoading: state.global.isInitialLoading,
+  hasTriedToAuthenticate: state.user.hasTriedToAuthenticate,
 });
 
 const mapDispatchToProps = (dispatch) => ({

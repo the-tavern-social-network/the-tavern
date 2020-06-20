@@ -4,12 +4,13 @@ import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
+import styles from './Tavern.module.scss';
 
-const Tavern = ({ history, user }) => {
+const Tavern = ({ match, history, user, resetChat }) => {
   const [connection] = useState(new RTCMultiConnection());
 
   useEffect(() => {
-    connection.checkPresence('tavern', (isRoomExist, roomid) => {
+    connection.checkPresence(match.params.id, (isRoomExist, roomid) => {
       if (isRoomExist === true) {
         connection.dontCaptureUserMedia = true;
         connection.join(roomid);
@@ -25,17 +26,20 @@ const Tavern = ({ history, user }) => {
   }, []);
 
   const clickHandler = (event) => {
+    connection.closeSocket();
+    resetChat();
     history.push('/');
   };
 
   return (
-    <div>
-      <ScreenShare user={user} connection={connection} />
+    <div className={styles.Tavern}>
+      <ScreenShare history={history} user={user} connection={connection} />
       <Chat user={user} connection={connection} />
       <div>
-        // TODO door image
         {/* <img src=""/> */}
-        <button onClick={clickHandler}>Quitter la tavern</button>
+        <span className={styles.Tavern__Exit} onClick={clickHandler}>
+          Quitter la tavern (DOOR)
+        </span>
       </div>
     </div>
   );

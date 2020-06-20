@@ -64,11 +64,13 @@ export const auth = (store) => (next) => async (action) => {
           },
         );
 
+        delete data.user.password;
+
         if (data.isLoggedIn) {
           store.dispatch(connect(data));
         }
       } catch (err) {
-        store.dispatch(setError());
+        store.dispatch(connect({ user: null, isLoggedIn: false }));
       } finally {
         store.dispatch(setInitialLoading());
       }

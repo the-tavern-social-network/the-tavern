@@ -1,0 +1,56 @@
+@import '../../../../assets/scss/variables';
+
+.Chat {
+  margin: -($gutter/2) ($gutter/2) 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+
+  &__Messages {
+    background-color: #55381a;
+    padding: ($gutter/2);
+    overflow: auto;
+    position: relative;
+    height: 20rem;
+
+    &__Message {
+      width: 90%;
+      margin: ($gutter/2) 0;
+      &__Self {
+        text-align: right;
+        color: yellow;
+        margin: ($gutter/4) 0;
+      }
+      &__Player {
+        text-align: left;
+        color: white;
+        margin: ($gutter/4) 0;
+      }
+      &__Content {
+        padding: ($gutter/4);
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+
+  &__Message {
+    &__Form {
+      @include flex(center, space-between, row wrap);
+      position: relative;
+
+      &__Btn {
+        position: absolute;
+        border: none;
+        border-radius: 10px;
+        right: 0.5rem;
+        padding: ($gutter/3);
+        color: #fff;
+        background-color: #f3cc0d;
+      }
+    }
+    &__Input {
+      padding: ($gutter/2);
+      width: 100%;
+    }
+  }
+}

@@ -7,17 +7,11 @@ import Auth from '../sections/Auth/Auth';
 import TheTavern from '../containers/TheTavern/TheTavern';
 import { useEffect } from 'react';
 
-const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }) => {
+const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
   useEffect(() => {
     isUserLogged();
     fetchPosts();
   }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      history.push('/');
-    }
-  }, [isLoggedIn]);
 
   return (
     <>
@@ -26,8 +20,7 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
           <>
             {/* Maybe in the future ;) */}
             {/* <Route path='/admin' component={Admin} /> */}
-            <Route path="/auth" component={Auth} />
-            {/* TODO protected Route */}
+            <Route path="/auth" component={Auth} />{' '}
             <ProtectedRoute path="/" component={TheTavern} />
           </>
         </Switch>

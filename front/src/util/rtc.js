@@ -1,6 +1,7 @@
 export default (connection, videoStreamContainer) => {
   // Socket URL
   connection.socketURL = 'http://localhost:8080/';
+  connection.videosContainer = videoStreamContainer;
 
   connection.socketMessageEvent = 'screen-sharing';
 
@@ -29,11 +30,11 @@ export default (connection, videoStreamContainer) => {
   connection.channel = 'tavern';
 
   // Audio capture
-  if (navigator.getUserMedia) {
-    connection.captureUserMedia(() => {}, {
-      audio: true,
-    });
-  }
+  // if (navigator.getUserMedia) {
+  //   connection.captureUserMedia(() => {}, {
+  //     audio: true,
+  //   });
+  // }
 
   // Set this line to close room as soon as owner leaves
   connection.autoCloseEntireSession = false;
