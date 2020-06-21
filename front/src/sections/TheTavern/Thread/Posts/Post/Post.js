@@ -1,4 +1,6 @@
 import React from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import PropTypes from 'prop-types';
 import styles from './Post.module.scss';
 import getDateWithCreatedAt from '../../../../../util/getDateWithCreatedAt'
@@ -9,12 +11,21 @@ const Post = ({ title, content, author, image, color, deletePost, loggedUser, id
   return (
     
     <div className={styles.Post}>
+      { author.username !== loggedUser && <button type="button" > Ajouter  </button> }
       { author.username === loggedUser ? <div className={styles.AuthorPost_gold}>{author.username}</div> : <div className={styles.AuthorPost}>{author.username}</div>}
       <p className={styles.ContentPost}>{content}</p>
-      <div className={styles.PostFooter}>
+      <div className={ author.username !== loggedUser ? styles.PostFooter_start : styles.PostFooter_between}>
+        <div className={styles.DateContainer}>
+          <div className={styles.Day}>
+            <Moment add={{ hours: 2 }} format="DD/MM/YY">{createdAt}</Moment>
+          </div>
+          <div className={styles.Hour}>
+            <Moment add={{ hours: 2 }} format="HH" >{createdAt}</Moment>
+            <span>h</span>
+            <Moment format="mm">{createdAt}</Moment>
+          </div>
+        </div>
           { author.username === loggedUser && <button type="button" onClick={() => deletePost(id)} > Supprimer  </button> }
-          { author.username !== loggedUser && <button type="button" > Ajouter  </button> }
-
       </div>
     </div>
   );
