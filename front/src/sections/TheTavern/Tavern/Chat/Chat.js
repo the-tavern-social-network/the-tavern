@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
+import styles from './Chat.module.scss';
 import { useEffect } from 'react';
 
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
@@ -31,18 +32,24 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <div className={styles.ChatContainer}>
+     <form onSubmit={submitHandler}>
       <div ref={messagesContainer}>
         {messages.map((message) => (
           <div key={Math.random().toString()}>
-            <p>Joueur : {message.user}</p>
-            <p>{message.message}</p>
+            <p className={styles.ChatUser}>{message.user}</p>
+            <p className={styles.MessageContainer} >{message.message}</p>
           </div>
         ))}
       </div>
-      <Field reducerName="chat" name="message" />
-      <button>Envoyer</button>
-    </form>
+      <div className={styles.FormContainer}>
+        <Field className={styles.FormContainer__TextField} reducerName="chat" name="message" />
+        <button className={styles.FormContainer__SendButton}>Envoyer</button>
+      </div>
+     </form>
+
+    </div>
+    
   );
 };
 
