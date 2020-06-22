@@ -20,9 +20,15 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
           <>
             {/* Maybe in the future ;) */}
             {/* <Route path='/admin' component={Admin} /> */}
-            <Route path="/auth" component={Auth} />
+
+
+             <Route path="/auth" component={Auth} />
+
             {/* TODO protected Route */}
-            <ProtectedRoute path="/" component={TheTavern} />
+
+           <ProtectedRoute path="/" component={TheTavern} />
+
+
           </>
         </Switch>
       )}
