@@ -20,7 +20,7 @@ const Post = ({ title, content, author, image, color, deletePost, loggedUser, id
             <Moment format="mm">{createdAt}</Moment>
           </div>
         </div>
-          { author.username === loggedUser && <button type="button" onClick={() => deletePost(id)} > Supprimer  </button> }
+          { author.username === loggedUser && <button className={styles.DeleteButton} type="button" onClick={() => deletePost(id)} > Supprimer  </button> }
       </div>
     </div>
   );

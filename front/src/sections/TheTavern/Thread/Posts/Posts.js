@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './Posts.module.scss'
 import PropTypes from 'prop-types';
 import Post from './Post/Post';
 
 const Posts = ({ posts, loggedUser, deletePost}) => {
   console.log(posts);
   return (
-    <section>{posts.map((post) => <Post loggedUser={loggedUser} deletePost={deletePost} key={post.id} {...post} />).reverse()}</section>
+    <section className={styles.Posts} >{posts.map((post) => <Post loggedUser={loggedUser} deletePost={deletePost} key={post.id} {...post} />).reverse()}</section>
   );
 }
 

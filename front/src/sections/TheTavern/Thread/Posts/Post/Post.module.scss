@@ -51,27 +51,38 @@
 .PostFooter{
 
     &_start{
+        color: #fff;
+        padding: 0.4rem;
         font-size: 0.8em;
         display: flex;
         justify-content:flex-start;
         border: 1px solid rgba(242, 173, 0, 0.603);
         width:95%;
-        margin: 0 auto;
+        margin: 0.3rem auto;
     }
 
     &_between{
+        color: #fff;
+        padding: 0.4rem;
+        font-size: 0.8em;
         display: flex;
         justify-content:space-between;
         border: 1px solid rgba(242, 173, 0, 0.603);
         width:95%;
-        margin: 0 auto;
+        margin: 0.3rem auto;
     }
+}
+.DeleteButton{
+    width: 4rem;
+    height: 1rem;
+    font-size: 0.7em;
 }
 
 .DateContainer{
     display: flex;
-    justify-content: space-around;
-    width: 50%
+    justify-content: space-between;
+    width: 35%;
+    // padding: 0 0.rem;
 }
 
 
