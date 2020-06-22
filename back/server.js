@@ -10,6 +10,7 @@ const io = require('socket.io')(server);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 const morgan = require('morgan');
 const sequelize = require('./api/db/database');
+const associationsRoutes = require('./api/routes/associations');
 const authRoutes = require('./api/routes/auth');
 const mainRoutes = require('./api/routes');
 
@@ -46,14 +47,14 @@ app.use((req, res, next) => {
 
 const baseUrl = '/api/v1';
 app.use(`${baseUrl}/auth`, authRoutes);
+app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
 
 io.on('connection', (socket) => {
   RTCMultiConnectionServer.addSocket(socket);
-  io.emit('connected_user','User is connected');
+  io.emit('connected_user', 'User is connected');
 
   // const params = socket.handshake.query;
-
 
   socket.on('add_post', (post) => {
     io.emit('receive_post', post);

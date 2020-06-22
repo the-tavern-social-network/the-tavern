@@ -1,6 +1,7 @@
 // const Contact = require('./contact');
 const User = require('./user');
 const Post = require('./post');
+const Contact = require('./contact');
 
 // POST 11 <-> 0N USER
 Post.belongsTo(User, {
@@ -16,17 +17,15 @@ User.hasMany(Post, {
 
 // USER 0N <-> 0N USER
 User.belongsToMany(User, {
-  through: 'contacts',
-  foreignKey: 'contact_one',
-  otherKey: 'contact_two',
-  as: 'self',
+  through: Contact,
+  foreignKey: 'user_id',
+  as: 'user',
 });
 
 User.belongsToMany(User, {
-  through: 'contacts',
-  foreignKey: 'contact_two',
-  otherKey: 'contact_one',
-  as: 'friends',
+  through: Contact,
+  foreignKey: 'contact_id',
+  as: 'contacts',
 });
 
 module.exports = {
