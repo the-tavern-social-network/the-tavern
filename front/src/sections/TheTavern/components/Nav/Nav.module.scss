@@ -49,6 +49,7 @@
     transition: 300ms ease-in-out;
     z-index: 10;
 
+
     &__Open {
       @extend .Nav__Menu;
       transform: scale(1.05);
