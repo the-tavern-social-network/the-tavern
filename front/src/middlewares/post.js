@@ -10,7 +10,6 @@ export const post = (store) => (next) => async (action) => {
         console.log(action);
         store.dispatch(setLoading());
         await axios.delete(`${apiUrl}/post/${action.id}`);
-        store.dispatch(removePost(action.id));
       } catch (err) {
         console.trace(err);
         store.dispatch(setError());
@@ -39,8 +38,6 @@ export const post = (store) => (next) => async (action) => {
         };
 
         const { data: newPost } = await axios.post(`${apiUrl}/post`, postData);
-        
-        store.dispatch(savePost(newPost));
       } catch (err) {
         console.trace(err);
         store.dispatch(setError());

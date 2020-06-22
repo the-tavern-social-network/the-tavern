@@ -22,12 +22,14 @@ const Nav = ({ logout }) => {
         <Link to="/" className={styles.Nav__Logo}>
           <img src={logo} alt="logo TheTavern" />
         </Link>
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
-          <img src={menu} alt="menu de navigation" />
+        <div className={styles.Nav__Menu__Container}>
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
+            <img src={menu} alt="menu de navigation" />
+          </div>
+          <NavLinks logout={logout} isOpen={isOpen} setIsOpen={()=> setIsOpen(!isOpen)}/>
         </div>
-        {isOpen && <NavLinks logout={logout} />}
       </nav>
     </div>
   );

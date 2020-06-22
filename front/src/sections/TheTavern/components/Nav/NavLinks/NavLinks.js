@@ -3,27 +3,29 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './NavLinks.module.scss';
+import deconnetion from '/Users/patmax/Desktop/Project-The-Tavern/front/src/assets/images/turn-off.svg';
 
-const NavLinks = ({ logout }) => {
+const NavLinks = ({ logout, isOpen, setIsOpen }) => {
+  console.log(isOpen)
   return (
-    <ul className={styles.NavLinks}>
+    <ul className={!isOpen ? styles.NavLinks :[styles.NavLinks,styles.NavLinks__Open].join(' ')}>
       <li>
-        <NavLink exact to="/">
+        <NavLink onClick={setIsOpen} exact to="/">
           Thread
         </NavLink>
       </li>
       <li>
-        <NavLink exact to="/tavern">
+        <NavLink onClick={setIsOpen} exact to="/tavern">
           Tavern
         </NavLink>
       </li>
       <li>
-        <NavLink exact to="/compte">
+        <NavLink onClick={setIsOpen} exact to="/compte">
           Compte
         </NavLink>
       </li>
       <li>
-        <button onClick={logout}>Déconnexion</button>
+        <span className={styles.NavLinks__Deconnexion} onClick={logout}><img src={deconnetion} alt="bouton deconnexion" /></span>
       </li>
     </ul>
   );
@@ -31,6 +33,7 @@ const NavLinks = ({ logout }) => {
 
 NavLinks.propTypes = {
   logout: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default NavLinks;

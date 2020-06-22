@@ -16,7 +16,8 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
-    case REMOVE_POST:
+      case REMOVE_POST:
+        console.log(action)
       return {
         ...state,
         list: state.list.filter(post=> post.id !== action.id),

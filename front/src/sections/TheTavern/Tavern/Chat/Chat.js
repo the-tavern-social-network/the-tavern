@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
 import { useEffect } from 'react';
 
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
+  const messagesContainer = useRef(null)
+
   useEffect(() => {
+    const container = messagesContainer.current;
+    container.scrollTop = container.scrollHeight;
+
     connection.onmessage = (event) => {
       event.extra.user = user;
       addChatMessage({ message: event.data.message, user: event.data.user.username });
@@ -27,7 +32,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
 
   return (
     <form onSubmit={submitHandler}>
-      <div>
+      <div ref={messagesContainer}>
         {messages.map((message) => (
           <div key={Math.random().toString()}>
             <p>Joueur : {message.user}</p>

@@ -1,4 +1,4 @@
-import { WS_CONNECT, SAVE_POST, addPost } from '../actions';
+import { WS_CONNECT, addPost, removePost } from '../actions';
 
 let socketCanal;
 
@@ -12,9 +12,10 @@ export const socket = (store) => (next) => (action) => {
       socketCanal.on('receive_post', (post) => {
         store.dispatch(addPost(post));
       });
-      break;
-    case SAVE_POST:
-      socketCanal.emit('add_post', action.post);
+
+      socketCanal.on("delete_post", (id) => { 
+        store.dispatch(removePost(+id));
+      })
       break;
     default:
       next(action);
