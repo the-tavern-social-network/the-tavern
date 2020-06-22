@@ -1,6 +1,7 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
+const io = require("../socket");
 
 module.exports = {
   signUp: async (req, res, next) => {
@@ -46,6 +47,9 @@ module.exports = {
 
     //	if the password matches, storing the user in the req.session (without the hashed password)
     req.session.user = user;
+
+    
+    io.getIo().emit('connected_user', `${user.username} is connected !`);
 
     //	sending back the user data to the client
     res.status(200).send({
