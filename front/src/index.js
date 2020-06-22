@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppChat from './components/AppChat';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import './assets/scss/index.scss';
+import store from './store';
+
+import App from './containers/App/App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppChat />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
 );

@@ -8,7 +8,8 @@ const capture = (callback) => async (req, res, next) => {
   } catch (err) {
     console.trace(err);
     res.status(500).send({
-      error: 'Whoops ! Seems like an error occured... Please check your request and try again.',
+      error: `Whoops ! Seems like an error occured... Please check your request and try again.`,
+      err,
     });
   }
 };

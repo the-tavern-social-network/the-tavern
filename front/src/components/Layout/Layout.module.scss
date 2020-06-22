@@ -1,0 +1,33 @@
+.Auth {
+  display: grid;
+  grid-template-rows: fit-content(200px) auto fit-content(50px);
+  grid-template-areas: 'header' 'main' 'footer';
+  font-family: 'nunito sans', sans-serif;
+  font-weight: 200;
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('../../assets/images/backgroundlight.jpg');
+  background-repeat: no-repeat;
+  background-position: 48% 50%;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 1rem;
+
+  &__Main {
+    grid-area: main;
+  }
+}
+
+.Logo {
+  grid-area: header;
+  width: 9rem;
+  z-index: 100;
+}
+
+.Footer {
+  padding: 1rem 1rem 0;
+  grid-area: footer;
+  font-size: 0.8rem;
+  text-align: center;
+}

@@ -1,0 +1,30 @@
+.Thread {
+    background-color: #0B0501;
+    height:90vh;
+}
+
+.Drawer{
+    background-color: #553719;
+    position: fixed;
+    bottom: 0px;
+    left: 2.5%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.SelfAvatar{
+    width: 7%;
+    margin: 0.5rem 1rem;
+}
+
+.Triangle{
+    // display : inline-block;
+    margin: 1.2rem 2rem;
+    height : 0;
+    width : 0;
+    border-right : 0.7rem solid transparent;
+    border-bottom : 1.25rem solid #fff200;
+    border-left : 0.7rem solid transparent;
+}

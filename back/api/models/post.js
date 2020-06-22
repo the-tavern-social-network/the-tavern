@@ -6,13 +6,6 @@ class Post extends Model {
 
 Post.init(
   {
-    title: {
-      type: Sequelize.TEXT,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
     content: {
       type: Sequelize.TEXT,
       allowNull: false,
