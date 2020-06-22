@@ -1,12 +1,57 @@
 // @import '../../../../../assets/scss/variables'
 
+.Container {
+    position: relative;
+}
+
+.AbsoluteAuthor{
+    position: absolute;
+    top: -0.3rem;
+    right: 0.6rem;
+}
+
+
 .Post {
     background-color:#3A271D;
     display: flex;
     flex-direction: column;
-    margin:1rem auto;
+    margin:0 auto;
     width: 90%;
     
+}
+
+.Gutter {
+    width: 90%;
+    border-radius: 15%;
+    background-color: #3A271D;
+    height: 0.3rem;
+    margin: 1rem auto 0.15rem;
+}
+
+.AbsoluteAddContact{
+    position: absolute;
+    top:-0.3rem;
+    right: -0.2rem;
+    padding: 0.1rem;
+    background-color: #1DFFD6;
+    width: 1rem;
+    border-radius: 20%;
+}
+
+.AddButton {
+    color: #fff;
+    font-weight: 900;
+    display: block;
+    margin: auto;
+    font-size: 0.8rem;
+}
+
+.AuthorAvatar{
+    background-color: #fff;
+    border-radius: 50%;
+    width: 2rem;
+    top: -0.5rem;
+    right: -0.5rem;
 }
 
 .AuthorPost {
@@ -16,14 +61,15 @@
     text-align: right;
     margin-right: 0.5rem;
     font-family: 'nunito sans', nunito;
-    padding:0.3rem;
+    padding:0.3rem 1rem 0.3rem 0.3rem; 
+
 
     &_gold{
         color: #fff200;
         text-align: right;
         font-family: 'nunito sans', nunito;
         margin-right: 0.5rem;
-        padding:0.3rem;
+        padding:0.3rem 1rem 0.3rem 0.3rem; 
 
     }
     
@@ -72,10 +118,13 @@
         margin: 0.3rem auto;
     }
 }
+
+.fa-trash{
+    color: red;
+}
+
 .DeleteButton{
-    width: 4rem;
-    height: 1rem;
-    font-size: 0.7em;
+    font-size: 1.1em;
 }
 
 .DateContainer{
