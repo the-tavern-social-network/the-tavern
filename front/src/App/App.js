@@ -15,26 +15,25 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
     fetchPosts();
   }, [isUserLogged, fetchPosts]);
   return (
-    <Thread></Thread>
-    // <>
-    //   {!isInitialLoading && (
-    //     <Switch>
-          // <>
-            // {/* Maybe in the future ;) */}
-            // {/* <Route path='/admin' component={Admin} /> */}
+    <>
+      {!isInitialLoading && (
+        <Switch>
+          <>
+            {/* Maybe in the future ;) */}
+            {/* <Route path='/admin' component={Admin} /> */}
 
 
-            // {/* <Route path="/auth" component={Auth} /> */}
+             <Route path="/auth" component={Auth} />
 
-            // {/* TODO protected Route */}
+            {/* TODO protected Route */}
 
-            // {/* <ProtectedRoute path="/" component={TheTavern} /> */}
+           <ProtectedRoute path="/" component={TheTavern} />
 
 
-          // {/* </> */}
-        // {/* </Switch> */}
-    //   {/* )}
-    // </> */}
+          </>
+        </Switch>
+      )}
+    </>
   );
 };
 
