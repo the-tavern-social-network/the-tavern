@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect } from 'react';
-// import { Switch, Route } from 'react-router-dom';
-// import ProtectedRoute from '../containers/ProtectedRoute';
+import { Switch, Route } from 'react-router-dom';
+import ProtectedRoute from '../containers/ProtectedRoute';
 
-// import Auth from '../sections/Auth/Auth';
-// import TheTavern from '../containers/TheTavern/TheTavern'
-import Thread from '../sections/TheTavern/Thread/Thread'
+import Auth from '../sections/Auth/Auth';
+import TheTavern from '../containers/TheTavern/TheTavern'
 
 
 const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }) => {
