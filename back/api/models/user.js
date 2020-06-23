@@ -20,12 +20,21 @@ class User extends Model {
     return contactsArray;
   };
 
-  getPendingRequests = async () =>
-    await Contact.findAll({
+  getPendingRequests = async () => {
+    const received = await Contact.findAll({
+      where: {
+        [Op.and]: [{ contact_id: +this.id }, { status: 'pending' }],
+      },
+    });
+
+    const sent = await Contact.findAll({
       where: {
         [Op.and]: [{ user_id: +this.id }, { status: 'pending' }],
       },
     });
+
+    return { received, sent };
+  };
 
   addContact = async (contactId) => {
     const alreadyExists = await Contact.findOne({

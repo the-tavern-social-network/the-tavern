@@ -7,12 +7,22 @@ module.exports = {
     let contactOne = await User.findByPk(+contactOneId);
     await contactOne.addContact(+contactTwoId);
 
-    pendingRequests = [];
-    for (const request of await contactOne.getPendingRequests()) {
-      pendingRequests.push(await User.findByPk(request.contact_id));
+    const requests = await contactOne.getPendingRequests();
+
+    const pendingRequests = { sent: [], received: [] };
+    for (const request of Object.keys(requests)) {
+      for (const req of requests[request]) {
+        if (request === 'sent') {
+          pendingRequests.sent.push(await User.findByPk(req.user_id, { include: 'posts' }));
+        } else if (request === 'received') {
+          pendingRequests.received.push(await User.findByPk(req.user_id, { include: 'posts' }));
+        }
+      }
     }
 
-    res.send({ user: contactOne, userFriends: await contactOne.getContacts(), pendingRequests });
+    console.log(pendingRequests);
+
+    // res.send({ user: contactOne, userFriends: await contactOne.getContacts(), pendingRequests });
   },
 
   acceptContact: async (req, res, next) => {
