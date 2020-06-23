@@ -13,6 +13,16 @@
     bottom: 38%;
     transform: rotateZ(-90deg);
     cursor: pointer;
+
+    @include xl {
+      display: inline-block;
+      top: 93%;
+      right: 20.4rem;
+      transform: rotateZ(0deg);
+      display: flex;
+      flex-flow: row-reverse;
+
+    }
   }
 }
 

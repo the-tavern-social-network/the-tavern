@@ -15,11 +15,25 @@
   background-size: cover;
   background-attachment: fixed;
   padding: 1rem;
+
+  @include xl {
+    background-position: 13rem;
+    padding: 0;
+  }
   
   &__Logo {
     grid-area: header;
     width: 9rem;
     z-index: 100;
+
+    @include xl {
+    max-width: 400px;
+    width: 15rem;
+    position: absolute;
+    left: 37%;
+    top: 29%;
+
+    }
   }
 
   &__Main {
@@ -58,4 +72,12 @@
   grid-area: footer;
   font-size: 0.8rem;
   text-align: center;
+
+  @include xl {
+    position: absolute;
+    text-align: right;
+    right: 0;
+    bottom: .5rem;
+    
+  }
 }
