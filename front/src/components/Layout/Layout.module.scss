@@ -15,7 +15,7 @@
   background-size: cover;
   background-attachment: fixed;
   padding: 1rem;
-  
+
   &__Logo {
     grid-area: header;
     width: 9rem;
@@ -33,11 +33,9 @@
   grid-template-rows: fit-content(5rem) auto fit-content(5rem);
   grid-template-areas: 'header' 'main' 'footer';
   font-family: 'nunito sans', nunito;
-  background-color: #0B0501;
+  background-color: #0b0501;
   color: white;
   font-weight: 200;
-
-  
 
   &__Main {
     grid-area: main;
@@ -48,10 +46,8 @@
     grid-area: footer;
     font-size: 0.8rem;
     text-align: center;
-
   }
 }
-
 
 .Footer {
   padding: 1rem 1rem 0;

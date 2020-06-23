@@ -10,7 +10,7 @@ const Thread = () => {
 
   return (
     <div className={styles.Thread}>
-      {!isOpen && <Posts />}
+      <Posts />
       <PostForm isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );

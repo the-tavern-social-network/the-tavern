@@ -24,7 +24,7 @@ const Post = ({ title, content, author, image, color, deletePost, loggedUser, id
             </div>
           )}
         </div>
-        <p className={styles.ContentPost}>{content}</p>
+        <pre className={styles.ContentPost}>{content}</pre>
         <div
           className={
             author.username !== loggedUser ? styles.PostFooter_start : styles.PostFooter_between
