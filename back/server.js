@@ -46,18 +46,17 @@ const baseUrl = '/api/v1';
 app.use(`${baseUrl}/auth`, authRoutes);
 app.use(baseUrl, mainRoutes);
 
-
 sequelize
-.authenticate()
-.then(() => {
-  const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-  const io = require('./api/socket').init(server)
-  io.on('connection', (socket) => {
-    RTCMultiConnectionServer.addSocket(socket);
+  .authenticate()
+  .then(() => {
+    const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    const io = require('./api/socket').init(server);
+    io.on('connection', (socket) => {
+      RTCMultiConnectionServer.addSocket(socket);
 
-    socket.on('disconnect', () => {
-      console.log('User disconnected');
+      socket.on('disconnect', () => {
+        console.log('User disconnected');
+      });
     });
-  });
   })
   .catch((err) => console.trace(err));

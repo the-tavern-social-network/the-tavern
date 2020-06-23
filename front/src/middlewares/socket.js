@@ -1,4 +1,5 @@
-import { WS_CONNECT, addPost, removePost } from '../actions';
+import { WS_CONNECT, SAVE_POST, addPost, removePost, SAVE_DELETE_POST } from '../actions';
+import axios from 'axios';
 
 let socketCanal;
 
@@ -13,10 +14,11 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(addPost(post));
       });
 
-      socketCanal.on("delete_post", (id) => { 
+      socketCanal.on('delete_post', (id) => {
         store.dispatch(removePost(+id));
-      })
+      });
       break;
+
     default:
       next(action);
   }

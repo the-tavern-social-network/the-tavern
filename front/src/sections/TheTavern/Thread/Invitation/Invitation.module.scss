@@ -1,0 +1,65 @@
+.Invitation{
+    display: flex;
+    padding: 0.4rem 0.2rem 0.4rem 0.5rem;
+    background-color: #3A271D;
+    margin: 0.75rem 0.5rem;
+}
+
+.Asking{
+    margin: 0 0 0 0.25rem;
+    width: 100%;
+}
+
+.Request{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.Buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Name{
+    color: #03AF91;
+    font-size: 0.9em;
+}
+
+.Message{
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.Avatar{
+    width: 13%;
+    border-radius: 50%;
+    background-color: green;
+}
+
+
+.Buttons{
+    display: flex;
+}
+
+.Add{
+    background-color: #1DFFD6;
+    color: #fff;
+    border: solid #1DFFD6 1px;
+    border-radius: 1.5px;
+    font-size: 0.8em;
+    // padding: 0.2rem 1rem;
+    margin: 0.2rem;
+    width: 4rem;
+}
+
+.Decline{
+    width: 4rem;
+    background-color: #D92626;
+    color: #fff;
+    border: solid #D92626 1px;
+    border-radius: 1.5px;
+    font-size: 0.8em;
+    // padding: 0.2rem 1rem;
+    margin: 0.2rem;
+}
