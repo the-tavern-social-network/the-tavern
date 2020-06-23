@@ -87,19 +87,21 @@ class User extends Model {
     return await User.findByPk(+this.id);
   };
 
-  deleteContact = async (contactId) =>
+  deleteContact = async (contactId) => {
     await Contact.findOne({
       where: {
-        [Op.or]: [
-          {
-            [Op.and]: [{ user_id: +this.id }, { contact_id: contactId }],
-          },
-          {
-            [Op.and]: [{ contact_id: +this.id }, { user_id: contactId }],
-          },
-        ],
+        [Op.and]: [{ user_id: +this.id }, { contact_id: contactId }],
       },
     });
+
+    await Contact.findOne({
+      where: {
+        [Op.and]: [{ contact_id: +this.id }, { user_id: contactId }],
+      },
+    });
+
+    return true;
+  };
 }
 
 User.init(
