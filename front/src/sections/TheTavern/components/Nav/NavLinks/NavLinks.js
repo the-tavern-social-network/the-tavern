@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './NavLinks.module.scss';
-import deconnetion from '/Users/patmax/Desktop/Project-The-Tavern/front/src/assets/images/turn-off.svg';
+import deconnetion from '../../../../../assets/images/turn-off.svg';
 
 const NavLinks = ({ logout, isOpen, setIsOpen }) => {
-  console.log(isOpen)
+  console.log(isOpen);
   return (
-    <ul className={!isOpen ? styles.NavLinks :[styles.NavLinks,styles.NavLinks__Open].join(' ')}>
+    <ul className={!isOpen ? styles.NavLinks : [styles.NavLinks, styles.NavLinks__Open].join(' ')}>
       <li>
         <NavLink onClick={setIsOpen} exact to="/">
           Thread
@@ -25,7 +25,9 @@ const NavLinks = ({ logout, isOpen, setIsOpen }) => {
         </NavLink>
       </li>
       <li>
-        <span className={styles.NavLinks__Deconnexion} onClick={logout}><img src={deconnetion} alt="bouton deconnexion" /></span>
+        <span className={styles.NavLinks__Deconnexion} onClick={logout}>
+          <img src={deconnetion} alt="bouton deconnexion" />
+        </span>
       </li>
     </ul>
   );
