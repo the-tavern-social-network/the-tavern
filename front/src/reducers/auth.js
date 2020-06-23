@@ -4,15 +4,12 @@ import { getDate } from '../util';
 const { year } = getDate();
 
 const INITIAL_STATE = {
-  // signin form
-  signinEmail: '',
-  signinPassword: '',
   //signup form
-  signupEmail: '',
-  signupUsername: '',
-  signupPassword: '',
-  signupConfirmPassword: '',
-  signupBirthdate: `${year - 16}-01-01`,
+  email: '',
+  username: '',
+  password: '',
+  confirmPassword: '',
+  birthdate: `${year - 16}-01-01`,
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
@@ -29,13 +26,12 @@ export default (state = INITIAL_STATE, action = {}) => {
       if (action.reducer === 'auth') {
         return {
           ...state,
-          signinEmail: '',
-          signinPassword: '',
-          signupEmail: '',
-          signupUsername: '',
-          signupPassword: '',
-          signupConfirmPassword: '',
-          signupBirthdate: '',
+
+          email: '',
+          username: '',
+          password: '',
+          confirmPassword: '',
+          birthdate: '',
         };
       }
       return state;

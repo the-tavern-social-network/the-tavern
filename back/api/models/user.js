@@ -3,6 +3,7 @@ const sequelize = require('../db/database');
 const Contact = require('../models/contact');
 
 class User extends Model {
+  //? To verify
   getContacts = async () => {
     const requests = await Contact.findAll({
       where: {
@@ -18,6 +19,7 @@ class User extends Model {
     return contactsArray;
   };
 
+  //* OK
   getPendingRequests = async () => {
     const received = await Contact.findAll({
       where: {
@@ -34,6 +36,7 @@ class User extends Model {
     return { received, sent };
   };
 
+  //* OK
   addContact = async (contactId) => {
     const alreadyExists = await Contact.findOne({
       where: {
@@ -65,6 +68,7 @@ class User extends Model {
     return false;
   };
 
+  //? To verify
   acceptContact = async (contactId) => {
     const senderRequest = await Contact.findOne({
       where: {
@@ -89,6 +93,7 @@ class User extends Model {
     return await User.findByPk(+this.id);
   };
 
+  //? to verify
   deleteContact = async (contactId) => {
     const sender = await Contact.findOne({
       where: {
