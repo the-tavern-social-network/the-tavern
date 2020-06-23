@@ -11,12 +11,26 @@
     width: 95%;
     display: flex;
     justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+
+    &_open{
+    border-radius: 5% 5% 0 0;
+    background-color: #553719;
+    position: fixed;
+    top: 10vh;
+    left: 2.5%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    }
     
 }
 
 .SelfAvatar{
-    width: 7%;
+    width: 9%;
     margin: 0.3rem 1rem;
+    border-radius: 50%;
+    background-color: red;
 }
 
 .Triangle{
@@ -27,4 +41,21 @@
     border-right : 0.7rem solid transparent;
     border-bottom : 1.25rem solid #fff200;
     border-left : 0.7rem solid transparent;
+
+    &_down{
+        margin: 0.7rem 2rem;
+        height : 0;
+        width : 0;
+        border-top : 1.25rem solid #fff200;
+        border-right : 0.7rem solid transparent;
+        border-left : 0.7rem solid transparent;
+    }
+}
+
+.Invitation {
+    position: fixed;
+    top: 61vh;
+    left: 4.5%;
+    width: 91%;
+    overflow-y: scroll;
 }
