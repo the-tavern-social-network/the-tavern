@@ -1,36 +1,26 @@
 const { User } = require('../models');
+const getUserPendingRequests = require('../util/getUserPendingRequests');
 
 module.exports = {
   addContact: async (req, res, next) => {
-    const { contactOneId, contactTwoId } = req.params;
+    const { userId, contactId } = req.params;
 
-    let contactOne = await User.findByPk(+contactOneId);
-    await contactOne.addContact(+contactTwoId);
+    let user = await User.findByPk(+userId, { include: 'posts' });
+    await user.addContact(+contactId);
 
-    const requests = await contactOne.getPendingRequests();
-
-    const pendingRequests = { sent: [], received: [] };
-    for (const request of Object.keys(requests)) {
-      for (const req of requests[request]) {
-        if (request === 'sent') {
-          pendingRequests.sent.push(await User.findByPk(req.user_id, { include: 'posts' }));
-        } else if (request === 'received') {
-          pendingRequests.received.push(await User.findByPk(req.user_id, { include: 'posts' }));
-        }
-      }
-    }
-
-    console.log(pendingRequests);
-
-    // res.send({ user: contactOne, userFriends: await contactOne.getContacts(), pendingRequests });
+    res.send({
+      user,
+      contacts: await user.getContacts(),
+      pendingRequests: await getUserPendingRequests(user),
+    });
   },
 
   acceptContact: async (req, res, next) => {
-    const { contactOneId, contactTwoId } = req.params;
+    const { userId, contactId } = req.params;
 
-    const contactOne = await User.findByPk(+contactOneId);
-    const updatedContactOne = await contactOne.acceptContact(+contactTwoId);
+    const user = await User.findByPk(+userId);
+    const updatedUser = await user.acceptContact(+contactId);
 
-    res.send({ user: updatedContactOne, userFriends: await contactOne.getContacts() });
+    res.send({ user: updatedUser, userFriends: await user.getContacts() });
   },
 };

@@ -6,26 +6,26 @@ import Field from '../../../containers/components/Field';
 import CrossButton from '../../../assets/images/boutoncroix.svg';
 import styles from './Signup.module.scss';
 
-const Signup = ({ history, signup, resetFields, isLoggedIn }) => {
-  useEffect(() => {
-    if (isLoggedIn) {
-      history.push('/');
-    }
-  }, [isLoggedIn]);
-
+const Signup = ({ history, signup, resetFields }) => {
   const clickHandler = (event) => {
-    history.goBack();
+    history.push('/auth');
   };
 
   const signupFormHandler = (event) => {
     event.preventDefault();
     signup();
+    history.push(`/auth/connexion`);
     resetFields('auth');
   };
 
   return (
     <form onSubmit={signupFormHandler} className={styles.Signup}>
-      <img onClick={clickHandler} className={styles.Signup__CrossSword} src={CrossButton} />
+      <img
+        onClick={clickHandler}
+        alt="bouton de fermeture"
+        className={styles.Signup__CrossSword}
+        src={CrossButton}
+      />
       <div className={styles.Signup__Container}>
         <label htmlFor="email">Email</label>
         <Field

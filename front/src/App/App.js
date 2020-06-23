@@ -13,6 +13,13 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
     isUserLogged();
     fetchPosts();
   }, [isUserLogged, fetchPosts]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push('/')
+    }
+  }, [isLoggedIn])
+
   return (
     <>
       {!isInitialLoading && (

@@ -26,7 +26,12 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
 
   return (
     <form onSubmit={signinFormHandler} className={styles.Signin}>
-      <img onClick={clickHandler} className={styles.Signin__CrossSword} src={CrossButton} />
+      <img
+        onClick={clickHandler}
+        className={styles.Signin__CrossSword}
+        src={CrossButton}
+        alt="bouton de fermeture"
+      />
       <div className={styles.Signin__Container}>
         <label htmlFor="email">Email</label>
         <Field
@@ -48,7 +53,7 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
         />
         <div className={styles.Signin__Btn__Container}>
           <Link className={styles.Signin__Signup} to="/auth/inscription">
-            Inscription
+            Pas encore inscrit ?
           </Link>
           <button className={styles.Signin__Btn}>Connexion</button>
         </div>
@@ -57,6 +62,11 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
   );
 };
 
-Signin.propTypes = {};
+Signin.propTypes = {
+  history: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  resetFields: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+};
 
 export default Signin;

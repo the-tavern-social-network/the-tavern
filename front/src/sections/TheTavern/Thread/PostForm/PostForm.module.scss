@@ -1,0 +1,112 @@
+@import '../../../../assets/scss/variables';
+
+.PostForm {
+  position: fixed;
+  display: grid;
+  grid-template-rows: fit-content(40px) auto fit-content(80px);
+  grid-template-areas: 'header' 'main' 'footer';
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 15vh;
+  background-color: #553719;
+  transform: translate(0, calc(100% - 42px));
+  border-radius: 5% 5% 0 0;
+  transition: all 500ms ease-in;
+
+  &__Open {
+    @extend .PostForm;
+    transform: translate(0, 0%);
+    transition: all 500ms ease-in;
+  }
+
+  &__Main {
+    @include flex(stretch, space-around, column nowrap);
+    grid-area: main;
+    overflow: auto;
+  }
+
+  &__Invitation {
+    overflow: auto;
+    height: 45%;
+  }
+
+  &__Footer {
+    padding: 1rem;
+    grid-area: footer;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+.Drawer {
+  position: absolute;
+  grid-area: header;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #573819;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+}
+
+.SelfAvatar {
+  width: 2rem;
+  margin: 0.3rem 1rem;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.Triangle {
+  margin: 0 2rem;
+  border-right: 0.7rem solid transparent;
+  border-bottom: 1.25rem solid #fff200;
+  border-left: 0.7rem solid transparent;
+  transition: all 500ms ease-in;
+
+  &__Down {
+    @extend .Triangle;
+    transform: rotate(-180deg);
+    transition: all 500ms ease-in;
+  }
+}
+
+.Form {
+  background-color: #553719;
+  text-align: end;
+  margin-top: 42px;
+  padding: 0 1rem;
+
+  & > div:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #0b0501;
+    padding: 0.5rem;
+  }
+}
+
+.Input {
+  width: 100%;
+  padding: 1rem;
+  height: 10rem;
+}
+
+.SendButton {
+  background-color: #f2af0d;
+  color: #fff;
+  width: fit-content;
+  margin-top: 0.4rem;
+  height: 1.75rem;
+  border-radius: 1.5px;
+  border: solid #f2af0d 1px;
+}
+
+.Gutter {
+  border-radius: 0 0 5px 5px;
+  background-color: #0b0501;
+  height: 0.5rem;
+  padding: 0 1rem;
+  margin: 0.2rem 0;
+}

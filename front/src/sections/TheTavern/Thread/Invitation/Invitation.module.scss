@@ -1,0 +1,60 @@
+@import '../../../../assets/scss/variables';
+
+.Invitation {
+  display: flex;
+  padding: 0.4rem 0.2rem 0.4rem 0.5rem;
+  background-color: #3a271d;
+  margin: 0.75rem 0.5rem;
+}
+
+.Asking {
+  margin: 0 0 0 0.25rem;
+  width: 100%;
+}
+
+.Request {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Name {
+  color: #03af91;
+  font-size: 0.9em;
+}
+
+.Message {
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.Avatar {
+  width: 13%;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.Buttons {
+  @include flex(center, center, row wrap);
+}
+
+.Add {
+  background-color: #04dab4;
+  color: #fff;
+  border: solid #04dab4 1px;
+  border-radius: 1.5px;
+  font-size: 0.8em;
+  margin: 0.2rem;
+  width: 4rem;
+}
+
+.Decline {
+  @extend .Add;
+  background-color: #d92626;
+  border: solid #d92626 1px;
+}

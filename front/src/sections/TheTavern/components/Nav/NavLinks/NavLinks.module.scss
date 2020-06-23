@@ -1,0 +1,43 @@
+@import '../../../../../assets/scss/variables';
+
+.NavLinks {
+  @include flex(center, center, row nowrap);
+  position: absolute;
+  background-color: #5B3D20;
+  border-radius: 5px;
+  top: 0.5rem;
+  right: $gutter * 2.3;
+  transform: translate(100%);
+  // transition: all 750ms cubic-bezier(.75,-1.52,.04,1.95);
+  // transition: all 750ms cubic-bezier(1,.14,.23,1.44);
+  transition: all 750ms cubic-bezier(.46,.59,.36,1.27);
+  
+  &__Open {
+    transform: translate(0); 
+    // transition: all 750ms cubic-bezier(.75,-1.52,.04,1.95);
+    // transition: all 750ms cubic-bezier(1,-1.56,.12,1.6);
+    transition: all 750ms cubic-bezier(.46,.59,.36,1.27);
+    box-shadow: 1px 3px 3px rgba(11, 5, 1, 0.89);
+  }
+  
+  li { 
+    padding: $gutter/2 $gutter/3;
+    border-right: solid 2.5px #000;
+
+
+    &:last-child {
+      padding: 0 $gutter/2.5;
+      border: none;
+
+    }
+  }
+  
+
+  &__Deconnexion {
+      border: none;
+  
+      img {
+        width: 1.5rem;
+      }
+    }
+};

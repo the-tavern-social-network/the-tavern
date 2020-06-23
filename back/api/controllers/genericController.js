@@ -1,5 +1,6 @@
 const models = require('../models');
 const capitalize = require('../util/capitalize');
+const io = require('../socket');
 
 module.exports = {
   async getAll(req, res, next) {
@@ -45,6 +46,13 @@ module.exports = {
     const response = await model.findByPk(newCreatedModel.id, {
       include,
     });
+        
+    switch (model) {
+      case models.Post:
+        io.getIo().emit('receive_post', response);
+      default:
+        break;
+    }
 
     // Sending back the newly created entry
     res.send(response);
@@ -133,6 +141,13 @@ module.exports = {
 
     // Deletes the found entry
     await response.destroy();
+
+    switch (model) {
+      case models.Post:
+        io.getIo().emit('delete_post', id);
+      default:
+        break;
+    }
 
     // Sending back a success message
     res.send({ response: 'Ok' });

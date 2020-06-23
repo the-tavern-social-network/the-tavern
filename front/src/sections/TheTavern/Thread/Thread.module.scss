@@ -3,26 +3,10 @@
   height: 100%;
 }
 
-.Drawer {
-  background-color: #553719;
+.Invitation {
   position: fixed;
-  bottom: 0px;
-  left: 2.5%;
-  width: 95%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.SelfAvatar {
-  width: 7%;
-  margin: 0.3rem 1rem;
-}
-
-.Triangle {
-  margin: 0.7rem 2rem;
-  height: 0;
-  width: 0;
-  border-right: 0.7rem solid transparent;
-  border-bottom: 1.25rem solid #fff200;
-  border-left: 0.7rem solid transparent;
+  top: 61vh;
+  left: 4.5%;
+  width: 91%;
+  overflow-y: scroll;
 }

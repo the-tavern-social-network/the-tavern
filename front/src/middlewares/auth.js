@@ -26,8 +26,6 @@ export const auth = (store) => (next) => async (action) => {
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
 
         delete user.password;
-
-        store.dispatch(connect({ user, isLoggedIn: true }));
       } catch (err) {
         console.trace(err);
       }
@@ -45,6 +43,7 @@ export const auth = (store) => (next) => async (action) => {
         });
 
         delete data.user.password;
+        data.user.pendingRequests = data.pendingRequests;
 
         store.dispatch(connect(data));
       } catch (err) {
@@ -63,6 +62,9 @@ export const auth = (store) => (next) => async (action) => {
             withCredentials: true,
           },
         );
+
+        delete data.user.password;
+        data.user.pendingRequests = data.pendingRequests;
 
         if (data.isLoggedIn) {
           store.dispatch(connect(data));

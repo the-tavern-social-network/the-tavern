@@ -16,6 +16,10 @@ Contact.init(
       values: ['pending', 'accepted', 'blocked'],
       defaultValue: 'pending',
     },
+    requester: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

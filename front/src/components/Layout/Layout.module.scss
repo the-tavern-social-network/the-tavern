@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .Auth {
   display: grid;
   grid-template-rows: fit-content(200px) auto fit-content(50px);
@@ -14,15 +16,37 @@
   background-attachment: fixed;
   padding: 1rem;
 
+  &__Logo {
+    grid-area: header;
+    width: 9rem;
+    z-index: 100;
+  }
+
   &__Main {
     grid-area: main;
   }
 }
 
-.Logo {
-  grid-area: header;
-  width: 9rem;
-  z-index: 100;
+.Main {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: fit-content(5rem) auto fit-content(5rem);
+  grid-template-areas: 'header' 'main' 'footer';
+  font-family: 'nunito sans', nunito;
+  background-color: #0b0501;
+  color: white;
+  font-weight: 200;
+
+  &__Main {
+    grid-area: main;
+  }
+
+  &__Footer {
+    padding: 1rem;
+    grid-area: footer;
+    font-size: 0.8rem;
+    text-align: center;
+  }
 }
 
 .Footer {

@@ -13,7 +13,6 @@ const Screen = ({ connection, user }) => {
   return (
     <div>
       <div className={styles.ScreenContainer} ref={videoStream}></div>
-      <p>{user.username}</p>
     </div>
   );
 };

@@ -15,21 +15,19 @@ class User extends Model {
       contactsArray.push(await User.findByPk(request.contact_id));
     }
 
-    console.log(contactsArray);
-
     return contactsArray;
   };
 
   getPendingRequests = async () => {
     const received = await Contact.findAll({
       where: {
-        [Op.and]: [{ contact_id: +this.id }, { status: 'pending' }],
+        [Op.and]: [{ contact_id: +this.id }, { status: 'pending' }, { requester: true }],
       },
     });
 
     const sent = await Contact.findAll({
       where: {
-        [Op.and]: [{ user_id: +this.id }, { status: 'pending' }],
+        [Op.and]: [{ user_id: +this.id }, { status: 'pending' }, { requester: true }],
       },
     });
 
@@ -49,14 +47,18 @@ class User extends Model {
         ],
       },
     });
+
     if (!alreadyExists) {
       await Contact.create({
         user_id: +this.id,
         contact_id: +contactId,
+        requester: true,
       });
+
       await Contact.create({
         user_id: +contactId,
         contact_id: +this.id,
+        requester: false,
       });
       return true;
     }
@@ -88,17 +90,20 @@ class User extends Model {
   };
 
   deleteContact = async (contactId) => {
-    await Contact.findOne({
+    const sender = await Contact.findOne({
       where: {
         [Op.and]: [{ user_id: +this.id }, { contact_id: contactId }],
       },
     });
 
-    await Contact.findOne({
+    const receiver = await Contact.findOne({
       where: {
         [Op.and]: [{ contact_id: +this.id }, { user_id: contactId }],
       },
     });
+
+    await sender.destroy();
+    await receiver.destroy();
 
     return true;
   };
@@ -138,10 +143,6 @@ User.init(
       },
     },
     description: Sequelize.TEXT,
-    contact_count: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0,
-    },
   },
   {
     sequelize,
