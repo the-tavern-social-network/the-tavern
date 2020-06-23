@@ -7,6 +7,7 @@ import { faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from './Post.module.scss';
 
 const Post = ({ title, content, author, image, color, deletePost, loggedUser, id, createdAt }) => {
+  
   return (
     <div className={styles.Container}>
       <div className={styles.Gutter}></div>
