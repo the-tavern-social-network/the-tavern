@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import NavLinks from './NavLinks/NavLinks';
+import Sword from '../../../../components/Sword/Sword';
 
 import logo from '../../../../assets/images/logo1.svg';
 // import menu from '../../../../assets/images/menu.svg';
 import styles from './Nav.module.scss';
-import style from './Swords-styles.css';
+import './Swords-styles.scss';
 
 const Nav = ({ logout, user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const Nav = ({ logout, user }) => {
     <div className={styles.Nav__Header}>
       <div className={styles.Welcome}>
         <h1>Bienvenue</h1>
-        <h2 className={styles.Welcome__User}>Nom Utilisateur</h2>
+        <h2 className={styles.Welcome__User}>{user.username}</h2>
       </div>
       <nav className={styles.Nav}>
         <Link to="/" className={styles.Nav__Logo}>
@@ -28,7 +29,27 @@ const Nav = ({ logout, user }) => {
             onClick={() => setIsOpen(!isOpen)}
             className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
             {/* {<img src={menu} alt="menu de navigation" />} */}
-            {/* <div className={styles.Menu}>
+            <div className="sword-menu">
+              <Sword />
+              <Sword />
+              <Sword />
+            </div>
+          </div>
+          <NavLinks logout={logout} isOpen={isOpen} setIsOpen={() => setIsOpen(!isOpen)} />
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+Nav.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
+
+export default Nav;
+
+{
+  /* <div className={styles.Menu}>
               <div className={styles.Sword}>
                 <div className={styles.FirstContainer__Container}>
                   <div className={styles.FirstSword}>
@@ -83,73 +104,5 @@ const Nav = ({ logout, user }) => {
                   </div>
                 </div>
               </div>
-            </div> */}
-            <div className="sword-menu">
-              <div className="sword">
-                <div className="l-container container">
-                  <div className="l-sword">
-                    <div className="l-handle-orb handle-orb"></div>
-                    <div className="l-handle-block handle-block"></div>
-                    <div className="l-handle-block-curve handle-block-curve"></div>
-                    <div className="l-handle handle"></div>
-                    <div className="l-small-handle-block handle-block"></div>
-                    <div className="l-large-handle-block-curve handle-block-curve"></div>
-                    <div className="l-blade">
-                      <div className="l-blade-top blade-top"></div>
-                      <div className="l-blade-left blade-left"></div>
-                      <div className="l-blade-right blade-right"></div>
-                      <div className="l-blade-bottom blade-bottom"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="sword">
-                <div className="l-container container">
-                  <div className="l-sword">
-                    <div className="l-handle-orb handle-orb"></div>
-                    <div className="l-handle-block handle-block"></div>
-                    <div className="l-handle-block-curve handle-block-curve"></div>
-                    <div className="l-handle handle"></div>
-                    <div className="l-small-handle-block handle-block"></div>
-                    <div className="l-large-handle-block-curve handle-block-curve"></div>
-                    <div className="l-blade">
-                      <div className="l-blade-top blade-top"></div>
-                      <div className="l-blade-left blade-left"></div>
-                      <div className="l-blade-right blade-right"></div>
-                      <div className="l-blade-bottom blade-bottom"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="sword">
-                <div className="l-container container">
-                  <div className="l-sword">
-                    <div className="l-handle-orb handle-orb"></div>
-                    <div className="l-handle-block handle-block"></div>
-                    <div className="l-handle-block-curve handle-block-curve"></div>
-                    <div className="l-handle handle"></div>
-                    <div className="l-small-handle-block handle-block"></div>
-                    <div className="l-large-handle-block-curve handle-block-curve"></div>
-                    <div className="l-blade">
-                      <div className="l-blade-top blade-top"></div>
-                      <div className="l-blade-left blade-left"></div>
-                      <div className="l-blade-right blade-right"></div>
-                      <div className="l-blade-bottom blade-bottom"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <NavLinks logout={logout} isOpen={isOpen} setIsOpen={()=> setIsOpen(!isOpen)}/>
-        </div>
-      </nav>
-    </div>
-  );
-};
-
-Nav.propTypes = {
-  logout: PropTypes.func.isRequired,
-};
-
-export default Nav;
+            </div> */
+}

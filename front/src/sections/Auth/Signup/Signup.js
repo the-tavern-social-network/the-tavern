@@ -6,13 +6,7 @@ import Field from '../../../containers/components/Field';
 import CrossButton from '../../../assets/images/boutoncroix.svg';
 import styles from './Signup.module.scss';
 
-const Signup = ({ history, signup, resetFields, isLoggedIn }) => {
-  useEffect(() => {
-    if (isLoggedIn) {
-      history.push('/');
-    }
-  }, [isLoggedIn]);
-
+const Signup = ({ history, signup, resetFields }) => {
   const clickHandler = (event) => {
     history.push('/auth');
   };
@@ -20,6 +14,7 @@ const Signup = ({ history, signup, resetFields, isLoggedIn }) => {
   const signupFormHandler = (event) => {
     event.preventDefault();
     signup();
+    history.push(`/auth/connexion`);
     resetFields('auth');
   };
 

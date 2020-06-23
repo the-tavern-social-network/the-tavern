@@ -1,52 +1,59 @@
-.ChatContainer {
-    background-color: #553719;
-    height: 400px;
-    margin:  0 1rem;
-    margin-top: -0.2rem;
-    overflow: auto;
+@import '../../../../assets/scss/variables';
+
+.Chat {
+  margin: -($gutter/2) ($gutter/2) 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+
+  &__Messages {
     border-left: solid 1px yellow;
     border-right: solid 1px yellow;
+    background-color: #55381a;
+    padding: ($gutter/2);
+    overflow: auto;
+    position: relative;
+    height: 20rem;
 
-    .ChatUser {
-        padding-top: 0.5rem;
-        margin : 0.7rem;
-        margin-top: 0.7rem;
-        color: #fff200;
+    &__Message {
+      width: 90%;
+      margin: ($gutter/2) 0;
+      &__Self {
         text-align: right;
-    }
-    .MessageContainer {
-        background-color: #0B0501;
-        padding: 1rem;
-        margin-top: 1rem;
-        margin : 0.7rem;
+        color: yellow;
+        margin: ($gutter/4) 0;
+      }
+      &__Player {
+        text-align: left;
+        color: white;
+        margin: ($gutter/4) 0;
+      }
+      &__Content {
+        padding: ($gutter/4);
+        background-color: #0b0501;
         border-radius: 5px;
+        color: #fff;
+      }
     }
-    .FormContainer {
-        position: relative;
-        background-color: white;
-        padding-top: 2rem;
-        border-top: 5px solid  #0B0501;
-        border-width: 0.3rem;
-       
-        .TextField {
-        padding: 1rem;
-        border: none;
-    
-    }
+  }
 
-    &__SendButton {
+  &__Message {
+    &__Form {
+      @include flex(center, space-between, row wrap);
+      position: relative;
+
+      &__Btn {
         position: absolute;
         border: none;
-        background-color: #F2AF0D;
-        color: white;
-        font-weight: 400;
-        position: relative;
-        padding: 0.8rem;
         border-radius: 5px;
-        margin: 0.5rem;
-        top: 0;
-        right: -6rem;
-        
-     }
+        right: 0.5rem;
+        padding: ($gutter/3);
+        color: #fff;
+        background-color: #f3cc0d;
+      }
     }
+    &__Input {
+      padding: ($gutter/2);
+      width: 100%;
+    }
+  }
 }
