@@ -6,7 +6,6 @@ import styles from './NavLinks.module.scss';
 import deconnetion from '../../../../../assets/images/turn-off.svg';
 
 const NavLinks = ({ logout, isOpen, setIsOpen }) => {
-  console.log(isOpen);
   return (
     <ul className={!isOpen ? styles.NavLinks : [styles.NavLinks, styles.NavLinks__Open].join(' ')}>
       <li>

@@ -1,137 +1,125 @@
 // @import '../../../../../assets/scss/variables'
 
 .Container {
-    position: relative;
+  position: relative;
 }
 
-.AbsoluteAuthor{
-    position: absolute;
-    top: -0.3rem;
-    right: 0.6rem;
+.AbsoluteAuthor {
+  position: absolute;
+  top: -0.7rem;
+  right: 0.6rem;
 }
-
 
 .Post {
-    background-color:#3A271D;
-    display: flex;
-    flex-direction: column;
-    margin:0 auto;
-    width: 90%;
-    
+  background-color: #3a271d;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 0 0 5px 5px;
 }
 
 .Gutter {
-    width: 90%;
-    border-radius: 5px 5px 0 0;
-    background-color: #3A271D;
-    height: 0.3rem;
-    margin: 1rem auto 0.15rem;
+  width: 90%;
+  border-radius: 5px 5px 0px 0px;
+  background-color: #3a271d;
+  height: 0.3rem;
+  margin: 1rem auto 0.15rem;
 }
 
-.AbsoluteAddContact{
-    position: absolute;
-    top:-0.3rem;
-    right: -0.2rem;
-    padding: 0.1rem;
-    background-color: #1DFFD6;
-    width: 1rem;
-    border-radius: 20%;
+.AbsoluteAddContact {
+  position: absolute;
+  top: -0.1rem;
+  right: -0.2rem;
+  padding: 0.25rem;
+  background-color: #03c9a5;
+  width: 1.2rem;
+  border-radius: 20%;
 }
 
 .AddButton {
-    color: #fff;
-    font-weight: 900;
-    display: block;
-    margin: auto;
-    font-size: 0.8rem;
+  color: #fff;
+  font-weight: 900;
+  display: block;
+  margin: auto;
+  font-size: 0.8rem;
 }
 
-.AuthorAvatar{
-    background-color: #fff;
-    border-radius: 50%;
-    width: 2rem;
-    top: -0.5rem;
-    right: -0.5rem;
+.AuthorAvatar {
+  background-color: #fff;
+  border-radius: 50%;
+  border: solid 4px #0b0501;
+  width: 2.4rem;
+  top: -0.5rem;
+  right: -0.8rem;
 }
 
 .AuthorPost {
+  color: #fff;
+  text-align: right;
+  margin-right: 1rem;
+  font-family: 'nunito sans', nunito;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
 
-    color: #fff;
-    
+  &_gold {
+    color: #fff200;
     text-align: right;
-    margin-right: 0.5rem;
     font-family: 'nunito sans', nunito;
-    padding:0.3rem 1rem 0.3rem 0.3rem; 
-
-
-    &_gold{
-        color: #fff200;
-        text-align: right;
-        font-family: 'nunito sans', nunito;
-        margin-right: 0.5rem;
-        padding:0.3rem 1rem 0.3rem 0.3rem; 
-
-    }
-    
-
+    margin-right: 1rem;
+    padding: 0.3rem 1rem 0.3rem 0.3rem;
+  }
 }
-
-
 
 .ContentPost {
+  background-color: #0b0501;
+  border-radius: 5px;
+  color: #fff;
+  width: 95%;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'nunito sans', nunito;
+  word-wrap: break-word;
+}
 
-    background-color: #0B0501;
-    border-radius: 5px;
+.PostFooter {
+  &_start {
     color: #fff;
+    padding: 0.7rem;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid rgba(242, 173, 0, 0.603);
     width: 95%;
-    height: fit-content;
-    margin: 0 auto;
-    padding: 1rem;
-    font-family: 'nunito sans', nunito;
-    word-wrap: break-word;
-    
-    
-    
-}
+    border-radius: 3px;
+    margin: 0.3rem auto;
+    margin-bottom: 0.6rem;
+  }
 
-.PostFooter{
-
-    &_start{
-        color: #fff;
-        padding: 0.4rem;
-        font-size: 0.8em;
-        display: flex;
-        justify-content:flex-start;
-        border: 1px solid rgba(242, 173, 0, 0.603);
-        width:95%;
-        margin: 0.3rem auto;
-    }
-
-    &_between{
-        color: #fff;
-        padding: 0.4rem;
-        font-size: 0.8em;
-        display: flex;
-        justify-content:space-between;
-        border: 1px solid rgba(242, 173, 0, 0.603);
-        width:95%;
-        margin: 0.3rem auto;
-    }
-}
-
-.fa-trash{
-    color: red;
-}
-
-.DeleteButton{
-    font-size: 1.1em;
-}
-
-.DateContainer{
+  &_between {
+    border-radius: 3px;
+    color: #fff;
+    padding: 0.4rem;
+    font-size: 0.8em;
     display: flex;
     justify-content: space-between;
-    width: 35%;
-    // padding: 0 0.rem;
+    border: 1px solid rgba(242, 173, 0, 0.603);
+    width: 95%;
+    margin: 0.3rem auto;
+  }
 }
 
+.fa-trash {
+  color: red;
+}
 
+.DeleteButton {
+  font-size: 1.1em;
+}
+
+.DateContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+  // padding: 0 0.rem;
+}

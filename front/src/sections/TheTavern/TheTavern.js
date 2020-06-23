@@ -19,7 +19,7 @@ const TheTavern = ({ wsConnect, logout }) => {
         <Switch>
           <Route path="/tavern" component={Tavern} />
           <Route path="/compte" component={UserAccount} />
-          <Route exact path="/" render={(routeProps) => <Thread {...routeProps}/>} />
+          <Route exact path="/" component={Thread} />
           <Route>404</Route>
         </Switch>
       </Layout>
