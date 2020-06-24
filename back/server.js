@@ -8,6 +8,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 const morgan = require('morgan');
 const sequelize = require('./api/db/database');
+const associationsRoutes = require('./api/routes/associations');
 const authRoutes = require('./api/routes/auth');
 const mainRoutes = require('./api/routes');
 
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 
 const baseUrl = '/api/v1';
 app.use(`${baseUrl}/auth`, authRoutes);
+app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
 
 sequelize

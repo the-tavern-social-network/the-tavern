@@ -1,4 +1,4 @@
-// @import '../../../../../assets/scss/variables'
+@import '../../../../../assets/scss/variables';
 
 .Container {
   position: relative;
@@ -78,6 +78,8 @@
   height: fit-content;
   margin: 0 auto;
   padding: 1rem;
+}
+.DateContainer {
   font-family: 'nunito sans', nunito;
   word-wrap: break-word;
 }
@@ -121,5 +123,4 @@
   display: flex;
   justify-content: space-between;
   width: 35%;
-  // padding: 0 0.rem;
 }

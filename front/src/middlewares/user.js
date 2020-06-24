@@ -1,10 +1,25 @@
 import axios from 'axios';
-import { EDIT_USER_ACCOUNT, setLoading, setError } from '../actions';
+import { ADD_CONTACT, EDIT_USER_ACCOUNT, setLoading, setError } from '../actions';
 import { apiUrl } from '../util/index';
 
 export const user = (store) => (next) => async (action) => {
   const { user } = store.getState();
   switch (action.type) {
+    case ADD_CONTACT:
+      try {
+        store.dispatch(setLoading());
+        const user_id = user.loggedUser.id;
+        const contact_id = action.contactId;
+
+        const { data } = await axios.post(`${apiUrl}/contact/${user_id}/add/${contact_id}`);
+
+        console.log(data);
+      } catch (err) {
+        store.dispatch(setError());
+      } finally {
+        store.dispatch(setLoading());
+      }
+      break;
     case EDIT_USER_ACCOUNT:
       try {
         store.dispatch(setLoading());
