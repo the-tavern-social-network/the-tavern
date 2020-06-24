@@ -2,9 +2,6 @@
 
 .PostForm {
   position: fixed;
-  display: grid;
-  grid-template-rows: fit-content(40px) auto fit-content(80px);
-  grid-template-areas: 'header' 'main' 'footer';
   bottom: 0;
   left: 0;
   right: 0;
@@ -15,13 +12,21 @@
   z-index: 50;
   transition: all 300ms ease-in;
 
-  @include xl{
-    top: 1rem;
+  @include md {
+    top: 0;
     position: relative;
     transform: none;
     background-color: initial;
+    width: 40%;
   }
 
+  @include lg {
+    margin-left: 2.5rem;
+  }
+
+  @include xl {
+    width: 35%;
+  }
 
   &__Open {
     @extend .PostForm;
@@ -31,9 +36,9 @@
 
   &__Main {
     @include flex(stretch, space-around, column nowrap);
-    grid-area: main;
     overflow: auto;
-    @include xl {
+
+    @include md {
       align-items: initial;
       justify-content: initial;
     }
@@ -43,9 +48,9 @@
     overflow: auto;
     height: 45%;
 
-    @include xl{
-      height: 7%;
-      margin-top: 3%;
+    @include md {
+      height: fit-content;
+      margin-top: 2rem;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: #888 #ccc;
@@ -76,24 +81,22 @@
   }
 
   &__Footer {
-    padding: .5rem .5rem 0.25rem;
-    grid-area: footer;
+    padding: 0.5rem 0.5rem 0.25rem;
     font-size: 0.8rem;
     text-align: center;
 
-    @include xl {
+    @include md {
       display: none;
     }
   }
 }
 
 .Drawer {
-  @include xl {
+  @include md {
     display: none;
     // position: relative;
   }
   position: absolute;
-  grid-area: header;
   top: 0;
   left: 0;
   right: 0;
@@ -111,17 +114,17 @@
   background-color: red;
 }
 
-.SelfAvatarInput{
+.SelfAvatarInput {
   display: none;
 
-  @include xl{
+  @include md {
     display: inline-block;
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
     position: absolute;
     right: -0.5rem;
-    margin-top: .3rem;
+    margin-top: 0.3rem;
     border: solid #0b0501 4px;
   }
 }
@@ -144,20 +147,22 @@
   text-align: end;
   margin-top: 42px;
   padding: 0 1rem;
-  @include xl{
+
+  @include md {
     margin-top: 0;
     background-color: initial;
     text-align: initial;
-    padding: 0rem .5rem;
+    padding: 0rem 0.5rem;
   }
   & > div:first-child {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: #0b0501;
     padding: 0.5rem;
-          @include xl{
-            background-color: #3a271d ;
-          }
+
+    @include md {
+      background-color: #3a271d;
+    }
   }
 }
 
@@ -166,7 +171,7 @@
   padding: 1rem;
   height: 10rem;
 
-  @include xl{
+  @include md {
     height: 15rem;
   }
 }
@@ -184,8 +189,9 @@
 .Gutter {
   border-radius: 0 0 5px 5px;
   background-color: #0b0501;
-  @include xl{
-    background-color: #3a271d
+
+  @include md {
+    background-color: #3a271d;
   }
   height: 0.5rem;
   padding: 0 1rem;

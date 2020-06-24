@@ -3,62 +3,74 @@
 .NavLinks {
   @include flex(center, center, row nowrap);
   position: absolute;
-  background-color: #5B3D20;
+  background-color: #5b3d20;
   border-radius: 5px;
   top: 0.5rem;
   right: $gutter * 2.3;
   transform: translate(100%);
   // transition: all 750ms cubic-bezier(.75,-1.52,.04,1.95);
   // transition: all 750ms cubic-bezier(1,.14,.23,1.44);
-  transition: all 750ms cubic-bezier(.46,.59,.36,1.27);
-  
-  @include xl{
+  transition: all 750ms cubic-bezier(0.46, 0.59, 0.36, 1.27);
+
+  @include lg {
     transform: none;
     position: relative;
-    display: block;
-    flex-flow: initial;
     transition: none;
     top: 0;
     right: 0;
     background-color: initial;
+    flex-flow: column nowrap;
+    justify-content: start;
+    height: 100%;
   }
 
   &__Open {
-    transform: translate(0); 
+    transform: translate(0);
     // transition: all 750ms cubic-bezier(.75,-1.52,.04,1.95);
     // transition: all 750ms cubic-bezier(1,-1.56,.12,1.6);
-    transition: all 750ms cubic-bezier(.46,.59,.36,1.27);
+    transition: all 750ms cubic-bezier(0.46, 0.59, 0.36, 1.27);
     box-shadow: 1px 3px 3px rgba(11, 5, 1, 0.89);
+
+    @include lg {
+      transform: translate(0);
+      transition: none;
+      box-shadow: none;
+    }
   }
-  
-  li { 
+
+  li {
     padding: $gutter/2 $gutter/3;
     border-right: solid 2.5px #000;
 
-    @include xl{
-      padding: $gutter/3.5
+    @include lg {
+      padding: $gutter/3.5;
+      border: none;
+      align-self: flex-start;
     }
+
     &:last-child {
       padding: 0 $gutter/2.5;
       border: none;
 
+      @include lg {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+      }
     }
   }
-  
 
   &__Deconnexion {
-      border: none;
-      cursor: pointer;
-      @include xl{
-        position: fixed;
-        bottom: 3.5rem;
-        left: 6.5rem;
-      }
-      img {
-        width: 1.5rem;
-        @include xl{
-          width: 3rem;
-        }
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 1.5rem;
+
+      @include lg {
+        width: 3rem;
       }
     }
-};
+  }
+}

@@ -9,7 +9,7 @@ const Video = () => {
       <source src={video} type="video/mp4" />
       <source src={video} type="video/ogg" />
       Your browser does not support the video tag.
-  </video>
+    </video>
   );
 };
 

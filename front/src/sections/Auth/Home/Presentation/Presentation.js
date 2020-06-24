@@ -11,10 +11,15 @@ const Presentation = () => {
         rassemblez vous pour jouer grâce à un système de partage d’écran et surtout racontez vos
         folles aventures.
       </p>
-      <p className={styles.Desktop}>
-      
-        <h1 className={styles.Desktop__Title}><img className={styles.CrossSwordDesktop} src={crossSword} alt="épées entrecroisées" />Bienvenue</h1> <h2 className={styles.Desktop__SubTitle}>dans le premier réseau social dédié au jeu de rôle.</h2>
-      </p>
+      <div className={styles.Desktop}>
+        <h1 className={styles.Desktop__Title}>
+          <img className={styles.CrossSwordDesktop} src={crossSword} alt="épées entrecroisées" />
+          Bienvenue
+        </h1>{' '}
+        <h2 className={styles.Desktop__SubTitle}>
+          dans le premier réseau social dédié au jeu de rôle.
+        </h2>
+      </div>
       <p className={styles.Desktop__AmbientText}>
         « Le feu crépite dans la cheminée, l’odeur des braises se mélange à celle du vieux bois et
         aux brumes des breuvages servis dans l’établissement. Les discutions vont bon train,

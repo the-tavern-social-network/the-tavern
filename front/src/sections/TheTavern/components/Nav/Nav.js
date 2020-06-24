@@ -16,9 +16,9 @@ const Nav = ({ logout, user }) => {
 
   return (
     <div className={styles.Nav__Header}>
-      <div className={styles.Welcome}>
+      <div className={styles.Nav__Header__Welcome}>
         <h1>Bienvenue</h1>
-        <h2 className={styles.Welcome__User}>{user.username}</h2>
+        <h2 className={styles.Nav__Header__Welcome__User}>{user.username}</h2>
       </div>
       <nav className={styles.Nav}>
         <Link to="/" className={styles.Nav__Logo}>

@@ -76,10 +76,13 @@ export const user = (store) => (next) => async (action) => {
           description: user.description,
         };
 
-        const { data: updatedUser } = await axios.patch(
-          `${apiUrl}/user/${user.loggedUser.id}`,
-          userData,
-        );
+        const { data } = await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userData);
+
+        const updatedUser = {
+          ...data.user,
+          pendingRequests: data.pendingRequests,
+          contacts: data.contacts,
+        };
 
         delete updatedUser.password;
 
