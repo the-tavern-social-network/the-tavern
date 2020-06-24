@@ -17,8 +17,13 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(removePost(+id));
       });
 
-      socketCanal.on('add_contact', ({ user, contact }) => {
+      socketCanal.on('add_contact', ({ user, contactInfos }) => {
         delete user.password;
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
         delete contact.password;
         store.dispatch(addContactRequest(user, contact));
       });

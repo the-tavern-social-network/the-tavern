@@ -13,7 +13,7 @@ const Posts = ({ posts, loggedUser, deletePost, sendContactRequest }) => {
             deletePost={deletePost}
             sendContactRequest={sendContactRequest}
             key={post.id}
-            {...post}
+            post={post}
           />
         ))
         .reverse()}

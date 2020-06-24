@@ -25,7 +25,6 @@ export const user = (store) => (next) => async (action) => {
         action.user.contacts = data.contacts;
 
         next(action);
-        console.log(data);
       } catch (err) {
         store.dispatch(setError());
       } finally {

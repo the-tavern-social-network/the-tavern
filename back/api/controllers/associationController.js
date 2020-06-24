@@ -8,10 +8,16 @@ module.exports = {
     const { userId, contactId } = req.params;
 
     let user = await User.findByPk(+userId, { include: 'posts' });
-    const contact = await User.findByPk(+contactId);
     await user.addContact(+contactId);
 
-    io.getIo().emit('add_contact', { user, contact });
+    const contact = await User.findByPk(+contactId);
+    const contactInfos = {
+      user: contact,
+      contacts: await user.getContacts(),
+      pendingRequests: await getUserPendingRequests(contact),
+    };
+
+    io.getIo().emit('add_contact', { user, contactInfos });
 
     res.send({
       user,

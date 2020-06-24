@@ -7,6 +7,7 @@ import {
   ADD_CONTACT_REQUEST,
   DELETE_CONTACT,
   REMOVE_CONTACT,
+  SEND_CONTACT_REQUEST,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -48,17 +49,16 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         loggedUser: action.user,
       };
+    case SEND_CONTACT_REQUEST:
+      return {
+        ...state,
+        loggedUser: action.user,
+      };
     case ADD_CONTACT_REQUEST:
       if (+action.contact.id === state.loggedUser.id) {
         return {
           ...state,
-          loggedUser: {
-            ...state.loggedUser,
-            pendingRequests: {
-              ...state.loggedUser.pendingRequests,
-              received: [...state.loggedUser.pendingRequests.received, action.user],
-            },
-          },
+          loggedUser: action.contact,
         };
       }
       return state;
