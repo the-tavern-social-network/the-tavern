@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
 import CrossButton from '../../../assets/images/boutoncroix.svg';
+
+import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signup.module.scss';
 
 const Signup = ({ history, signup, resetFields }) => {
@@ -19,6 +21,8 @@ const Signup = ({ history, signup, resetFields }) => {
   };
 
   return (
+    <>
+    <Presentation />
     <form onSubmit={signupFormHandler} className={styles.Signup}>
       <img
         onClick={clickHandler}
@@ -73,6 +77,7 @@ const Signup = ({ history, signup, resetFields }) => {
         <button className={styles.Signup__Btn}>S'inscrire</button>
       </div>
     </form>
+    </>
   );
 };
 

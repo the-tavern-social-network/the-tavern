@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import CrossButton from '../../../assets/images/boutoncroix.svg';
 import Field from '../../../containers/components/Field';
 
+import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
 const Signin = ({ history, login, resetFields, isLoggedIn }) => {
@@ -25,6 +26,8 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
   };
 
   return (
+    <>
+    <Presentation />
     <form onSubmit={signinFormHandler} className={styles.Signin}>
       <img
         onClick={clickHandler}
@@ -59,6 +62,8 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
         </div>
       </div>
     </form>
+    </>
+    
   );
 };
 

@@ -56,11 +56,23 @@
   padding: $gutter;
   margin-top: $gutter + 1rem;
 
+  @include xl {
+    position: absolute;
+    max-width: 25rem;
+    max-height: 280px;
+    right: 20%;
+    bottom: 30%;
+    left: 60%;
+    top: 31%;
+  }
+
+
   &__Container {
     @include flex(center, center, column nowrap);
     max-width: 20rem;
     margin: auto;
     position: relative;
+
   }
 
   &__CrossSword {
@@ -110,4 +122,9 @@
     box-shadow: none;
     text-decoration: underline;
   }
+
+}
+.Presentation {
+  display: none;
+
 }
