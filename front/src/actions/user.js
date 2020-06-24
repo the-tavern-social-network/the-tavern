@@ -6,6 +6,7 @@ export const DELETE_CONTACT = 'DELETE_CONTACT';
 export const REMOVE_CONTACT = 'REMOVE_CONTACT';
 export const SET_IS_EDITING = 'SET_IS_EDITING';
 export const EDIT_USER_ACCOUNT = 'EDIT_USER_ACCOUNT';
+export const DELETE_ACOUNT = 'DELETE_ACOUNT';
 
 export const sendContactRequest = (contactId) => ({ type: SEND_CONTACT_REQUEST, contactId });
 export const addContactRequest = (contact) => ({
@@ -28,3 +29,7 @@ export const removeContact = (userId, contactId) => ({
 
 export const setIsEditing = () => ({ type: SET_IS_EDITING });
 export const editUserAccount = () => ({ type: EDIT_USER_ACCOUNT });
+export const deleteAcount = (userId) => ({ 
+  type: DELETE_ACOUNT,
+  userId,
+})
