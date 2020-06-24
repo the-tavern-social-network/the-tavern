@@ -1,14 +1,151 @@
 .UserAccount {
   background-color: #553719;
+  width:90%;
+  margin: auto;
+  padding:1rem;
+  border-radius: 5px;
+ 
+
+  &__DeleteBtn {
+    border :none;
+    border : 1px solid yellow;
+    background-color: #D92626;
+    color: #fff;
+
+
+  }
 
   &__Description {
+    background-color: #fff;
+    height:15vh;
+    max-width : 90vw;
+    color: #000;
+    font-family:  'nunito sans', nunito;
+    font-weight: 500;
+    margin: 0.3rem 0 0.5rem 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &_Btn{
+      
+    }
+    &_Editing{
+      background-color: #fff;
+      height:15vh;
+      max-width : 90vw;
+      color: #000;
+      font-family:  'nunito sans', nunito;
+      font-weight: 500;
+      margin: 0.3rem 0 0.5rem 0;
+      border-radius: 5px;
+      &_Form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+      }
+
+    }
+
+    
+
+    &_Text{
+      
+      word-wrap: break-word;
+      padding: 0.5rem;
+      overflow-y: auto;
+      
+
+    }
+    
+    
+    
+
+
     
   }
+
+
+
+  
+ 
+
   
   &__Avatar {
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
     border: 2px solid black;
+  }
+}
+
+.Username_Container {
+}
+
+.Username{
+  background-color: #fff;
+  color: #000;
+  padding:0.5rem;
+  font-family:  'nunito sans', nunito;
+  width : 80%;
+  border-radius:3px;
+  text-align: right;
+  font-weight : 500;
+  overflow-y: auto;
+  &_Container{
+    
+    display: flex;
+    justify-content : space-between;
+    align-items: center;
+  }
+  
+
+}
+
+.ContactList{
+  background-color : #3A271D;
+  border-radius:5px;
+  font-family:  'nunito sans', nunito;
+  padding:0.3rem 0.5rem;
+  overflow : auto;
+  max-height: 53vh;
+
+
+  &_Title{
+    color:#fff;
+    font-weight : 500;
+    
+    background-color : #3A271D;
+    border-radius:5px;
+    padding:0.5rem;
+    
+
+  }
+
+  &_Content{
+    
+    font-weight : bold;
+    color:#1DFFD6;
+    overflow-x : auto;
+    max-width: 75%;
+    &_Container{
+      background-color: #553719;
+      margin: 0.5rem 0.3rem;
+      border-radius:5px;
+      padding: 0.6rem 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      
+
+    }
+
+  }
+
+  &_Btn{
+    background-color: #D92626 ;
+    border:none;
+    color: #fff;
+
   }
 }
