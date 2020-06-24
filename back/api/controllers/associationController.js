@@ -1,12 +1,17 @@
 const { User } = require('../models');
 const getUserPendingRequests = require('../util/getUserPendingRequests');
+const io = require('../socket');
 
 module.exports = {
+  //* ok
   addContact: async (req, res, next) => {
     const { userId, contactId } = req.params;
 
     let user = await User.findByPk(+userId, { include: 'posts' });
+    const contact = await User.findByPk(+contactId);
     await user.addContact(+contactId);
+
+    io.getIo().emit('add_contact', { user, contact });
 
     res.send({
       user,
@@ -29,12 +34,14 @@ module.exports = {
     });
   },
 
-  //? To verify
+  //* ok
   deleteContact: async (req, res, next) => {
     const { userId, contactId } = req.params;
 
     const user = await User.findByPk(+userId, { include: 'posts' });
     await user.deleteContact(+contactId);
+
+    io.getIo().emit('delete_contact', { userId, contactId });
 
     res.send({
       user,

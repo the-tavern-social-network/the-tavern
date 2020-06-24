@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deletePost, addContact } from '../../../actions';
+import { deletePost, sendContactRequest } from '../../../actions';
 
 import Posts from '../../../sections/TheTavern/Thread/Posts/Posts';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deletePost: (id) => dispatch(deletePost(id)),
-  addContact: (id) => dispatch(addContact(id)),
+  sendContactRequest: (id) => dispatch(sendContactRequest(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

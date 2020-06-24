@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
-import cross from '../../../../../assets/images/logocroix.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import Modal from '../../../../../components/Modal/Modal';
+
+import cross from '../../../../../assets/images/logocroix.svg';
 import styles from './Post.module.scss';
 
-const Post = ({ content, author, deletePost, addContact, loggedUser, id, createdAt }) => {
+const Post = ({ content, author, deletePost, sendContactRequest, loggedUser, id, createdAt }) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const deleteBtnClickHandler = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const deleteHandler = (id) => {
+    deletePost(id);
+  };
+
   return (
     <div className={styles.Container}>
       <div className={styles.Gutter}></div>
@@ -23,7 +36,7 @@ const Post = ({ content, author, deletePost, addContact, loggedUser, id, created
               <FontAwesomeIcon
                 icon={faPlus}
                 className={styles.AddButton}
-                onClick={() => addContact(author.id)}
+                onClick={() => sendContactRequest(author.id)}
               />
             </div>
           )}
@@ -54,11 +67,19 @@ const Post = ({ content, author, deletePost, addContact, loggedUser, id, created
               color="red"
               icon={faTrash}
               className={styles.DeleteButton}
-              onClick={() => deletePost(id)}
+              onClick={deleteBtnClickHandler}
             />
           )}
         </div>
       </div>
+      {isDeleteModalOpen && (
+        <Modal
+          modalCancel={() => setIsDeleteModalOpen(false)}
+          header="Suppression de Post"
+          message={`Voulez vous vraiment supprimer ce post ?`}
+          modalConfirm={() => deleteHandler(id)}
+        />
+      )}
     </div>
   );
 };
@@ -71,7 +92,9 @@ Post.propTypes = {
   image: PropTypes.string,
   color: PropTypes.string.isRequired,
   deletePost: PropTypes.func.isRequired,
-  loggedUser: PropTypes.string.isRequired,
+  loggedUser: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
   id: PropTypes.number.isRequired,
 };
 

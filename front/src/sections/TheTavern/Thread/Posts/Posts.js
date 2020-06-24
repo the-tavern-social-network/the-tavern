@@ -3,7 +3,7 @@ import styles from './Posts.module.scss';
 import PropTypes from 'prop-types';
 import Post from './Post/Post';
 
-const Posts = ({ posts, loggedUser, deletePost, addContact }) => {
+const Posts = ({ posts, loggedUser, deletePost, sendContactRequest }) => {
   return (
     <section className={styles.Posts}>
       {posts
@@ -11,7 +11,7 @@ const Posts = ({ posts, loggedUser, deletePost, addContact }) => {
           <Post
             loggedUser={loggedUser}
             deletePost={deletePost}
-            addContact={addContact}
+            sendContactRequest={sendContactRequest}
             key={post.id}
             {...post}
           />

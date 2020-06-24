@@ -1,5 +1,4 @@
-import { WS_CONNECT, SAVE_POST, addPost, removePost, SAVE_DELETE_POST } from '../actions';
-import axios from 'axios';
+import { WS_CONNECT, addPost, removePost, removeContact, addContactRequest } from '../actions';
 
 let socketCanal;
 
@@ -16,6 +15,21 @@ export const socket = (store) => (next) => (action) => {
 
       socketCanal.on('delete_post', (id) => {
         store.dispatch(removePost(+id));
+      });
+
+      socketCanal.on('add_contact', ({ user, contact }) => {
+        delete user.password;
+        delete contact.password;
+        store.dispatch(addContactRequest(user, contact));
+      });
+
+      socketCanal.on('accept_contact', ({ user, contact }) => {
+        // TODO accept contact
+        // TODO move both user and contact from pending requests to contacts
+      });
+
+      socketCanal.on('delete_contact', ({ userId, contactId }) => {
+        store.dispatch(removeContact(userId, contactId));
       });
       break;
 
