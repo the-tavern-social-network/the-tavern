@@ -1,9 +1,10 @@
 .UserAccount {
   background-color: #553719;
-  width:80%;
+  width:90%;
   margin: auto;
-  padding:0.5rem;
+  padding:1rem;
   border-radius: 5px;
+ 
 
   &__DeleteBtn {
     border :none;
@@ -17,16 +18,43 @@
   &__Description {
     background-color: #fff;
     height:15vh;
+    max-width : 90vw;
     color: #000;
     font-family:  'nunito sans', nunito;
     font-weight: 500;
     margin: 0.3rem 0 0.5rem 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &_Btn{
+      
+    }
+    &_Editing{
+      background-color: #fff;
+      height:15vh;
+      max-width : 90vw;
+      color: #000;
+      font-family:  'nunito sans', nunito;
+      font-weight: 500;
+      margin: 0.3rem 0 0.5rem 0;
+      border-radius: 5px;
+      &_Form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+      }
+
+    }
+
     
 
     &_Text{
-      height : 85%;
+      
       word-wrap: break-word;
       padding: 0.5rem;
+      overflow-y: auto;
       
 
     }
@@ -37,6 +65,10 @@
 
     
   }
+
+
+
+  
  
 
   
@@ -60,6 +92,7 @@
   border-radius:3px;
   text-align: right;
   font-weight : 500;
+  overflow-y: auto;
   &_Container{
     
     display: flex;
@@ -74,12 +107,19 @@
   background-color : #3A271D;
   border-radius:5px;
   font-family:  'nunito sans', nunito;
-  padding:0.5rem;
+  padding:0.3rem 0.5rem;
+  overflow : auto;
+  max-height: 53vh;
 
 
   &_Title{
     color:#fff;
     font-weight : 500;
+    
+    background-color : #3A271D;
+    border-radius:5px;
+    padding:0.5rem;
+    
 
   }
 
@@ -87,6 +127,8 @@
     
     font-weight : bold;
     color:#1DFFD6;
+    overflow-x : auto;
+    max-width: 75%;
     &_Container{
       background-color: #553719;
       margin: 0.5rem 0.3rem;
@@ -94,6 +136,7 @@
       padding: 0.6rem 0.3rem;
       display: flex;
       justify-content: space-between;
+      
 
     }
 

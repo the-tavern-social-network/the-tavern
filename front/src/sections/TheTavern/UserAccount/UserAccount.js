@@ -27,7 +27,7 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
   return (
     <section className={styles.UserAccount}>
       <button onClick={clickHandler} className={styles.UserAccount__DeleteBtn}>
-        Supprimer compte
+        Supprimer Compte
       </button>
       <div className={styles.Username_Container}>
         <h1 className={styles.Username}>
@@ -37,29 +37,33 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
 
       </div>
       {isEditing ? (
-        <form onSubmit={handleSubmit}>
+            
+        <form className={styles.UserAccount__Description_Editing_Form} onSubmit={handleSubmit}>
           <Field
+            cssClass={styles.UserAccount__Description_Editing} 
             reducerName="user"
             name="description"
             type="textarea"
             placeholder="Veuillez saisir votre description..."
           />
-          <button>Valider</button>
+          <button className={styles.UserAccount__Description_Editing_Btn}>Valider</button>
         </form>
       ) : (
         <div className={styles.UserAccount__Description}>
           <p className={styles.UserAccount__Description_Text} >{user.description}</p>
-          <button onClick={handleEdit}>Editer</button>
+          <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>Editer</button>
         </div>
       )}
+
+        <h2 className={styles.ContactList_Title}>liste Contacts </h2>
       <ul className={styles.ContactList}>
-        <li className={styles.ContactList_Title}>liste Contacts </li>
         <li className={styles.ContactList_Content_Container}>
           <span className={styles.ContactList_Content}>DavidLeFaible</span>
           <button className={styles.ContactList_Btn}>Suppr</button> 
         </li>
+        {/* Ajout en dur de contacts */}
         <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>FabienneLapineDeCorse</span>
+          <span className={styles.ContactList_Content}>FabienneLapineDeCorseFabienneLapineDeCorse</span>
           <button className={styles.ContactList_Btn}>Suppr</button> 
         </li>
         <li className={styles.ContactList_Content_Container}>
@@ -68,6 +72,46 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
         </li>
         <li className={styles.ContactList_Content_Container}>
           <span className={styles.ContactList_Content}>DavidLeFaible</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
           <button className={styles.ContactList_Btn}>Suppr</button> 
         </li>
         <li className={styles.ContactList_Content_Container}>
