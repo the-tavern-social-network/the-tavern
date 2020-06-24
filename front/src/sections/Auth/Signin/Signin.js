@@ -42,7 +42,7 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
           reducerName="auth"
           placeholder="test@test.com"
           type="email"
-          name="signinEmail"
+          name="email"
           cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
         />
         <label htmlFor="password">Mot de passe</label>
@@ -51,7 +51,7 @@ const Signin = ({ history, login, resetFields, isLoggedIn }) => {
           reducerName="auth"
           placeholder="azerty"
           type="password"
-          name="signinPassword"
+          name="password"
           cssClass={[styles.Signin__Password, styles.Signin__Field].join(' ')}
         />
         <div className={styles.Signin__Btn__Container}>

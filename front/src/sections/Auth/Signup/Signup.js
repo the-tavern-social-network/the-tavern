@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
@@ -38,7 +38,7 @@ const Signup = ({ history, signup, resetFields }) => {
           reducerName="auth"
           placeholder="Email"
           type="email"
-          name="signupEmail"
+          name="email"
         />
         <label htmlFor="username">Pseudo</label>
         <Field
@@ -46,7 +46,7 @@ const Signup = ({ history, signup, resetFields }) => {
           cssClass={[styles.Signup__Field, styles.Signup__Username].join(' ')}
           reducerName="auth"
           placeholder="Pseudo"
-          name="signupUsername"
+          name="username"
         />
         <label htmlFor="birthdate">Date de naissance</label>
         <Field
@@ -54,7 +54,7 @@ const Signup = ({ history, signup, resetFields }) => {
           cssClass={[styles.Signup__Field, styles.Signup__Birthdate].join(' ')}
           reducerName="auth"
           type="date"
-          name="signupBirthdate"
+          name="birthdate"
         />
         <label htmlFor="password">Mot de passe</label>
         <Field
@@ -63,7 +63,7 @@ const Signup = ({ history, signup, resetFields }) => {
           reducerName="auth"
           placeholder="Mot de passe"
           type="password"
-          name="signupPassword"
+          name="password"
         />
         <label htmlFor="confirm-password">Confirmation mot de passe</label>
         <Field
@@ -72,7 +72,7 @@ const Signup = ({ history, signup, resetFields }) => {
           reducerName="auth"
           placeholder="Confirmation mot de passe"
           type="password"
-          name="signupConfirmPassword"
+          name="confirmPassword"
         />
         <button className={styles.Signup__Btn}>S'inscrire</button>
       </div>

@@ -1,5 +1,11 @@
-import { WS_CONNECT, SAVE_POST, addPost, removePost, SAVE_DELETE_POST } from '../actions';
-import axios from 'axios';
+import {
+  WS_CONNECT,
+  addPost,
+  removePost,
+  removeContact,
+  addContactRequest,
+  addContact,
+} from '../actions';
 
 let socketCanal;
 
@@ -16,6 +22,30 @@ export const socket = (store) => (next) => (action) => {
 
       socketCanal.on('delete_post', (id) => {
         store.dispatch(removePost(+id));
+      });
+
+      socketCanal.on('add_contact', ({ contactInfos }) => {
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
+        delete contact.password;
+        store.dispatch(addContactRequest(contact));
+      });
+
+      socketCanal.on('accept_contact', ({ contactInfos }) => {
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
+        delete contact.password;
+        store.dispatch(addContact(contact));
+      });
+
+      socketCanal.on('delete_contact', ({ userId, contactId }) => {
+        store.dispatch(removeContact(userId, contactId));
       });
       break;
 

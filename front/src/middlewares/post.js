@@ -1,17 +1,6 @@
 import axios from 'axios';
 
-import {
-  FETCH_POSTS,
-  savePosts,
-  savePost,
-  setLoading,
-  setError,
-  POST,
-  resetFields,
-  DELETE_POST,
-  removePost,
-  saveDeletePost,
-} from '../actions';
+import { FETCH_POSTS, savePosts, setLoading, setError, POST, DELETE_POST } from '../actions';
 import { apiUrl } from '../util/index';
 
 export const post = (store) => (next) => async (action) => {
@@ -48,7 +37,7 @@ export const post = (store) => (next) => async (action) => {
           user_id: user.loggedUser.id,
         };
 
-        const { data: newPost } = await axios.post(`${apiUrl}/post`, postData);
+        await axios.post(`${apiUrl}/post`, postData);
       } catch (err) {
         console.trace(err);
         store.dispatch(setError());

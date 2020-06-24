@@ -7,36 +7,47 @@ import Search from '../Search/Search';
 import cross from '../../../../assets/images/logocroix.svg';
 import styles from './PostForm.module.scss';
 
-const PostForm = ({ post, resetFields, isOpen, setIsOpen }) => {
+const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
     resetFields('post');
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className={isOpen ? styles.Main__Open : styles.Main}>
+    <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
       <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
         <img className={styles.SelfAvatar} src={cross} alt="" />
-        <span className={!isOpen ? styles.Triangle : styles.Triangle_down}></span>
+        <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
       </div>
-      <form className={styles.Form} onSubmit={handleSubmit}>
-        <Field
-          cssClass={styles.Input}
-          placeholder="Veuillez saisir un message..."
-          type="textarea"
-          reducerName="post"
-          name="post"
-        />
-        <button className={styles.SendButton}>Envoyer</button>
-      </form>
-      <div className={styles.Gutter}></div>
-      <div className={styles.Invitation}>
-        <Invitation name="EdgeAbonnement" avatar={cross} />
-        <Invitation name="LaServeuseAUXGROSSEINS" avatar={cross} />
-        <Invitation name="TuVeuxEtreMonAMIE" avatar={cross} />
+      <div className={styles.PostForm__Main}>
+        <form className={styles.Form} onSubmit={handleSubmit}>
+          <div>
+            <Field
+              cssClass={styles.Input}
+              placeholder="Veuillez saisir un message..."
+              type="textarea"
+              reducerName="post"
+              name="post"
+            />
+            <button className={styles.SendButton}>Envoyer</button>
+          </div>
+          <div className={styles.Gutter}></div>
+        </form>
+        <div className={styles.PostForm__Invitation}>
+          {user.pendingRequests.received.map((contact) => (
+            <Invitation
+              key={contact.id}
+              {...contact}
+              acceptContact={acceptContact}
+              deleteContact={deleteContact}
+            />
+          ))}
+        </div>
+        <Search />
       </div>
-      <Search />
+      <footer className={styles.PostForm__Footer}>© thetavern | Tous droits réservés | 2020</footer>
     </div>
   );
 };
