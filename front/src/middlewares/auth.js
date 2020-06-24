@@ -44,6 +44,7 @@ export const auth = (store) => (next) => async (action) => {
 
         delete data.user.password;
         data.user.pendingRequests = data.pendingRequests;
+        data.user.contacts = data.contacts;
 
         store.dispatch(connect(data));
       } catch (err) {
@@ -65,6 +66,7 @@ export const auth = (store) => (next) => async (action) => {
 
         delete data.user.password;
         data.user.pendingRequests = data.pendingRequests;
+        data.user.contacts = data.contacts;
 
         if (data.isLoggedIn) {
           store.dispatch(connect(data));
