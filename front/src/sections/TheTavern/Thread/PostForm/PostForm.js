@@ -5,6 +5,7 @@ import Field from '../../../../containers/components/Field';
 import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
 import cross from '../../../../assets/images/logocroix.svg';
+import darlyne from '../../../../assets/images/darlyne.jpg';
 import styles from './PostForm.module.scss';
 
 const PostForm = ({ post, resetFields, isOpen, setIsOpen }) => {
@@ -32,6 +33,7 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen }) => {
               name="post"
             />
             <button className={styles.SendButton}>Envoyer</button>
+            <img className={styles.SelfAvatarInput} src={darlyne} alt=""/>
           </div>
           <div className={styles.Gutter}></div>
         </form>

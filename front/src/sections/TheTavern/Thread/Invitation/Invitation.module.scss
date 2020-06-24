@@ -4,7 +4,15 @@
   display: flex;
   padding: 0.4rem 0.2rem 0.4rem 0.5rem;
   background-color: #3a271d;
-  margin: 0.75rem 0.5rem;
+  margin: 1rem 0.5rem;
+
+  &:nth-child(1){
+    margin-top: 0;
+  }
+
+  @include xl{
+    padding: 0.2rem;
+  }
 }
 
 .Asking {
@@ -37,10 +45,24 @@
   width: 13%;
   border-radius: 50%;
   background-color: green;
+
+  @include md{
+    width: 10%;
+  }
+
+  @include xl{
+    height: 10%;
+  }
 }
 
 .Buttons {
   @include flex(center, center, row wrap);
+  @include md {
+    @include flex(center, space-around, row wrap);
+  }
+  @include md{
+    width: 50%;
+  }
 }
 
 .Add {
@@ -51,6 +73,17 @@
   font-size: 0.8em;
   margin: 0.2rem;
   width: 4rem;
+  @include md{
+    width: 40%;
+    height: 2rem;
+    font-size: 1.5em;
+  }
+
+  @include xl{
+    height: 1.5rem;
+    font-size: 1em;
+    margin: 0;
+  }
 }
 
 .Decline {

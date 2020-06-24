@@ -5,9 +5,25 @@
   margin-left: $gutter + 2.5;
   position: absolute;
   font-weight: 700;
+
+  @include xl{
+    position: absolute;
+    left: 18rem;
+    top: 5%;
+    margin: 0;
+  }
+
   &__User {
     color: $gold;
     font-size: 1.4rem;
+    @include xl{
+      font-size: 1.8em;
+    }
+  }
+}
+.Welcome h1{
+  @include xl {
+    font-size: 1.8em;
   }
 }
 
@@ -17,16 +33,45 @@
   position: relative;
   overflow-x: hidden;
 
+  @include xl{
+    justify-content: flex-start;
+    overflow-x: initial;
+    flex-direction: column;
+    height: 50%;
+    align-items: flex-start;
+    width: 65%;
+    margin: 10% auto 0;
+    height: 85%;
+  }
+
   &__Header {
     grid-area: header;
+    @include xl{
+      position: fixed;
+      z-index: 1;
+      height: 100vh;
+      grid-area : none;
+      width: 16rem;
+      background-image: url('../../../../assets/images/backgroundlight.jpg');
+      background-repeat: no-repeat;
+      background-position-x: -4rem;;
+      background-size: cover;;
+      border-right: solid #DCAA84 0.5rem;
+    }
   }
 
   &__Logo {
     grid-area: header;
     width: $gutter * 3;
+    @include xl {
+      width: 100%;
+    }
 
     img {
-      width: 55%;
+      width: 50%;
+      @include xl{
+        width: 100%;
+      }
     }
   }
 
@@ -35,6 +80,15 @@
       position: absolute;
       top: 0;
       right: 0;
+      @include xl{
+        font-size: 1.25em;
+        position: relative;
+        margin-top: 1rem;
+      }
+    }
+    
+    @include xl {
+      display: none;
     }
 
     @include flex(center, center, row wrap);
@@ -48,6 +102,8 @@
     width: 6.1rem;
     transition: 300ms ease-in-out;
     z-index: 10;
+
+    
 
     &__Open {
       @extend .Nav__Menu;

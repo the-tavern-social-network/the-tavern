@@ -12,6 +12,17 @@
   // transition: all 750ms cubic-bezier(1,.14,.23,1.44);
   transition: all 750ms cubic-bezier(.46,.59,.36,1.27);
   
+  @include xl{
+    transform: none;
+    position: relative;
+    display: block;
+    flex-flow: initial;
+    transition: none;
+    top: 0;
+    right: 0;
+    background-color: initial;
+  }
+
   &__Open {
     transform: translate(0); 
     // transition: all 750ms cubic-bezier(.75,-1.52,.04,1.95);
@@ -24,7 +35,9 @@
     padding: $gutter/2 $gutter/3;
     border-right: solid 2.5px #000;
 
-
+    @include xl{
+      padding: $gutter/3.5
+    }
     &:last-child {
       padding: 0 $gutter/2.5;
       border: none;
@@ -35,9 +48,17 @@
 
   &__Deconnexion {
       border: none;
-  
+      cursor: pointer;
+      @include xl{
+        position: fixed;
+        bottom: 3.5rem;
+        left: 6.5rem;
+      }
       img {
         width: 1.5rem;
+        @include xl{
+          width: 3rem;
+        }
       }
     }
 };

@@ -37,6 +37,10 @@
   color: white;
   font-weight: 200;
 
+  @include xl{
+    display: flex;
+  }
+
   &__Main {
     grid-area: main;
   }
@@ -46,6 +50,11 @@
     grid-area: footer;
     font-size: 0.8rem;
     text-align: center;
+    @include xl {
+      position: fixed;
+      bottom: 0;
+      z-index: 3;
+    }
   }
 }
 
