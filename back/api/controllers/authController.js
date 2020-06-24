@@ -51,6 +51,7 @@ module.exports = {
     //	sending back the user data to the client
     res.status(200).send({
       user: req.session.user,
+      contacts: await req.session.user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
       isLoggedIn: true,
     });
@@ -66,6 +67,7 @@ module.exports = {
       //  if so sends back the user data to the client
       return res.status(200).send({
         user: req.session.user,
+        contacts: await req.session.user.getContacts(),
         pendingRequests: await getUserPendingRequests(user),
         isLoggedIn: true,
       });

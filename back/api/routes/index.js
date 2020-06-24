@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const genericController = require('../controllers/genericController');
+const { genericController, userController } = require('../controllers');
 const capture = require('../util/capture');
+
+router.patch('/user/:id', capture(userController.updateOne));
 
 router
   .route('/:entity')

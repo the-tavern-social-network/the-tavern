@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const associationController = require('../controllers/associationController');
+const { associationController } = require('../controllers');
 const capture = require('../util/capture');
 
 router.post('/contact/:userId/add/:contactId', capture(associationController.addContact));

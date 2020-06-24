@@ -46,7 +46,7 @@ module.exports = {
     const response = await model.findByPk(newCreatedModel.id, {
       include,
     });
-        
+
     switch (model) {
       case models.Post:
         io.getIo().emit('receive_post', response);
