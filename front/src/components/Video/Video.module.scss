@@ -1,0 +1,13 @@
+@import '../../assets/scss/variables';
+
+.Video {
+  display: none;
+  @include xl {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 100vh;
+  }
+}

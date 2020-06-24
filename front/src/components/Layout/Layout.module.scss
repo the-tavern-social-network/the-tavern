@@ -20,11 +20,12 @@
     background-position: 13rem;
     padding: 0;
   }
-  
+
   &__Logo {
+    position: relative;
     grid-area: header;
     width: 9rem;
-    z-index: 100;
+    z-index: 200;
 
     @include xl {
     max-width: 400px;

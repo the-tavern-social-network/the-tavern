@@ -1,28 +1,28 @@
 @import '../../../assets/scss/variables';
 
 .Connexion {
+  position: relative;
   margin-left: 1rem;
   font-weight: 400;
   font-size: 5rem;
-
+  
   &__Container {
     @include flex(center, center, row-reverse wrap);
     font-family: 'Josefin Sans', sans-serif;
     position: fixed;
+    z-index: 200;
     right: -11.6rem;
     bottom: 38%;
     transform: rotateZ(-90deg);
     cursor: pointer;
 
     @include xl {
-      display: inline-block;
-      top: 93%;
-      right: 20.4rem;
       left: 44.5%;
+      bottom: 2rem;
       transform: rotateZ(0deg);
       display: flex;
       flex-flow: row-reverse;
-
+      max-width: 30rem;
     }
   }
 }
@@ -38,7 +38,7 @@
   @include xl {
     position: absolute;
   }
-
+  
   ~ div {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     width: 2.5rem;

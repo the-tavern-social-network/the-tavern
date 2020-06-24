@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Nav from '../../containers/TheTavern/components/Nav';
+import Video from '../Video/Video'
 
 import logo from '../../assets/images/logo1.svg';
 import styles from './Layout.module.scss';
@@ -16,7 +17,10 @@ const Layout = ({ section, children }) => {
           <header className={styles.Auth__Logo}>
             <img src={logo} alt="logo TheTavern" />
           </header>
-          <main className={styles.Auth__Main}>{children}</main>
+          <main className={styles.Auth__Main}>
+          {children}
+          <Video/>
+          </main>
           <footer className={styles.Footer}>© thetavern | Tous droits réservés | 2020</footer>
         </div>
       );
