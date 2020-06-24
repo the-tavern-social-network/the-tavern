@@ -2,6 +2,7 @@
 
 .Signin {
   position: relative;
+  z-index: 100;
   background-color: rgba(#3a271d, 0.7);
   clip-path: polygon(
     0% 0%,
@@ -56,11 +57,23 @@
   padding: $gutter;
   margin-top: $gutter + 1rem;
 
+  @include xl {
+    position: absolute;
+    max-width: 25rem;
+    max-height: 280px;
+    right: 20%;
+    bottom: 30%;
+    left: 60%;
+    top: 31%;
+  }
+
+
   &__Container {
     @include flex(center, center, column nowrap);
     max-width: 20rem;
     margin: auto;
     position: relative;
+
   }
 
   &__CrossSword {
@@ -110,4 +123,9 @@
     box-shadow: none;
     text-decoration: underline;
   }
+
+}ß
+.Presentation {
+  display: none;
+
 }

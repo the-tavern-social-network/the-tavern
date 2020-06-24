@@ -16,10 +16,25 @@
   background-attachment: fixed;
   padding: 1rem;
 
+  @include xl {
+    background-position: 13rem;
+    padding: 0;
+  }
+
   &__Logo {
+    position: relative;
     grid-area: header;
     width: 9rem;
-    z-index: 100;
+    z-index: 200;
+
+    @include xl {
+    max-width: 400px;
+    width: 15rem;
+    position: absolute;
+    left: 37%;
+    top: 29%;
+
+    }
   }
 
   &__Main {
@@ -33,9 +48,11 @@
   grid-template-rows: fit-content(5rem) auto fit-content(5rem);
   grid-template-areas: 'header' 'main' 'footer';
   font-family: 'nunito sans', nunito;
-  background-color: #0b0501;
+  background-color: #0B0501;
   color: white;
   font-weight: 200;
+
+  
 
   &__Main {
     grid-area: main;
@@ -46,12 +63,22 @@
     grid-area: footer;
     font-size: 0.8rem;
     text-align: center;
+
   }
 }
+
 
 .Footer {
   padding: 1rem 1rem 0;
   grid-area: footer;
   font-size: 0.8rem;
   text-align: center;
+
+  @include xl {
+    position: absolute;
+    text-align: right;
+    right: 0;
+    bottom: .5rem;
+    
+  }
 }
