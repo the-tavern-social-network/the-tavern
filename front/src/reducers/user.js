@@ -8,6 +8,8 @@ import {
   DELETE_CONTACT,
   REMOVE_CONTACT,
   SEND_CONTACT_REQUEST,
+  ACCEPT_CONTACT,
+  ADD_CONTACT,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -62,6 +64,16 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
+    case ACCEPT_CONTACT:
+      return {
+        ...state,
+        loggedUser: action.user,
+      };
+    case ADD_CONTACT:
+      return {
+        ...state,
+        loggedUser: action.contact,
+      };
     case DELETE_CONTACT:
       if (!action.isContact) {
         if (action.contactId === state.loggedUser.id) {

@@ -5,7 +5,7 @@ const capture = require('../util/capture');
 
 router.post('/contact/:userId/add/:contactId', capture(associationController.addContact));
 
-router.patch('/contact/:userId/accept/:contact:id', capture(associationController.acceptContact));
+router.patch('/contact/:userId/accept/:contactId', capture(associationController.acceptContact));
 
 router.delete('/contact/:userId/delete/:contactId', capture(associationController.deleteContact));
 

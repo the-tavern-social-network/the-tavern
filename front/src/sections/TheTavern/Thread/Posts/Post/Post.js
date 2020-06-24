@@ -19,13 +19,11 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const deleteHandler = (id) => {
     deletePost(id);
   };
+
   const sentRequest =
     loggedUser.pendingRequests.sent.find((user) => user.id === post.author.id) && true;
-  console.log(sentRequest);
   const receivedRequest =
     loggedUser.pendingRequests.received.find((user) => user.id === post.author.id) && true;
-  console.log({ sentRequest: loggedUser.pendingRequests.sent });
-  console.log({ receivedRequest: loggedUser.pendingRequests.received });
 
   return (
     <div className={styles.Container}>

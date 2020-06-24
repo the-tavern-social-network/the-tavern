@@ -3,7 +3,6 @@ const getUserPendingRequests = require('../util/getUserPendingRequests');
 const io = require('../socket');
 
 module.exports = {
-  //* ok
   addContact: async (req, res, next) => {
     const { userId, contactId } = req.params;
 
@@ -17,7 +16,7 @@ module.exports = {
       pendingRequests: await getUserPendingRequests(contact),
     };
 
-    io.getIo().emit('add_contact', { user, contactInfos });
+    io.getIo().emit('add_contact', { contactInfos });
 
     res.send({
       user,
@@ -26,21 +25,28 @@ module.exports = {
     });
   },
 
-  //? To verify
   acceptContact: async (req, res, next) => {
     const { userId, contactId } = req.params;
 
     const user = await User.findByPk(+userId, { include: 'posts' });
-    const updatedUser = await user.acceptContact(+contactId);
+    await user.acceptContact(+contactId);
+
+    const contact = await User.findByPk(+contactId);
+    const contactInfos = {
+      user: contact,
+      contacts: await contact.getContacts(),
+      pendingRequests: await getUserPendingRequests(contact),
+    };
+
+    io.getIo().emit('accept_contact', { contactInfos });
 
     res.send({
-      user: updatedUser,
+      user,
       contacts: await user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
     });
   },
 
-  //* ok
   deleteContact: async (req, res, next) => {
     const { userId, contactId } = req.params;
 

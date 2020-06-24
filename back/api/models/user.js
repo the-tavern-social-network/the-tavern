@@ -3,7 +3,7 @@ const sequelize = require('../db/database');
 const Contact = require('../models/contact');
 
 class User extends Model {
-  //? To verify
+  //* OK
   getContacts = async () => {
     try {
       const requests = await Contact.findAll({
@@ -80,7 +80,7 @@ class User extends Model {
     }
   };
 
-  //? To verify
+  //* OK
   acceptContact = async (contactId) => {
     try {
       const senderRequest = await Contact.findOne({
@@ -103,13 +103,13 @@ class User extends Model {
         status: 'accepted',
       });
 
-      return await User.findByPk(+this.id);
+      return true;
     } catch (err) {
       throw err;
     }
   };
 
-  //* ok
+  //* OK
   deleteContact = async (contactId) => {
     try {
       const sender = await Contact.findOne({

@@ -1,4 +1,11 @@
-import { WS_CONNECT, addPost, removePost, removeContact, addContactRequest } from '../actions';
+import {
+  WS_CONNECT,
+  addPost,
+  removePost,
+  removeContact,
+  addContactRequest,
+  addContact,
+} from '../actions';
 
 let socketCanal;
 
@@ -17,20 +24,24 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(removePost(+id));
       });
 
-      socketCanal.on('add_contact', ({ user, contactInfos }) => {
-        delete user.password;
+      socketCanal.on('add_contact', ({ contactInfos }) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
           contacts: contactInfos.contacts,
         };
         delete contact.password;
-        store.dispatch(addContactRequest(user, contact));
+        store.dispatch(addContactRequest(contact));
       });
 
-      socketCanal.on('accept_contact', ({ user, contact }) => {
-        // TODO accept contact
-        // TODO move both user and contact from pending requests to contacts
+      socketCanal.on('accept_contact', ({ contactInfos }) => {
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
+        delete contact.password;
+        store.dispatch(addContact(contact));
       });
 
       socketCanal.on('delete_contact', ({ userId, contactId }) => {

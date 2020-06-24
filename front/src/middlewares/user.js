@@ -23,6 +23,7 @@ export const user = (store) => (next) => async (action) => {
         action.user = data.user;
         action.user.pendingRequests = data.pendingRequests;
         action.user.contacts = data.contacts;
+        delete action.user.password;
 
         next(action);
       } catch (err) {
@@ -31,22 +32,26 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
-    // case ACCEPT_CONTACT:
-    //   try {
-    //     console.log(action);
-    //     store.dispatch(setLoading());
-    //     const user_id = user.loggedUser.id;
-    //     const contact_id = action.contactId;
+    case ACCEPT_CONTACT:
+      try {
+        store.dispatch(setLoading());
+        const user_id = +user.loggedUser.id;
+        const contact_id = +action.contactId;
 
-    //     const { data } = await axios.patch(`${apiUrl}/contact/${user_id}/accept/${contact_id}`);
+        const { data } = await axios.patch(`${apiUrl}/contact/${user_id}/accept/${contact_id}`);
 
-    //     console.log(data);
-    //   } catch (err) {
-    //     store.dispatch(setError());
-    //   } finally {
-    //     store.dispatch(setLoading());
-    //   }
-    //   break;
+        action.user = data.user;
+        action.user.pendingRequests = data.pendingRequests;
+        action.user.contacts = data.contacts;
+        delete action.user.password;
+
+        next(action);
+      } catch (err) {
+        store.dispatch(setError());
+      } finally {
+        store.dispatch(setLoading());
+      }
+      break;
     case DELETE_CONTACT:
       try {
         console.log(action);
