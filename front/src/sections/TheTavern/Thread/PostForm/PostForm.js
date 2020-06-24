@@ -8,7 +8,7 @@ import cross from '../../../../assets/images/logocroix.svg';
 import darlyne from '../../../../assets/images/darlyne.jpg';
 import styles from './PostForm.module.scss';
 
-const PostForm = ({ post, resetFields, isOpen, setIsOpen }) => {
+const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
@@ -38,12 +38,14 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen }) => {
           <div className={styles.Gutter}></div>
         </form>
         <div className={styles.PostForm__Invitation}>
-          <Invitation name="EdgeAbonnement" avatar={cross} />
-          <Invitation name="LaServeuseAUXGROSSEINS" avatar={cross} />
-          <Invitation name="LaServeuseAUXGROSSEINS" avatar={cross} />
-          <Invitation name="LaServeuseAUXGROSSEINS" avatar={cross} />
-          <Invitation name="LaServeuseAUXGROSSEINS" avatar={cross} />
-          <Invitation name="TuVeuxEtreMonAMIE" avatar={cross} />
+          {user.pendingRequests.received.map((contact) => (
+            <Invitation
+              key={contact.id}
+              {...contact}
+              acceptContact={acceptContact}
+              deleteContact={deleteContact}
+            />
+          ))}
         </div>
         <Search />
       </div>

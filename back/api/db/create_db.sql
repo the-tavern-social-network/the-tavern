@@ -3,19 +3,15 @@ BEGIN;
 DROP TABLE IF EXISTS "users", "tavern_requests", "posts", "contacts", "Session" CASCADE;
 
 DROP TYPE IF EXISTS status;
--- Status 0 references to Pending Friend Request,
--- Status 1 references Confirm Friend Request
--- Status 2 references You.
-CREATE TYPE status as ENUM ('0', '1', '2');
+CREATE TYPE status as ENUM ('pending', 'accepted', 'blocked');
 
 CREATE TABLE IF NOT EXISTS "users" (
   "id" SERIAL PRIMARY KEY,
   "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
   "username" TEXT NOT NULL UNIQUE,
-  "avatar" TEXT,
-  "description" TEXT,
-  "contact_count" INT DEFAULT 0,
+  "avatar" TEXT NULL,
+  "description" TEXT NULL,
   "birthdate" DATE NOT NULL,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP
@@ -43,18 +39,20 @@ CREATE TABLE IF NOT EXISTS "posts" (
   "updated_at" TIMESTAMP
 );
 
-CREATE TABLE "contacts" (
-"contact_one" INT NOT NULL REFERENCES "users" ("id")
-ON DELETE CASCADE ON UPDATE CASCADE,
-"contact_two" INT NOT NULL REFERENCES "users" ("id")
-ON DELETE CASCADE ON UPDATE CASCADE,
-"status" status DEFAULT '0',
-PRIMARY KEY ("contact_one","contact_two"),
-"created_at" TIMESTAMP DEFAULT NOW(),
-"updated_at" TIMESTAMP
+CREATE TABLE IF NOT EXISTS "contacts" (
+  "id" SERIAL,
+  "user_id" INT NOT NULL REFERENCES "users" ("id")
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  "contact_id" INT NOT NULL REFERENCES "users" ("id")
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  "status" status DEFAULT 'pending',
+  "requester" BOOLEAN DEFAULT 'false',
+  PRIMARY KEY ("user_id","contact_id", "id"),
+  "created_at" TIMESTAMP DEFAULT NOW(),
+  "updated_at" TIMESTAMP
 );
 
-CREATE TABLE "Session" (
+CREATE TABLE IF NOT EXISTS "Session" (
   "sid" TEXT NOT NULL,
   "expires" TIMESTAMP WITH TIME ZONE NULL,
   "data" TEXT,

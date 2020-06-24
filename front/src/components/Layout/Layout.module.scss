@@ -40,9 +40,12 @@
   @include xl{
     display: flex;
   }
-
+  
   &__Main {
     grid-area: main;
+    @include xl {
+      margin-left: 16rem;
+    }
   }
 
   &__Footer {
