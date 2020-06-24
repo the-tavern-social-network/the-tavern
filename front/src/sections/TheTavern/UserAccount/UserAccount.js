@@ -29,12 +29,13 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
       <button onClick={clickHandler} className={styles.UserAccount__DeleteBtn}>
         Supprimer compte
       </button>
-      <h1
-      // className={styles.Username}
-      >
-        {user.username}
-      </h1>
-      <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
+      <div className={styles.Username_Container}>
+        <h1 className={styles.Username}>
+          {user.username}
+        </h1>
+        <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
+
+      </div>
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <Field
@@ -47,12 +48,33 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
         </form>
       ) : (
         <div className={styles.UserAccount__Description}>
-          <p>{user.description}</p>
+          <p className={styles.UserAccount__Description_Text} >{user.description}</p>
           <button onClick={handleEdit}>Editer</button>
         </div>
       )}
-      <ul>
-        <li>liste d'amis</li>
+      <ul className={styles.ContactList}>
+        <li className={styles.ContactList_Title}>liste Contacts </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>DavidLeFaible</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>FabienneLapineDeCorse</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>ThomasEnSoiEtEnPrincipe</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>DavidLeFaible</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        <li className={styles.ContactList_Content_Container}>
+          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
+          <button className={styles.ContactList_Btn}>Suppr</button> 
+        </li>
+        
       </ul>
     </section>
   );
