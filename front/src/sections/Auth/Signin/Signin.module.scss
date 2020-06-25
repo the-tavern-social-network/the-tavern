@@ -1,7 +1,7 @@
 @import '../../../assets/scss/variables';
 
 .Signin {
-  position: relative;
+  position: absolute;
   z-index: 100;
   background-color: rgba(#3a271d, 0.7);
   clip-path: polygon(
@@ -57,6 +57,12 @@
   padding: $gutter;
   margin-top: $gutter + 1rem;
 
+  @include lg {
+    width: 35%;
+    position: absolute;
+    right: 3rem;
+  }
+
   @include xl {
     position: absolute;
     max-width: 25rem;
@@ -67,14 +73,15 @@
     top: 31%;
   }
 
-
   &__Container {
     @include flex(center, center, column nowrap);
     max-width: 20rem;
     margin: auto;
     position: relative;
-
   }
+
+  // &__Presentation {
+  // }
 
   &__CrossSword {
     width: 2rem;
@@ -98,6 +105,7 @@
   }
 
   &__Btn {
+    @include flex(center, center, row nowrap);
     margin-top: ($gutter/5);
     font-family: 'nunito sans', sans-serif;
     border: none;
@@ -109,6 +117,11 @@
     line-height: 1.5;
     background-color: #f2af0d;
     color: white;
+
+    &__Shield {
+      width: 1.3rem;
+      margin-right: 0.3rem;
+    }
 
     &__Container {
       @include flex(center, space-between, row wrap);
@@ -123,9 +136,7 @@
     box-shadow: none;
     text-decoration: underline;
   }
-
-}ß
-.Presentation {
+}
+ß .Presentation {
   display: none;
-
 }

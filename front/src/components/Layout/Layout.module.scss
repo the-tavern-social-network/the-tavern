@@ -16,9 +16,12 @@
   background-attachment: fixed;
   padding: 1rem;
 
+  @include lg {
+    padding: 0;
+  }
+
   @include xl {
     background-position: 13rem;
-    padding: 0;
   }
 
   &__Logo {
@@ -27,17 +30,53 @@
     width: 9rem;
     z-index: 200;
 
-    @include xl {
+    @include lg {
       max-width: 400px;
-      width: 15rem;
+      width: 12rem;
       position: absolute;
       left: 37%;
       top: 29%;
+    }
+
+    @include xl {
+      width: 15rem;
     }
   }
 
   &__Main {
     grid-area: main;
+
+    @include lg {
+      display: flex;
+      align-items: center;
+    }
+
+    @include xl {
+      display: block;
+    }
+  }
+
+  &__Footer {
+    padding: 1rem 1rem 0;
+    grid-area: footer;
+    font-size: 0.8rem;
+    text-align: center;
+
+    @include lg {
+      grid-area: none;
+      position: absolute;
+      right: 0;
+      bottom: 0.5rem;
+    }
+
+    @include xl {
+      grid-area: footer;
+      text-align: right;
+      position: absolute;
+      text-align: right;
+      right: 0;
+      bottom: 0.5rem;
+    }
   }
 }
 
@@ -53,7 +92,7 @@
   font-weight: 200;
 
   @include lg {
-    grid-template-columns: 15% auto;
+    grid-template-columns: 18rem auto;
     grid-template-areas: 'header main' 'header main' 'footer main';
   }
 
@@ -61,7 +100,7 @@
     grid-area: main;
 
     @include lg {
-      padding: $gutter ($gutter * 2);
+      padding: $gutter ($gutter * 1.5);
     }
   }
 
@@ -73,6 +112,8 @@
 
     @include lg {
       z-index: 200;
+      position: fixed;
+      bottom: 0;
     }
   }
 }

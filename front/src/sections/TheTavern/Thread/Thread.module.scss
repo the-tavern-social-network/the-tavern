@@ -41,9 +41,9 @@
   & > section {
     max-width: 50rem;
     width: 100%;
-    margin: 0 1rem;
 
     @include md {
+      margin: 0 1rem;
       width: 50%;
     }
 

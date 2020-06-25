@@ -15,7 +15,7 @@ const Presentation = () => {
         <h1 className={styles.Desktop__Title}>
           <img className={styles.CrossSwordDesktop} src={crossSword} alt="épées entrecroisées" />
           Bienvenue
-        </h1>{' '}
+        </h1>
         <h2 className={styles.Desktop__SubTitle}>
           dans le premier réseau social dédié au jeu de rôle.
         </h2>

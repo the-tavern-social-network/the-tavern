@@ -57,6 +57,12 @@
   padding: $gutter;
   margin-top: $gutter + 1rem;
 
+  @include lg {
+    width: 35%;
+    position: absolute;
+    right: 3rem;
+  }
+
   @include xl {
     position: absolute;
     max-width: 25rem;
@@ -95,6 +101,7 @@
     width: 100%;
   }
   &__Btn {
+    @include flex(center, center, row nowrap);
     margin-top: ($gutter/5);
     font-family: 'nunito sans', sans-serif;
     border: none;
@@ -107,5 +114,10 @@
     align-self: flex-end;
     background-color: #03c9a5;
     color: white;
+
+    &__Scroll {
+      width: 1.6rem;
+      margin-right: 0.3rem;
+    }
   }
 }

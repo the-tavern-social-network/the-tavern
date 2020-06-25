@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/variables';
 
 .Presentation {
-  font-family: 'nunito sans', nunito;
+  font-family: 'nunito sans', sans-serif;
   position: relative;
   z-index: 100;
   font-size: 0.95rem;
@@ -19,7 +19,7 @@
   -moz-outline-radius: 0 0 10px 10px;
   overflow: auto;
 
-  @include xl {
+  @include lg {
     font-size: 0.85rem;
     background-color: white;
     width: 45%;
@@ -29,13 +29,11 @@
     margin: 0;
     outline-offset: 0;
     border-radius: 0;
-    color: #0B0501;
+    color: #0b0501;
     padding-left: 9%;
     padding-right: 10rem;
     padding-top: 6%;
   }
-
-
 
   .Signature {
     text-align: right;
@@ -44,8 +42,8 @@
     font-weight: 900;
     color: #ffff00;
 
-    @include xl {
-      padding-right: 20%;;
+    @include lg {
+      padding-right: 20%;
       font-size: 1.3em;
       color: #b37e49;
       font-style: normal;
@@ -57,22 +55,22 @@
   .Desktop {
     display: none;
 
-       @include xl {
-       display: block;
-      }
+    @include lg {
+      display: block;
+    }
 
     &__Title {
-       @include xl {
-       display: inline-flex;
+      @include lg {
+        display: inline-flex;
         font-size: 5em;
         font-weight: 900;
         margin-left: -3.7rem;
         color: #553719;
       }
     }
-           
+
     &__SubTitle {
-       @include xl { 
+      @include lg {
         font-size: 1.3em;
         color: #553719;
         max-width: 400px;
@@ -81,7 +79,7 @@
     }
 
     &__AmbientText {
-      @include xl {
+      @include lg {
         margin-top: 1rem;
         font-style: italic;
         max-width: 420px;
@@ -90,7 +88,7 @@
     }
 
     &__PresentationText {
-      @include xl {
+      @include lg {
         margin-top: 1rem;
         max-width: 400px;
         min-width: 300px;
@@ -98,17 +96,16 @@
     }
 
     &__TavernierText {
-      @include xl {
+      @include lg {
         margin-top: 1rem;
         font-style: italic;
         max-width: 350px;
       }
     }
-    
- }
+  }
 
   .Mobile {
-    @include xl {
+    @include lg {
       display: none;
     }
   }
@@ -118,14 +115,14 @@
     width: 30%;
     position: relative;
     transition: all 1.8s cubic-bezier(0.51, 1.61, 0.46, 0.85);
-    
-    @include xl {
+
+    @include lg {
       display: none;
     }
   }
   .CrossSwordDesktop {
     display: none;
-    @include xl {
+    @include lg {
       display: block;
       width: 50px;
       margin-left: 0;
@@ -134,23 +131,15 @@
       top: 6.4rem;
       left: 3.7rem;
       transition: all 1.8s cubic-bezier(0.51, 1.61, 0.46, 0.85);
-
- }
- 
-
     }
-    .CrossSwordDesktop:hover,
-    .CrossSwordDesktop:active {
-    transform: rotate(360deg);
-   }
   }
-
-
-  .CrossSword:hover,
-  .CrossSword:active {
+  .CrossSwordDesktop:hover,
+  .CrossSwordDesktop:active {
     transform: rotate(360deg);
   }
+}
 
-
-
-
+.CrossSword:hover,
+.CrossSword:active {
+  transform: rotate(360deg);
+}
