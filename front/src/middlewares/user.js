@@ -5,6 +5,7 @@ import {
   DELETE_CONTACT,
   EDIT_USER_ACCOUNT,
   DELETE_ACOUNT,
+  UPDATE_AVATAR,
   setLoading,
   setError,
 } from '../actions';
@@ -108,6 +109,8 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
+    case UPDATE_AVATAR:
+      console.log(action.avatar);
     default:
       next(action);
   }

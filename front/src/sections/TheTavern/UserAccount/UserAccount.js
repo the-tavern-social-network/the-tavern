@@ -5,10 +5,13 @@ import Field from '../../../containers/components/Field';
 import styles from './UserAccount.module.scss';
 import darlyne from '../../../assets/images/darlyne.jpg';
 import Modal from '../../../components/Modal/Modal';
+import avatars from '../../../util/avatar';
+import AvatarsList from './AvatarsList/AvatarsList';
 
-const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount }) => {
+const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount, updateAvatar }) => {
   const [isModalVisible, setModalIsVisible] = useState(false);
-
+  const [isModalAvatar, setModalAvatar] = useState(false)
+  console.log(avatars);
   const clickHandler = (event) => {
     setModalIsVisible(true);
   };
@@ -35,7 +38,7 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
           {user.username}
         </h1>
         <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
-
+        <button onClick={() => setModalAvatar(!isModalAvatar)} >Modifier Avatar</button>
       </div>
       {isEditing ? (
             
@@ -127,6 +130,13 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
           header="Suppression de Compte"
           message={`Voulez vous vraiment supprimer votre compte ?`}
           modalConfirm={() => deleteAcount(user.id)}
+        />
+      )}
+      {isModalAvatar && (
+        <AvatarsList
+          modalCancel={() => setModalIsVisible(false)}
+          avatarImage={avatars[7]}
+          modalConfirm={(test) => updateAvatar(test)}
         />
       )}
     </section>
