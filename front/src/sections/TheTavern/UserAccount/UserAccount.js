@@ -4,9 +4,10 @@ import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
 import darlyne from '../../../assets/images/darlyne.jpg';
+import Contact from './Contact/Contact';
 import Modal from '../../../components/Modal/Modal';
 
-const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount }) => {
+const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount, deleteContact }) => {
   const [isModalVisible, setModalIsVisible] = useState(false);
 
   const clickHandler = (event) => {
@@ -24,7 +25,6 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
     // resetFields("user");
   };
 
-  // TODO show modal to delete account
   return (
     <section className={styles.UserAccount}>
       <button onClick={clickHandler} className={styles.UserAccount__DeleteBtn}>
@@ -58,68 +58,9 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
 
         <h2 className={styles.ContactList_Title}>liste Contacts </h2>
       <ul className={styles.ContactList}>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>DavidLeFaible</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        {/* Ajout en dur de contacts */}
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>FabienneLapineDeCorseFabienneLapineDeCorse</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>ThomasEnSoiEtEnPrincipe</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>DavidLeFaible</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        <li className={styles.ContactList_Content_Container}>
-          <span className={styles.ContactList_Content}>MaxOverlordEdgeDu85</span>
-          <button className={styles.ContactList_Btn}>Suppr</button> 
-        </li>
-        
+        {
+          user.contacts.map(contact=> <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />)
+        }
       </ul>
       {isModalVisible && (
         <Modal
@@ -143,6 +84,7 @@ UserAccount.propTypes = {
   isEditing: PropTypes.bool,
   setIsEditing: PropTypes.func.isRequired,
   editUserAccount: PropTypes.func.isRequired,
+  
 };
 
 UserAccount.defaultProps = {

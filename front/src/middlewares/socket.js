@@ -44,8 +44,15 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(addContact(contact));
       });
 
-      socketCanal.on('delete_contact', ({ userId, contactId }) => {
-        store.dispatch(removeContact(userId, contactId));
+      socketCanal.on('delete_contact', ({ contactInfos }) => {
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
+        delete contact.password;
+
+        store.dispatch(removeContact(contact));
       });
       break;
 
