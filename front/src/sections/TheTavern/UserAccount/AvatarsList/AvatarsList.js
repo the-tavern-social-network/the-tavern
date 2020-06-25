@@ -1,20 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AvatarsList.module.scss';
+import AvatarItem from './AvatarItem/AvatarItem';
+import cross from '../../../../assets/images/logocroix.svg';
+// import Backdrop from '../../../../components/Backdrop/Backdrop'
 
-const AvatarsList = ({modalConfirm, modalCancel, avatarImage}) => (
-  <div className={styles.Modal}>
-      <p>Faites votre choix parmis les avatars ci dessous!</p>
-      <form>
-          <input type="radio" avatarImage={avatarImage} />
-        <button onClick={() => modalConfirm('test')} >valider</button>
-      </form>
-  </div>
-);
+const AvatarsList = ({ modalCancel, avatar, avatarImages, updateAvatar, updateImage}) =>  {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        updateImage(avatar);
+        modalCancel();
+    }
+
+    console.log(modalCancel);
+    return (
+    <div className={styles.Modal}>
+        <div>
+            <p>Faites votre choix parmis les avatars ci dessous!</p>
+            <div onClick={modalCancel}>
+               <img src={cross} alt=""/>
+            </div>
+        </div>
+        <form onSubmit={handleSubmit}>
+            <div className={styles.AvatarLists}>
+              {avatarImages.map((avatarImage) => <AvatarItem key={avatarImage} avatarImage={avatarImage} avatar={avatar} updateAvatar={(avatar) => updateAvatar(avatar) } />)}
+            </div>
+            <button>valider</button>
+        </form>
+    </div>
+    );
+}
 
 AvatarsList.propTypes = {
- modalConfirm: PropTypes.func.isRequired,
+ updateAvatar: PropTypes.func.isRequired,
  modalCancel: PropTypes.func.isRequired,
- avatarImage: PropTypes.string.isRequired,
+ avatarImages: PropTypes.array.isRequired,
+ avatar: PropTypes.string.isRequired,
 };
 export default AvatarsList;

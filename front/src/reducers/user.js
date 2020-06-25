@@ -1,3 +1,5 @@
+import avatardefault from '../assets/images/avatar/Avatardefault.png';
+
 import {
   CONNECT,
   DISCONNECT,
@@ -11,6 +13,7 @@ import {
   SEND_CONTACT_REQUEST,
   ACCEPT_CONTACT,
   ADD_CONTACT,
+  UPDATE_AVATAR,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -18,7 +21,7 @@ const INITIAL_STATE = {
   isLoggedIn: false,
 
   hasTriedToAuthenticate: false,
-
+  avatar: avatardefault,
   isEditing: false,
   description: '',
 };
@@ -131,6 +134,11 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         loggedUser: {},
         isLoggedIn: false,
+      };
+    case UPDATE_AVATAR:
+      return {
+        ...state,
+        avatar: action.avatar,
       };
     default:
       return state;

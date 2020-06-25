@@ -15,17 +15,9 @@
   color: #000;
   text-align: center;
   line-height: 1.2;
-
-  header {
-    font-size: 1.2em;
-  }
-
-  p {
-    font-size: 1em;
-  }
 }
 
-.Buttons__Container {
+.AvatarLists {
   @include flex(center, space-between, row wrap);
-  width: 100%;
+  width: 80%;
 }

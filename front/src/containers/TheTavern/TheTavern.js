@@ -9,7 +9,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   wsConnect: () => dispatch(wsConnect()),
   logout: () => dispatch(logout()),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TheTavern);

@@ -11,7 +11,6 @@ import styles from './Post.module.scss';
 
 const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
   const deleteBtnClickHandler = () => {
     setIsDeleteModalOpen(true);
   };
@@ -39,7 +38,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         <div className={styles.AbsoluteAuthor}>
           <img
             className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
-            src={cross}
+            src={post.author.avatar}
             alt=""
           />
           {post.author.username !== loggedUser.username &&

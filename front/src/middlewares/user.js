@@ -5,7 +5,7 @@ import {
   DELETE_CONTACT,
   EDIT_USER_ACCOUNT,
   DELETE_ACOUNT,
-  UPDATE_AVATAR,
+  UPDATE_IMAGE,
   setLoading,
   setError,
 } from '../actions';
@@ -109,8 +109,20 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
-    case UPDATE_AVATAR:
-      console.log(action.avatar);
+    case UPDATE_IMAGE:
+      try {
+        console.log(action.avatar);
+        store.dispatch(setLoading());
+        const userAvatar = {
+          avatar: action.avatar,
+        }
+        await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userAvatar)
+      } catch (err) {
+        console.trace(err);
+        store.dispatch(setError());
+      } finally {
+        store.dispatch(setLoading());
+      }
     default:
       next(action);
   }

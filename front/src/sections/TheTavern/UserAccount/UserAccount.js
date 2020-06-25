@@ -6,9 +6,10 @@ import styles from './UserAccount.module.scss';
 import darlyne from '../../../assets/images/darlyne.jpg';
 import Modal from '../../../components/Modal/Modal';
 import avatars from '../../../util/avatar';
-import AvatarsList from './AvatarsList/AvatarsList';
+import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
 
-const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount, updateAvatar }) => {
+const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount }) => {
+  console.log(user);
   const [isModalVisible, setModalIsVisible] = useState(false);
   const [isModalAvatar, setModalAvatar] = useState(false)
   console.log(avatars);
@@ -37,7 +38,7 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
         <h1 className={styles.Username}>
           {user.username}
         </h1>
-        <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
+        <img className={styles.UserAccount__Avatar} src={user.avatar} alt="" />
         <button onClick={() => setModalAvatar(!isModalAvatar)} >Modifier Avatar</button>
       </div>
       {isEditing ? (
@@ -134,9 +135,8 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
       )}
       {isModalAvatar && (
         <AvatarsList
-          modalCancel={() => setModalIsVisible(false)}
-          avatarImage={avatars[7]}
-          modalConfirm={(test) => updateAvatar(test)}
+          modalCancel={() => setModalAvatar(false)}
+          avatarImages={avatars}
         />
       )}
     </section>
