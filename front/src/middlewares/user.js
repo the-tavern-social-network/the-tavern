@@ -55,13 +55,17 @@ export const user = (store) => (next) => async (action) => {
       break;
     case DELETE_CONTACT:
       try {
-        console.log(action);
         store.dispatch(setLoading());
         const user_id = user.loggedUser.id;
         const contact_id = action.contactId;
-
-        await axios.delete(`${apiUrl}/contact/${user_id}/delete/${contact_id}`);
-
+        
+        const { data } = await axios.delete(`${apiUrl}/contact/${user_id}/delete/${contact_id}`);
+        
+        action.user = data.user;
+        action.user.pendingRequests = data.pendingRequests;
+        action.user.contacts = data.contacts;
+        delete action.user.password;
+        
         next(action);
       } catch (err) {
         store.dispatch(setError());
