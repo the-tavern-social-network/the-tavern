@@ -2,11 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest }) => {
+const ProtectedRoute = ({ component: Component, isLoggedIn, hasTriedToAuthenticate, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => (isLoggedIn ? <Component {...props} /> : <Redirect to="/auth" />)}
+      render={(props) => {
+        if (hasTriedToAuthenticate) {
+          if (isLoggedIn) {
+            return <Component {...props} />;
+          } else {
+            return <Redirect to="/auth" />;
+          }
+        } else {
+          return (
+          null
+          );
+        }
+      }}
     />
   );
 };

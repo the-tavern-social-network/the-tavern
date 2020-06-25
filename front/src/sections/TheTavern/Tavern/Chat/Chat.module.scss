@@ -6,8 +6,11 @@
   line-height: 1.4;
 
   &__Messages {
+
+
     border-left: solid 1px yellow;
     border-right: solid 1px yellow;
+
     background-color: #55381a;
     padding: ($gutter/2);
     overflow: auto;
@@ -29,8 +32,11 @@
       }
       &__Content {
         padding: ($gutter/4);
+
+
         background-color: #0b0501;
         border-radius: 5px;
+
         color: #fff;
       }
     }
@@ -44,7 +50,10 @@
       &__Btn {
         position: absolute;
         border: none;
+
+
         border-radius: 5px;
+
         right: 0.5rem;
         padding: ($gutter/3);
         color: #fff;

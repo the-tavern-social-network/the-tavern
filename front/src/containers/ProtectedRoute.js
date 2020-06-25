@@ -4,6 +4,7 @@ import ProtectedRoute from '../hoc/ProtectedRoute';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
+  hasTriedToAuthenticate: state.user.hasTriedToAuthenticate,
 });
 
 const mapDispatchToProps = (dispatch) => ({});
