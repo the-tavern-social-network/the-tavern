@@ -1,15 +1,29 @@
-import React, { useEffect } from 'react';
+
+
+
+import React, { useEffect, useRef } from 'react';
+
 import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
 import styles from './Chat.module.scss';
 
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
+  const messagesContainer = useRef(null);
+
+  useEffect(() => {
+    const container = messagesContainer.current;
+    container.scrollTop = container.scrollHeight;
+  }, [messages]);
+
   useEffect(() => {
     connection.onmessage = (event) => {
       event.extra.user = user;
       if (connection.isInitiator) {
-        user.username = `${user.username} / GameMaster`
+
+
+        user.username = `${user.username} / GameMaster`;
+
       }
 
       if (event.data.type === 'message') {
@@ -35,7 +49,10 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
 
   return (
     <div className={styles.Chat}>
-      <div className={styles.Chat__Messages}>
+
+
+      <div className={styles.Chat__Messages} ref={messagesContainer}>
+
         <div className={styles.Chat__Messages__Message}>
           <p className={styles.Chat__Messages__Message__Player}>Le Tavernier</p>
           <p className={styles.Chat__Messages__Message__Content}>

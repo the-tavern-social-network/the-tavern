@@ -5,11 +5,10 @@ const app = express();
 const multer = require('multer');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 const morgan = require('morgan');
 const sequelize = require('./api/db/database');
+const associationsRoutes = require('./api/routes/associations');
 const authRoutes = require('./api/routes/auth');
 const mainRoutes = require('./api/routes');
 
@@ -46,25 +45,20 @@ app.use((req, res, next) => {
 
 const baseUrl = '/api/v1';
 app.use(`${baseUrl}/auth`, authRoutes);
+app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
-
-io.on('connection', (socket) => {
-  RTCMultiConnectionServer.addSocket(socket);
-  console.log('User is connected');
-  // const params = socket.handshake.query;
-
-  io.emit('connected_user', 'User is connected');
-
-  socket.on('add_post', (post) => {
-    io.emit('receive_post', post);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-});
 
 sequelize
   .authenticate()
-  .then(() => server.listen(PORT, () => console.log(`Server started on port ${PORT}`)))
+  .then(() => {
+    const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    const io = require('./api/socket').init(server);
+    io.on('connection', (socket) => {
+      RTCMultiConnectionServer.addSocket(socket);
+
+      socket.on('disconnect', () => {
+        console.log('User disconnected');
+      });
+    });
+  })
   .catch((err) => console.trace(err));

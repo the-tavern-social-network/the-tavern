@@ -1,0 +1,85 @@
+@import '../../../../assets/scss/variables';
+
+.Invitation {
+  @include flex(center, center, row wrap);
+  padding: 0.3rem;
+  background-color: #3a271d;
+  margin: 1rem 0.5rem;
+
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+
+  @include xl {
+    padding: 0.2rem;
+  }
+}
+
+.Asking {
+  @include flex(flex-start, space-around, column nowrap);
+  padding: 0.3rem;
+  width: 100%;
+}
+
+.Request {
+  @include flex(baseline, space-between, row wrap);
+  width: 100%;
+}
+
+.Name {
+  color: #03af91;
+  font-size: 0.9em;
+}
+
+.Message {
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.Avatar {
+  width: 13%;
+  border-radius: 50%;
+  background-color: green;
+
+  @include md {
+    width: 10%;
+  }
+
+  @include xl {
+    height: 10%;
+  }
+}
+
+.Buttons {
+  @include flex(center, center, row wrap);
+  width: fit-content;
+}
+
+.Add {
+  background-color: #04dab4;
+  color: #fff;
+  border: solid #04dab4 1px;
+  border-radius: 2px;
+  font-size: 0.9em;
+  width: fit-content;
+  padding: 0.3rem;
+
+  @include md {
+    font-size: 0.9em;
+  }
+}
+
+.Decline {
+  @extend .Add;
+  background-color: #d92626;
+  border: solid #d92626 1px;
+  margin-left: $gutter/2;
+
+  @include md {
+    margin-left: $gutter/4;
+  }
+
+  @include lg {
+    margin-left: $gutter/2;
+  }
+}

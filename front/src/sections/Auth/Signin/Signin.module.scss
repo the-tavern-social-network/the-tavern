@@ -1,7 +1,8 @@
 @import '../../../assets/scss/variables';
 
 .Signin {
-  position: relative;
+  position: absolute;
+  z-index: 100;
   background-color: rgba(#3a271d, 0.7);
   clip-path: polygon(
     0% 0%,
@@ -56,6 +57,22 @@
   padding: $gutter;
   margin-top: $gutter + 1rem;
 
+  @include lg {
+    width: 35%;
+    position: absolute;
+    right: 3rem;
+  }
+
+  @include xl {
+    position: absolute;
+    max-width: 25rem;
+    max-height: 280px;
+    right: 20%;
+    bottom: 30%;
+    left: 60%;
+    top: 31%;
+  }
+
   &__Container {
     @include flex(center, center, column nowrap);
     max-width: 20rem;
@@ -63,11 +80,15 @@
     position: relative;
   }
 
+  // &__Presentation {
+  // }
+
   &__CrossSword {
     width: 2rem;
     position: absolute;
     top: 0.5rem;
     right: 0.3rem;
+    cursor: pointer;
   }
 
   & label {
@@ -83,12 +104,8 @@
     width: 100%;
   }
 
-  &__Signup {
-    background-color: #03c9a5;
-  }
-
-  &__Signup,
   &__Btn {
+    @include flex(center, center, row nowrap);
     margin-top: ($gutter/5);
     font-family: 'nunito sans', sans-serif;
     border: none;
@@ -98,15 +115,28 @@
     font-size: 1em;
     font-weight: normal;
     line-height: 1.5;
-  }
+    background-color: #f2af0d;
+    color: white;
 
-  &__Btn {
+    &__Shield {
+      width: 1.3rem;
+      margin-right: 0.3rem;
+    }
+
     &__Container {
       @include flex(center, space-between, row wrap);
       width: 100%;
     }
-
-    background-color: #f2af0d;
-    color: white;
   }
+
+  &__Signup {
+    @extend .Signin__Btn;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    text-decoration: underline;
+  }
+}
+ß .Presentation {
+  display: none;
 }

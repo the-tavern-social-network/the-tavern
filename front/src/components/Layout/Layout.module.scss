@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .Auth {
   display: grid;
   grid-template-rows: fit-content(200px) auto fit-content(50px);
@@ -14,15 +16,106 @@
   background-attachment: fixed;
   padding: 1rem;
 
+  @include lg {
+    padding: 0;
+  }
+
+  @include xl {
+    background-position: 13rem;
+  }
+
+  &__Logo {
+    position: relative;
+    grid-area: header;
+    width: 9rem;
+    z-index: 200;
+
+    @include lg {
+      max-width: 400px;
+      width: 12rem;
+      position: absolute;
+      left: 37%;
+      top: 29%;
+    }
+
+    @include xl {
+      width: 15rem;
+    }
+  }
+
   &__Main {
     grid-area: main;
+
+    @include lg {
+      display: flex;
+      align-items: center;
+    }
+
+    @include xl {
+      display: block;
+    }
+  }
+
+  &__Footer {
+    padding: 1rem 1rem 0;
+    grid-area: footer;
+    font-size: 0.8rem;
+    text-align: center;
+
+    @include lg {
+      grid-area: none;
+      position: absolute;
+      right: 0;
+      bottom: 0.5rem;
+    }
+
+    @include xl {
+      grid-area: footer;
+      text-align: right;
+      position: absolute;
+      text-align: right;
+      right: 0;
+      bottom: 0.5rem;
+    }
   }
 }
 
-.Logo {
-  grid-area: header;
-  width: 9rem;
-  z-index: 100;
+.Main {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: fit-content(5rem) auto fit-content(5rem);
+  grid-template-columns: 100%;
+  grid-template-areas: 'header' 'main' 'footer';
+  font-family: 'nunito sans', sans;
+  background-color: #0b0501;
+  color: white;
+  font-weight: 200;
+
+  @include lg {
+    grid-template-columns: 18rem auto;
+    grid-template-areas: 'header main' 'header main' 'footer main';
+  }
+
+  &__Main {
+    grid-area: main;
+
+    @include lg {
+      padding: $gutter ($gutter * 1.5);
+    }
+  }
+
+  &__Footer {
+    padding: 1rem;
+    grid-area: footer;
+    font-size: 0.8rem;
+    text-align: center;
+
+    @include lg {
+      z-index: 200;
+      position: fixed;
+      bottom: 0;
+    }
+  }
 }
 
 .Footer {
@@ -30,4 +123,11 @@
   grid-area: footer;
   font-size: 0.8rem;
   text-align: center;
+
+  @include xl {
+    position: absolute;
+    text-align: right;
+    right: 0;
+    bottom: 0.5rem;
+  }
 }

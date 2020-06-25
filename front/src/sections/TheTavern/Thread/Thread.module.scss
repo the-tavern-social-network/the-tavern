@@ -1,0 +1,62 @@
+@import '../../../assets/scss/variables';
+
+.Thread {
+  @include flex(stretch, center, row wrap);
+  background-color: #0b0501;
+  height: 100%;
+  width: 100%;
+  margin-top: 2rem;
+
+  @include lg {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  &__Welcome {
+    display: none;
+
+    @include lg {
+      display: block;
+      width: 100%;
+      font-weight: 700;
+      padding-bottom: $gutter/2;
+    }
+
+    h1 {
+      @include xl {
+        font-size: 1.8em;
+      }
+    }
+
+    h2 {
+      color: $gold;
+      font-size: 1.4rem;
+
+      @include xl {
+        font-size: 1.8em;
+      }
+    }
+  }
+
+  & > section {
+    max-width: 50rem;
+    width: 100%;
+
+    @include md {
+      margin: 0 1rem;
+      width: 50%;
+    }
+
+    @include lg {
+      margin-left: 0;
+    }
+  }
+}
+
+// .Invitation {
+//   position: fixed;
+//   top: 61vh;
+//   left: 4.5%;
+//   width: 91%;
+//   overflow-y: scroll;
+// }

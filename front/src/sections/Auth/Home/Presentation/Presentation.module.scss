@@ -1,6 +1,9 @@
+@import '../../../../assets/scss/variables';
+
 .Presentation {
-  font-family: 'nunito sans', nunito;
+  font-family: 'nunito sans', sans-serif;
   position: relative;
+  z-index: 100;
   font-size: 0.95rem;
   font-weight: 200;
   height: 21rem;
@@ -16,16 +19,95 @@
   -moz-outline-radius: 0 0 10px 10px;
   overflow: auto;
 
+  @include lg {
+    font-size: 0.85rem;
+    background-color: white;
+    width: 45%;
+    height: 100vh;
+    outline: none;
+    border: none;
+    margin: 0;
+    outline-offset: 0;
+    border-radius: 0;
+    color: #0b0501;
+    padding-left: 9%;
+    padding-right: 10rem;
+    padding-top: 6%;
+  }
+
   .Signature {
     text-align: right;
     margin: 1rem 0;
     font-style: italic;
     font-weight: 900;
     color: #ffff00;
+
+    @include lg {
+      padding-right: 20%;
+      font-size: 1.3em;
+      color: #b37e49;
+      font-style: normal;
+      font-style: italic;
+      font-weight: 700;
+    }
   }
 
   .Desktop {
     display: none;
+
+    @include lg {
+      display: block;
+    }
+
+    &__Title {
+      @include lg {
+        display: inline-flex;
+        font-size: 5em;
+        font-weight: 900;
+        margin-left: -3.7rem;
+        color: #553719;
+      }
+    }
+
+    &__SubTitle {
+      @include lg {
+        font-size: 1.3em;
+        color: #553719;
+        max-width: 400px;
+        min-width: 300px;
+      }
+    }
+
+    &__AmbientText {
+      @include lg {
+        margin-top: 1rem;
+        font-style: italic;
+        max-width: 420px;
+        min-width: 320px;
+      }
+    }
+
+    &__PresentationText {
+      @include lg {
+        margin-top: 1rem;
+        max-width: 400px;
+        min-width: 300px;
+      }
+    }
+
+    &__TavernierText {
+      @include lg {
+        margin-top: 1rem;
+        font-style: italic;
+        max-width: 350px;
+      }
+    }
+  }
+
+  .Mobile {
+    @include lg {
+      display: none;
+    }
   }
 
   .CrossSword {
@@ -33,10 +115,31 @@
     width: 30%;
     position: relative;
     transition: all 1.8s cubic-bezier(0.51, 1.61, 0.46, 0.85);
-  }
 
-  .CrossSword:hover,
-  .CrossSword:active {
+    @include lg {
+      display: none;
+    }
+  }
+  .CrossSwordDesktop {
+    display: none;
+    @include lg {
+      display: block;
+      width: 50px;
+      margin-left: 0;
+      margin-right: 0.4rem;
+      margin-top: 0;
+      top: 6.4rem;
+      left: 3.7rem;
+      transition: all 1.8s cubic-bezier(0.51, 1.61, 0.46, 0.85);
+    }
+  }
+  .CrossSwordDesktop:hover,
+  .CrossSwordDesktop:active {
     transform: rotate(360deg);
   }
+}
+
+.CrossSword:hover,
+.CrossSword:active {
+  transform: rotate(360deg);
 }

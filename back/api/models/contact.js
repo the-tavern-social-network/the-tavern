@@ -6,10 +6,19 @@ class Contact extends Model {
 
 Contact.init(
   {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     status: {
       type: Sequelize.ENUM,
-      values: ['0', '1', '2'],
-      defaultValue: '0',
+      values: ['pending', 'accepted', 'blocked'],
+      defaultValue: 'pending',
+    },
+    requester: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
     },
   },
   {

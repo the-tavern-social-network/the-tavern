@@ -14,7 +14,14 @@ const Screen = ({ connection, history }) => {
     };
   }, [connection]);
 
-  return <div className={styles.ScreenContainer} ref={videoStream}></div>;
+
+
+  return (
+    <div>
+      <div className={styles.ScreenContainer} ref={videoStream}></div>
+    </div>
+  );
+
 };
 
 export default Screen;

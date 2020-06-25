@@ -24,7 +24,7 @@ const ProtectedRoute = ({ component: Component, isLoggedIn, hasTriedToAuthentica
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.object.isRequired,
   isLoggedIn: PropTypes.bool,
 };
 

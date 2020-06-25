@@ -1,0 +1,32 @@
+@import '../../../../assets/scss/variables';
+
+.Form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+  background-color: #3a271d;
+  padding: 1rem;
+
+  @include xl{
+    border-top: solid #0b0501 5px;
+  }
+}
+
+.Button{
+    color: #fff;
+    background-color: #33CCAF;
+    border: solid #33CCAF 1px;
+    border-radius: 0.2rem;
+    width: 40%;
+    height: 100%;
+    font-size: 1.1em;
+    @include md{
+        font-size: 1.5em;
+    }
+}
+
+.Input{
+    height: 100%;
+    width: 55%;
+}

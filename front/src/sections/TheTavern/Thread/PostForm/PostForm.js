@@ -2,29 +2,61 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
+import Invitation from '../Invitation/Invitation';
+import Search from '../Search/Search';
+import cross from '../../../../assets/images/logocroix.svg';
+import darlyne from '../../../../assets/images/darlyne.jpg';
+import styles from './PostForm.module.scss';
 
-const PostForm = ({ post }) => {
+const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
+    resetFields('post');
+    setIsOpen(!isOpen);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Field
-        type="textarea"
-        reducerName="post"
-        name="post"
-        placeholder="Veuillez saisir un message..."
-      />
-      <button>envoyer</button>
-    </form>
+    <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
+      <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
+        <img className={styles.SelfAvatar} src={cross} alt="" />
+        <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
+      </div>
+      <div className={styles.PostForm__Main}>
+        <form className={styles.Form} onSubmit={handleSubmit}>
+          <div>
+            <Field
+              cssClass={styles.Input}
+              placeholder="Veuillez saisir un message..."
+              type="textarea"
+              reducerName="post"
+              name="post"
+            />
+            <button className={styles.SendButton}>Envoyer</button>
+            <img className={styles.SelfAvatarInput} src={darlyne} alt=""/>
+          </div>
+          <div className={styles.Gutter}></div>
+        </form>
+        <div className={styles.PostForm__Invitation}>
+          {user.pendingRequests.received.map((contact) => (
+            <Invitation
+              key={contact.id}
+              {...contact}
+              acceptContact={acceptContact}
+              deleteContact={deleteContact}
+            />
+          ))}
+        </div>
+        <Search />
+      </div>
+      <footer className={styles.PostForm__Footer}>© thetavern | Tous droits réservés | 2020</footer>
+    </div>
   );
 };
 
 PostForm.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  changeText: PropTypes.func.isRequired,
+  post: PropTypes.func.isRequired,
+  resetFields: PropTypes.func.isRequired,
 };
 
 export default PostForm;

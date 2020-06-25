@@ -18,16 +18,14 @@ export const auth = (store) => (next) => async (action) => {
     case SIGNUP:
       try {
         const data = {
-          email: auth.signupEmail,
-          password: auth.signupPassword,
-          username: auth.signupUsername,
-          birthdate: auth.signupBirthdate,
+          email: auth.email,
+          password: auth.password,
+          username: auth.username,
+          birthdate: auth.birthdate,
         };
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
 
         delete user.password;
-
-        store.dispatch(connect({ user, isLoggedIn: true }));
       } catch (err) {
         console.trace(err);
       }
@@ -36,8 +34,8 @@ export const auth = (store) => (next) => async (action) => {
       try {
         store.dispatch(setLoading());
         const loginData = {
-          email: auth.signinEmail,
-          password: auth.signinPassword,
+          email: auth.email,
+          password: auth.password,
         };
 
         const { data } = await axios.post(`${apiUrl}/auth/login`, loginData, {
@@ -45,6 +43,8 @@ export const auth = (store) => (next) => async (action) => {
         });
 
         delete data.user.password;
+        data.user.pendingRequests = data.pendingRequests;
+        data.user.contacts = data.contacts;
 
         store.dispatch(connect(data));
       } catch (err) {
@@ -65,6 +65,11 @@ export const auth = (store) => (next) => async (action) => {
         );
 
         delete data.user.password;
+
+
+        data.user.pendingRequests = data.pendingRequests;
+        data.user.contacts = data.contacts;
+
 
         if (data.isLoggedIn) {
           store.dispatch(connect(data));
