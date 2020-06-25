@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
     updateAvatar: (avatar) => dispatch(updateAvatar(avatar)),
-    updateImage: (avatar) => dispatch(updateImage(avatar)),
+    updateImage: (avatar, user) => dispatch(updateImage(avatar, user)),
 });
 
 export default connect(

@@ -15,7 +15,7 @@ const AvatarsList = ({ modalCancel, avatar, avatarImages, updateAvatar, updateIm
     console.log(modalCancel);
     return (
     <div className={styles.Modal}>
-        <div>
+        <div className={styles.Header}>
             <p>Faites votre choix parmis les avatars ci dessous!</p>
             <div onClick={modalCancel}>
                <img src={cross} alt=""/>

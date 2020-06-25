@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
-import darlyne from '../../../assets/images/darlyne.jpg';
+import avatarDefault from '../../../assets/images/avatar/Avatardefault.png';
 import Modal from '../../../components/Modal/Modal';
 import avatars from '../../../util/avatar';
 import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
@@ -38,7 +38,7 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
         <h1 className={styles.Username}>
           {user.username}
         </h1>
-        <img className={styles.UserAccount__Avatar} src={user.avatar} alt="" />
+        <img className={styles.UserAccount__Avatar} src={user.avatar === null ? avatarDefault : user.avatar} alt="" />
         <button onClick={() => setModalAvatar(!isModalAvatar)} >Modifier Avatar</button>
       </div>
       {isEditing ? (

@@ -6,6 +6,7 @@ import {
   EDIT_USER_ACCOUNT,
   DELETE_ACOUNT,
   UPDATE_IMAGE,
+  updatePostsAvatar,
   setLoading,
   setError,
 } from '../actions';
@@ -116,13 +117,15 @@ export const user = (store) => (next) => async (action) => {
         const userAvatar = {
           avatar: action.avatar,
         }
-        await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userAvatar)
+        await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, userAvatar);
+        next(action)
       } catch (err) {
         console.trace(err);
         store.dispatch(setError());
       } finally {
         store.dispatch(setLoading());
       }
+      break;
     default:
       next(action);
   }

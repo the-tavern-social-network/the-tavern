@@ -14,6 +14,7 @@ import {
   ACCEPT_CONTACT,
   ADD_CONTACT,
   UPDATE_AVATAR,
+  UPDATE_IMAGE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -140,6 +141,14 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         avatar: action.avatar,
       };
+    case UPDATE_IMAGE:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          avatar: action.avatar,
+        }
+      }
     default:
       return state;
   }

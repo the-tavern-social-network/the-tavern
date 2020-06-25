@@ -21,3 +21,16 @@
   @include flex(center, space-between, row wrap);
   width: 80%;
 }
+
+.Header{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  & div{
+    width: 2rem;
+  }
+  & p{
+    width: 70%;
+    margin-left: 15%;
+  }
+}
