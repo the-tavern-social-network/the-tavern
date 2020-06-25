@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,6 +25,8 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const receivedRequest =
     loggedUser.pendingRequests.received.find((user) => user.id === post.author.id) && true;
 
+  const alreadyContacts = loggedUser.contacts.find((user) => user.id === post.author.id) && true;
+
   return (
     <div className={styles.Container}>
       <div className={styles.Gutter}></div>
@@ -35,16 +37,23 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
           <div className={styles.AuthorPost}>{post.author.username}</div>
         )}
         <div className={styles.AbsoluteAuthor}>
-          <img className={styles.AuthorAvatar} src={cross} alt="" />
-          {post.author.username !== loggedUser.username && !sentRequest && !receivedRequest && (
-            <div className={styles.AbsoluteAddContact}>
-              <FontAwesomeIcon
-                icon={faPlus}
-                className={styles.AddButton}
-                onClick={() => sendContactRequest(post.author.id)}
-              />
-            </div>
-          )}
+          <img
+            className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
+            src={cross}
+            alt=""
+          />
+          {post.author.username !== loggedUser.username &&
+            !sentRequest &&
+            !receivedRequest &&
+            !alreadyContacts && (
+              <div className={styles.AbsoluteAddContact}>
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className={styles.AddButton}
+                  onClick={() => sendContactRequest(post.author.id)}
+                />
+              </div>
+            )}
         </div>
         <pre className={styles.ContentPost}>{post.content}</pre>
         <div

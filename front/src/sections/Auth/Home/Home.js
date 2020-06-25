@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import Presentation from './Presentation/Presentation';
-import style from './Presentation/Presentation.module.scss';
 import styles from './Home.module.scss';
 
 const Home = ({ history, match }) => {

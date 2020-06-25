@@ -1,4 +1,3 @@
-
 /* eslint-disable react-hooks/exhaustive-deps */
 /*import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -19,8 +18,6 @@ const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
       {!isInitialLoading && (
         <Switch>
           <>
-            {/* Maybe in the future ;) */}
-            {/* <Route path='/admin' component={Admin} /> */}
             /*<Route path="/auth" component={Auth} />{' '}
             <ProtectedRoute path="/" component={TheTavern} />
           </>
@@ -39,8 +36,7 @@ import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
-import TheTavern from '../containers/TheTavern/TheTavern'
-
+import TheTavern from '../containers/TheTavern/TheTavern';
 
 const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }) => {
   useEffect(() => {
@@ -50,9 +46,9 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
 
   useEffect(() => {
     if (isLoggedIn) {
-      history.push('/')
+      history.push('/');
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -62,14 +58,11 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
             {/* Maybe in the future ;) */}
             {/* <Route path='/admin' component={Admin} /> */}
 
-
-             <Route path="/auth" component={Auth} />
+            <Route path="/auth" component={Auth} />
 
             {/* TODO protected Route */}
 
-           <ProtectedRoute path="/" component={TheTavern} />
-
-
+            <ProtectedRoute path="/" component={TheTavern} />
           </>
         </Switch>
       )}
@@ -78,4 +71,3 @@ const App = ({ history, isUserLogged, fetchPosts, isLoggedIn, isInitialLoading }
 };
 
 export default App;
-

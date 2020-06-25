@@ -11,7 +11,7 @@ import logo from '../../../../assets/images/logo1.svg';
 import styles from './Nav.module.scss';
 import './Swords-styles.scss';
 
-const Nav = ({ logout, user }) => {
+const Nav = ({ logout, user, tavernId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ const Nav = ({ logout, user }) => {
       </div>
       <nav className={styles.Nav}>
         <Link to="/" className={styles.Nav__Logo}>
-          <img src={logo} alt="logo TheTavern" />
+          <img src={logo} alt="logo TheTavern" title="Retour à l' accueil" />
         </Link>
         <div className={styles.Nav__Menu__Container}>
           <div
@@ -35,7 +35,12 @@ const Nav = ({ logout, user }) => {
               <Sword />
             </div>
           </div>
-          <NavLinks logout={logout} isOpen={isOpen} setIsOpen={() => setIsOpen(!isOpen)} />
+          <NavLinks
+            tavernId={tavernId}
+            logout={logout}
+            isOpen={isOpen}
+            setIsOpen={() => setIsOpen(!isOpen)}
+          />
         </div>
       </nav>
     </div>

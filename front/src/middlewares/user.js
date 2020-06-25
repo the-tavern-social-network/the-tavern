@@ -69,7 +69,6 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
-      break;
     case EDIT_USER_ACCOUNT:
       try {
         store.dispatch(setLoading());
@@ -97,7 +96,7 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
-      case DELETE_ACOUNT:
+    case DELETE_ACOUNT:
       try {
         store.dispatch(setLoading());
         await axios.delete(`${apiUrl}/user/${action.userId}`);

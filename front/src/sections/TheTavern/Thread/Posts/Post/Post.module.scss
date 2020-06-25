@@ -2,7 +2,7 @@
 
 .Container {
   position: relative;
-  margin: 0 auto $gutter/2;
+  margin: $gutter/1.5 auto;
   width: 90%;
 
   @include md {
@@ -14,6 +14,11 @@
   position: absolute;
   top: -0.7rem;
   right: -0.5rem;
+
+  @include lg {
+    top: -1rem;
+    right: -1rem;
+  }
 }
 
 .Post {
@@ -63,8 +68,15 @@
   border-radius: 50%;
   border: solid 4px #0b0501;
   width: 2.4rem;
+  background-color: black;
+
   @include md {
     width: 3rem;
+  }
+
+  &__AlreadyContacts {
+    @extend .AuthorAvatar;
+    border: 4px solid #03c9a5;
   }
 }
 

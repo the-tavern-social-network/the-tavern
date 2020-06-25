@@ -21,7 +21,6 @@ const INITIAL_STATE = {
 
   isEditing: false,
   description: '',
-
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
@@ -127,13 +126,12 @@ export default (state = INITIAL_STATE, action = {}) => {
           },
         },
       };
-      break;
     case DELETE_ACOUNT:
       return {
         ...state,
         loggedUser: {},
         isLoggedIn: false,
-      }
+      };
     default:
       return state;
   }

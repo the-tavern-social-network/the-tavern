@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './NavLinks.module.scss';
 import deconnetion from '../../../../../assets/images/turn-off.svg';
 
-const NavLinks = ({ logout, isOpen, setIsOpen }) => {
+const NavLinks = ({ logout, isOpen, setIsOpen, tavernId }) => {
   return (
     <ul className={!isOpen ? styles.NavLinks : [styles.NavLinks, styles.NavLinks__Open].join(' ')}>
       <li>
@@ -14,7 +14,7 @@ const NavLinks = ({ logout, isOpen, setIsOpen }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink onClick={setIsOpen} exact to="/tavern">
+        <NavLink exact to={`/tavern/${tavernId}`}>
           Tavern
         </NavLink>
       </li>
