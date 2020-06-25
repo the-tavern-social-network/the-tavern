@@ -4,9 +4,10 @@ import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
 import darlyne from '../../../assets/images/darlyne.jpg';
+import Modal from '../../../components/Modal/Modal';
 
-const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
-  const [, /* isModalVisible */ setModalIsVisible] = useState(false);
+const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount }) => {
+  const [isModalVisible, setModalIsVisible] = useState(false);
 
   const clickHandler = (event) => {
     setModalIsVisible(true);
@@ -120,6 +121,14 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount }) => {
         </li>
         
       </ul>
+      {isModalVisible && (
+        <Modal
+          modalCancel={() => setModalIsVisible(false)}
+          header="Suppression de Compte"
+          message={`Voulez vous vraiment supprimer votre compte ?`}
+          modalConfirm={() => deleteAcount(user.id)}
+        />
+      )}
     </section>
   );
 };

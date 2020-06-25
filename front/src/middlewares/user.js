@@ -4,6 +4,7 @@ import {
   ACCEPT_CONTACT,
   DELETE_CONTACT,
   EDIT_USER_ACCOUNT,
+  DELETE_ACOUNT,
   setLoading,
   setError,
 } from '../actions';
@@ -92,6 +93,18 @@ export const user = (store) => (next) => async (action) => {
       } catch (err) {
         store.dispatch(setError());
         console.trace(err);
+      } finally {
+        store.dispatch(setLoading());
+      }
+      break;
+      case DELETE_ACOUNT:
+      try {
+        store.dispatch(setLoading());
+        await axios.delete(`${apiUrl}/user/${action.userId}`);
+        next(action);
+      } catch (err) {
+        console.trace(err);
+        store.dispatch(setError());
       } finally {
         store.dispatch(setLoading());
       }

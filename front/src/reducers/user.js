@@ -4,6 +4,7 @@ import {
   SET_IS_EDITING,
   INPUT_CHANGE,
   EDIT_USER_ACCOUNT,
+  DELETE_ACOUNT,
   ADD_CONTACT_REQUEST,
   DELETE_CONTACT,
   REMOVE_CONTACT,
@@ -121,6 +122,13 @@ export default (state = INITIAL_STATE, action = {}) => {
           },
         },
       };
+      break;
+    case DELETE_ACOUNT:
+      return {
+        ...state,
+        loggedUser: {},
+        isLoggedIn: false,
+      }
     default:
       return state;
   }
