@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Field from '../../../../containers/components/Field';
 import Invitation from '../Invitation/Invitation';
@@ -7,7 +8,16 @@ import Search from '../Search/Search';
 import avatarDefault from '../../../../assets/images/avatar/Avatardefault.png';
 import styles from './PostForm.module.scss';
 
-const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
+const PostForm = ({
+  post,
+  resetFields,
+  isOpen,
+  setIsOpen,
+  user,
+  acceptContact,
+  deleteContact,
+  deleteTavernRequest,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     post();
@@ -32,11 +42,26 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
               name="post"
             />
             <button className={styles.SendButton}>Envoyer</button>
-            <img className={styles.SelfAvatarInput} src={user.avatar === null ? avatarDefault : user.avatar} alt=""/>
+            <img
+              className={styles.SelfAvatarInput}
+              src={user.avatar === null ? avatarDefault : user.avatar}
+              alt=""
+            />
           </div>
           <div className={styles.Gutter}></div>
         </form>
         <div className={styles.PostForm__Invitation}>
+          <p>Invitation à la tavern</p>
+          {user.tavernRequests &&
+            user.tavernRequests.map(({ gamemaster, tavernId }) => (
+              <div>
+                <p>{gamemaster.username}</p>
+                <Link to={`/tavern/${tavernId}`}>Rejoindre</Link>
+              </div>
+            ))}
+        </div>
+        <div className={styles.PostForm__Invitation}>
+          <p>Demande de contact</p>
           {user.pendingRequests.received.map((contact) => (
             <Invitation
               key={contact.id}

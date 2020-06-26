@@ -6,6 +6,14 @@ class TavernRequest extends Model {
 
 TavernRequest.init(
   {
+    gamemaster_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isInt: true,
+      },
+    },
     tavern_id: {
       type: Sequelize.STRING,
       allowNull: false,

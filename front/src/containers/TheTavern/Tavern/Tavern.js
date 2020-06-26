@@ -7,6 +7,7 @@ import {
   setTavernId,
   tavernContactConnect,
   tavernContactDisconnect,
+  inviteContact,
 } from '../../../actions';
 
 const mapStateToProps = (state) => ({
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   setTavernId: () => dispatch(setTavernId()),
   tavernContactConnect: (user) => dispatch(tavernContactConnect(user)),
   tavernContactDisconnect: (userId) => dispatch(tavernContactDisconnect(userId)),
+  inviteContact: (contactId, tavernId) => dispatch(inviteContact(contactId, tavernId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tavern);

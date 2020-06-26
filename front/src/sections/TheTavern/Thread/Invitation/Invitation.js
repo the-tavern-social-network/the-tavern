@@ -27,7 +27,7 @@ const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
         <div className={styles.Asking}>
           <p className={styles.Name}>{username}</p>
           <div className={styles.Request}>
-            <p className={styles.Message}>Demande de contact</p>
+            {/* <p className={styles.Message}>Demande de contact</p> */}
             <div className={styles.Buttons}>
               <button className={styles.Add} onClick={(event) => clickHandler('accept', id)}>
                 Accepter

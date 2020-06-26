@@ -15,6 +15,7 @@ const Tavern = ({
   connectedContacts,
   tavernContactConnect,
   tavernContactDisconnect,
+  inviteContact,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
@@ -53,6 +54,10 @@ const Tavern = ({
     };
   }, []);
 
+  const inviteIntoTavernHandler = (contactId, tavernId) => {
+    inviteContact(contactId, tavernId);
+  };
+
   return (
     <div className={styles.Tavern}>
       <ScreenShare resetChat={resetChat} history={history} user={user} connection={connection} />
@@ -63,7 +68,12 @@ const Tavern = ({
           <p style={{ backgroundColor: '#ccc', color: '#000' }}>Mes contacts</p>
           <ul>
             {connection.extra.user.contacts.map((contact) => (
-              <li key={contact.id}>{contact.username}</li>
+              <li key={contact.id}>
+                <p>{contact.username}</p>
+                <button onClick={() => inviteIntoTavernHandler(+contact.id, match.params.id)}>
+                  Inviter dans la tavern
+                </button>
+              </li>
             ))}
           </ul>
           <p style={{ backgroundColor: '#ccc', color: '#000' }}>Contacts Présents dans la tavern</p>

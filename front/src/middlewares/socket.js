@@ -34,6 +34,7 @@ export const socket = (store) => (next) => (action) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
         delete contact.password;
@@ -44,6 +45,7 @@ export const socket = (store) => (next) => (action) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
         delete contact.password;
@@ -54,6 +56,7 @@ export const socket = (store) => (next) => (action) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
         delete contact.password;

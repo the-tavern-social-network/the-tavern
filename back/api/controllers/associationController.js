@@ -12,8 +12,9 @@ module.exports = {
     const contact = await User.findByPk(+contactId);
     const contactInfos = {
       user: contact,
-      contacts: await user.getContacts(),
+      contacts: await contact.getContacts(),
       pendingRequests: await getUserPendingRequests(contact),
+      tavernRequests: await contact.getTavernRequests(),
     };
 
     io.getIo().emit('add_contact', { contactInfos });
@@ -22,6 +23,7 @@ module.exports = {
       user,
       contacts: await user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
+      tavernRequests: await user.getTavernRequests(),
     });
   },
 
@@ -36,6 +38,7 @@ module.exports = {
       user: contact,
       contacts: await contact.getContacts(),
       pendingRequests: await getUserPendingRequests(contact),
+      tavernRequests: await contact.getTavernRequests(),
     };
 
     io.getIo().emit('accept_contact', { contactInfos });
@@ -44,6 +47,7 @@ module.exports = {
       user,
       contacts: await user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
+      tavernRequests: await user.getTavernRequests(),
     });
   },
 
@@ -58,6 +62,7 @@ module.exports = {
       user: contact,
       contacts: await contact.getContacts(),
       pendingRequests: await getUserPendingRequests(contact),
+      tavernRequests: await contact.getTavernRequests(),
     };
 
     io.getIo().emit('delete_contact', { contactInfos });
@@ -66,6 +71,7 @@ module.exports = {
       user,
       contacts: await user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
+      tavernRequests: await user.getTavernRequests(),
     });
   },
 

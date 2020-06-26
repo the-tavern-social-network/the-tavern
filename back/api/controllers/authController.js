@@ -53,6 +53,7 @@ module.exports = {
       user: req.session.user,
       contacts: await req.session.user.getContacts(),
       pendingRequests: await getUserPendingRequests(user),
+      tavernRequests: await user.getTavernRequests(),
       isLoggedIn: true,
     });
   },
@@ -69,6 +70,7 @@ module.exports = {
         user: req.session.user,
         contacts: await req.session.user.getContacts(),
         pendingRequests: await getUserPendingRequests(user),
+        tavernRequests: await user.getTavernRequests(),
         isLoggedIn: true,
       });
     }

@@ -6,7 +6,6 @@ const TavernRequest = require('./tavernRequest');
 
 const Contact = require('./contact');
 
-
 // POST 11 <-> 0N USER
 Post.belongsTo(User, {
   onDelete: 'CASCADE',
@@ -35,15 +34,17 @@ User.belongsToMany(User, {
 // TAVERN_REQUEST 11 <-> 0N USER
 TavernRequest.belongsTo(User, {
   onDelete: 'CASCADE',
+  foreignKey: 'participant_id',
   as: 'participant',
 });
 
 User.hasMany(TavernRequest, {
+  foreignKey: 'participant_id',
   as: 'tavernRequests',
 });
 
 module.exports = {
   User,
   Post,
-  TavernRequest
+  TavernRequest,
 };

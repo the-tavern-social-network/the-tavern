@@ -1,33 +1,25 @@
-const { Op } = require('sequelize');
 const { TavernRequest } = require('../models');
 
 module.exports = {
   async create(req, res, next) {
-    const { userId, participantId, tavernId } = req.params;
+    const alreadyExist = await TavernRequest.findOne({ where: { tavern_id: req.body.tavern_id } });
 
-    await TavernRequest.create({
-      user_id: +userId,
-      participant_id: +participantId,
-      tavern_id: +tavernId,
-    });
+    if (alreadyExist) {
+      return res.send({ message: 'Vous avez déjà envoyé une invitation à ce contact !' });
+    }
 
-    res.send(/* ...something... */);
+    await TavernRequest.create(req.body);
+
+    res.send({ message: 'Invitation envoyée avec succès !' });
   },
 
   async delete(req, res, next) {
-    // const { userId, participantId } = req.params;
-    const { id } = req.params;
+    const { tavernId: tavern_id } = req.params;
 
-    // const tavernRequest = await TavernRequest.findAll({
-    //   where: {
-    //     [Op.and]: [{ user_id: +userId }, { participant_id: +participantId }],
-    //   },
-    // });
-
-    const tavernRequest = await TavernRequest.findByPk(+id);
+    const tavernRequest = await TavernRequest.findOne({ where: { tavern_id } });
 
     await tavernRequest.destroy();
 
-    res.send(/* ...something... */);
+    res.send('ok');
   },
 };

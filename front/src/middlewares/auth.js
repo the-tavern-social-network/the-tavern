@@ -69,6 +69,7 @@ export const auth = (store) => (next) => async (action) => {
         delete data.user.password;
 
         data.user.pendingRequests = data.pendingRequests;
+        data.user.tavernRequests = data.tavernRequests;
         data.user.contacts = data.contacts;
 
         if (data.isLoggedIn) {
