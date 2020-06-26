@@ -29,7 +29,7 @@ export const auth = (store) => (next) => async (action) => {
 
         delete user.password;
       } catch (err) {
-        console.trace(err);
+        console.log(err);
       }
       break;
     case LOGIN:

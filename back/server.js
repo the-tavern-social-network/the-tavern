@@ -58,6 +58,8 @@ sequelize
     io.on('connection', (socket) => {
       RTCMultiConnectionServer.addSocket(socket);
 
+      socket.on('join-room', (msg) => console.log('JOIN-ROOM ', msg));
+
       socket.on('disconnect', () => {
         console.log('User disconnected');
       });

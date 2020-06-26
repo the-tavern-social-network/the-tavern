@@ -46,9 +46,11 @@ const UserAccount = ({
         <img
           className={styles.UserAccount__Avatar}
           src={user.avatar === null ? avatarDefault : user.avatar}
-          alt=""
+          alt="avatar de l'utilisateur"
+          onClick={() => setModalAvatar(!isModalAvatar)}
+          title="Modifier avatar"
+          style={{ cursor: 'pointer' }}
         />
-        <button onClick={() => setModalAvatar(!isModalAvatar)}>Modifier Avatar</button>
       </div>
       {isEditing ? (
         <form className={styles.UserAccount__Description_Editing_Form} onSubmit={handleSubmit}>

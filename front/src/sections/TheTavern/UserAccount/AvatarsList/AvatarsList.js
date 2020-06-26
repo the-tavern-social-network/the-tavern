@@ -28,6 +28,7 @@ const AvatarsList = ({ modalCancel, avatar, avatarImages, updateAvatar, updateIm
               avatarImage={avatarImage}
               avatar={avatar}
               updateAvatar={(avatar) => updateAvatar(avatar)}
+              submit={handleSubmit}
             />
           ))}
         </div>

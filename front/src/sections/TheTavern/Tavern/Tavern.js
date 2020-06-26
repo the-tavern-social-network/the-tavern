@@ -6,8 +6,18 @@ import ScreenShare from './ScreenShare/ScreenShare';
 import styles from './Tavern.module.scss';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
 
-const Tavern = ({ match, history, user, resetChat, setTavernId }) => {
+const Tavern = ({
+  match,
+  history,
+  user,
+  resetChat,
+  setTavernId,
+  connectedContacts,
+  tavernContactConnect,
+  tavernContactDisconnect,
+}) => {
   const [connection] = useState(new RTCMultiConnection());
+  const [userHasJoined, setUserHasJoined] = useState(false);
 
   useEffect(() => {
     setTavernId();
@@ -17,13 +27,25 @@ const Tavern = ({ match, history, user, resetChat, setTavernId }) => {
     connection.checkPresence(match.params.id, (isRoomExist, roomid) => {
       if (isRoomExist === true) {
         connection.dontCaptureUserMedia = true;
+        connection.extra.user = user;
         connection.join(roomid);
-        connection.extra.user = user;
+        setUserHasJoined(true);
       } else {
-        connection.open(roomid);
         connection.extra.user = user;
+        connection.open(roomid);
+        setUserHasJoined(true);
       }
     });
+
+    connection.onopen = (event) => {
+      const user = event.extra.user;
+      user.connectionUserId = event.userid;
+      tavernContactConnect(user);
+    };
+
+    connection.onclose = (event) => {
+      tavernContactDisconnect(event.userid);
+    };
 
     return () => {
       // stop all local cameras
@@ -35,6 +57,23 @@ const Tavern = ({ match, history, user, resetChat, setTavernId }) => {
     <div className={styles.Tavern}>
       <ScreenShare resetChat={resetChat} history={history} user={user} connection={connection} />
       <Chat user={user} connection={connection} />
+      {userHasJoined && (
+        <div>
+          <p>{connection.extra.user.username}</p>
+          <p style={{ backgroundColor: '#ccc', color: '#000' }}>Mes contacts</p>
+          <ul>
+            {connection.extra.user.contacts.map((contact) => (
+              <li key={contact.id}>{contact.username}</li>
+            ))}
+          </ul>
+          <p style={{ backgroundColor: '#ccc', color: '#000' }}>Contacts Présents dans la tavern</p>
+          <ul>
+            {connectedContacts.map((user) => (
+              <li key={user.id}>{user.username}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
