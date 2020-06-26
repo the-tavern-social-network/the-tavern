@@ -4,7 +4,7 @@ import styles from './Search.module.scss'
 const Search = () => (
   <form className={styles.Form}>
     <button className={styles.Button} >Rechercher</button>
-    <input className={styles.Input} type="text"/>
+    <input className={styles.Input} type="text" placeholder="Utilisateur"/>
   </form>
 );
 

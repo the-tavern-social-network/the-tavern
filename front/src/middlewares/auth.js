@@ -48,7 +48,7 @@ export const auth = (store) => (next) => async (action) => {
 
         store.dispatch(connect(data));
       } catch (err) {
-        store.dispatch(setError());
+        store.dispatch(setError(err.response.data.message));
       } finally {
         store.dispatch(setLoading());
       }

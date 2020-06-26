@@ -46,13 +46,75 @@
     }
   }
 
+  &__DemandeTavern{
+    display: none;
+    @include md {
+      display: block;
+      background-image: url('../../../../assets/images/img-noise.png');
+      border-radius: 5px 5px 0 0;
+      width: 13rem;
+      padding: 0.5rem;
+      margin-left: 0.6rem;
+      margin-top: 3rem;
+      margin-bottom: -3rem;
+      color: #fff200;
+  }
+}
+&__DemandeTavernBlock {
+  display: none;
+  @include md {
+    padding: 0.5rem;
+    display: block;
+    margin-left: 0.6rem;
+    width: 33rem;
+    background-color: rgb(79, 66, 66);
+  }
+
+}
+
+
+  &__Demande {
+    display: none;
+    @include md {
+      display: block;
+      background-image: url('../../../../assets/images/img-noise.png');
+      border-radius: 5px 5px 0 0;
+      width: 11rem;
+      padding: 0.5rem;
+      margin-left: 0.6rem;
+      margin-top: 3rem;
+      margin-bottom: -3rem;
+      color: #fff200;
+    }
+
+    &__Number {
+      display: none;
+      @include md {
+        margin-top: 0.3rem;
+        margin-left: 10.5rem;
+        display: block;
+        padding: 0.15rem;
+        padding-top: 0.3rem;
+        font-size: 0.8em;
+        font-weight: 400;
+        background-color: red;
+        border-radius: 60%;
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+  
+    }
+
+  }
+
+
   &__Invitation {
     overflow: auto;
     height: 45%;
 
     @include md {
       height: 12rem;
-      margin-top: 2rem;
+      margin-top: 1.6rem;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: #888 #ccc;

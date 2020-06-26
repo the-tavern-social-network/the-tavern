@@ -17,7 +17,7 @@
     position: relative;
     transition: none;
     top: 0;
-    right: 0;
+    right: 0.5rem;
     background-color: initial;
     flex-flow: column nowrap;
     justify-content: start;
@@ -70,8 +70,9 @@
     &__Title{
       display: none;
       @include lg {
+        border-radius: 5px;
         display: block;
-        margin-left: -3.4rem;
+        margin-left: -2rem;
         padding: 0.5rem;
         font-weight: 200;
         background-color : #f66d67;

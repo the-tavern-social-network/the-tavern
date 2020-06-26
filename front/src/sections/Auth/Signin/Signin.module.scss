@@ -115,8 +115,18 @@
     font-size: 1em;
     font-weight: normal;
     line-height: 1.5;
-    background-color: #f2af0d;
+    transition: 0.5s;
+    background-position: 0 0;
+    background-size: 300% auto;
+    background-image: linear-gradient(to right,  #f5b503 0%,  #ffe992 51%,  #f5b503 100%);
+    //background-color: #f2af0d;
     color: white;
+
+    &:hover,
+    &:active
+     {
+      background-position: 90%;
+    }
 
     &__Shield {
       width: 1.3rem;
@@ -127,16 +137,15 @@
       @include flex(center, space-between, row wrap);
       width: 100%;
     }
-  }
 
+  }
   &__Signup {
-    @extend .Signin__Btn;
     border: none;
     background-color: transparent;
     box-shadow: none;
     text-decoration: underline;
   }
 }
-ß .Presentation {
+.Presentation {
   display: none;
 }

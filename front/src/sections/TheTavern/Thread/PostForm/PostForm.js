@@ -42,6 +42,12 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
           </div>
           <div className={styles.Gutter}></div>
         </form>
+        <div className={styles.PostForm__Demande}>
+        
+        <div>Demande de contact </div>
+        
+        </div>
+        <div className={styles.PostForm__Demande__Number}>12</div>
         <div className={styles.PostForm__Invitation}>
           {user.pendingRequests.received.map((contact) => (
             <Invitation

@@ -29,7 +29,7 @@ const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
               <img className={styles.Avatar} src={AvatarDefault} alt="avatar" />
               <div>
                 <p className={styles.Name}>{username}</p>
-                <p className={styles.Message}>Demande de contact</p>
+                <p className={styles.Message}>Vous demande en contact</p>
               </div>
             </div>
             <div className={styles.Buttons}>
