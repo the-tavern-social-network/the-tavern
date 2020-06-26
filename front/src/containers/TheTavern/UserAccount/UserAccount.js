@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import UserAccount from '../../../sections/TheTavern/UserAccount/UserAccount';
 
-import { setIsEditing, editUserAccount, deleteAcount } from '../../../actions';
+import { setIsEditing, editUserAccount, deleteAcount, deleteContact } from '../../../actions';
 
 const mapStateToProps = (state) => ({
   isEditing: state.user.isEditing,
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setIsEditing: () => dispatch(setIsEditing()),
   editUserAccount: () => dispatch(editUserAccount()),
-  deleteAcount: (userId) => dispatch(deleteAcount(userId))
+  deleteAcount: (userId) => dispatch(deleteAcount(userId)),
+  deleteContact: (contactId) => dispatch(deleteContact(contactId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAccount);

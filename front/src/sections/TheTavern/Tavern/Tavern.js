@@ -18,8 +18,10 @@ const Tavern = ({ match, history, user, resetChat, setTavernId }) => {
       if (isRoomExist === true) {
         connection.dontCaptureUserMedia = true;
         connection.join(roomid);
+        connection.extra.user = user;
       } else {
         connection.open(roomid);
+        connection.extra.user = user;
       }
     });
 

@@ -1,3 +1,5 @@
+import avatardefault from '../assets/images/avatar/Avatardefault.png';
+
 import {
   CONNECT,
   DISCONNECT,
@@ -11,6 +13,8 @@ import {
   SEND_CONTACT_REQUEST,
   ACCEPT_CONTACT,
   ADD_CONTACT,
+  UPDATE_AVATAR,
+  UPDATE_IMAGE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -18,7 +22,7 @@ const INITIAL_STATE = {
   isLoggedIn: false,
 
   hasTriedToAuthenticate: false,
-
+  avatar: avatardefault,
   isEditing: false,
   description: '',
 };
@@ -80,58 +84,37 @@ export default (state = INITIAL_STATE, action = {}) => {
         loggedUser: action.contact,
       };
     case DELETE_CONTACT:
-      if (!action.isContact) {
-        if (action.contactId === state.loggedUser.id) {
-          return {
-            ...state,
-            loggedUser: {
-              ...state.loggedUser,
-              pendingRequests: {
-                ...state.loggedUser.pendingRequests,
-                sent: state.loggedUser.pendingRequests.sent.filter(
-                  (contact) => +contact.id !== +action.contactId,
-                ),
-              },
-            },
-          };
-        } else {
-          return {
-            ...state,
-            loggedUser: {
-              ...state.loggedUser,
-              pendingRequests: {
-                ...state.loggedUser.pendingRequests,
-                received: state.loggedUser.pendingRequests.received.filter(
-                  (contact) => +contact.id !== +action.contactId,
-                ),
-              },
-            },
-          };
-        }
-      }
-      break;
-    case REMOVE_CONTACT:
       return {
         ...state,
-        loggedUser: {
-          ...state.loggedUser,
-          pendingRequests: {
-            ...state.loggedUser.pendingRequests,
-            sent: state.loggedUser.pendingRequests.sent.filter(
-              (contact) => +contact.id !== +action.userId,
-            ),
-            // received: state.loggedUser.pendingRequests.received.filter(
-            //   (contact) => +contact.id !== +action.contactId,
-            // ),
-          },
-        },
-      };
+        loggedUser: action.user,
+      }
+    case REMOVE_CONTACT:
+      if (+action.contact.id === state.loggedUser.id) {
+        return {
+          ...state,
+          loggedUser: action.contact
+        }
+      }
+      return state;
     case DELETE_ACOUNT:
       return {
         ...state,
         loggedUser: {},
         isLoggedIn: false,
       };
+    case UPDATE_AVATAR:
+      return {
+        ...state,
+        avatar: action.avatar,
+      };
+    case UPDATE_IMAGE:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          avatar: action.avatar,
+        }
+      }
     default:
       return state;
   }

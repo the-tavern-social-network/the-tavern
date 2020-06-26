@@ -5,6 +5,7 @@ import {
   removeContact,
   addContactRequest,
   addContact,
+  savePosts,
 } from '../actions';
 
 let socketCanal;
@@ -18,6 +19,11 @@ export const socket = (store) => (next) => (action) => {
 
       socketCanal.on('receive_post', (post) => {
         store.dispatch(addPost(post));
+      });
+
+      // Used to update author avatar
+      socketCanal.on('save_posts', (posts) => {
+        store.dispatch(savePosts(posts));
       });
 
       socketCanal.on('delete_post', (id) => {
@@ -44,8 +50,15 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(addContact(contact));
       });
 
-      socketCanal.on('delete_contact', ({ userId, contactId }) => {
-        store.dispatch(removeContact(userId, contactId));
+      socketCanal.on('delete_contact', ({ contactInfos }) => {
+        const contact = {
+          ...contactInfos.user,
+          pendingRequests: contactInfos.pendingRequests,
+          contacts: contactInfos.contacts,
+        };
+        delete contact.password;
+
+        store.dispatch(removeContact(contact));
       });
       break;
 

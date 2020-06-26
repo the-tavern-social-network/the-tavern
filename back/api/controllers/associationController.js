@@ -53,7 +53,14 @@ module.exports = {
     const user = await User.findByPk(+userId, { include: 'posts' });
     await user.deleteContact(+contactId);
 
-    io.getIo().emit('delete_contact', { userId, contactId });
+    const contact = await User.findByPk(+contactId);
+    const contactInfos = {
+      user: contact,
+      contacts: await contact.getContacts(),
+      pendingRequests: await getUserPendingRequests(contact),
+    };
+
+    io.getIo().emit('delete_contact', { contactInfos });
 
     res.send({
       user,

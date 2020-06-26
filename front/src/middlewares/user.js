@@ -5,8 +5,10 @@ import {
   DELETE_CONTACT,
   EDIT_USER_ACCOUNT,
   DELETE_ACOUNT,
+  UPDATE_IMAGE,
   setLoading,
   setError,
+  fetchPosts,
 } from '../actions';
 import { apiUrl } from '../util/index';
 
@@ -55,12 +57,16 @@ export const user = (store) => (next) => async (action) => {
       break;
     case DELETE_CONTACT:
       try {
-        console.log(action);
         store.dispatch(setLoading());
         const user_id = user.loggedUser.id;
         const contact_id = action.contactId;
 
-        await axios.delete(`${apiUrl}/contact/${user_id}/delete/${contact_id}`);
+        const { data } = await axios.delete(`${apiUrl}/contact/${user_id}/delete/${contact_id}`);
+
+        action.user = data.user;
+        action.user.pendingRequests = data.pendingRequests;
+        action.user.contacts = data.contacts;
+        delete action.user.password;
 
         next(action);
       } catch (err) {
@@ -100,6 +106,24 @@ export const user = (store) => (next) => async (action) => {
       try {
         store.dispatch(setLoading());
         await axios.delete(`${apiUrl}/user/${action.userId}`);
+        next(action);
+      } catch (err) {
+        console.trace(err);
+        store.dispatch(setError());
+      } finally {
+        store.dispatch(setLoading());
+      }
+      break;
+    case UPDATE_IMAGE:
+      try {
+        store.dispatch(setLoading());
+
+        const avatarPath = {
+          avatar: action.avatar,
+        };
+
+        await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, avatarPath);
+
         next(action);
       } catch (err) {
         console.trace(err);

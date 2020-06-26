@@ -21,7 +21,7 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
   return (
     <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
       <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
-        <img className={styles.SelfAvatar} src={cross} alt="" />
+        <img className={styles.SelfAvatar} src={user.id} alt="" />
         <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
       </div>
       <div className={styles.PostForm__Main}>
@@ -39,6 +39,7 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
             Envoyer
             </button>
             <img className={styles.SelfAvatarInput} src={AvatarDefault} alt=""/>
+
           </div>
           <div className={styles.Gutter}></div>
         </form>

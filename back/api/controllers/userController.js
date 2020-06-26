@@ -1,5 +1,6 @@
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const getUserPendingRequests = require('../util/getUserPendingRequests');
+const io = require('../socket');
 
 module.exports = {
   async updateOne(req, res, next) {
@@ -22,6 +23,14 @@ module.exports = {
     user = await User.findByPk(updatedUser.id, {
       include: 'posts',
     });
+
+    // Getting all model associations
+    const include = Object.keys(Post.associations);
+
+    if (req.body.avatar) {
+      const posts = await Post.findAll({ include });
+      io.getIo().emit('save_posts', posts);
+    }
 
     // Sending back the updated entry
     res.send({

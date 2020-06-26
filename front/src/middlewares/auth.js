@@ -11,6 +11,7 @@ import {
   SIGNUP,
 } from '../actions';
 import { apiUrl } from '../util/index';
+import avatar from '../assets/images/avatar/Avatardefault.png';
 
 export const auth = (store) => (next) => async (action) => {
   const { auth } = store.getState();
@@ -19,6 +20,7 @@ export const auth = (store) => (next) => async (action) => {
       try {
         const data = {
           email: auth.email,
+          avatar,
           password: auth.password,
           username: auth.username,
           birthdate: auth.birthdate,
@@ -66,10 +68,8 @@ export const auth = (store) => (next) => async (action) => {
 
         delete data.user.password;
 
-
         data.user.pendingRequests = data.pendingRequests;
         data.user.contacts = data.contacts;
-
 
         if (data.isLoggedIn) {
           store.dispatch(connect(data));

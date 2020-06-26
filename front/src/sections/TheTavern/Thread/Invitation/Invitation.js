@@ -17,7 +17,7 @@ const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
 
   const deleteHandler = (id) => {
     setIsDeleteModalOpen(false);
-    deleteContact(false, id);
+    deleteContact(id);
   };
 
   return (
