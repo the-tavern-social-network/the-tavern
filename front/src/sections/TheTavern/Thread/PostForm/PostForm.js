@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import Field from '../../../../containers/components/Field';
 import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
-import cross from '../../../../assets/images/logocroix.svg';
-import darlyne from '../../../../assets/images/darlyne.jpg';
+import avatarDefault from '../../../../assets/images/avatar/Avatardefault.png';
 import styles from './PostForm.module.scss';
 
 const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
@@ -19,7 +18,7 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
   return (
     <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
       <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
-        <img className={styles.SelfAvatar} src={cross} alt="" />
+        <img className={styles.SelfAvatar} src={user.id} alt="" />
         <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
       </div>
       <div className={styles.PostForm__Main}>
@@ -33,7 +32,7 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
               name="post"
             />
             <button className={styles.SendButton}>Envoyer</button>
-            <img className={styles.SelfAvatarInput} src={darlyne} alt=""/>
+            <img className={styles.SelfAvatarInput} src={user.avatar === null ? avatarDefault : user.avatar} alt=""/>
           </div>
           <div className={styles.Gutter}></div>
         </form>

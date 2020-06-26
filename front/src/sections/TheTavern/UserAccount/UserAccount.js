@@ -3,12 +3,23 @@ import PropTypes from 'prop-types';
 import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
-import darlyne from '../../../assets/images/darlyne.jpg';
-import Contact from './Contact/Contact';
-import Modal from '../../../components/Modal/Modal';
 
-const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount, deleteContact }) => {
+import Contact from './Contact/Contact';
+import avatarDefault from '../../../assets/images/avatar/Avatardefault.png';
+import Modal from '../../../components/Modal/Modal';
+import avatars from '../../../util/avatar';
+import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
+
+const UserAccount = ({
+  user,
+  isEditing,
+  setIsEditing,
+  editUserAccount,
+  deleteAcount,
+  deleteContact,
+}) => {
   const [isModalVisible, setModalIsVisible] = useState(false);
+  const [isModalAvatar, setModalAvatar] = useState(false);
 
   const clickHandler = (event) => {
     setModalIsVisible(true);
@@ -31,17 +42,18 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
         Supprimer Compte
       </button>
       <div className={styles.Username_Container}>
-        <h1 className={styles.Username}>
-          {user.username}
-        </h1>
-        <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
-
+        <h1 className={styles.Username}>{user.username}</h1>
+        <img
+          className={styles.UserAccount__Avatar}
+          src={user.avatar === null ? avatarDefault : user.avatar}
+          alt=""
+        />
+        <button onClick={() => setModalAvatar(!isModalAvatar)}>Modifier Avatar</button>
       </div>
       {isEditing ? (
-            
         <form className={styles.UserAccount__Description_Editing_Form} onSubmit={handleSubmit}>
           <Field
-            cssClass={styles.UserAccount__Description_Editing} 
+            cssClass={styles.UserAccount__Description_Editing}
             reducerName="user"
             name="description"
             type="textarea"
@@ -51,16 +63,18 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
         </form>
       ) : (
         <div className={styles.UserAccount__Description}>
-          <p className={styles.UserAccount__Description_Text} >{user.description}</p>
-          <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>Editer</button>
+          <p className={styles.UserAccount__Description_Text}>{user.description}</p>
+          <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>
+            Editer
+          </button>
         </div>
       )}
 
-        <h2 className={styles.ContactList_Title}>liste Contacts </h2>
+      <h2 className={styles.ContactList_Title}>liste Contacts </h2>
       <ul className={styles.ContactList}>
-        {
-          user.contacts.map(contact=> <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />)
-        }
+        {user.contacts.map((contact) => (
+          <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />
+        ))}
       </ul>
       {isModalVisible && (
         <Modal
@@ -69,6 +83,9 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
           message={`Voulez vous vraiment supprimer votre compte ?`}
           modalConfirm={() => deleteAcount(user.id)}
         />
+      )}
+      {isModalAvatar && (
+        <AvatarsList modalCancel={() => setModalAvatar(false)} avatarImages={avatars} />
       )}
     </section>
   );
@@ -84,7 +101,6 @@ UserAccount.propTypes = {
   isEditing: PropTypes.bool,
   setIsEditing: PropTypes.func.isRequired,
   editUserAccount: PropTypes.func.isRequired,
-  
 };
 
 UserAccount.defaultProps = {

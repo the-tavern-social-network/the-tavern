@@ -1,9 +1,9 @@
 const { Sequelize, Model, Op } = require('sequelize');
 const sequelize = require('../db/database');
 const Contact = require('../models/contact');
+const TavernRequest = require('../models/tavernRequest');
 
 class User extends Model {
-  //* OK
   getContacts = async () => {
     try {
       const requests = await Contact.findAll({
@@ -23,7 +23,6 @@ class User extends Model {
     }
   };
 
-  //* OK
   getPendingRequests = async () => {
     try {
       const received = await Contact.findAll({
@@ -44,7 +43,6 @@ class User extends Model {
     }
   };
 
-  //* OK
   addContact = async (contactId) => {
     try {
       const alreadyExists = await Contact.findOne({
@@ -80,7 +78,6 @@ class User extends Model {
     }
   };
 
-  //* OK
   acceptContact = async (contactId) => {
     try {
       const senderRequest = await Contact.findOne({
@@ -109,7 +106,6 @@ class User extends Model {
     }
   };
 
-  //* OK
   deleteContact = async (contactId) => {
     try {
       const sender = await Contact.findOne({
@@ -132,6 +128,45 @@ class User extends Model {
       throw err;
     }
   };
+
+  // getTavernRequests = async () => {};
+  // createTavernRequest = async (participantId, tavernId) => {
+  //   try {
+  //     const alreadyExists = await TavernRequest.findOne({
+  //       where: {
+  //         [Op.or]: [
+  //           {
+  //             [Op.and]: [{ user_id: +this.id }, { participant_id: +participantId }],
+  //           },
+  //           {
+  //             [Op.and]: [{ participant_id: +this.id }, { user_id: +participantId }],
+  //           },
+  //         ],
+  //       },
+  //     });
+
+  //     if (!alreadyExists) {
+  //       await TavernRequest.create({
+  //         user_id: +this.id,
+  //         participant_id: +participantId,
+  //         tavern_id: +tavernId,
+  //         // requester: true,
+  //       });
+
+  //       await TavernRequest.create({
+  //         user_id: +participantId,
+  //         participant_id: +this.id,
+  //         tavern_id: +tavernId,
+  //         // requester: false,
+  //       });
+  //       return true;
+  //     }
+  //     return false;
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // };
+  // deleteTavernRequest = async (participantId) => {};
 }
 
 User.init(

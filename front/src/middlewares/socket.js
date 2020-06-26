@@ -5,6 +5,7 @@ import {
   removeContact,
   addContactRequest,
   addContact,
+  savePosts,
 } from '../actions';
 
 let socketCanal;
@@ -18,6 +19,11 @@ export const socket = (store) => (next) => (action) => {
 
       socketCanal.on('receive_post', (post) => {
         store.dispatch(addPost(post));
+      });
+
+      // Used to update author avatar
+      socketCanal.on('save_posts', (posts) => {
+        store.dispatch(savePosts(posts));
       });
 
       socketCanal.on('delete_post', (id) => {

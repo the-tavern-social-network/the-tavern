@@ -6,12 +6,13 @@ import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../../../../../components/Modal/Modal';
 
-import cross from '../../../../../assets/images/logocroix.svg';
+// TODO remove
+import avatarDefault from '../../../../../assets/images/avatar/Avatardefault.png';
+
 import styles from './Post.module.scss';
 
 const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
   const deleteBtnClickHandler = () => {
     setIsDeleteModalOpen(true);
   };
@@ -20,6 +21,22 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
     deletePost(id);
   };
 
+  // TODO remove
+  const getGoodAvatar = () => {
+    if (post.author !== loggedUser) {
+      if (post.author.avatar === null) {
+        return avatarDefault;
+      } else {
+        return post.author.avatar;
+      }
+    } else {
+      if (loggedUser === null) {
+        return avatarDefault;
+      } else {
+        return loggedUser.avatar;
+      }
+    }
+  };
   const sentRequest =
     loggedUser.pendingRequests.sent.find((user) => user.id === post.author.id) && true;
   const receivedRequest =
@@ -39,7 +56,9 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         <div className={styles.AbsoluteAuthor}>
           <img
             className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
-            src={cross}
+            // TODO
+            // src={post.author.avatar}
+            src={getGoodAvatar()}
             alt=""
           />
           {post.author.username !== loggedUser.username &&

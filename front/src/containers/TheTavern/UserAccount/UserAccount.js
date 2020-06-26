@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   setIsEditing: () => dispatch(setIsEditing()),
   editUserAccount: () => dispatch(editUserAccount()),
   deleteAcount: (userId) => dispatch(deleteAcount(userId)),
-  deleteContact: (contactId) => dispatch(deleteContact(contactId))
+  deleteContact: (contactId) => dispatch(deleteContact(contactId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAccount);
