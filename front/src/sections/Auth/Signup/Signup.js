@@ -36,7 +36,7 @@ const Signup = ({ history, signup, resetFields }) => {
             id="email"
             cssClass={[styles.Signup__Field, styles.Signup__Email].join(' ')}
             reducerName="auth"
-            placeholder="Email"
+            placeholder="exemple@tavern.com"
             type="email"
             name="email"
           />
@@ -45,7 +45,7 @@ const Signup = ({ history, signup, resetFields }) => {
             id="username"
             cssClass={[styles.Signup__Field, styles.Signup__Username].join(' ')}
             reducerName="auth"
-            placeholder="Pseudo"
+            placeholder="12 caractère max"
             name="username"
           />
           <label htmlFor="birthdate">Date de naissance</label>
@@ -61,7 +61,7 @@ const Signup = ({ history, signup, resetFields }) => {
             id="password"
             cssClass={[styles.Signup__Field, styles.Signup__Password].join(' ')}
             reducerName="auth"
-            placeholder="Mot de passe"
+            placeholder="*****"
             type="password"
             name="password"
           />
@@ -70,7 +70,7 @@ const Signup = ({ history, signup, resetFields }) => {
             id="confirm-password"
             cssClass={[styles.Signup__Field, styles.Signup__ConfirmPassword].join(' ')}
             reducerName="auth"
-            placeholder="Confirmation mot de passe"
+            placeholder="*****"
             type="password"
             name="confirmPassword"
           />

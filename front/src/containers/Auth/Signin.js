@@ -6,6 +6,8 @@ import Signin from '../../sections/Auth/Signin/Signin';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.user.isLoggedIn,
+  hasError: state.global.hasError,
+  errorMessage: state.global.errorMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({

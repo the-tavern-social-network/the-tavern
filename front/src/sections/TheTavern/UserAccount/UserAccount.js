@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
-
+import AvatarDefault from '../../../assets/images/Avatardefault.png';
 import Contact from './Contact/Contact';
-import avatarDefault from '../../../assets/images/avatar/Avatardefault.png';
 import Modal from '../../../components/Modal/Modal';
 import avatars from '../../../util/avatar';
 import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
@@ -42,13 +41,11 @@ const UserAccount = ({
         Supprimer Compte
       </button>
       <div className={styles.Username_Container}>
+
         <h1 className={styles.Username}>{user.username}</h1>
-        <img
-          className={styles.UserAccount__Avatar}
-          src={user.avatar === null ? avatarDefault : user.avatar}
-          alt=""
-        />
+        <img className={styles.UserAccount__Avatar} src={AvatarDefault} alt="" />
         <button onClick={() => setModalAvatar(!isModalAvatar)}>Modifier Avatar</button>
+
       </div>
       {isEditing ? (
         <form className={styles.UserAccount__Description_Editing_Form} onSubmit={handleSubmit}>

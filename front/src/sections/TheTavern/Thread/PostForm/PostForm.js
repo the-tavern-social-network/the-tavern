@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import Field from '../../../../containers/components/Field';
 import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
-import avatarDefault from '../../../../assets/images/avatar/Avatardefault.png';
+import Fire from '../../../../assets/images/fire.svg';
+import cross from '../../../../assets/images/logocroix.svg';
+import AvatarDefault from '../../../../assets/images/Avatardefault.png';
+
 import styles from './PostForm.module.scss';
 
 const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
@@ -31,11 +34,21 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
               reducerName="post"
               name="post"
             />
-            <button className={styles.SendButton}>Envoyer</button>
-            <img className={styles.SelfAvatarInput} src={user.avatar === null ? avatarDefault : user.avatar} alt=""/>
+            <button className={styles.SendButton}>
+            <img className={styles.SendButton__Fire} src={Fire} alt="Bouclier" />
+            Envoyer
+            </button>
+            <img className={styles.SelfAvatarInput} src={AvatarDefault} alt=""/>
+
           </div>
           <div className={styles.Gutter}></div>
         </form>
+        <div className={styles.PostForm__Demande}>
+        
+        <div>Demande de contact </div>
+        
+        </div>
+        <div className={styles.PostForm__Demande__Number}>12</div>
         <div className={styles.PostForm__Invitation}>
           {user.pendingRequests.received.map((contact) => (
             <Invitation
