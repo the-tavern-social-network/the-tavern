@@ -61,16 +61,33 @@
     }
   }
 
+
+
   &__Deconnexion {
     border: none;
     cursor: pointer;
+
+    &__Title{
+      display: none;
+      @include lg {
+        display: block;
+        margin-left: -3.4rem;
+        padding: 0.5rem;
+        font-weight: 200;
+        background-color : #f66d67;
+
+      }
+    }
 
     img {
       width: 1.5rem;
 
       @include lg {
-        width: 3rem;
+        display: none;
+        width: 1rem;
       }
     }
+    
   }
+  
 }

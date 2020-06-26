@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import Field from '../../../../containers/components/Field';
 import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
+import Fire from '../../../../assets/images/fire.svg';
 import cross from '../../../../assets/images/logocroix.svg';
-import darlyne from '../../../../assets/images/darlyne.jpg';
+import AvatarDefault from '../../../../assets/images/Avatardefault.png';
+
 import styles from './PostForm.module.scss';
 
 const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, deleteContact }) => {
@@ -32,8 +34,11 @@ const PostForm = ({ post, resetFields, isOpen, setIsOpen, user, acceptContact, d
               reducerName="post"
               name="post"
             />
-            <button className={styles.SendButton}>Envoyer</button>
-            <img className={styles.SelfAvatarInput} src={darlyne} alt=""/>
+            <button className={styles.SendButton}>
+            <img className={styles.SendButton__Fire} src={Fire} alt="Bouclier" />
+            Envoyer
+            </button>
+            <img className={styles.SelfAvatarInput} src={AvatarDefault} alt=""/>
           </div>
           <div className={styles.Gutter}></div>
         </form>

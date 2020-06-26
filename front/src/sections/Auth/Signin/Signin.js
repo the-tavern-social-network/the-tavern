@@ -42,7 +42,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn }) => {
           <Field
             id="email"
             reducerName="auth"
-            placeholder="test@test.com"
+            placeholder="exemple@tavern.com"
             type="email"
             name="email"
             cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
@@ -51,7 +51,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn }) => {
           <Field
             id="password"
             reducerName="auth"
-            placeholder="azerty"
+            placeholder="*****"
             type="password"
             name="password"
             cssClass={[styles.Signin__Password, styles.Signin__Field].join(' ')}

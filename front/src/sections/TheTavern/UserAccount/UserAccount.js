@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Field from '../../../containers/components/Field';
 
 import styles from './UserAccount.module.scss';
-import darlyne from '../../../assets/images/darlyne.jpg';
+import AvatarDefault from '../../../assets/images/Avatardefault.png';
 import Modal from '../../../components/Modal/Modal';
 
 const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAcount }) => {
@@ -34,7 +34,7 @@ const UserAccount = ({ user, isEditing, setIsEditing, editUserAccount, deleteAco
         <h1 className={styles.Username}>
           {user.username}
         </h1>
-        <img className={styles.UserAccount__Avatar} src={darlyne} alt="" />
+        <img className={styles.UserAccount__Avatar} src={AvatarDefault} alt="" />
 
       </div>
       {isEditing ? (

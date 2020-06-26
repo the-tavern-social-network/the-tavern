@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../../../../../components/Modal/Modal';
-
-import cross from '../../../../../assets/images/logocroix.svg';
+import AvatarDefault from '../../../../../assets/images/Avatardefault.png';
 import styles from './Post.module.scss';
 
 const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
@@ -39,7 +38,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         <div className={styles.AbsoluteAuthor}>
           <img
             className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
-            src={cross}
+            src={AvatarDefault}
             alt=""
           />
           {post.author.username !== loggedUser.username &&

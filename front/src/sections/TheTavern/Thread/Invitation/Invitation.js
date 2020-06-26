@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../../../../components/Modal/Modal';
-
+import AvatarDefault from '../../../../assets/images/Avatardefault.png';
 import styles from './Invitation.module.scss';
 
 const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
@@ -23,11 +23,15 @@ const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
   return (
     <>
       <div className={styles.Invitation}>
-        <img className={styles.Avatar} src={avatar} alt="" />
         <div className={styles.Asking}>
-          <p className={styles.Name}>{username}</p>
           <div className={styles.Request}>
-            <p className={styles.Message}>Demande de contact</p>
+            <div className={styles.Invitation__Container}>
+              <img className={styles.Avatar} src={AvatarDefault} alt="avatar" />
+              <div>
+                <p className={styles.Name}>{username}</p>
+                <p className={styles.Message}>Demande de contact</p>
+              </div>
+            </div>
             <div className={styles.Buttons}>
               <button className={styles.Add} onClick={(event) => clickHandler('accept', id)}>
                 Accepter
