@@ -10,10 +10,10 @@ const AvatarItem = ({ avatarImage, updateAvatar, avatar }) => {
     // };
     console.log(avatar);
     return (
-    <div className={styles.avatarCase} onClick={() => updateAvatar(avatarImage)}>
-        <input type="radio" value={avatarImage} defaultChecked={avatar === avatarImage} readOnly name="avatarRadio" />
-        <img src={avatarImage} alt={avatarImage} />
-    </div>
+        <div className={styles.avatarCase} onClick={() => updateAvatar(avatarImage)} >
+          <input type="radio" value={avatarImage} checked={avatar === avatarImage} readOnly name="avatarRadio" />
+          <img src={avatarImage} alt={avatarImage} />
+        </div>
     );
 }
 
