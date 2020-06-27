@@ -32,10 +32,13 @@ module.exports = {
       io.getIo().emit('save_posts', posts);
     }
 
+    io.getIo().emit('contact_update', user);
+
     // Sending back the updated entry
     res.send({
       user,
       contacts: await user.getContacts(),
+      tavernRequests: await user.getTavernRequests(),
       pendingRequests: await getUserPendingRequests(user),
     });
   },

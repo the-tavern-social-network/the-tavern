@@ -5,12 +5,13 @@ import door from '../../../../../src/assets/images/door.svg';
 import rtcConfig from '../../../../util/rtc';
 import styles from './ScreenShare.module.scss';
 
-const Screen = ({ connection, history, resetChat }) => {
+const Screen = ({ connection, history, match, resetChat, deleteTavern }) => {
   const videoStream = useRef(null);
 
   useEffect(() => {
     rtcConfig(connection, videoStream);
     connection.onMediaError = (error) => {
+      deleteTavern(match.params.id);
       connection.closeSocket();
       history.push('/');
     };
@@ -18,6 +19,7 @@ const Screen = ({ connection, history, resetChat }) => {
 
   const clickHandler = (event) => {
     connection.closeSocket();
+    deleteTavern(match.params.id);
     resetChat();
     history.push('/');
   };

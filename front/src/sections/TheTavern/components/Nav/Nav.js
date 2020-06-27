@@ -30,9 +30,9 @@ const Nav = ({ logout, user, tavernId }) => {
             className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
             {/* {<img src={menu} alt="menu de navigation" />} */}
             <div className="sword-menu">
-              <Sword />
-              <Sword />
-              <Sword />
+              <Sword isOpen={isOpen} />
+              <Sword isOpen={isOpen} />
+              <Sword isOpen={isOpen} />
             </div>
           </div>
           <NavLinks

@@ -17,7 +17,7 @@
     position: relative;
     transition: none;
     top: 0;
-    right: 0;
+    right: 0.5rem;
     background-color: initial;
     flex-flow: column nowrap;
     justify-content: start;
@@ -61,16 +61,34 @@
     }
   }
 
+
+
   &__Deconnexion {
     border: none;
     cursor: pointer;
+
+    &__Title{
+      display: none;
+      @include lg {
+        border-radius: 5px;
+        display: block;
+        margin-left: -2rem;
+        padding: 0.5rem;
+        font-weight: 200;
+        background-color : #f66d67;
+
+      }
+    }
 
     img {
       width: 1.5rem;
 
       @include lg {
-        width: 3rem;
+        display: none;
+        width: 1rem;
       }
     }
+    
   }
+  
 }

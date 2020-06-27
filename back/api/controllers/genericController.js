@@ -1,6 +1,7 @@
 const models = require('../models');
 const capitalize = require('../util/capitalize');
 const io = require('../socket');
+const { TavernRequest } = require('../models');
 
 module.exports = {
   async getAll(req, res, next) {
@@ -138,6 +139,13 @@ module.exports = {
 
     // Fetching the entry by its id from the req.params
     const response = await model.findByPk(id);
+
+    if (model === 'User') {
+      const tavernRequests = await models.TavernRequest.findAll({
+        where: { gamemaster_id: response.id },
+      });
+      tavernRequests.forEach((tavernRequest) => tavernRequest.destroy());
+    }
 
     // Deletes the found entry
     await response.destroy();

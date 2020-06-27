@@ -16,6 +16,7 @@ const Tavern = ({
   tavernContactConnect,
   tavernContactDisconnect,
   inviteContact,
+  deleteTavern,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
@@ -60,7 +61,14 @@ const Tavern = ({
 
   return (
     <div className={styles.Tavern}>
-      <ScreenShare resetChat={resetChat} history={history} user={user} connection={connection} />
+      <ScreenShare
+        resetChat={resetChat}
+        match={match}
+        history={history}
+        user={user}
+        connection={connection}
+        deleteTavern={deleteTavern}
+      />
       <Chat user={user} connection={connection} />
       {userHasJoined && (
         <div>

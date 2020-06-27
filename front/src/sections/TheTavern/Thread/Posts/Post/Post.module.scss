@@ -6,6 +6,7 @@
   width: 90%;
 
   @include md {
+    margin: $gutter/1 auto;
     width: 100%;
   }
 }
@@ -16,7 +17,7 @@
   right: -0.5rem;
 
   @include lg {
-    top: -1rem;
+    top: -1.6rem;
     right: -1rem;
   }
 }
@@ -71,7 +72,7 @@
   background-color: black;
 
   @include md {
-    width: 3rem;
+    width: 3.5rem;
   }
 
   &__AlreadyContacts {
@@ -85,6 +86,7 @@
   text-align: right;
   margin-right: 1rem;
   font-family: 'nunito sans', nunito;
+  font-weight: 400;
   padding: 0.3rem 1rem 0.3rem 0.3rem;
 
   @include md {
@@ -95,6 +97,7 @@
     color: #fff200;
     text-align: right;
     font-family: 'nunito sans', nunito;
+    font-weight: 400;
     margin-right: 1rem;
     padding: 0.3rem 1rem 0.3rem 0.3rem;
     @include md {
@@ -128,7 +131,7 @@
 .PostFooter {
   &_start {
     color: #fff;
-    padding: 0.7rem;
+    padding: 0.3rem;
     font-size: 0.8em;
     display: flex;
     justify-content: flex-start;
@@ -136,28 +139,31 @@
     width: 95%;
     border-radius: 3px;
     margin: 0.3rem auto;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
   }
 
   &_between {
     border-radius: 3px;
     color: #fff;
-    padding: 0.4rem;
+    padding: 0.3rem;
     font-size: 0.8em;
     display: flex;
     justify-content: space-between;
     border: 1px solid rgba(242, 173, 0, 0.603);
     width: 95%;
     margin: 0.3rem auto;
+    margin-bottom: 0.4rem;
   }
   &_between svg {
     cursor: pointer;
   }
+  
 }
-
 .fa-trash {
   color: red;
 }
+
+
 
 .DeleteButton {
   font-size: 1.1em;
@@ -168,3 +174,4 @@
   justify-content: space-between;
   width: 35%;
 }
+

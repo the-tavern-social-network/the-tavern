@@ -1,4 +1,5 @@
-const { TavernRequest } = require('../models');
+const { TavernRequest, User } = require('../models');
+const io = require('../socket');
 
 module.exports = {
   async create(req, res, next) {
@@ -8,18 +9,29 @@ module.exports = {
       return res.send({ message: 'Vous avez déjà envoyé une invitation à ce contact !' });
     }
 
-    await TavernRequest.create(req.body);
+    const tavernRequest = await TavernRequest.create(req.body);
+    const gamemaster = await User.findByPk(tavernRequest.gamemaster_id);
+    io.getIo().emit('tavern_invite', {
+      gamemaster,
+      participantId: tavernRequest.participant_id,
+      tavernId: tavernRequest.tavern_id,
+    });
 
     res.send({ message: 'Invitation envoyée avec succès !' });
   },
 
   async delete(req, res, next) {
     const { tavernId: tavern_id } = req.params;
+    console.log(req.params);
 
     const tavernRequest = await TavernRequest.findOne({ where: { tavern_id } });
+    io.getIo().emit('delete_tavern_invite', {
+      participantId: tavernRequest.participant_id,
+      tavernId: tavernRequest.tavern_id,
+    });
 
     await tavernRequest.destroy();
 
-    res.send('ok');
+    res.send({ tavernId: tavern_id, message: 'Cette tavern est fermée !' });
   },
 };

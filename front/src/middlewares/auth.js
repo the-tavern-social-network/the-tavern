@@ -46,11 +46,12 @@ export const auth = (store) => (next) => async (action) => {
 
         delete data.user.password;
         data.user.pendingRequests = data.pendingRequests;
+        data.user.tavernRequests = data.tavernRequests;
         data.user.contacts = data.contacts;
 
         store.dispatch(connect(data));
       } catch (err) {
-        store.dispatch(setError());
+        store.dispatch(setError(err.response.data.message));
       } finally {
         store.dispatch(setLoading());
       }

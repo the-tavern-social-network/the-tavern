@@ -3,31 +3,44 @@
 .Invitation {
   @include flex(center, center, row wrap);
   padding: 0.3rem;
-  background-color: #3a271d;
-  margin: 1rem 0.5rem;
+  border-radius: 5px 0 5px 0;
+  background: url('../../../../assets/images/img-noise.png');
+  margin: 1rem 0;
+  transition: 0.3s;
+  line-height: 1.5;
 
   &:nth-child(1) {
     margin-top: 0;
   }
 
-  @include xl {
+  @include md {
     padding: 0.2rem;
+  }
+
+  &__Container {
+    @include flex(center, center, row nowrap);
+
+    div {
+      @include flex(flex-start, center, column nowrap);
+      margin-left: 0.5rem;
+    }
   }
 }
 
 .Asking {
-  @include flex(flex-start, space-around, column nowrap);
-  padding: 0.3rem;
   width: 100%;
 }
 
 .Request {
-  @include flex(baseline, space-between, row wrap);
+  @include flex(center, center, row nowrap);
+  justify-content: space-between;
   width: 100%;
+  padding-right: 0.51rem;
 }
 
 .Name {
   color: #03af91;
+  font-weight: 400;
   font-size: 0.9em;
 }
 
@@ -37,21 +50,17 @@
 }
 
 .Avatar {
-  width: 13%;
+  position: relative;
+  width: 3rem;
   border-radius: 50%;
-  background-color: green;
 
   @include md {
-    width: 10%;
-  }
-
-  @include xl {
-    height: 10%;
+    border: solid 5px #0b0501;
   }
 }
 
 .Buttons {
-  @include flex(center, center, row wrap);
+  @include flex(center, center, row nowrap);
   width: fit-content;
 }
 
@@ -73,13 +82,19 @@
   @extend .Add;
   background-color: #d92626;
   border: solid #d92626 1px;
-  margin-left: $gutter/2;
+  margin-left: $gutter/4;
 
   @include md {
     margin-left: $gutter/4;
   }
 
   @include lg {
-    margin-left: $gutter/2;
+    margin-left: $gutter/4;
+  }
+}
+
+.Invitation:hover {
+  @include md {
+    background-color: #634432;
   }
 }

@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   isInitialLoading: false,
   isLoading: false,
   hasError: false,
+  errorMessage: '',
   tavernId: uuidv4(),
 };
 
@@ -23,6 +24,7 @@ export default (state = INITIAL_STATE, action = {}) => {
     case SET_ERROR:
       return {
         ...state,
+        errorMessage: action.errorMessage,
         hasError: true,
         isLoading: false,
       };

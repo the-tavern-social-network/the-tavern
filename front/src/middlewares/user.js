@@ -8,7 +8,6 @@ import {
   UPDATE_IMAGE,
   setLoading,
   setError,
-  fetchPosts,
 } from '../actions';
 import { apiUrl } from '../util/index';
 
@@ -25,6 +24,7 @@ export const user = (store) => (next) => async (action) => {
 
         action.user = data.user;
         action.user.pendingRequests = data.pendingRequests;
+        action.user.tavernRequests = data.tavernRequests;
         action.user.contacts = data.contacts;
         delete action.user.password;
 
@@ -45,6 +45,7 @@ export const user = (store) => (next) => async (action) => {
 
         action.user = data.user;
         action.user.pendingRequests = data.pendingRequests;
+        action.user.tavernRequests = data.tavernRequests;
         action.user.contacts = data.contacts;
         delete action.user.password;
 
@@ -65,6 +66,7 @@ export const user = (store) => (next) => async (action) => {
 
         action.user = data.user;
         action.user.pendingRequests = data.pendingRequests;
+        action.user.tavernRequests = data.tavernRequests;
         action.user.contacts = data.contacts;
         delete action.user.password;
 
@@ -87,6 +89,7 @@ export const user = (store) => (next) => async (action) => {
         const updatedUser = {
           ...data.user,
           pendingRequests: data.pendingRequests,
+          tavernRequests: data.tavernRequests,
           contacts: data.contacts,
         };
 

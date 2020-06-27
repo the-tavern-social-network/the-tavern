@@ -5,9 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../../../../../components/Modal/Modal';
-
-// TODO remove
-import avatarDefault from '../../../../../assets/images/avatar/Avatardefault.png';
+import AvatarDefault from '../../../../../assets/images/Avatardefault.png';
 
 import styles from './Post.module.scss';
 
@@ -25,13 +23,13 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const getGoodAvatar = () => {
     if (post.author !== loggedUser) {
       if (post.author.avatar === null) {
-        return avatarDefault;
+        return AvatarDefault;
       } else {
         return post.author.avatar;
       }
     } else {
       if (loggedUser === null) {
-        return avatarDefault;
+        return AvatarDefault;
       } else {
         return loggedUser.avatar;
       }
@@ -56,9 +54,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         <div className={styles.AbsoluteAuthor}>
           <img
             className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
-            // TODO
-            // src={post.author.avatar}
-            src={getGoodAvatar()}
+            src={post.author.avatar || AvatarDefault}
             alt=""
           />
           {post.author.username !== loggedUser.username &&

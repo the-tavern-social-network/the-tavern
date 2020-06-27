@@ -2,16 +2,34 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../../../../components/Modal/Modal';
-
 import styles from './Invitation.module.scss';
+import { useHistory } from 'react-router-dom';
 
-const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
+const Invitation = ({
+  id,
+  username,
+  avatar,
+  contactRequest,
+  tavernRequest,
+  acceptContact,
+  deleteContact,
+  deleteTavern,
+  tavernId,
+}) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const clickHandler = (type, id, event) => {
-    if (type === 'accept') {
-      acceptContact(id);
-    } else if (type === 'reject') {
-      setIsDeleteModalOpen(true);
+  const history = useHistory();
+  const clickHandler = (type, id) => {
+    if (contactRequest) {
+      if (type === 'accept') {
+        acceptContact(id);
+      } else if (type === 'reject') {
+        setIsDeleteModalOpen(true);
+      }
+    } else if (tavernRequest) {
+      if (type === 'accept') {
+        history.push(`/tavern/${tavernId}`);
+      }
+      deleteTavern(tavernId);
     }
   };
 
@@ -23,11 +41,15 @@ const Invitation = ({ id, username, avatar, acceptContact, deleteContact }) => {
   return (
     <>
       <div className={styles.Invitation}>
-        <img className={styles.Avatar} src={avatar} alt="" />
         <div className={styles.Asking}>
-          <p className={styles.Name}>{username}</p>
           <div className={styles.Request}>
-            {/* <p className={styles.Message}>Demande de contact</p> */}
+            <div className={styles.Invitation__Container}>
+              <img className={styles.Avatar} src={avatar} alt="avatar" />
+              <div>
+                <p className={styles.Name}>{username}</p>
+              </div>
+            </div>
+
             <div className={styles.Buttons}>
               <button className={styles.Add} onClick={(event) => clickHandler('accept', id)}>
                 Accepter

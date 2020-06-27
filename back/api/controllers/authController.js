@@ -31,7 +31,7 @@ module.exports = {
     //	If no user found, send a 404 response
     if (!user) {
       return res.status(404).send({
-        message: "Pas d'utilisateur trouvé pour cet email.",
+        message: "Email ou mot de passe invalide.",
       });
     }
     //	checking for the password match
@@ -39,7 +39,7 @@ module.exports = {
     //	if passwords don't match, send a 404 response
     if (!doMatch) {
       return res.status(401).send({
-        message: 'Les données recues par le serveur ne sont pas correctes.',
+        message: "Email ou mot de passe invalide.",
       });
     }
 

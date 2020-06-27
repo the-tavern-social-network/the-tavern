@@ -20,5 +20,5 @@ export const inputChange = (name, value, reducerName) => ({
 export const resetFields = (reducer) => ({ type: RESET_FIELDS, reducer });
 export const setInitialLoading = () => ({ type: SET_INITIAL_LOADING });
 export const setLoading = () => ({ type: SET_LOADING });
-export const setError = () => ({ type: SET_ERROR });
+export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 export const setTavernId = () => ({ type: SET_TAVERN_ID });

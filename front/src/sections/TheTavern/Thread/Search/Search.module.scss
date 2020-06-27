@@ -4,29 +4,40 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0.5rem;
+  background-image: url('../../../../assets/images/img-noise.png');
   background-color: #3a271d;
   padding: 1rem;
 
-  @include xl{
+  @include xl {
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding-bottom: 1.3rem;
     border-top: solid #0b0501 5px;
   }
 }
 
-.Button{
-    color: #fff;
-    background-color: #33CCAF;
-    border: solid #33CCAF 1px;
-    border-radius: 0.2rem;
-    width: 40%;
-    height: 100%;
-    font-size: 1.1em;
-    @include md{
-        font-size: 1.5em;
-    }
+.Button {
+  @include flex(center, center, row nowrap);
+  background-color: #33ccaf;
+  color: #fff;
+  width: fit-content;
+  height: 2.3rem;
+  border-radius: 4px;
+  border-radius: 0.2rem;
+  border: solid #33ccaf 1px;
+
+  @include md {
+    font-size: 1em;
+    margin-left: -0.4rem;
+  }
 }
 
-.Input{
-    height: 100%;
-    width: 55%;
+.Input {
+  height: 100%;
+  width: 70%;
+  margin-left: 1rem;
+  padding: 0.5rem;
+
+  @include md {
+    width: 80%;
+  }
 }

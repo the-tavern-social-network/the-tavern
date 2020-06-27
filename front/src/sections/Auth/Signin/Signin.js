@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import CrossButton from '../../../assets/images/boutoncroix.svg';
 import Shield from '../../../assets/images/shield.svg';
 import Field from '../../../containers/components/Field';
-
+import ErrorMessage from '../../../components/Error/ErrorMessage';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
-const Signin = ({ match, history, login, resetFields, isLoggedIn }) => {
+const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, errorMessage }) => {
   console.log(match.path);
   useEffect(() => {
     if (isLoggedIn) {
@@ -42,7 +42,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn }) => {
           <Field
             id="email"
             reducerName="auth"
-            placeholder="test@test.com"
+            placeholder="exemple@tavern.com"
             type="email"
             name="email"
             cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
@@ -51,11 +51,12 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn }) => {
           <Field
             id="password"
             reducerName="auth"
-            placeholder="azerty"
+            placeholder="*****"
             type="password"
             name="password"
             cssClass={[styles.Signin__Password, styles.Signin__Field].join(' ')}
           />
+          {hasError && <ErrorMessage message={errorMessage} />}
           <div className={styles.Signin__Btn__Container}>
             <Link className={styles.Signin__Signup} to="/auth/inscription">
               Pas encore inscrit ?

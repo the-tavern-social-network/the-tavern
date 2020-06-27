@@ -1,12 +1,6 @@
 import { connect } from 'react-redux';
 
-import {
-  post,
-  resetFields,
-  acceptContact,
-  deleteContact,
-  deleteTavernRequest,
-} from '../../../actions';
+import { post, resetFields, acceptContact, deleteContact, deleteTavern } from '../../../actions';
 import PostForm from '../../../sections/TheTavern/Thread/PostForm/PostForm';
 
 const mapStateToProps = (state) => ({
@@ -18,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetFields: (reducer) => dispatch(resetFields(reducer)),
   acceptContact: (contactId) => dispatch(acceptContact(contactId)),
   deleteContact: (isContact, contactId) => dispatch(deleteContact(isContact, contactId)),
-  deleteTavernRequest: (tavernId) => dispatch(deleteTavernRequest(tavernId)),
+  deleteTavern: (tavernId) => dispatch(deleteTavern(tavernId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
