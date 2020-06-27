@@ -5,7 +5,10 @@ import {
   removeContact,
   addContactRequest,
   addContact,
+  contactUpdate,
   savePosts,
+  tavernInvite,
+  deleteTavernInvite,
 } from '../actions';
 
 let socketCanal;
@@ -21,7 +24,7 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(addPost(post));
       });
 
-      // Used to update author avatar
+      // Used to update author avatar on thread
       socketCanal.on('save_posts', (posts) => {
         store.dispatch(savePosts(posts));
       });
@@ -34,9 +37,12 @@ export const socket = (store) => (next) => (action) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
+
         delete contact.password;
+
         store.dispatch(addContactRequest(contact));
       });
 
@@ -44,24 +50,43 @@ export const socket = (store) => (next) => (action) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
+
         delete contact.password;
+
         store.dispatch(addContact(contact));
+      });
+
+      socketCanal.on('contact_update', (contact) => {
+        delete contact.posts;
+
+        store.dispatch(contactUpdate(contact));
       });
 
       socketCanal.on('delete_contact', ({ contactInfos }) => {
         const contact = {
           ...contactInfos.user,
           pendingRequests: contactInfos.pendingRequests,
+          tavernRequests: contactInfos.tavernRequests,
           contacts: contactInfos.contacts,
         };
+
         delete contact.password;
 
         store.dispatch(removeContact(contact));
       });
-      break;
 
+      socketCanal.on('tavern_invite', ({ gamemaster, participantId, tavernId }) => {
+        store.dispatch(tavernInvite(gamemaster, participantId, tavernId));
+      });
+
+      socketCanal.on('delete_tavern_invite', ({ participantId, tavernId }) => {
+        store.dispatch(deleteTavernInvite(participantId, tavernId));
+      });
+
+      break;
     default:
       next(action);
   }

@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useRef } from 'react';
 
 import PropTypes from 'prop-types';
@@ -20,10 +17,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
     connection.onmessage = (event) => {
       event.extra.user = user;
       if (connection.isInitiator) {
-
-
         user.username = `${user.username} / GameMaster`;
-
       }
 
       if (event.data.type === 'message') {
@@ -44,15 +38,12 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
     addChatMessage({ message, user });
     connection.send({ type: 'message', message, user });
     // connection.send({ type: 'diceRoll', message });
-    resetFields('chat');
+    resetFields('tavern');
   };
 
   return (
     <div className={styles.Chat}>
-
-
       <div className={styles.Chat__Messages} ref={messagesContainer}>
-
         <div className={styles.Chat__Messages__Message}>
           <p className={styles.Chat__Messages__Message__Player}>Le Tavernier</p>
           <p className={styles.Chat__Messages__Message__Content}>
@@ -74,7 +65,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
         ))}
       </div>
       <form className={styles.Chat__Message__Form} onSubmit={submitHandler}>
-        <Field cssClass={styles.Chat__Message__Input} reducerName="chat" name="message" />
+        <Field cssClass={styles.Chat__Message__Input} reducerName="tavern" name="message" />
         <button className={styles.Chat__Message__Form__Btn}>Envoyer</button>
       </form>
     </div>

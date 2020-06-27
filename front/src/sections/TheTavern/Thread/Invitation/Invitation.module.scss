@@ -4,8 +4,8 @@
   @include flex(center, center, row wrap);
   padding: 0.3rem;
   border-radius: 5px 0 5px 0;
-  background-color: #3a271d;
-  margin: 1rem 0.5rem;
+  background: url('../../../../assets/images/img-noise.png');
+  margin: 1rem 0;
   transition: 0.3s;
   line-height: 1.5;
 
@@ -19,10 +19,10 @@
 
   &__Container {
     @include flex(center, center, row nowrap);
-    
+
     div {
       @include flex(flex-start, center, column nowrap);
-      margin-left:0.5rem;
+      margin-left: 0.5rem;
     }
   }
 }
@@ -35,7 +35,7 @@
   @include flex(center, center, row nowrap);
   justify-content: space-between;
   width: 100%;
-  padding-right:.51rem;
+  padding-right: 0.51rem;
 }
 
 .Name {
@@ -49,7 +49,7 @@
   color: #fff;
 }
 
-.Avatar { 
+.Avatar {
   position: relative;
   width: 3rem;
   border-radius: 50%;
@@ -98,4 +98,3 @@
     background-color: #634432;
   }
 }
-

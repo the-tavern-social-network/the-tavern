@@ -29,7 +29,7 @@ export const auth = (store) => (next) => async (action) => {
 
         delete user.password;
       } catch (err) {
-        console.trace(err);
+        console.log(err);
       }
       break;
     case LOGIN:
@@ -46,6 +46,7 @@ export const auth = (store) => (next) => async (action) => {
 
         delete data.user.password;
         data.user.pendingRequests = data.pendingRequests;
+        data.user.tavernRequests = data.tavernRequests;
         data.user.contacts = data.contacts;
 
         store.dispatch(connect(data));
@@ -69,6 +70,7 @@ export const auth = (store) => (next) => async (action) => {
         delete data.user.password;
 
         data.user.pendingRequests = data.pendingRequests;
+        data.user.tavernRequests = data.tavernRequests;
         data.user.contacts = data.contacts;
 
         if (data.isLoggedIn) {

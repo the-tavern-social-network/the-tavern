@@ -15,6 +15,10 @@ import {
   ADD_CONTACT,
   UPDATE_AVATAR,
   UPDATE_IMAGE,
+  CONTACT_UPDATE,
+  TAVERN_INVITE,
+  DELETE_TAVERN,
+  DELETE_TAVERN_INVITE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -87,13 +91,13 @@ export default (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         loggedUser: action.user,
-      }
+      };
     case REMOVE_CONTACT:
       if (+action.contact.id === state.loggedUser.id) {
         return {
           ...state,
-          loggedUser: action.contact
-        }
+          loggedUser: action.contact,
+        };
       }
       return state;
     case DELETE_ACOUNT:
@@ -113,8 +117,69 @@ export default (state = INITIAL_STATE, action = {}) => {
         loggedUser: {
           ...state.loggedUser,
           avatar: action.avatar,
-        }
+        },
+      };
+    case CONTACT_UPDATE:
+      const sent = state.loggedUser.pendingRequests.sent.map((contact) => {
+        let updatedContact = contact;
+        if (contact.id === action.contact.id) updatedContact = action.contact;
+        return updatedContact;
+      });
+
+      const received = state.loggedUser.pendingRequests.received.map((contact) => {
+        let updatedContact = contact;
+        if (contact.id === action.contact.id) updatedContact = action.contact;
+        return updatedContact;
+      });
+      const contacts = state.loggedUser.contacts.map((contact) => {
+        let updatedContact = contact;
+        if (contact.id === action.contact.id) updatedContact = action.contact;
+        return updatedContact;
+      });
+
+      const tavernRequests = state.loggedUser.tavernRequests.map((contact) => {
+        let updatedContact = contact;
+        if (contact.id === action.contact.id) updatedContact = action.contact;
+        return updatedContact;
+      });
+
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          pendingRequests: { ...state.loggedUser.pendingRequests, sent, received },
+          contacts,
+          tavernRequests,
+        },
+      };
+    case TAVERN_INVITE:
+      if (action.participantId === state.loggedUser.id)
+        return {
+          ...state,
+          loggedUser: {
+            ...state.loggedUser,
+            tavernRequests: [
+              ...state.loggedUser.tavernRequests,
+              {
+                gamemaster: action.gamemaster,
+                tavernId: action.tavernId,
+              },
+            ],
+          },
+        };
+    case DELETE_TAVERN_INVITE:
+      if (state.loggedUser.id === action.participantId) {
+        return {
+          ...state,
+          loggedUser: {
+            ...state.loggedUser,
+            tavernRequests: state.loggedUser.tavernRequests.filter(
+              (tavernRequest) => tavernRequest.tavernId !== action.tavernId,
+            ),
+          },
+        };
       }
+      return state;
     default:
       return state;
   }

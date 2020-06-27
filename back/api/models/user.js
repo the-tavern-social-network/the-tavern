@@ -2,6 +2,7 @@ const { Sequelize, Model, Op } = require('sequelize');
 const sequelize = require('../db/database');
 const Contact = require('../models/contact');
 const TavernRequest = require('../models/tavernRequest');
+const { request } = require('express');
 
 class User extends Model {
   getContacts = async () => {
@@ -129,7 +130,25 @@ class User extends Model {
     }
   };
 
-  // getTavernRequests = async () => {};
+  getTavernRequests = async () => {
+    try {
+      const id = +this.id;
+      const tavernRequests = await TavernRequest.findAll({ where: { participant_id: id } });
+
+      const requestsArray = [];
+      for (const tavernRequest of tavernRequests) {
+        const gamemaster = await User.findByPk(tavernRequest.gamemaster_id);
+        requestsArray.push({
+          gamemaster,
+          tavernId: tavernRequest.tavern_id,
+        });
+      }
+
+      return requestsArray;
+    } catch (err) {
+      console.trace(err);
+    }
+  };
   // createTavernRequest = async (participantId, tavernId) => {
   //   try {
   //     const alreadyExists = await TavernRequest.findOne({

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AvatarItem.module.scss';
 
-const AvatarItem = ({ avatarImage, updateAvatar, avatar }) => {
+const AvatarItem = ({ avatarImage, updateAvatar, avatar, submit }) => {
   return (
     <div className={styles.avatarCase} onClick={() => updateAvatar(avatarImage)}>
       <input
@@ -12,7 +12,7 @@ const AvatarItem = ({ avatarImage, updateAvatar, avatar }) => {
         readOnly
         name="avatarRadio"
       />
-      <img src={avatarImage} alt={avatarImage} />
+      <img src={avatarImage} alt={avatarImage} onDoubleClick={submit} />
     </div>
   );
 };

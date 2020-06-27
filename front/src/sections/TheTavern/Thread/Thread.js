@@ -11,8 +11,10 @@ const Thread = () => {
   return (
     <div className={styles.Thread}>
       <Welcome cssClass={styles.Thread__Welcome} />
-      <Posts />
-      <PostForm isOpen={isOpen} setIsOpen={setIsOpen} />
+      <div className={styles.Thread__PostsContainer}>
+        <Posts />
+        <PostForm isOpen={isOpen} setIsOpen={setIsOpen} />
+      </div>
     </div>
   );
 };

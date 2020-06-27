@@ -23,13 +23,13 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const getGoodAvatar = () => {
     if (post.author !== loggedUser) {
       if (post.author.avatar === null) {
-        return avatarDefault;
+        return AvatarDefault;
       } else {
         return post.author.avatar;
       }
     } else {
       if (loggedUser === null) {
-        return avatarDefault;
+        return AvatarDefault;
       } else {
         return loggedUser.avatar;
       }
@@ -54,10 +54,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         <div className={styles.AbsoluteAuthor}>
           <img
             className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
-            src={AvatarDefault}
-
-            // TODO
-            // src={post.author.avatar}
+            src={post.author.avatar || AvatarDefault}
             alt=""
           />
           {post.author.username !== loggedUser.username &&

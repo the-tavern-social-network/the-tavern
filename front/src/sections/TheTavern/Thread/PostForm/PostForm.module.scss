@@ -12,6 +12,7 @@
   border-radius: 5% 5% 0 0;
   z-index: 50;
   transition: all 300ms ease-in;
+  padding: 0 1rem;
 
   @include md {
     margin-top: 1.8rem;
@@ -46,7 +47,7 @@
     }
   }
 
-  &__DemandeTavern{
+  &__DemandeTavern {
     display: none;
     @include md {
       display: block;
@@ -58,63 +59,67 @@
       margin-top: 3rem;
       margin-bottom: -3rem;
       color: #fff200;
+    }
   }
-}
-&__DemandeTavernBlock {
-  display: none;
-  @include md {
-    padding: 0.5rem;
-    display: block;
-    margin-left: 0.6rem;
-    width: 33rem;
-    background-color: rgb(79, 66, 66);
-  }
-
-}
-
-
-  &__Demande {
+  &__DemandeTavernBlock {
     display: none;
     @include md {
-      display: block;
-      background-image: url('../../../../assets/images/img-noise.png');
-      border-radius: 5px 5px 0 0;
-      width: 11rem;
       padding: 0.5rem;
+      display: block;
       margin-left: 0.6rem;
-      margin-top: 3rem;
-      margin-bottom: -3rem;
-      color: #fff200;
+      width: 33rem;
+      background-color: rgb(79, 66, 66);
     }
-
-    &__Number {
-      display: none;
-      @include md {
-        margin-top: 0.3rem;
-        margin-left: 10.5rem;
-        display: block;
-        padding: 0.15rem;
-        padding-top: 0.3rem;
-        font-size: 0.8em;
-        font-weight: 400;
-        background-color: red;
-        border-radius: 60%;
-        width: 1.4rem;
-        height: 1.4rem;
-      }
-  
-    }
-
   }
 
+  // &__Demande {
+  //   display: none;
+
+  //   @include md {
+  //     position: relative;
+  //     display: block;
+  //     background-image: url('../../../../assets/images/img-noise.png');
+  //     border-radius: 5px 5px 0 0;
+  //     width: 11rem;
+  //     padding: 0.5rem;
+  //     // margin-left: 0.6rem;
+  //     // margin-top: 3rem;
+  //     // margin-bottom: -3rem;
+  //     color: #fff200;
+  //   }
+
+  //   &__Number {
+  //     display: none;
+
+  //     @include md {
+  //       position: absolute;
+  //       top: -0.5rem;
+  //       right: -0.5rem;
+  //       // margin-top: 0.3rem;
+  //       // margin-left: 10.5rem;
+  //       // display: block;
+  //       // padding: 0.15rem;
+  //       // padding-top: 0.3rem;
+  //       @include flex(center, center, row wrap);
+  //       font-size: 0.8em;
+  //       font-weight: 400;
+  //       background-color: red;
+  //       color: #fff;
+  //       border-radius: 50%;
+  //       width: 1.4rem;
+  //       height: 1.4rem;
+  //     }
+  //   }
+  // }
 
   &__Invitation {
     overflow: auto;
     height: 45%;
 
     @include md {
-      height: 12rem;
-      margin-top: 1.6rem;
+      max-height: 8.5rem;
+      height: fit-content;
+      margin-top: 0.3rem;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: #888 #ccc;
@@ -156,10 +161,6 @@
 }
 
 .Drawer {
-  @include md {
-    display: none;
-    // position: relative;
-  }
   position: absolute;
   top: 0;
   left: 0;
@@ -169,13 +170,17 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 5px 5px 0 0;
+  padding: 0 1rem;
+
+  @include md {
+    display: none;
+  }
 }
 
 .SelfAvatar {
   width: 2rem;
-  margin: 0.3rem 1rem;
+  margin: 0.3rem;
   border-radius: 50%;
-  background-color: red;
 }
 
 .SelfAvatarInput {
@@ -210,14 +215,15 @@
   background-color: #573819;
   text-align: end;
   margin-top: 42px;
-  padding: 0 1rem;
+  // padding: 0 1rem;
 
   @include md {
     margin-top: 0;
     background-color: initial;
     text-align: initial;
-    padding: 0rem 0.5rem;
+    // padding: 0rem 0.5rem;
   }
+
   & > div:first-child {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -256,7 +262,6 @@
     margin-right: 0.3rem;
   }
 }
-
 
 .Gutter {
   border-radius: 0 0 5px 5px;

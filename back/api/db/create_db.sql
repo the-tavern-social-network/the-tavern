@@ -19,40 +19,25 @@ CREATE TABLE IF NOT EXISTS "users" (
 
 CREATE TABLE IF NOT EXISTS "tavern_requests" (
   "id" SERIAL PRIMARY KEY,
-  "tavern_id" INT NOT NULL,
-  "user_id" INT NOT NULL REFERENCES "users" ("id")
+  "tavern_id" TEXT NOT NULL,
+  "gamemaster_id" INT NOT NULL REFERENCES "users" ("id")
   ON DELETE CASCADE ON UPDATE CASCADE,
   "participant_id" INT NOT NULL REFERENCES "users" ("id")
   ON DELETE CASCADE ON UPDATE CASCADE,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS "tavern_requests" (
-  "id" SERIAL PRIMARY KEY,
-  "tavern_id" INT NOT NULL,
-  "user_id" INT NOT NULL REFERENCES "users" ("id")
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  "participant_id" INT NOT NULL REFERENCES "users" ("id")
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  "created_at" TIMESTAMP DEFAULT NOW(),
-  "updated_at" TIMESTAMP NULL
 );
 
 CREATE TABLE IF NOT EXISTS "posts" (
   "id" SERIAL PRIMARY KEY,
   "content" TEXT NOT NULL,
-
   "image" TEXT,
   "color" TEXT DEFAULT '#fff',
-
   "user_id" INT REFERENCES "users" ("id")
   ON DELETE CASCADE ON UPDATE CASCADE,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP
 );
-
-
 
 CREATE TABLE IF NOT EXISTS "contacts" (
   "id" SERIAL,
@@ -65,7 +50,6 @@ CREATE TABLE IF NOT EXISTS "contacts" (
   PRIMARY KEY ("user_id","contact_id", "id"),
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP
-
 );
 
 CREATE TABLE IF NOT EXISTS "Session" (

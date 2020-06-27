@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Sword = () => (
-  <div className="sword">
+const Sword = ({ isOpen }) => (
+  <div className={isOpen ? 'sword sword--open' : 'sword'}>
     <div className="l-container container">
       <div className="l-sword">
         <div className="l-handle-orb handle-orb"></div>

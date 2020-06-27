@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import chat from './chat';
+import tavern from './tavern';
 import auth from './auth';
 import user from './user';
 import post from './post';
 import global from './global';
 // import error from './error';
 
-export default combineReducers({ global, chat, auth, user, post });
+export default combineReducers({ global, tavern, auth, user, post });

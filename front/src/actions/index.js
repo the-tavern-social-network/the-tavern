@@ -1,4 +1,4 @@
-export * from './chat';
+export * from './tavern';
 export * from './auth';
 export * from './post';
 export * from './socket';

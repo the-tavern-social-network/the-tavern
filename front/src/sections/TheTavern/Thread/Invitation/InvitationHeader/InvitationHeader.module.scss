@@ -1,0 +1,33 @@
+@import '../../../../../assets/scss/variables';
+
+.InvitationHeader {
+  display: none;
+
+  @include md {
+    position: relative;
+    display: block;
+    background-image: url('../../../../../assets/images/img-noise.png');
+    border-radius: 5px 5px 0 0;
+    width: 11rem;
+    padding: 0.5rem;
+    color: #fff200;
+  }
+
+  &__Number {
+    display: none;
+
+    @include md {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      @include flex(center, center, row wrap);
+      font-size: 0.8em;
+      font-weight: 400;
+      background-color: red;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}

@@ -4,8 +4,8 @@ import Chat from '../../../sections/TheTavern/Tavern/Chat/Chat';
 import { addChatMessage, resetFields } from '../../../actions';
 
 const mapStateToProps = (state) => ({
-  message: state.chat.message,
-  messages: state.chat.messages,
+  message: state.tavern.message,
+  messages: state.tavern.messages,
 });
 
 const mapDispatchToProps = (dispatch) => ({

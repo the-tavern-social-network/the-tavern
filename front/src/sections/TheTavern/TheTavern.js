@@ -9,7 +9,6 @@ import Tavern from '../../containers/TheTavern/Tavern/Tavern';
 import UserAccount from '../../containers/TheTavern/UserAccount/UserAccount';
 import Thread from './Thread/Thread';
 
-
 const TheTavern = ({ wsConnect }) => {
   useEffect(() => {
     wsConnect();
