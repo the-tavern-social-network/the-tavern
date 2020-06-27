@@ -87,7 +87,13 @@ const Tavern = ({
           <p style={{ backgroundColor: '#ccc', color: '#000' }}>Contacts Présents dans la tavern</p>
           <ul>
             {connectedContacts.map((user) => (
-              <li key={user.id}>{user.username}</li>
+              <li key={user.id}>
+                <p>
+                  {user.username}
+
+                </p>
+                <img src={user.avatar} alt=""/>
+                </li>
             ))}
           </ul>
         </div>

@@ -1,25 +1,33 @@
 @import '../../../../assets/scss/variables';
 
 .Modal {
-  @include flex(center, space-between, column nowrap);
+  @include flex(center, space-between, row wrap);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5000;
-  background-color: #fff;
+  background-image: url('../../../../assets/images/img-noise.png');
+  box-shadow: 10px 5px 5px black;
   padding: 2rem;
   min-height: 15rem;
-  width: fit-content;
+  width: 90%;
+  height: 90%;
   border-radius: 5px;
-  color: #000;
+  color: white;
   text-align: center;
   line-height: 1.2;
+
+  @include md {
+    width: 50%;
+    height: 50%;
+    left: 58%;
+  }
 }
 
 .AvatarLists {
   @include flex(center, space-between, row wrap);
-  width: 80%;
+  width: 50%;
 }
 
 .Header{

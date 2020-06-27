@@ -1,0 +1,7 @@
+@import '../../../assets/scss/variables';
+
+.Tavern {
+  @include flex(stretch, space-between, row wrap);
+  min-height: 100vh;
+  background-color:#0b0501
+}

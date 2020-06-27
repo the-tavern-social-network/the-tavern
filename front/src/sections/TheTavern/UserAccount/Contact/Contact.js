@@ -10,7 +10,7 @@ const Contact = ({ contact, deleteContact }) => {
   return (
     <>
       <li className={styles.Contact_Content_Container}>
-        <img src={contact.avatar} alt={`avatar de ${contact.username}`} />
+        <img className={styles.Contact_Image} src={contact.avatar} alt={`avatar de ${contact.username}`} />
         <span className={styles.Contact_Content}>{contact.username}</span>
         <button onClick={() => setIsModalOpen(true)} className={styles.Contact_Btn}>
           Supprimer

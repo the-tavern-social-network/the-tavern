@@ -18,28 +18,34 @@ const Invitation = ({
 }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const history = useHistory();
-  const clickHandler = (type, id) => {
-    if (contactRequest) {
-      if (type === 'accept') {
-        acceptContact(id);
-      } else if (type === 'reject') {
-        setIsDeleteModalOpen(true);
-      }
-    } else if (tavernRequest) {
-      if (type === 'accept') {
-        history.push(`/tavern/${tavernId}`);
-      }
-      deleteTavern(tavernId);
-    }
-  };
 
-  const deleteHandler = (id) => {
-    setIsDeleteModalOpen(false);
-    deleteContact(id);
-  };
+  let invitation;
 
-  return (
-    <>
+  if (tavernRequest) {
+    invitation =
+      <div className={styles.InvitationTavern}>
+        <div className={styles.AskingTavern}>
+          <div className={styles.RequestTavern}>
+            <div className={styles.InvitationTavern__ContainerTavern}>
+              <img className={styles.AvatarTavern} src={avatar} alt="avatar" />
+              <div>
+                <p className={styles.NameTavern}>{username} vous invite à jouer ...</p>
+              </div>
+            </div>
+
+            <div className={styles.ButtonsTavern}>
+              <button className={styles.AddTavern} onClick={(event) => clickHandler('accept', id)}>
+                Accepter
+              </button>
+              <button className={styles.DeclineTavern} onClick={(event) => clickHandler('reject', id)}>
+                Refuser
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  } else if (contactRequest){
+    invitation = <>
       <div className={styles.Invitation}>
         <div className={styles.Asking}>
           <div className={styles.Request}>
@@ -70,7 +76,29 @@ const Invitation = ({
         />
       )}
     </>
-  );
+  }
+
+  const clickHandler = (type, id) => {
+    if (contactRequest) {
+      if (type === 'accept') {
+        acceptContact(id);
+      } else if (type === 'reject') {
+        setIsDeleteModalOpen(true);
+      }
+    } else if (tavernRequest) {
+      if (type === 'accept') {
+        history.push(`/tavern/${tavernId}`);
+      }
+      deleteTavern(tavernId);
+    }
+  };
+
+  const deleteHandler = (id) => {
+    setIsDeleteModalOpen(false);
+    deleteContact(id);
+  };
+
+  return invitation;
 };
 
 Invitation.propTypes = {

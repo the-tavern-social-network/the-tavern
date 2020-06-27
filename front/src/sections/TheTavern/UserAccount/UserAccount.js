@@ -119,6 +119,7 @@ import AvatarDefault from '../../../assets/images/Avatardefault.png';
 import Modal from '../../../components/Modal/Modal';
 import avatars from '../../../util/avatar';
 import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
+import Feather from '../../../assets/images/feather.svg';
 
 const UserAccount = ({
   user,
@@ -148,10 +149,10 @@ const UserAccount = ({
 
   return (
     <section className={styles.UserAccount}>
+      <div className={styles.Username_Container}>
       <button onClick={clickHandler} className={styles.UserAccount__DeleteBtn}>
         Supprimer Compte
       </button>
-      <div className={styles.Username_Container}>
         <h1 className={styles.Username}>{user.username}</h1>
         <img
           className={styles.UserAccount__Avatar}
@@ -177,12 +178,12 @@ const UserAccount = ({
         <div className={styles.UserAccount__Description}>
           <p className={styles.UserAccount__Description_Text}>{user.description}</p>
           <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>
-            Editer
+          <img className={styles.UserAccount__Description_Btn__Feather} src={Feather} alt="plume" />
           </button>
         </div>
       )}
 
-      <h2 className={styles.ContactList_Title}>liste Contacts</h2>
+      <h2 className={styles.ContactList_Title}>Liste Contacts</h2>
       <ul className={styles.ContactList}>
         {user.contacts.map((contact) => (
           <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />

@@ -5,17 +5,25 @@
   font-size: 0.8rem;
   line-height: 1.4;
 
+  @include lg {
+    @include flex(stretch, center, column nowrap);
+    min-height: 100vh;
+    max-width: 25rem;
+    width: 100%;
+  }
+
   &__Messages {
-
-
     border-left: solid 1px yellow;
     border-right: solid 1px yellow;
-
     background-color: #55381a;
     padding: ($gutter/2);
     overflow: auto;
     position: relative;
     height: 20rem;
+
+    @include lg {
+      height: 100%;
+    }
 
     &__Message {
       width: 90%;
@@ -60,9 +68,13 @@
         background-color: #f3cc0d;
       }
     }
+
     &__Input {
       padding: ($gutter/2);
       width: 100%;
-    }
+
+      @include lg {
+        min-height: 6rem;
+      }    }
   }
 }

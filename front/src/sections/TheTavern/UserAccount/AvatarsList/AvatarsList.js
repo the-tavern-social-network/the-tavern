@@ -20,7 +20,7 @@ const AvatarsList = ({ modalCancel, avatar, avatarImages, updateAvatar, updateIm
           <img src={cross} alt="" />
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.AvatarLists_Container} onSubmit={handleSubmit}>
         <div className={styles.AvatarLists}>
           {avatarImages.map((avatarImage) => (
             <AvatarItem

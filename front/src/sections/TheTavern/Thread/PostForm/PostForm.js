@@ -141,8 +141,7 @@ const PostForm = ({
           </div>
           <div className={styles.Gutter}></div>
         </form>
-        <InvitationHeader label="Invitations à la Tavern" number={user.tavernRequests.length} />
-        <div className={styles.PostForm__Invitation}>
+        <div className={styles.PostForm__TavernInvitation}>
           {user.tavernRequests &&
             user.tavernRequests.map(({ gamemaster, tavernId }) => (
               <Invitation

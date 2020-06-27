@@ -1,6 +1,8 @@
+@import '../../../assets/scss/variables';
+
 .UserAccount {
-  background-color: #553719;
-  width:90%;
+  width:95%;
+  max-width: 800px;
   margin: auto;
   padding:1rem;
   border-radius: 5px;
@@ -8,7 +10,8 @@
 
   &__DeleteBtn {
     border :none;
-    border : 1px solid yellow;
+    padding: 0.3rem;
+    border-radius: 5px;
     background-color: #D92626;
     color: #fff;
 
@@ -16,6 +19,7 @@
   }
 
   &__Description {
+    position: relative;
     background-color: #fff;
     height:15vh;
     max-width : 90vw;
@@ -23,83 +27,102 @@
     font-family:  'nunito sans', nunito;
     font-weight: 500;
     margin: 0.3rem 0 0.5rem 0;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     &_Btn{
+      background-color: white;
+      position: absolute;
+      border: none;
+      bottom: 0;
+      right: 0;
+      &__Feather{
+        width: 2rem;
+      }
       
     }
     &_Editing{
       background-color: #fff;
+      position: relative;
       height:15vh;
       max-width : 90vw;
       color: #000;
       font-family:  'nunito sans', nunito;
       font-weight: 500;
       margin: 0.3rem 0 0.5rem 0;
-      border-radius: 5px;
+      width:100%;
       &_Form{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        position: relative;
+
+      }
+      
+      &_Btn{
+        position: absolute;
+        bottom: 0.7rem;
+        right: 0;
+        border : none;
+        background-color:#1DFFD6;
+        margin : 0 0.3rem 0.3rem 0;
+        border-radius : 5px;
+        
+        
 
       }
 
     }
-
-    
 
     &_Text{
       
       word-wrap: break-word;
       padding: 0.5rem;
       overflow-y: auto;
-      
-
     }
-    
-    
-    
 
-
-    
   }
 
-
-
-  
- 
-
-  
   &__Avatar {
-    width: 5rem;
-    height: 5rem;
+    position: relative;
+    margin-top: -2rem;
+    margin-right: -2rem;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 5px solid #0b0501;
+
+    @include md {
+      margin-top: -2rem;
+      margin-right: -3rem;
+      width: 6rem;
+      height: 6rem;
+    }
   }
 }
 
 .Username_Container {
+  background-image: url('../../../assets/images/img-noise.png');
+  padding:1rem;
+  border-radius: 5px 5px 0 0;
 }
 
 .Username{
-  background-color: #fff;
-  color: #000;
-  padding:0.5rem;
-  font-family:  'nunito sans', nunito;
-  width : 80%;
-  border-radius:3px;
+  color: #fff200;
+  font-family:  'nunito sans', 'sans serif';
+  width : 100%;
   text-align: right;
-  font-weight : 500;
-  overflow-y: auto;
+  font-size: 2rem;
+  font-weight : 400;
+  margin-right: 0.6rem;
+  
   &_Container{
-    
     display: flex;
     justify-content : space-between;
     align-items: center;
   }
-  
+}
 
+.ContactList_Title {
+  background-color: #3a271d;
+  border-radius: 5px 5px 0 0;
+  padding: 1rem;
+  width: 11rem;
 }
 
