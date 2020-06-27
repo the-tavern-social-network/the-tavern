@@ -30,6 +30,8 @@ export const auth = (store) => (next) => async (action) => {
         delete user.password;
       } catch (err) {
         console.log(err);
+        console.log(err.response)
+        store.dispatch(setError(err.response.data.message));
       }
       break;
     case LOGIN:
@@ -51,6 +53,7 @@ export const auth = (store) => (next) => async (action) => {
 
         store.dispatch(connect(data));
       } catch (err) {
+        console.log(err);
         store.dispatch(setError(err.response.data.message));
       } finally {
         store.dispatch(setLoading());

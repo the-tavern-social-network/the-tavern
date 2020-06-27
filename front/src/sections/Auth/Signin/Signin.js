@@ -9,7 +9,7 @@ import ErrorMessage from '../../../components/Error/ErrorMessage';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
-const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, errorMessage }) => {
+const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unsetError, errorMessage }) => {
   console.log(match.path);
   useEffect(() => {
     if (isLoggedIn) {
@@ -24,6 +24,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, erro
 
   const signinFormHandler = (event) => {
     event.preventDefault();
+    unsetError();
     login();
   };
 

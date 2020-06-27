@@ -10,6 +10,16 @@ module.exports = {
     req.body.password = hashedPassword;
     req.body.birthdate = new Date(req.body.birthdate);
 
+    const users = await User.findAll();
+    
+    users.forEach((user) => {
+      if (req.body.email === user.email) {
+        res.status(500).send({
+          message: 'Email déjà utilisé',
+        })
+      }
+    })
+
     let user = await User.create(req.body);
 
     if (!user) {
@@ -18,6 +28,7 @@ module.exports = {
       });
     }
 
+    
     res.send(user);
   },
 

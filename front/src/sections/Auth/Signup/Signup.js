@@ -7,8 +7,9 @@ import CrossButton from '../../../assets/images/boutoncroix.svg';
 import Scroll from '../../../assets/images/scroll.svg';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signup.module.scss';
+import ErrorMessage from '../../../components/Error/ErrorMessage';
 
-const Signup = ({ history, signup, resetFields }) => {
+const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessage }) => {
   const clickHandler = (event) => {
     history.push('/auth');
   };
@@ -16,8 +17,13 @@ const Signup = ({ history, signup, resetFields }) => {
   const signupFormHandler = (event) => {
     event.preventDefault();
     signup();
-    history.push(`/auth/connexion`);
-    resetFields('auth');
+    unsetError();
+    setTimeout(() => {
+      if (!hasError) {
+        history.push(`/auth/connexion`);
+        resetFields('auth');
+      }}, 500);
+    
   };
 
   return (
@@ -74,6 +80,7 @@ const Signup = ({ history, signup, resetFields }) => {
             type="password"
             name="confirmPassword"
           />
+          {hasError && <ErrorMessage message={errorMessage} />}
           <button className={styles.Signup__Btn}>
             <img className={styles.Signup__Btn__Scroll} src={Scroll} alt="parchemin" />
             S'inscrire
