@@ -19,6 +19,11 @@
   &__Header {
     grid-area: header;
 
+    & span {
+      font-weight: 200;
+      color: white;
+      font-size: 1em;
+    }
     @include lg {
       position: fixed;
       z-index: 1;
@@ -33,7 +38,7 @@
     }
 
     &__Welcome {
-      margin-top: $gutter + 1.6;
+      margin-top: $gutter ;
       margin-left: $gutter + 2.5;
       position: absolute;
       font-weight: 700;

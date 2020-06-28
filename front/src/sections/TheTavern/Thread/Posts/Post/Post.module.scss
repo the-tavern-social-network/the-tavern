@@ -75,6 +75,11 @@
     width: 3.5rem;
   }
 
+  &__PendingRequest {
+    @extend .AuthorAvatar;
+    border: 4px solid rgb(221, 111, 7);
+  }
+
   &__AlreadyContacts {
     @extend .AuthorAvatar;
     border: 4px solid #03c9a5;

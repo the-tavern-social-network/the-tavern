@@ -5,14 +5,14 @@ import styles from './AvatarItem.module.scss';
 const AvatarItem = ({ avatarImage, updateAvatar, avatar, submit }) => {
   return (
     <div className={styles.avatarCase} onClick={() => updateAvatar(avatarImage)}>
-      <input
+      <input className={styles.radio}
         type="radio"
         value={avatarImage}
         checked={avatar === avatarImage}
         readOnly
         name="avatarRadio"
       />
-      <img src={avatarImage} alt={avatarImage} onDoubleClick={submit} />
+      <img src={avatarImage} alt={avatarImage} className={avatar === avatarImage ? styles.Highlighted : ''} onDoubleClick={submit} />
     </div>
   );
 };

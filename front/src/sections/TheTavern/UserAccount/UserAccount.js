@@ -109,16 +109,19 @@
 //   isEditing: false,
 // };
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import Field from '../../../containers/components/Field';
+import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
+import Contact from './Contact/Contact';
+import Modal from '../../../components/Modal/Modal';
+import Titles from '../../../containers/TheTavern/UserAccount/Titles/Titles';
 
 import styles from './UserAccount.module.scss';
-import Contact from './Contact/Contact';
+
 import AvatarDefault from '../../../assets/images/Avatardefault.png';
-import Modal from '../../../components/Modal/Modal';
 import avatars from '../../../util/avatar';
-import AvatarsList from '../../../containers/TheTavern/UserAccount/AvatarsList/AvatarsList';
 import Feather from '../../../assets/images/feather.svg';
 
 const UserAccount = ({
@@ -131,6 +134,9 @@ const UserAccount = ({
 }) => {
   const [isModalVisible, setModalIsVisible] = useState(false);
   const [isModalAvatar, setModalAvatar] = useState(false);
+  const [isTitlesShowed, setIsTitlesShowed] = useState(false);
+
+ 
 
   const clickHandler = (event) => {
     setModalIsVisible(true);
@@ -154,6 +160,13 @@ const UserAccount = ({
         Supprimer Compte
       </button>
         <h1 className={styles.Username}>{user.username}</h1>
+        <div className={styles.TitleContainer}>        
+        <h2 className={styles.Title} onClick={()=> setIsTitlesShowed(true)}>{user.title} ▾</h2>
+        {
+          isTitlesShowed && <Titles show={setIsTitlesShowed} />
+        }
+        </div>
+
         <img
           className={styles.UserAccount__Avatar}
           src={user.avatar === null ? AvatarDefault : user.avatar}

@@ -6,15 +6,13 @@
   overflow : auto;
   max-height: 53vh;
 
+  
 
   &_Title{
     color:#fff;
     font-weight : 500;
-    background-color: #3a271d;
     border-radius:5px;
     padding:0.5rem;
-    
-
   }
 
   &_Image{
@@ -25,22 +23,18 @@
   }
 
   &_Content{
-    
     font-weight : bold;
     color:#1DFFD6;
-    
     max-width: 75%;
+
     &_Container{
       background-color: #3a271d;
-      margin: 0.5rem 0.3rem;
+      margin: 0.5rem 0;
       padding: 0.6rem 0.3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      
-
     }
-
   }
 
   &_Btn{
@@ -49,6 +43,5 @@
     color: #fff;
     padding : 0.5rem;
     border-radius : 5px;
-
   }
 }

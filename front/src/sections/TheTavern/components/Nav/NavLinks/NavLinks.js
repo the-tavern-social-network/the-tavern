@@ -26,7 +26,7 @@ const NavLinks = ({ logout, isOpen, setIsOpen, tavernId }) => {
       <li>
         <span className={styles.NavLinks__Deconnexion} onClick={logout}>
           <img src={deconnetion} alt="bouton deconnexion" />
-          <div className={styles.NavLinks__Deconnexion__Title}>Déconection</div>
+          <div className={styles.NavLinks__Deconnexion__Title}>Déconnexion</div>
         </span>
       </li>
     </ul>

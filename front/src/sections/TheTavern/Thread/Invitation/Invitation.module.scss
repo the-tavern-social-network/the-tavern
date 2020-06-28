@@ -3,9 +3,8 @@
 .Invitation {
   @include flex(center, center, row wrap);
   padding: 0.3rem;
-  border-radius: 5px 0 5px 0;
-  background: url('../../../../assets/images/img-noise.png');
-  margin: 1rem 0;
+  border-radius: 0px 0px 0px 30px;
+  background-color: #3A261D;
   transition: 0.3s;
   line-height: 1.5;
 
@@ -80,6 +79,7 @@
 
 .Decline {
   @extend .Add;
+
   background-color: #d92626;
   border: solid #d92626 1px;
   margin-left: $gutter/4;
@@ -89,7 +89,9 @@
   }
 
   @include lg {
+    clip-path: polygon(0% 0%, 0% 98%, 100% 99%, 97% 77%, 99% 59%, 95% 32%, 100% 1%);
     margin-left: $gutter/4;
+    padding-right:0.5rem ;
   }
 }
 

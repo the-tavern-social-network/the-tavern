@@ -149,43 +149,6 @@ class User extends Model {
       console.trace(err);
     }
   };
-  // createTavernRequest = async (participantId, tavernId) => {
-  //   try {
-  //     const alreadyExists = await TavernRequest.findOne({
-  //       where: {
-  //         [Op.or]: [
-  //           {
-  //             [Op.and]: [{ user_id: +this.id }, { participant_id: +participantId }],
-  //           },
-  //           {
-  //             [Op.and]: [{ participant_id: +this.id }, { user_id: +participantId }],
-  //           },
-  //         ],
-  //       },
-  //     });
-
-  //     if (!alreadyExists) {
-  //       await TavernRequest.create({
-  //         user_id: +this.id,
-  //         participant_id: +participantId,
-  //         tavern_id: +tavernId,
-  //         // requester: true,
-  //       });
-
-  //       await TavernRequest.create({
-  //         user_id: +participantId,
-  //         participant_id: +this.id,
-  //         tavern_id: +tavernId,
-  //         // requester: false,
-  //       });
-  //       return true;
-  //     }
-  //     return false;
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // };
-  // deleteTavernRequest = async (participantId) => {};
 }
 
 User.init(
@@ -211,6 +174,10 @@ User.init(
       validate: {
         notEmpty: true,
       },
+    },
+    title: {
+      type: Sequelize.TEXT,
+      defaultValue: "Apprenti aventurier"
     },
     avatar: Sequelize.TEXT,
     birthdate: {

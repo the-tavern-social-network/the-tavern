@@ -50,6 +50,10 @@ app.use(baseUrl, tavernRoutes);
 app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
 
+app.use('*', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'public', "index.html"));
+});
+
 sequelize
   .authenticate()
   .then(() => {
@@ -57,8 +61,6 @@ sequelize
     const io = require('./api/socket').init(server);
     io.on('connection', (socket) => {
       RTCMultiConnectionServer.addSocket(socket);
-
-      socket.on('join-room', (msg) => console.log('JOIN-ROOM ', msg));
 
       socket.on('disconnect', () => {
         console.log('User disconnected');

@@ -1,4 +1,5 @@
 import avatardefault from '../assets/images/avatar/Avatardefault.png';
+import { defaultTitles } from '../util'
 
 import {
   CONNECT,
@@ -15,6 +16,7 @@ import {
   ADD_CONTACT,
   UPDATE_AVATAR,
   UPDATE_IMAGE,
+  UPDATE_TITLE,
   CONTACT_UPDATE,
   TAVERN_INVITE,
   DELETE_TAVERN,
@@ -23,8 +25,7 @@ import {
 
 const INITIAL_STATE = {
   loggedUser: {},
-  isLoggedIn: false,
-
+  defaultTitles,
   hasTriedToAuthenticate: false,
   avatar: avatardefault,
   isEditing: false,
@@ -119,6 +120,14 @@ export default (state = INITIAL_STATE, action = {}) => {
           avatar: action.avatar,
         },
       };
+    case UPDATE_TITLE:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          title: action.title
+        }
+      }
     case CONTACT_UPDATE:
       const sent = state.loggedUser.pendingRequests.sent.map((contact) => {
         let updatedContact = contact;

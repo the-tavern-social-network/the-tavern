@@ -6,6 +6,7 @@ import {
   EDIT_USER_ACCOUNT,
   DELETE_ACOUNT,
   UPDATE_IMAGE,
+  UPDATE_TITLE,
   setLoading,
   setError,
 } from '../actions';
@@ -135,6 +136,23 @@ export const user = (store) => (next) => async (action) => {
         store.dispatch(setLoading());
       }
       break;
+    case UPDATE_TITLE:
+      try {
+        store.dispatch(setLoading())
+
+        const data = {
+          title: action.title
+        }
+
+        await axios.patch(`${apiUrl}/user/${user.loggedUser.id}`, data);
+
+        next(action);
+      } catch (err) {
+        store.dispatch(setError(err))
+      } finally { 
+        store.dispatch(setLoading())
+      }
+    break;
     default:
       next(action);
   }
