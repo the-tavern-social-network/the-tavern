@@ -9,6 +9,7 @@ import {
   setInitialLoading,
   setError,
   SIGNUP,
+  isResolve,
 } from '../actions';
 import { apiUrl } from '../util/index';
 import avatar from '../assets/images/avatar/Avatardefault.png';
@@ -26,8 +27,9 @@ export const auth = (store) => (next) => async (action) => {
           birthdate: auth.birthdate,
         };
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
-
+        
         delete user.password;
+        store.dispatch(isResolve());
       } catch (err) {
         console.log(err);
         console.log(err.response)

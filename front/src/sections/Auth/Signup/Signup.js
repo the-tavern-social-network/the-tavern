@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
@@ -9,21 +9,31 @@ import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signup.module.scss';
 import ErrorMessage from '../../../components/Error/ErrorMessage';
 
-const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessage }) => {
-  const clickHandler = (event) => {
+const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessage, resolve, isResolve }) => {
+  
+  const [targetDiffRender, setTargetDiffRender] = useState(0) 
+
+  useEffect(() => {
+    resetFields('auth');
+  },[targetDiffRender])
+
+  useEffect(() => {
+    if (resolve) {
+      history.push(`/auth/connexion`);
+      unsetError();
+      isResolve();
+    };
+  }, [resolve, hasError]);
+  
+
+  const clickHandler = () => {
     history.push('/auth');
   };
-
+  
   const signupFormHandler = (event) => {
     event.preventDefault();
-    signup();
-    unsetError();
-    setTimeout(() => {
-      if (!hasError) {
-        history.push(`/auth/connexion`);
-        resetFields('auth');
-      }}, 500);
-    
+    setTargetDiffRender(targetDiffRender + 1);
+    signup();    
   };
 
   return (
