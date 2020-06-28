@@ -23,6 +23,7 @@ export const auth = (store) => (next) => async (action) => {
           email: auth.email,
           avatar,
           password: auth.password,
+          confirmPassword: auth.confirmPassword,
           username: auth.username,
           birthdate: auth.birthdate,
         };
@@ -32,7 +33,7 @@ export const auth = (store) => (next) => async (action) => {
         store.dispatch(isResolve());
       } catch (err) {
         console.log(err);
-        console.log(err.response)
+        // console.log(err.response.data.message)
         store.dispatch(setError(err.response.data.message));
       }
       break;
