@@ -14,10 +14,6 @@ const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessa
   const [targetDiffRender, setTargetDiffRender] = useState(0) 
 
   useEffect(() => {
-    resetFields('auth');
-  },[targetDiffRender])
-
-  useEffect(() => {
     if (resolve) {
       history.push(`/auth/connexion`);
       unsetError();
@@ -34,6 +30,7 @@ const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessa
     event.preventDefault();
     setTargetDiffRender(targetDiffRender + 1);
     signup();    
+    resetFields('auth');
   };
 
   return (
