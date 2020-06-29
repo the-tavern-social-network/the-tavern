@@ -16,9 +16,6 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
   useEffect(() => {
     connection.onmessage = (event) => {
       event.extra.user = user;
-      if (connection.isInitiator) {
-        user.username = `${user.username} / GameMaster`;
-      }
 
       if (event.data.type === 'message') {
         addChatMessage({ message: event.data.message, user: event.data.user });
@@ -29,14 +26,16 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
     // eslint-disable-next-line
   }, []);
 
+  const checkInitiator = (user) => connection.isInitiator ? { ...user, username: `${user.username} / GameMaster` } : user
+
   const submitHandler = (event) => {
     event.preventDefault();
     if (!message) {
       return;
     }
 
-    addChatMessage({ message, user });
-    connection.send({ type: 'message', message, user });
+    addChatMessage({ message, user: checkInitiator(user) });
+    connection.send({ type: 'message', message, user: checkInitiator(user) });
     // connection.send({ type: 'diceRoll', message });
     resetFields('tavern');
   };
@@ -54,7 +53,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
           <div key={message.user.id} className={styles.Chat__Messages__Message}>
             <p
               className={
-                message.user.username === user.username
+                message.user.username === `${user.username} / GameMaster`
                   ? styles.Chat__Messages__Message__Self
                   : styles.Chat__Messages__Message__Player
               }>

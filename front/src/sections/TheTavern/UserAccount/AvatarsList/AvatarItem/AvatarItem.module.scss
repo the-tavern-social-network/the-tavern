@@ -1,5 +1,26 @@
-.avatarCase{
+@import '../../../../../assets/scss/variables';
+
+.avatarCase {
+    width:20%;
+    position:relative;
+    margin: 0.4rem;
+    
     img {
-        width:20%
+        cursor: pointer;
+        width: 100%;
+        min-width: 60px;
     }
+}
+
+.radio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -50%);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.Highlighted {
+    border: 3px solid #fff200;
 }

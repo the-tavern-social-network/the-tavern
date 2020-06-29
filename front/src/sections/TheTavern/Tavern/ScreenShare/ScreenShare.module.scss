@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variables';
+
 .ScreenContainer {
   position: relative;
   z-index: 5;
@@ -9,6 +11,20 @@
   max-width: 75rem;
   z-index: 10;
   position: relative;
+
+  @include lg {
+    max-width: calc(100% - 27rem);
+  }
+
+  &__Logo {
+    position: absolute;
+    margin : 0.5rem 0 0 0.5rem;
+    width: 2rem;
+    @include md {
+      width: 4rem;
+    }
+  }
+
 
   &__TavernExit {
     cursor: pointer;

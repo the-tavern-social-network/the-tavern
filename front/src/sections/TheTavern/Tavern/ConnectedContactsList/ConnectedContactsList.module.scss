@@ -1,0 +1,27 @@
+@import '../../../../assets/scss/variables';
+
+.ConnectedContactsList {
+    font-family: 'Nunito Sans', sans-serif;
+
+    &__List{
+        @include md {
+            position : absolute ;
+            top : 8rem;
+            right : 26rem;
+            
+        }
+    
+
+        &__Item {
+
+        }
+
+        &__Avatar{
+            width: 3rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__Title{
+    }
+}

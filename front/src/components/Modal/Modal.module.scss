@@ -2,6 +2,7 @@
 
 .Modal {
   @include flex(center, space-between, column nowrap);
+  font-family: "Nunito sans", sans-serif;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -12,9 +13,62 @@
   min-height: 15rem;
   width: fit-content;
   border-radius: 5px;
-  color: #000;
+  color: #fff;
   text-align: center;
   line-height: 1.2;
+  background-color: rgba(#3a271d, .95);
+  clip-path: polygon(
+    0% 0%,
+    2% 2%,
+    4% 0%,
+    6% 1%,
+    8% 1%,
+    11% 0%,
+    12% 1%,
+    14% 0%,
+    16% 1%,
+    18% 1%,
+    20% 1%,
+    22% 1%,
+    24% 0%,
+    26% 0%,
+    28% 0%,
+    29% 2%,
+    30% 4%,
+    31% 0%,
+    34% 0%,
+    36% 1%,
+    39% 1%,
+    40% 0%,
+    42% 1%,
+    44% 1%,
+    47% 1%,
+    49% 0%,
+    52% 0%,
+    56% 0%,
+    58% 2%,
+    59% 0%,
+    62% 1%,
+    63% 4%,
+    65% 0%,
+    72% 0%,
+    74% 1%,
+    76% 0%,
+    78% 1%,
+    80% 0%,
+    83% 0%,
+    85% 1%,
+    88% 1%,
+    90% 0%,
+    94% 1%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  @include lg {
+    left: 57%;
+  }
 
   header {
     font-size: 1.2em;
@@ -28,4 +82,24 @@
 .Buttons__Container {
   @include flex(center, space-between, row wrap);
   width: 100%;
+  font-family: "Nunito sans", sans-serif;
+
+  button {
+    border-radius: 2px;
+    color: #fff;
+    margin-left: $gutter/4;
+    font-size: 0.9em;
+    width: fit-content;
+    padding: 0.3rem;
+  }
+
+  button:nth-child(1) {
+    background-color: #d92626;
+    border: solid #d92626 1px;
+  }
+
+  button:nth-child(2) {
+    background-color: #f2af0d;
+    border: solid #f2af0d 1px;
+  }
 }

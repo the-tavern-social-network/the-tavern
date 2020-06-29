@@ -9,6 +9,7 @@ export const EDIT_USER_ACCOUNT = 'EDIT_USER_ACCOUNT';
 export const DELETE_ACOUNT = 'DELETE_ACOUNT';
 export const UPDATE_AVATAR = 'UPDATE_AVATAR';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
+export const UPDATE_TITLE = 'UPDATE_TITLE';
 export const CONTACT_UPDATE = 'CONTACT_UPDATE';
 
 export const sendContactRequest = (contactId) => ({ type: SEND_CONTACT_REQUEST, contactId });
@@ -28,4 +29,5 @@ export const updateImage = (avatar) => ({
   type: UPDATE_IMAGE,
   avatar,
 });
+export const updateTitle = (title) => ({ type: UPDATE_TITLE, title });
 export const contactUpdate = (contact) => ({ type: CONTACT_UPDATE, contact });
