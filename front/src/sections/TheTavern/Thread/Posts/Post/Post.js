@@ -82,6 +82,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
           </div>
           {post.author.username === loggedUser.username && (
             <FontAwesomeIcon
+              title="Supprimer Le Post"
               color="red"
               icon={faTrash}
               className={styles.DeleteButton}

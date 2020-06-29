@@ -88,8 +88,13 @@
   grid-template-areas: 'header' 'main' 'footer';
   font-family: 'nunito sans', sans;
   background-color: #0b0501;
+  background-image: url(../../assets/images/background4.jpg);
+  background-size: 100%;
+  background-attachment: fixed;
+  
   color: white;
   font-weight: 200;
+
 
   @include lg {
     grid-template-columns: 18rem auto;

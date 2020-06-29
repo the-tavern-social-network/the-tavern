@@ -3,5 +3,15 @@
 .Tavern {
   @include flex(stretch, space-between, row wrap);
   min-height: 100vh;
-  background-color:#0b0501
+  background-color:#0b0501;
+  background: url('../../../assets/images/wood3.jpg');
+
+  &__Chat {
+    &__Container {
+      @include lg {
+        color: #fff;
+        @include flex(center,space-between, column nowrap);
+      }
+    }
+  }
 }

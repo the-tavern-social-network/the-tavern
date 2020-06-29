@@ -67,9 +67,9 @@
 .AuthorAvatar {
   background-color: #fff;
   border-radius: 50%;
-  border: solid 4px #0b0501;
+  border: solid 4px #1A1412;
   width: 2.4rem;
-  background-color: black;
+  background-color: #1A1412;
 
   @include md {
     width: 3.5rem;
@@ -112,7 +112,7 @@
 }
 
 .ContentPost {
-  background-color: #0b0501;
+  background-color: #1A1412;
   border-radius: 5px;
   color: #fff;
   width: 95%;
@@ -126,8 +126,16 @@
   white-space: -o-pre-wrap; /* Opera 7 */
   word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
+
 .DateContainer {
+  @include flex(center, flex-start, row nowrap);
   word-wrap: break-word;
+  width: 100%;
+
+  & div:last-child {
+    margin-left: 1rem;
+  }
+
   @include xl {
     font-size: 0.8em;
   }
@@ -159,24 +167,15 @@
     margin: 0.3rem auto;
     margin-bottom: 0.4rem;
   }
+
   &_between svg {
     cursor: pointer;
   }
-  
 }
 .fa-trash {
   color: red;
 }
 
-
-
 .DeleteButton {
   font-size: 1.1em;
 }
-
-.DateContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 35%;
-}
-

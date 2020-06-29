@@ -172,6 +172,7 @@ export default (state = INITIAL_STATE, action = {}) => {
               {
                 gamemaster: action.gamemaster,
                 tavernId: action.tavernId,
+                date: action.date
               },
             ],
           },

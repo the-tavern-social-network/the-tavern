@@ -78,8 +78,8 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(removeContact(contact));
       });
 
-      socketCanal.on('tavern_invite', ({ gamemaster, participantId, tavernId }) => {
-        store.dispatch(tavernInvite(gamemaster, participantId, tavernId));
+      socketCanal.on('tavern_invite', ({ gamemaster, participantId, tavernId, date }) => {
+        store.dispatch(tavernInvite(gamemaster, participantId, tavernId, date));
       });
 
       socketCanal.on('delete_tavern_invite', ({ participantId, tavernId }) => {

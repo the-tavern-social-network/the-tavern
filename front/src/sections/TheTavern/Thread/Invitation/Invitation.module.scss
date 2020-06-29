@@ -7,6 +7,8 @@
   background-color: #3A261D;
   transition: 0.3s;
   line-height: 1.5;
+  margin-top: 0.35rem;
+  font-family: "Nunito sans", sans-serif;
 
   &:nth-child(1) {
     margin-top: 0;
@@ -22,6 +24,85 @@
     div {
       @include flex(flex-start, center, column nowrap);
       margin-left: 0.5rem;
+    }
+  }
+
+  &__Tavern {
+    background: url("../../../../assets/images/img-noise.png");
+    width: 100%;
+  
+
+    &__Asking {
+
+    }
+
+    &__Request {
+      background: url('../../../../assets/images/background4.jpg');
+    }
+
+    &__Container {
+      @include lg {
+        @include flex(center, center, row nowrap);
+        position: relative;
+      }
+    }
+
+    &__Time {
+      @include lg {
+        color: #f3cc0d;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    &__Avatar {
+      @include lg {
+        width: 3rem;
+      }
+    }
+
+    &__Username {
+      @include lg {
+        font-size: 1.2em;
+        color: #77d4bd;
+      }
+    }
+    
+    &__Buttons__Container {
+      @include flex(stretch, center, row nowrap);
+    }
+    
+    &__Button {
+      &__Add {
+        padding: 0.5rem;
+        color: #fff;
+        font-weight: bold;
+
+        @include lg {
+          @include flex(center,center,row);
+          margin-right: 0.5rem;
+          background-color: #77d4bd;
+          border: none;
+          
+          img {
+            width: 1.5rem;
+          }
+          
+        }
+      }
+      
+      &__Decline {
+        @extend .Invitation__Tavern__Button__Add;
+        margin-right: 0;
+        background-color: #d92626;
+
+        img {
+          margin: 0.3rem;
+          width: 1rem;
+        }
+        
+      }
     }
   }
 }
@@ -54,7 +135,7 @@
   border-radius: 50%;
 
   @include md {
-    border: solid 5px #0b0501;
+    border: solid 5px #1A1412;
   }
 }
 
@@ -64,13 +145,14 @@
 }
 
 .Add {
+  clip-path: polygon(100% 0, 100% 100%, 3% 100%, 8% 75%, 0 48%, 4% 17%, 2% 0);
   background-color: #04dab4;
   color: #fff;
   border: solid #04dab4 1px;
-  border-radius: 2px;
   font-size: 0.9em;
   width: fit-content;
   padding: 0.3rem;
+  padding-left:0.8rem ;
 
   @include md {
     font-size: 0.9em;
@@ -79,19 +161,18 @@
 
 .Decline {
   @extend .Add;
-
+  clip-path: polygon(0 0, 0 100%, 95% 100%, 91% 66%, 93% 45%, 90% 25%, 97% 0);
   background-color: #d92626;
   border: solid #d92626 1px;
   margin-left: $gutter/4;
+  padding-right:0.8rem ;
 
   @include md {
     margin-left: $gutter/4;
   }
 
   @include lg {
-    clip-path: polygon(0% 0%, 0% 98%, 100% 99%, 97% 77%, 99% 59%, 95% 32%, 100% 1%);
     margin-left: $gutter/4;
-    padding-right:0.5rem ;
   }
 }
 

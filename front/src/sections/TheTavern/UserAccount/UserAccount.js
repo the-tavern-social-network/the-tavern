@@ -123,6 +123,7 @@ import styles from './UserAccount.module.scss';
 import AvatarDefault from '../../../assets/images/Avatardefault.png';
 import avatars from '../../../util/avatar';
 import Feather from '../../../assets/images/feather.svg';
+import Friends from '../../../assets/images/team.svg';
 
 const UserAccount = ({
   user,
@@ -193,15 +194,21 @@ const UserAccount = ({
           <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>
           <img className={styles.UserAccount__Description_Btn__Feather} src={Feather} alt="plume" />
           </button>
+          <div className={styles.UserAccount__Description__Bloc}></div>
         </div>
-      )}
+      )
+      }
 
-      <h2 className={styles.ContactList_Title}>Liste Contacts</h2>
+      <h2 className={styles.ContactList_Title}>
+      <img className={styles.ContactList_Title_Logo} src={Friends} alt="friends" />
+       Liste Contacts 
+      </h2>
       <ul className={styles.ContactList}>
         {user.contacts.map((contact) => (
           <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />
         ))}
       </ul>
+      <div className={styles.ContactList__Bloc}></div>
       {isModalVisible && (
         <Modal
           modalCancel={() => setModalIsVisible(false)}
