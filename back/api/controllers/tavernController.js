@@ -15,6 +15,7 @@ module.exports = {
       gamemaster,
       participantId: tavernRequest.participant_id,
       tavernId: tavernRequest.tavern_id,
+      date: tavernRequest.createdAt,
     });
 
     res.send({ message: 'Invitation envoyée avec succès !' });
@@ -22,7 +23,6 @@ module.exports = {
 
   async delete(req, res, next) {
     const { tavernId: tavern_id } = req.params;
-    console.log(req.params);
 
     const tavernRequest = await TavernRequest.findOne({ where: { tavern_id } });
     io.getIo().emit('delete_tavern_invite', {

@@ -16,11 +16,12 @@ export const inviteContact = (contactId, tavernId) => ({
   contactId,
   tavernId,
 });
-export const tavernInvite = (gamemaster, participantId, tavernId) => ({
+export const tavernInvite = (gamemaster, participantId, tavernId, date) => ({
   type: TAVERN_INVITE,
   gamemaster,
   participantId,
   tavernId,
+  date
 });
 export const deleteTavern = (tavernId) => ({ type: DELETE_TAVERN, tavernId });
 export const deleteTavernInvite = (participantId, tavernId) => ({

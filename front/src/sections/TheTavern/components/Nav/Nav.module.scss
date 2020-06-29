@@ -19,21 +19,27 @@
   &__Header {
     grid-area: header;
 
+    & span {
+      font-weight: 200;
+      color: white;
+      font-size: 1em;
+    }
     @include lg {
       position: fixed;
       z-index: 1;
       height: 100vh;
       grid-area: none;
       width: 16rem;
-      background-image: url('../../../../assets/images/backgroundlight.jpg');
+      background-color: white;
+      background-image: url('../../../../assets/images/backgroundwhite5.jpg');
       background-repeat: no-repeat;
-      background-position: -18rem;
+      background-position: -7rem;
       background-size: cover;
       border-right: solid #dcaa84 0.5rem;
     }
 
     &__Welcome {
-      margin-top: $gutter + 1.6;
+      margin-top: $gutter ;
       margin-left: $gutter + 2.5;
       position: absolute;
       font-weight: 700;

@@ -19,7 +19,10 @@ const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
       {!isInitialLoading && (
         <Switch>
           <>
-            <Route path="/auth" component={Auth} />{' '}
+            <Route path="/admin">
+              test
+            </Route>
+            <Route path="/auth" component={Auth} />
             <ProtectedRoute path="/" component={TheTavern} />
             <Route exact path="/" component={NotFound} />
           </>

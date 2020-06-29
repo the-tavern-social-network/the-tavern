@@ -95,6 +95,7 @@ module.exports = {
 
     //	Looking for a user with the same email
     const user = await User.findOne({ include: 'posts', where: { email } });
+    console.log(user);
     //	If no user found, send a 404 response
     if (!user) {
       return res.status(404).send({

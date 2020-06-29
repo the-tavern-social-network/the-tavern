@@ -3,8 +3,11 @@ import React, { useState, useEffect } from 'react';
 import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
-import styles from './Tavern.module.scss';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
+import ContactList from './ContactList/ContactList';
+import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
+
+import styles from './Tavern.module.scss';
 
 const Tavern = ({
   match,
@@ -69,29 +72,18 @@ const Tavern = ({
         connection={connection}
         deleteTavern={deleteTavern}
       />
-      <Chat user={user} connection={connection} />
-      {userHasJoined && (
-        <div>
-          <p>{connection.extra.user.username}</p>
-          <p style={{ backgroundColor: '#ccc', color: '#000' }}>Mes contacts</p>
-          <ul>
-            {connection.extra.user.contacts.map((contact) => (
-              <li key={contact.id}>
-                <p>{contact.username}</p>
-                <button onClick={() => inviteIntoTavernHandler(+contact.id, match.params.id)}>
-                  Inviter dans la tavern
-                </button>
-              </li>
-            ))}
-          </ul>
-          <p style={{ backgroundColor: '#ccc', color: '#000' }}>Contacts Présents dans la tavern</p>
-          <ul>
-            {connectedContacts.map((user) => (
-              <li key={user.id}>{user.username}</li>
-            ))}
-          </ul>
+        <div className={styles.Tavern__Chat__Container}>
+        {userHasJoined && (
+          <div>
+            <div>
+              <p>{connection.extra.user.username}</p>
+              <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
+            </div>
+            <ConnectedContactsList connectedContacts={connectedContacts}/>
+          </div>
+        )}
+          <Chat user={user} connection={connection} />
         </div>
-      )}
     </div>
   );
 };

@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS "users" (
   "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
   "username" TEXT NOT NULL UNIQUE,
+  "title" TEXT DEFAULT 'Apprenti aventurier',
   "avatar" TEXT NULL,
   "description" TEXT NULL,
   "birthdate" DATE NOT NULL,

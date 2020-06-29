@@ -35,7 +35,7 @@ const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessa
 
   return (
     <>
-      <Presentation />
+      {window.matchMedia('(min-width: 768px)').matches && <Presentation /> }
       <form onSubmit={signupFormHandler} className={styles.Signup}>
         <img
           onClick={clickHandler}

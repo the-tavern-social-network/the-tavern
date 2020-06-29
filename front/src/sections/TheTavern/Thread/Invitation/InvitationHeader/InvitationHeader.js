@@ -7,7 +7,10 @@ const InvitationHeader = ({ label, number }) => {
   return (
     <div className={styles.InvitationHeader}>
       <div>{label}</div>
-      <span className={styles.InvitationHeader__Number}>{number}</span>
+      {
+        number > 0 &&
+        <span className={styles.InvitationHeader__Number}>{number}</span>
+      }
     </div>
   );
 };

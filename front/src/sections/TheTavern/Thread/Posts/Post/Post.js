@@ -19,22 +19,6 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
     deletePost(id);
   };
 
-  // TODO remove
-  const getGoodAvatar = () => {
-    if (post.author !== loggedUser) {
-      if (post.author.avatar === null) {
-        return AvatarDefault;
-      } else {
-        return post.author.avatar;
-      }
-    } else {
-      if (loggedUser === null) {
-        return AvatarDefault;
-      } else {
-        return loggedUser.avatar;
-      }
-    }
-  };
   const sentRequest =
     loggedUser.pendingRequests.sent.find((user) => user.id === post.author.id) && true;
   const receivedRequest =
@@ -53,7 +37,12 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
         )}
         <div className={styles.AbsoluteAuthor}>
           <img
-            className={alreadyContacts ? styles.AuthorAvatar__AlreadyContacts : styles.AuthorAvatar}
+            className={
+              alreadyContacts ? 
+                styles.AuthorAvatar__AlreadyContacts
+                : sentRequest || receivedRequest 
+                  ? styles.AuthorAvatar__PendingRequest 
+                : styles.AuthorAvatar}
             src={post.author.avatar || AvatarDefault}
             alt=""
           />
@@ -93,6 +82,7 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
           </div>
           {post.author.username === loggedUser.username && (
             <FontAwesomeIcon
+              title="Supprimer Le Post"
               color="red"
               icon={faTrash}
               className={styles.DeleteButton}

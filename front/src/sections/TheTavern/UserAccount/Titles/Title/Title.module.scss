@@ -1,0 +1,9 @@
+.Title {
+  cursor: pointer;
+  padding: 0.3rem;
+  background-color: rgb(50, 29, 13);
+  color: white;
+  &:hover{
+      background-color:rgb(91, 51, 3);
+  }
+}

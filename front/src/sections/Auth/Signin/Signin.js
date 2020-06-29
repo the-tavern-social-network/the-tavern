@@ -9,8 +9,9 @@ import ErrorMessage from '../../../components/Error/ErrorMessage';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
+
 const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unsetError, errorMessage }) => {
-  console.log(match.path);
+
   useEffect(() => {
     if (isLoggedIn) {
       history.push('/');
@@ -30,7 +31,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
 
   return (
     <>
-      <Presentation />
+      { window.matchMedia('(min-width: 768px)').matches && <Presentation />}
       <form onSubmit={signinFormHandler} className={styles.Signin}>
         <img
           onClick={clickHandler}

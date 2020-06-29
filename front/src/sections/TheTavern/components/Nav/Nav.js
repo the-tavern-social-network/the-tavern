@@ -19,6 +19,7 @@ const Nav = ({ logout, user, tavernId }) => {
       <div className={styles.Nav__Header__Welcome}>
         <h1>Bienvenue</h1>
         <h2 className={styles.Nav__Header__Welcome__User}>{user.username}</h2>
+        <span>{user.title}</span>
       </div>
       <nav className={styles.Nav}>
         <Link to="/" className={styles.Nav__Logo}>
@@ -28,7 +29,6 @@ const Nav = ({ logout, user, tavernId }) => {
           <div
             onClick={() => setIsOpen(!isOpen)}
             className={isOpen ? styles.Nav__Menu__Open : styles.Nav__Menu}>
-            {/* {<img src={menu} alt="menu de navigation" />} */}
             <div className="sword-menu">
               <Sword isOpen={isOpen} />
               <Sword isOpen={isOpen} />

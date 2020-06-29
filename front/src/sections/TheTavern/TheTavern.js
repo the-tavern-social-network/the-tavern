@@ -17,14 +17,16 @@ const TheTavern = ({ wsConnect }) => {
 
   return (
     <>
-      <Layout section="TheTavern">
         <Switch>
           <Route path="/tavern/:id" component={Tavern} />
-          <Route path="/compte" component={UserAccount} />
-          <Route exact path="/" component={Thread} />
-          <Route component={NotFound} />
+          <Layout section="TheTavern">
+            <Switch>
+              <Route path="/compte" component={UserAccount} />
+              <Route exact path="/" component={Thread} />
+               <Route component={NotFound} />
+            </Switch>
+          </Layout>
         </Switch>
-      </Layout>
     </>
   );
 };
