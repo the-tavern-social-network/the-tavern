@@ -1,15 +1,15 @@
 @import '../../../assets/scss/variables';
 
 .UserAccount {
-  width:95%;
+  width: 95%;
   max-width: 800px;
   margin: auto;
-  padding:1rem;
+  padding: 1rem;
   border-radius: 5px;
 
   &__DeleteBtn {
     position: relative;
-    border :none;
+    border: none;
     font-size: 0.7em;
     margin: 0.3rem;
     padding: 0.3rem;
@@ -18,21 +18,28 @@
     color: rgb(187, 187, 187);
 
     @include md {
-    margin-top: -2rem;
-    margin-left: 0.5rem;
+      margin-top: -2rem;
+      margin-left: 0.5rem;
     }
   }
 
   &__Description {
+    line-height: 1.5;
     position: relative;
     background-color: #fff;
-    height:15vh;
-    max-width : 90vw;
+    height: 15vh;
+    max-width: 90vw;
     color: #000;
-    font-family:  'nunito sans', nunito;
+    font-family: 'nunito sans', nunito;
     font-weight: 500;
+    padding: 1rem;
     margin: 0.3rem 0 0.5rem 0;
-    
+    font-size: 1em;
+
+    &_Text {
+      word-wrap: break-word;
+    }
+
     &__Bloc {
       width: 100%;
       height: 1rem;
@@ -40,6 +47,7 @@
       background-image: url('../../../assets/images/img-noise.png');
       position: absolute;
       bottom: -1.3rem;
+      left: 0;
     }
 
     &_Btn {
@@ -55,35 +63,38 @@
     }
 
     &_Editing {
+      line-height: 1.5;
       background-color: #fff;
       position: relative;
-      height:15vh;
-      max-width : 90vw;
+      height: 100%;
+      width: 100%;
       color: #000;
-      font-family:  'nunito sans', nunito;
+      font-family: 'nunito sans', nunito;
       font-weight: 500;
-      margin: 0.3rem 0 0.5rem 0;
-      width:100%;
+      resize: none;
+      padding: 1rem;
+      font-size: 1em;
 
       &_Form {
         position: relative;
+        height: 15vh;
+        max-width: 90vw;
+        color: #000;
+        font-family: 'nunito sans', nunito;
+        font-weight: 500;
+        margin: 0.3rem 0 0.5rem 0;
       }
-      
+
       &_Btn {
         position: absolute;
-        bottom: 0.7rem;
+        bottom: 0;
         right: 0;
-        border : none;
-        background-color:#1DFFD6;
-        margin : 0 0.3rem 0.3rem 0;
-        border-radius : 5px;
+        border: none;
+        background-color: #1dffd6;
+        padding: 0.5rem;
+        margin: 0 0.3rem 0.3rem 0;
+        border-radius: 5px;
       }
-    }
-
-    &_Text {
-      word-wrap: break-word;
-      padding: 0.5rem;
-      overflow-y: auto;
     }
   }
 
@@ -96,7 +107,7 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    border: 5px solid #1A1412;
+    border: 5px solid #1a1412;
 
     @include md {
       margin-top: -1rem;
@@ -116,16 +127,16 @@
 
 .Username {
   color: #fff200;
-  font-family:  'nunito sans', 'sans serif';
-  width : 100%;
+  font-family: 'nunito sans', 'sans serif';
+  width: 100%;
   text-align: right;
   font-size: 2rem;
-  font-weight : 400;
+  font-weight: 400;
   margin-right: 0.6rem;
-  
-  &_Container{
+
+  &_Container {
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
     align-items: center;
   }
 }
@@ -143,7 +154,7 @@
 }
 
 .ContactList_Title {
-  @include flex (center,left, row nowrap);
+  @include flex(center, left, row nowrap);
   background-image: url('../../../assets/images/img-noise.png');
   margin-top: 1.8rem;
   border-radius: 5px 5px 0 0;

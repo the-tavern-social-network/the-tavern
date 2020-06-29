@@ -1,43 +1,42 @@
 .TitleList {
-    position: absolute;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    font-size: 0.9em;
-    font-style: italic;
-    top: 0;
-    right: 0;
-    max-height: 8rem;
-    min-width: 10rem;
-    overflow: auto;
-    text-align: center;
-    z-index: 100;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(80, 63, 18) rgb(48, 31, 10);
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  font-size: 0.9em;
+  font-style: italic;
+  top: 0;
+  right: 0;
+  max-height: 8rem;
+  min-width: 10rem;
+  overflow: auto;
+  text-align: center;
+  z-index: 100;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(80, 63, 18) rgb(48, 31, 10);
 
-    &::-webkit-scrollbar{
-      -webkit-appearance: none;
-      width: 10px;
-      height: 10px;
-    }
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+  }
 
-    &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: rgb(26, 17, 6);
     border-radius: 0px;
-    }
+  }
 
-    &::-webkit-scrollbar-thumb {
-      cursor: pointer;
-      border-radius: 5px;
-      background: rgb(83, 187, 180);
-    }
+  &::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgb(83, 187, 180);
+  }
 
-    &::-webkit-scrollbar-thumb:window-inactive {
-      background-color: rgba(0, 0, 0, 0.25);
-    }
-    
-    &::-webkit-scrollbar-thumb:hover {
-      background: rgb(87, 235, 220);
-    }
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
 
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(87, 235, 220);
+  }
 }

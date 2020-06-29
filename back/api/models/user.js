@@ -141,6 +141,7 @@ class User extends Model {
         requestsArray.push({
           gamemaster,
           tavernId: tavernRequest.tavern_id,
+          date: tavernRequest.createdAt,
         });
       }
 
@@ -177,7 +178,7 @@ User.init(
     },
     title: {
       type: Sequelize.TEXT,
-      defaultValue: "Apprenti aventurier"
+      defaultValue: 'Apprenti aventurier',
     },
     avatar: Sequelize.TEXT,
     birthdate: {

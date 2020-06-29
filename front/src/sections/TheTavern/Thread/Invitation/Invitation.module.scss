@@ -4,11 +4,11 @@
   @include flex(center, center, row wrap);
   padding: 0.3rem;
   border-radius: 0px 0px 0px 30px;
-  background-color: #3A261D;
+  background-color: #3a261d;
   transition: 0.3s;
   line-height: 1.5;
   margin-top: 0.35rem;
-  font-family: "Nunito sans", sans-serif;
+  font-family: 'Nunito sans', sans-serif;
 
   &:nth-child(1) {
     margin-top: 0;
@@ -28,80 +28,118 @@
   }
 
   &__Tavern {
-    background: url("../../../../assets/images/img-noise.png");
-    width: 100%;
-  
+    padding: 0.5rem;
+    margin: $gutter/2 0;
 
-    &__Asking {
+    &:first-child {
+      .Invitation__Tavern__Avatar {
+        position: absolute;
+        top: -3rem;
+        z-index: 100;
+      }
 
-    }
-
-    &__Request {
-      background: url('../../../../assets/images/background4.jpg');
+      time {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+      }
     }
 
     &__Container {
-      @include lg {
-        @include flex(center, center, row nowrap);
-        position: relative;
-      }
+      @include flex(center, center, column nowrap);
+      margin-bottom: $gutter/2;
     }
 
     &__Time {
-      @include lg {
-        color: #f3cc0d;
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
+      color: #f3cc0d;
     }
 
     &__Avatar {
-      @include lg {
-        width: 3rem;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: 4px solid #77d4bd;
+    }
+
+    &__Message {
+      &__Container {
+        @include flex(center, center, row nowrap);
+        width: 100%;
+        margin: $gutter/2 0;
       }
     }
 
     &__Username {
-      @include lg {
-        font-size: 1.2em;
-        color: #77d4bd;
-      }
+      font-size: 1.2em;
+      color: #77d4bd;
+      font-weight: bold;
+      margin-right: 1rem;
     }
-    
+
     &__Buttons__Container {
       @include flex(stretch, center, row nowrap);
+      height: 2rem;
     }
-    
+
     &__Button {
       &__Add {
-        padding: 0.5rem;
+        @include flex(center, flex-end, row);
+        clip-path: polygon(
+          100% 0,
+          3% 0,
+          14% 11%,
+          6% 24%,
+          27% 33%,
+          2% 44%,
+          28% 55%,
+          9% 69%,
+          30% 78%,
+          0% 100%,
+          100% 100%
+        );
+        padding: 0.3rem;
+        max-width: 8rem;
+        width: 100%;
         color: #fff;
         font-weight: bold;
+        font-size: 0.8em;
+        margin-right: 0.5rem;
+        background-color: #77d4bd;
+        border: none;
 
-        @include lg {
-          @include flex(center,center,row);
-          margin-right: 0.5rem;
-          background-color: #77d4bd;
-          border: none;
-          
-          img {
-            width: 1.5rem;
-          }
-          
+        @include xxl {
+          font-size: 0.9em;
+        }
+
+        img {
+          width: 1.5rem;
         }
       }
-      
+
       &__Decline {
         @extend .Invitation__Tavern__Button__Add;
+        clip-path: polygon(
+          0% 0%,
+          95% 0,
+          84% 12%,
+          100% 25%,
+          72% 33%,
+          100% 48%,
+          73% 59%,
+          92% 70%,
+          76% 82%,
+          100% 100%,
+          0% 99%
+        );
+        justify-content: flex-start;
         margin-right: 0;
         background-color: #d92626;
 
         img {
           margin: 0.3rem;
+          margin-left: 0;
           width: 1rem;
         }
-        
       }
     }
   }
@@ -135,7 +173,7 @@
   border-radius: 50%;
 
   @include md {
-    border: solid 5px #1A1412;
+    border: solid 5px #1a1412;
   }
 }
 
@@ -152,7 +190,7 @@
   font-size: 0.9em;
   width: fit-content;
   padding: 0.3rem;
-  padding-left:0.8rem ;
+  padding-left: 0.8rem;
 
   @include md {
     font-size: 0.9em;
@@ -165,7 +203,7 @@
   background-color: #d92626;
   border: solid #d92626 1px;
   margin-left: $gutter/4;
-  padding-right:0.8rem ;
+  padding-right: 0.8rem;
 
   @include md {
     margin-left: $gutter/4;
