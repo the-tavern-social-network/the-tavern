@@ -38,7 +38,7 @@ const Invitation = ({
               }
               <img className={styles.Invitation__Tavern__Avatar} src={avatar} alt="avatar" />
               <div>
-                <p className={styles.Invitation__Tavern__Username}>{username} vous invite à jouer ...</p>
+                <p className={styles.Invitation__Tavern__Username}>{username} vous invite à jouer dans la Tavern</p>
               </div>
             </div>
             <div className={styles.Invitation__Tavern__Buttons__Container}>

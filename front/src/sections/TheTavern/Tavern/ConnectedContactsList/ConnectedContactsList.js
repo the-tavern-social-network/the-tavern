@@ -9,10 +9,7 @@ const ConnectedContactsList = ({connectedContacts}) => {
       <ul className={styles.ConnectedContactsList__List}>
         {connectedContacts.map((user) => (
           <li className={styles.ConnectedContactsList__List__Item} key={user.id}>
-            <p>
-              {user.username}
-            </p>
-            <img className={styles.ConnectedContactsList__List__Avatar} src={user.avatar} alt={`Avatar de ${user.username}`}/>
+            <img title={user.username} className={styles.ConnectedContactsList__List__Avatar} src={user.avatar} alt={`Avatar de ${user.username}`}/>
           </li>
         ))}
       </ul>

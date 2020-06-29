@@ -64,8 +64,10 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
         ))}
       </div>
       <form className={styles.Chat__Message__Form} onSubmit={submitHandler}>
-        <Field cssClass={styles.Chat__Message__Input} reducerName="tavern" name="message" />
-        <button className={styles.Chat__Message__Form__Btn}>Envoyer</button>
+        <Field type="textarea" cssClass={styles.Chat__Message__Input} reducerName="tavern" name="message" />
+        <div className={styles.Chat__Message__Input_Bloc}>
+          <button className={styles.Chat__Message__Form__Btn}>Envoyer</button>
+        </div>
       </form>
     </div>
   );

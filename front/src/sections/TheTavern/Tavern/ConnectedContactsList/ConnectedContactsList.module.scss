@@ -6,8 +6,9 @@
     &__List{
         @include md {
             position : absolute ;
-            top : 8rem;
-            right : 26rem;
+            z-index: 500;
+            top : 8.5rem;
+            right : 27rem;
             
         }
     
@@ -17,11 +18,13 @@
         }
 
         &__Avatar{
+            border: 2px solid #0adeb7;
             width: 3rem;
             border-radius: 50%;
         }
     }
 
     &__Title{
+
     }
 }

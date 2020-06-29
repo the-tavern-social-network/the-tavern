@@ -76,7 +76,13 @@ const Tavern = ({
         {userHasJoined && (
           <div>
             <div>
-              <p>{connection.extra.user.username}</p>
+              <p>
+                <img title = {connection.extra.user.username}
+                className={styles.Tavern__Avatar} 
+                src={connection.extra.user.avatar}
+                alt={`Avatar de ${connection.extra.user.username}`}
+                /> 
+              </p>
               <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
             </div>
             <ConnectedContactsList connectedContacts={connectedContacts}/>
