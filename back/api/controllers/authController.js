@@ -5,12 +5,12 @@ const io = require('../socket');
 const getUserPendingRequests = require('../util/getUserPendingRequests');
 const moment = require ('moment');
 const passwordValidator = require('password-validator');
+const EmailValidator = require('email-deep-validator');
 
 module.exports = {
   signUp: async (req, res, next) => {
-
+    
     const shema = new passwordValidator();
-    const regex = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
 
     shema
     .is().min(8)
@@ -19,12 +19,14 @@ module.exports = {
     .has().digits()
     .has().symbols()
 
+    const emailValidator = new EmailValidator();
+    const mailValidation = await emailValidator.verify(req.body.email);
     const isPasswordValid = shema.validate(req.body.password) 
     const isPasswordEmpty = req.body.password === '';
-    console.log('++++++++++++++++++++++++++++++')
-    console.log(req.body.password);
-    console.log('++++++++++++++++++++++++++++++')
-    const isGoodSize = req.body.password.length >= 8;
+    // console.log('++++++++++++++++++++++++++++++')
+    // console.log(req.body.email);
+    // console.log(mailValidation)
+    // console.log('++++++++++++++++++++++++++++++')
     const isSamePassword = req.body.password === req.body.confirmPassword;
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     req.body.password = hashedPassword;
@@ -42,6 +44,10 @@ module.exports = {
       } else if (req.body.username === user.username) {
         res.status(500).send({
           message: 'Pseudo déjà utilisé',
+        })
+      }  else if (!mailValidation.wellFormed || !mailValidation.validDomain) {
+        res.status(500).send({
+          message: "L'email doit être un email valide"
         })
       } else if (req.body.email === '' || req.body.username === '' || isPasswordEmpty ) {
         res.status(500).send({
@@ -62,7 +68,7 @@ module.exports = {
           })
         } else if (!isPasswordValid) {
           res.status(500).send({
-            message: "Le mot de pass doit contenir au moins 8 charactères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial  "
+            message: "Le mot de passe doit contenir au moins 8 charactères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial  "
           })
         }
       } 
