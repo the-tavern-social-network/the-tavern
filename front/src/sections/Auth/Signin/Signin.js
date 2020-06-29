@@ -48,7 +48,12 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
             name="email"
             cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
           />
-          <label htmlFor="password">Mot de passe</label>
+          <div className={styles.Password}>
+            <label htmlFor="password">Mot de passe</label>
+            <Link className={styles.Password__Forgotten} to="#">
+              Mot de passe oublié ?
+            </Link>
+          </div>
           <Field
             id="password"
             reducerName="auth"

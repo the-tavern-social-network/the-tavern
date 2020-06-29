@@ -1,0 +1,18 @@
+@import '../../assets/scss/variables';
+
+.NotFound{
+    width: 200%;
+    height: 200%;
+    text-align: center;
+    max-height: 100%;
+    margin-left: -50%;
+    @include md {
+        margin-left: -37.5%;
+        width: 150%;
+        height: 100%;
+    }
+    @include lg {
+        width: 100%;
+        margin-left: 0;
+    }
+}
