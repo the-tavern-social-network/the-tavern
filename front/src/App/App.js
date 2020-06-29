@@ -5,6 +5,7 @@ import ProtectedRoute from '../containers/ProtectedRoute';
 
 import Auth from '../sections/Auth/Auth';
 import TheTavern from '../containers/TheTavern/TheTavern';
+import NotFound from '../components/NotFound/NotFound'
 import { useEffect } from 'react';
 
 const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
@@ -23,6 +24,7 @@ const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
             </Route>
             <Route path="/auth" component={Auth} />
             <ProtectedRoute path="/" component={TheTavern} />
+            <Route exact path="/" component={NotFound} />
           </>
         </Switch>
       )}

@@ -8,6 +8,7 @@ import Layout from '../../components/Layout/Layout';
 import Tavern from '../../containers/TheTavern/Tavern/Tavern';
 import UserAccount from '../../containers/TheTavern/UserAccount/UserAccount';
 import Thread from './Thread/Thread';
+import NotFound from '../../components/NotFound/NotFound'
 
 const TheTavern = ({ wsConnect }) => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const TheTavern = ({ wsConnect }) => {
             <Switch>
               <Route path="/compte" component={UserAccount} />
               <Route exact path="/" component={Thread} />
-              <Route>404</Route>
+               <Route component={NotFound} />
             </Switch>
           </Layout>
         </Switch>

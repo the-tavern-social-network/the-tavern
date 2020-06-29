@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import Field from '../../../containers/components/Field';
@@ -7,16 +7,29 @@ import CrossButton from '../../../assets/images/boutoncroix.svg';
 import Scroll from '../../../assets/images/scroll.svg';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signup.module.scss';
+import ErrorMessage from '../../../components/Error/ErrorMessage';
 
-const Signup = ({ history, signup, resetFields }) => {
-  const clickHandler = (event) => {
+const Signup = ({ history, signup, resetFields, hasError, unsetError, errorMessage, resolve, isResolve }) => {
+  
+  const [targetDiffRender, setTargetDiffRender] = useState(0) 
+
+  useEffect(() => {
+    if (resolve) {
+      history.push(`/auth/connexion`);
+      unsetError();
+      isResolve();
+    };
+  }, [resolve, hasError]);
+  
+
+  const clickHandler = () => {
     history.push('/auth');
   };
-
+  
   const signupFormHandler = (event) => {
     event.preventDefault();
-    signup();
-    history.push(`/auth/connexion`);
+    setTargetDiffRender(targetDiffRender + 1);
+    signup();    
     resetFields('auth');
   };
 
@@ -74,6 +87,7 @@ const Signup = ({ history, signup, resetFields }) => {
             type="password"
             name="confirmPassword"
           />
+          {hasError && <ErrorMessage message={errorMessage} />}
           <button className={styles.Signup__Btn}>
             <img className={styles.Signup__Btn__Scroll} src={Scroll} alt="parchemin" />
             S'inscrire

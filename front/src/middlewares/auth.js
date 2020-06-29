@@ -9,6 +9,7 @@ import {
   setInitialLoading,
   setError,
   SIGNUP,
+  isResolve,
 } from '../actions';
 import { apiUrl } from '../util/index';
 import avatar from '../assets/images/avatar/Avatardefault.png';
@@ -22,14 +23,18 @@ export const auth = (store) => (next) => async (action) => {
           email: auth.email,
           avatar,
           password: auth.password,
+          confirmPassword: auth.confirmPassword,
           username: auth.username,
           birthdate: auth.birthdate,
         };
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
-
+        
         delete user.password;
+        store.dispatch(isResolve());
       } catch (err) {
         console.log(err);
+        // console.log(err.response.data.message)
+        store.dispatch(setError(err.response.data.message));
       }
       break;
     case LOGIN:
@@ -51,6 +56,7 @@ export const auth = (store) => (next) => async (action) => {
 
         store.dispatch(connect(data));
       } catch (err) {
+        console.log(err);
         store.dispatch(setError(err.response.data.message));
       } finally {
         store.dispatch(setLoading());

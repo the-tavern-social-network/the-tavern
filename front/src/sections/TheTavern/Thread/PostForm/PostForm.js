@@ -54,17 +54,31 @@ const PostForm = ({
           <div className={styles.Gutter}></div>
         </form>
         <div className={styles.PostForm__TavernInvitation}>
-          {user.tavernRequests &&
-            user.tavernRequests.map(({ gamemaster, tavernId, date }) => (
-              <Invitation
-                key={gamemaster.id}
-                {...gamemaster}
-                date={new Date(date)}
-                deleteTavern={deleteTavern}
-                tavernId={tavernId}
-                tavernRequest
-              />
-            ))}
+          <div className={styles.PostForm__TavernInvitation__Container}>
+            {user.tavernRequests.length ? (
+              user.tavernRequests.map(({ gamemaster, tavernId, date }) => (
+                <Invitation
+                  key={gamemaster.id}
+                  {...gamemaster}
+                  date={new Date(date)}
+                  deleteTavern={deleteTavern}
+                  tavernId={tavernId}
+                  tavernRequest
+                />
+              ))
+            ) : (
+              <div
+                style={{
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  fontSize: '1.5em',
+                }}>
+                <h2>Pas d'invitation à jouer... 😭</h2>
+              </div>
+            )}
+          </div>
         </div>
         <InvitationHeader
           label="Demandes de contact"

@@ -13,6 +13,7 @@ const AvatarsList = ({ modalCancel, avatar, avatarImages, updateAvatar, updateIm
   };
 
   return (
+
     <>
       <Backdrop clicked={modalCancel}/>
       <div className={styles.Modal}>
