@@ -17,7 +17,6 @@ export const socket = (store) => (next) => (action) => {
   switch (action.type) {
     case WS_CONNECT:
       socketCanal = window.io('http://localhost:8080');
-
       socketCanal.on('connected_user', (msg) => console.log(msg));
 
       socketCanal.on('receive_post', (post) => {

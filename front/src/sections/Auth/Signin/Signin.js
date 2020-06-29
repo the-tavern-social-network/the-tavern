@@ -9,7 +9,9 @@ import ErrorMessage from '../../../components/Error/ErrorMessage';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
-const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, errorMessage }) => {
+
+const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unsetError, errorMessage }) => {
+
   useEffect(() => {
     if (isLoggedIn) {
       history.push('/');
@@ -23,6 +25,7 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, erro
 
   const signinFormHandler = (event) => {
     event.preventDefault();
+    unsetError();
     login();
   };
 
@@ -46,7 +49,12 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, erro
             name="email"
             cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
           />
-          <label htmlFor="password">Mot de passe</label>
+          <div className={styles.Password}>
+            <label htmlFor="password">Mot de passe</label>
+            <Link className={styles.Password__Forgotten} to="#">
+              Mot de passe oublié ?
+            </Link>
+          </div>
           <Field
             id="password"
             reducerName="auth"

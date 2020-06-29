@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SET_LOADING, SET_ERROR, SET_INITIAL_LOADING, SET_TAVERN_ID } from '../actions';
+import { SET_LOADING, SET_ERROR, UNSET_ERROR, SET_INITIAL_LOADING, SET_TAVERN_ID, ISRESOLVE } from '../actions';
 
 const INITIAL_STATE = {
+  isResolve: false,
   isInitialLoading: false,
   isLoading: false,
   hasError: false,
@@ -28,6 +29,16 @@ export default (state = INITIAL_STATE, action = {}) => {
         hasError: true,
         isLoading: false,
       };
+    case UNSET_ERROR:
+      return {
+        ...state,
+        hasError: false,
+      }
+    case ISRESOLVE:
+      return {
+        ...state,
+        isResolve: !state.isResolve,
+      }
     case SET_TAVERN_ID:
       return {
         ...state,

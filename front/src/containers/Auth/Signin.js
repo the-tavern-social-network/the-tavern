@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { login, resetFields } from '../../actions';
+import { login, resetFields, unsetError } from '../../actions';
 
 import Signin from '../../sections/Auth/Signin/Signin';
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login: () => dispatch(login()),
   resetFields: () => dispatch(resetFields('auth')),
+  unsetError: () => dispatch(unsetError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

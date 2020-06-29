@@ -25,6 +25,20 @@ const Layout = ({ section, children }) => {
         </div>
       );
       break;
+    // case 'notFound':
+    //   layout = (
+    //     <div>
+    //       <header className={styles.Auth__Logo}>
+    //         <img src={logo} alt="logo TheTavern" />
+    //       </header>
+    //       <main className={styles.Auth__Main}>
+    //         {children}
+    //         <button>Accueil</button>
+    //       </main>
+    //       <footer className={styles.Auth__Footer}>© thetavern | Tous droits réservés | 2020</footer>
+    //     </div>
+    //   );
+    //   break;
     case 'admin':
       layout = <main>{children}</main>;
       break;
