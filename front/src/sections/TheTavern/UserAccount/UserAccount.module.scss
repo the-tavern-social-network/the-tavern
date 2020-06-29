@@ -130,9 +130,12 @@
   font-family: 'nunito sans', 'sans serif';
   width: 100%;
   text-align: right;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   margin-right: 0.6rem;
+  @include md {
+    font-size: 2rem;
+  }
 
   &_Container {
     display: flex;

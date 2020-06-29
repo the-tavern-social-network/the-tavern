@@ -14,7 +14,7 @@ const Contact = ({ contact, deleteContact }) => {
         <span className={styles.Contact_Content}>{contact.username}</span>
         <span className={styles.Contact_Title}>{contact.title}</span>
         <button onClick={() => setIsModalOpen(true)} className={styles.Contact_Btn}>
-          Supprimer
+          X
         </button>
       </li>
       {isModalOpen && (

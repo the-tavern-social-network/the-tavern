@@ -29,7 +29,7 @@
 
   &__Tavern {
     padding: 0.5rem;
-    margin: $gutter/2 0;
+    margin: $gutter/4 0;
 
     &:first-child {
       .Invitation__Tavern__Avatar {
@@ -40,14 +40,15 @@
 
       time {
         position: absolute;
-        top: 2rem;
-        right: 2rem;
+        font-size: 0.8em;
+        top: 1.75rem;
+        right: 1.75rem;
       }
     }
 
     &__Container {
       @include flex(center, center, column nowrap);
-      margin-bottom: $gutter/2;
+      margin-bottom: $gutter/4;
     }
 
     &__Time {
@@ -84,21 +85,10 @@
     &__Button {
       &__Add {
         @include flex(center, flex-end, row);
-        clip-path: polygon(
-          100% 0,
-          3% 0,
-          14% 11%,
-          6% 24%,
-          27% 33%,
-          2% 44%,
-          28% 55%,
-          9% 69%,
-          30% 78%,
-          0% 100%,
-          100% 100%
-        );
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 11% 77%, 3% 61%, 10% 43%, 2% 24%, 8% 14%, 0 0);
+
         padding: 0.3rem;
-        max-width: 8rem;
+        max-width: 7rem;
         width: 100%;
         color: #fff;
         font-weight: bold;
@@ -106,6 +96,18 @@
         margin-right: 0.5rem;
         background-color: #77d4bd;
         border: none;
+        transition: 0.5s;
+        background-position: 0 0;
+        background-size: 300% auto;
+        background-image: linear-gradient(to right, #4ac29a 0%, rgb(131, 245, 224) 51%, #4ac29a 100%);
+        //background-color: #03c9a5;
+        color: white;
+    
+        &:hover,
+        &:active {
+          background-position: 70%;
+        }
+        
 
         @include xxl {
           font-size: 0.9em;
@@ -118,22 +120,20 @@
 
       &__Decline {
         @extend .Invitation__Tavern__Button__Add;
-        clip-path: polygon(
-          0% 0%,
-          95% 0,
-          84% 12%,
-          100% 25%,
-          72% 33%,
-          100% 48%,
-          73% 59%,
-          92% 70%,
-          76% 82%,
-          100% 100%,
-          0% 99%
-        );
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 90% 80%, 100% 70%, 90% 50%, 100% 34%, 94% 16%, 100% 0);
         justify-content: flex-start;
         margin-right: 0;
-        background-color: #d92626;
+        transition: 0.5s;
+        background-position: 0 0;
+        background-size: 300% auto;
+        background-image: linear-gradient(to right, #d92626 0%, rgb(255, 126, 126) 51%, #d92626 100%);
+        //background-color: #03c9a5;
+        color: white;
+    
+        &:hover,
+        &:active {
+          background-position: 70%;
+        }
 
         img {
           margin: 0.3rem;

@@ -7,6 +7,7 @@ import Chat from '../../../containers/TheTavern/Tavern/Chat';
 import ContactList from './ContactList/ContactList';
 import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
 
+import { websiteName }from '../../../util'
 import styles from './Tavern.module.scss';
 
 const Tavern = ({

@@ -1,7 +1,21 @@
 @import '../../../../assets/scss/variables';
 
 .AddPlayerContainer {
+    font-family: 'Nunito Sans', sans-serif;
+    position: absolute;
+    z-index: 600;
+    margin-left: -24rem;
+    margin-top: 2.5rem;
+    background-color: #331D0F;
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.6);
+    border-radius:5px;
 
+
+&__Image {
+    position: absolute;
+    z-index: 500;
+    width: 2.5rem;
+}
     @include md {
         font-family: 'Nunito Sans', sans-serif;
         position: absolute;
@@ -62,12 +76,16 @@
 }
 
 .AddPlayer{
-
+    position: absolute;
+    width: 2.5rem;
+    right: 0;
+    margin-right: 3rem;
+    margin-top: -20.5rem;
+    z-index: 500;
     @include md {
-        position: absolute;
-        z-index: 500;
-        width: 2.5rem;
+        right: 27rem;
         margin-left: -19rem;
         margin-top: 0.5rem;
     }
 }
+

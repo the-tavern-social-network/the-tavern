@@ -24,7 +24,6 @@ const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
             </Route>
             <Route path="/auth" component={Auth} />
             <ProtectedRoute path="/" component={TheTavern} />
-            <Route exact path="/" component={NotFound} />
           </>
         </Switch>
       )}

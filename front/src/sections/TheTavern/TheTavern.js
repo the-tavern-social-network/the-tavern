@@ -23,7 +23,7 @@ const TheTavern = ({ wsConnect }) => {
             <Switch>
               <Route path="/compte" component={UserAccount} />
               <Route exact path="/" component={Thread} />
-               <Route component={NotFound} />
+              <Route component={NotFound} />
             </Switch>
           </Layout>
         </Switch>

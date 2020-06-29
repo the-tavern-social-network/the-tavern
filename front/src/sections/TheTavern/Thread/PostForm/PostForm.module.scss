@@ -23,9 +23,13 @@
     width: calc(100% - 50%);
     max-width: 75rem;
   }
-
+  
   @include lg {
     margin-left: $gutter/2;
+  }
+  
+  @include xl {
+    width: calc(100% - 60%);
   }
 
   &__Open {
@@ -91,7 +95,7 @@
       background-color: #1a1412;
       background-size: cover;
       background-position: 0 -4rem;
-      height: 9.5rem;
+      height: 8rem;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: rgb(80, 63, 18) rgb(48, 31, 10);

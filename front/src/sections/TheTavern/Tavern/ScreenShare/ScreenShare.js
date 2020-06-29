@@ -5,6 +5,7 @@ import door from '../../../../../src/assets/images/door.svg';
 import logo from '../../../../../src/assets/images/logo1.svg';
 import rtcConfig from '../../../../util/rtc';
 import styles from './ScreenShare.module.scss';
+import d20 from '../../../../assets/images/d20.svg';
 
 const Screen = ({ connection, history, match, resetChat, deleteTavern }) => {
   const videoStream = useRef(null);
@@ -22,12 +23,13 @@ const Screen = ({ connection, history, match, resetChat, deleteTavern }) => {
     connection.closeSocket();
     deleteTavern(match.params.id);
     resetChat();
-    history.push('/');
+    history.replace('/');
   };
 
   return (
     <div className={styles.ScreenContainer} ref={videoStream}>
       <img className={styles.ScreenContainer__Logo} src={logo} alt="logo" />
+      <img className={styles.ScreenContainer__D20} src={d20} alt="d20" />
       <div className={styles.ScreenContainer__TavernExit} title="Quitter la tavern">
         <img src={door} alt="door" onClick={clickHandler} />
       </div>

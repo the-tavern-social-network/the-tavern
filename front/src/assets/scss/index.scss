@@ -5,6 +5,11 @@
   border-bottom: 2px solid #fff200;
 }
 
+::selection {
+  background-color: #04dab4;
+  color: #fff;
+}
+
 // @include lg {
 //   html ::-webkit-scrollbar {
 //     -webkit-appearance: none;

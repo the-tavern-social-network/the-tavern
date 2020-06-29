@@ -75,7 +75,7 @@ const PostForm = ({
                   alignItems: 'center',
                   fontSize: '1.5em',
                 }}>
-                <h2>Pas d'invitation à jouer... 😭</h2>
+                <h2>Pas d'invitation pour la tavern</h2>
               </div>
             )}
           </div>

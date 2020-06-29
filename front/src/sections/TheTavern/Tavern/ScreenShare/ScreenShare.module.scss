@@ -16,6 +16,18 @@
     max-width: calc(100% - 27rem);
   }
 
+  &__D20 {
+    position: absolute;
+    width: 3rem;
+    right: 5.6rem;
+    @include md {
+    position: absolute;
+    width: 3rem;
+    right: 5.6rem;
+
+    }
+  }
+
   &__Logo {
     position: absolute;
     margin : 0.5rem 0 0 0.5rem;

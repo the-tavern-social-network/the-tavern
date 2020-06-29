@@ -29,30 +29,6 @@ const Invitation = ({
   if (tavernRequest) {
     invitation = (
       <div className={styles.Invitation__Tavern}>
-//        <div className={styles.Invitation__Tavern__Asking}>
-//          <div className={styles.Invitation__Tavern__Request}>
-//            <div className={styles.Invitation__Tavern__Container}>
-//              {date &&
-//              <Moment className={styles.Invitation__Tavern__Time} add={{ hours: 2 }} format="HH:mm">{date}</Moment>
-//              }
-//              <img className={styles.Invitation__Tavern__Avatar} src={avatar} alt="avatar" />
-//              <div>
-//               <p className={styles.Invitation__Tavern__Username}>{username} vous invite à jouer dans la Tavern</p>
-//              </div>
-//            </div>
-//            <div className={styles.Invitation__Tavern__Buttons__Container}>
-//              <button className={styles.Invitation__Tavern__Button__Add} onClick={(event) => clickHandler('accept', id)}>
-//                <img src={d20} alt="icone accepter"/>
-//                Accepter
-//              </button>
-//              <button className={styles.Invitation__Tavern__Button__Decline} onClick={(event) => clickHandler('reject', id)}>
-//                <img src={skull} alt="icone skull"/>
-//                Refuser
-//              </button>
-//            </div>
-//          </div>
-
-        {/* <img className={styles.Invitation__Tavern__Avatar} src={avatar} alt="avatar" /> */}
         <div className={styles.Invitation__Tavern__Container}>
           {date && (
             <Moment className={styles.Invitation__Tavern__Time} add={{ hours: 2 }} format="HH:mm">
