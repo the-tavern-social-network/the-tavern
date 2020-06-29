@@ -4,14 +4,26 @@ const saltRounds = 12;
 const io = require('../socket');
 const getUserPendingRequests = require('../util/getUserPendingRequests');
 const moment = require ('moment');
+const passwordValidator = require('password-validator');
 
 module.exports = {
   signUp: async (req, res, next) => {
-    const regex = RegExp('/[A-Za-z0-9!@#$%^&*(),.?":{}|<>]/g');
-    // const regex = RegExp("^(?=.{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?\W).*$");
-    const password = req.body.password;
+
+    const shema = new passwordValidator();
+    const regex = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
+
+    shema
+    .is().min(8)
+    .has().uppercase()
+    .has().lowercase()
+    .has().digits()
+    .has().symbols()
+
+    const isPasswordValid = shema.validate(req.body.password) 
+    const isPasswordEmpty = req.body.password === '';
+    console.log('++++++++++++++++++++++++++++++')
     console.log(req.body.password);
-    console.log(regex.test(password));
+    console.log('++++++++++++++++++++++++++++++')
     const isGoodSize = req.body.password.length >= 8;
     const isSamePassword = req.body.password === req.body.confirmPassword;
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -21,13 +33,6 @@ module.exports = {
     req.body.birthdate = new Date(req.body.birthdate);
 
     const users = await User.findAll();
-    const compareDate = (dateToCompare) => moment().diff(dateToCompare, 'years')
-    
-    console.log('++++++++++++++++++++++++++++++')
-    console.log(req.body);
-    // console.log(passwordValid);
-    console.log()
-    console.log('++++++++++++++++++++++++++++++')
 
     users.forEach((user) => {
       if (req.body.email === user.email) {
@@ -38,7 +43,7 @@ module.exports = {
         res.status(500).send({
           message: 'Pseudo déjà utilisé',
         })
-      } else if (req.body.email === '' || req.body.username === '' || req.body.password === '') {
+      } else if (req.body.email === '' || req.body.username === '' || isPasswordEmpty ) {
         res.status(500).send({
           message: 'Tous les champs doivent être remplis',
         })
@@ -55,11 +60,11 @@ module.exports = {
           res.status(500).send({
             message: "Les mots de passe doivent être identiques",
           })
-        } //else if (!isGoodSize) {
-        //   res.status(500).send({
-        //     message: "Le mot de passe doit contenir au minimum 8 charactères",
-        //   })
-        // } 
+        } else if (!isPasswordValid) {
+          res.status(500).send({
+            message: "Le mot de pass doit contenir au moins 8 charactères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial  "
+          })
+        }
       } 
     })
   //   if(!regularExpression.test(newPassword)) {
