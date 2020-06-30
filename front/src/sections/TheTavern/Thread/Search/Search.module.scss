@@ -7,9 +7,10 @@
   background-image: url('../../../../assets/images/img-noise.png');
   background-color: #3a271d;
   padding: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 
   @include xl {
-    border-radius: 0 0 0.5rem 0.5rem;
+
     padding-bottom: 1.3rem;
     border-top: solid #1A1412 5px;
   }
