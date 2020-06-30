@@ -1,16 +1,19 @@
 @import '../../../../../assets/scss/variables';
 
 .InvitationHeader {
-  display: none;
+  position: relative;
+  display: block;
+  background-image: url('../../../../../assets/images/img-noise.png');
+  border-radius: 5px 5px 0 0;
+  width: 11rem;
+  padding: 0.5rem;
+  color: #fff200;
 
   @include md {
-    position: relative;
-    display: block;
-    background-image: url('../../../../../assets/images/img-noise.png');
-    border-radius: 5px 5px 0 0;
     width: 11rem;
     padding: 0.5rem;
     color: #fff200;
+    margin-bottom: 0.3rem;
   }
 
   &__Number {

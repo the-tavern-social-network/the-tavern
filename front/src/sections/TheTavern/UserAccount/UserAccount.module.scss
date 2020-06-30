@@ -27,10 +27,11 @@
     line-height: 1.5;
     position: relative;
     background-color: #fff;
-    height: 15vh;
+    min-height: 15vh;
+    height: fit-content;
     max-width: 90vw;
     color: #000;
-    font-family: 'nunito sans', nunito;
+    font-family: 'nunito sans', sans-serif;
     font-weight: 500;
     padding: 1rem;
     margin: 0.3rem 0 0.5rem 0;
@@ -86,14 +87,15 @@
       }
 
       &_Btn {
+        color: white;
         position: absolute;
         bottom: 0;
         right: 0;
         border: none;
-        background-color: #1dffd6;
+        background-color: #4ac29a;
         padding: 0.5rem;
         margin: 0 0.3rem 0.3rem 0;
-        border-radius: 5px;
+        border-radius: 2px;
       }
     }
   }
@@ -126,14 +128,15 @@
 }
 
 .Username {
-  color: #fff200;
-  font-family: 'nunito sans', 'sans serif';
-  width: 100%;
-  text-align: right;
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-right: 0.6rem;
-  @include md {
+display: none;
+  @include sm {
+    display: block;
+    color: #fff200;
+    font-family: 'nunito sans', 'sans serif';
+    width: 100%;
+    text-align: right;
+    font-weight: 400;
+    margin-right: 0.6rem;
     font-size: 2rem;
   }
 

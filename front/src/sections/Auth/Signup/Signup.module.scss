@@ -129,4 +129,8 @@
       margin-right: 0.3rem;
     }
   }
+
+  &__HasError {
+    border: 1.5px solid red;
+  }
 }

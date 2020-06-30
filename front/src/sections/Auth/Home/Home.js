@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import Presentation from './Presentation/Presentation';
 import styles from './Home.module.scss';
 
+import { websiteName } from '../../../util'
+
 const Home = ({ history, match }) => {
   const clickHandler = () => {
     history.push(`${match.path}/connexion`);
   };
+
+  useEffect(() => {
+    document.title = `${websiteName} | Authentification`;
+  }, [document.title])
 
   return (
     <>

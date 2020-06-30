@@ -9,10 +9,27 @@ const EmailValidator = require('email-deep-validator');
 
 module.exports = {
   signUp: async (req, res, next) => {
-    
-    const shema = new passwordValidator();
+    if (!req.body.email|| !req.body.username || !req.body.password ) {
+      return res.status(500).send({
+        message: 'Tous les champs doivent être remplis',
+      })
+    }
 
-    shema
+    if (moment().diff(req.body.birthdate, 'years') < 16) {
+      return res.status(500).send({
+        message: "L'âge minimum requis est de 16 ans",
+      })
+    }
+
+    if (Object.prototype.toString.call(req.body.birthdate) === "[object Date]") {
+      if (isNaN(req.body.birthdate.getTime())) {
+        return res.status(500).send({
+          message: 'La date de naissance doit être renseignée',
+        })
+      }
+    }
+    const schema = new passwordValidator();
+    schema
     .is().min(8)
     .has().uppercase()
     .has().lowercase()
@@ -20,63 +37,45 @@ module.exports = {
     .has().symbols()
 
     const emailValidator = new EmailValidator();
+
     const mailValidation = await emailValidator.verify(req.body.email);
-    const isPasswordValid = shema.validate(req.body.password) 
-    const isPasswordEmpty = req.body.password === '';
-    // console.log('++++++++++++++++++++++++++++++')
-    // console.log(req.body.email);
-    // console.log(mailValidation)
-    // console.log('++++++++++++++++++++++++++++++')
+    if (!mailValidation.wellFormed || !mailValidation.validDomain) {
+      return res.status(500).send({
+        message: "L'email doit être un email valide"
+      })
+    }
+
+    const isPasswordValid = schema.validate(req.body.password)
+    if (!isPasswordValid) {
+      return res.status(500).send({
+        message: "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial"
+      })
+    }
+    
     const isSamePassword = req.body.password === req.body.confirmPassword;
+    if (!isSamePassword) {
+      return res.status(500).send({
+        message: "Les mots de passe doivent être identiques",
+      })
+    }
+
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     req.body.password = hashedPassword;
-    const hashedConfirmPassword = await bcrypt.hash(req.body.confirmPassword, saltRounds);
-    req.body.confirmPassword = hashedConfirmPassword;
     req.body.birthdate = new Date(req.body.birthdate);
 
-    const users = await User.findAll();
+    const emailAlreadyTaken = await User.findOne({ where: { email: req.body.email } })
+    if (emailAlreadyTaken) {
+      return res.status(500).send({
+        message: 'Email déjà utilisé',
+      });
+    }
 
-    users.forEach((user) => {
-      if (req.body.email === user.email) {
-        res.status(500).send({
-          message: 'Email déjà utilisé',
-        })
-      } else if (req.body.username === user.username) {
-        res.status(500).send({
-          message: 'Pseudo déjà utilisé',
-        })
-      }  else if (!mailValidation.wellFormed || !mailValidation.validDomain) {
-        res.status(500).send({
-          message: "L'email doit être un email valide"
-        })
-      } else if (req.body.email === '' || req.body.username === '' || isPasswordEmpty ) {
-        res.status(500).send({
-          message: 'Tous les champs doivent être remplis',
-        })
-      } else if (moment().diff(req.body.birthdate, 'years') < 16) {
-        res.status(500).send({
-          message: "L'âge minimum requis est de 16 ans",
-        })
-      } else if (Object.prototype.toString.call(req.body.birthdate) === "[object Date]") {
-        if (isNaN(req.body.birthdate.getTime())) {
-          res.status(500).send({
-            message: 'La date de naissance doit être renseignée',
-          })
-        } else if (!isSamePassword) {
-          res.status(500).send({
-            message: "Les mots de passe doivent être identiques",
-          })
-        } else if (!isPasswordValid) {
-          res.status(500).send({
-            message: "Le mot de passe doit contenir au moins 8 charactères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial  "
-          })
-        }
-      } 
-    })
-  //   if(!regularExpression.test(newPassword)) {
-  //     alert("password should contain atleast one number and one special character");
-  //     return false;
-  // }
+    const usernameAlreadyTaken = await User.findOne({ where: { username: req.body.username } })
+    if (usernameAlreadyTaken) {
+      return res.status(500).send({
+        message: 'Pseudo déjà utilisé',
+      })
+    }
 
     let user = await User.create(req.body);
 
@@ -85,6 +84,7 @@ module.exports = {
         message: 'Une erreur est survenue durant la création de la ressource, veuillez réessayer.',
       });
     }
+
     res.send(user);
   },
 
@@ -95,7 +95,6 @@ module.exports = {
 
     //	Looking for a user with the same email
     const user = await User.findOne({ include: 'posts', where: { email } });
-    console.log(user);
     //	If no user found, send a 404 response
     if (!user) {
       return res.status(404).send({

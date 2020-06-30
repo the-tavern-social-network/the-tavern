@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 
 import { getDate } from '../../util';
 
-const Field = ({ type, placeholder, reducerName, name, value, inputChange, cssClass, id }) => {
+const Field = ({ type, placeholder, reducerName, name, value, inputChange, cssClass, id, post, hasError, unsetError }) => {
   let field;
 
   const { year, month, day } = getDate();
 
   const inputChangeHandler = (event) => {
     inputChange(name, event.target.value, reducerName);
+    if (hasError) {
+      unsetError();
+    }
   };
 
   switch (type) {
@@ -21,6 +24,7 @@ const Field = ({ type, placeholder, reducerName, name, value, inputChange, cssCl
           placeholder={placeholder}
           name={name}
           value={value}
+          maxLength={post ? '2000' : '300'}
           onChange={inputChangeHandler}></textarea>
       );
       break;

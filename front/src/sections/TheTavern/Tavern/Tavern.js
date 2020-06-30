@@ -7,7 +7,7 @@ import Chat from '../../../containers/TheTavern/Tavern/Chat';
 import ContactList from './ContactList/ContactList';
 import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
 
-import { websiteName }from '../../../util'
+import { websiteName } from '../../../util';
 import styles from './Tavern.module.scss';
 
 const Tavern = ({
@@ -24,6 +24,10 @@ const Tavern = ({
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
+
+  useEffect(() => {
+    document.title = `${websiteName} | Tavern`
+  },[websiteName])
 
   useEffect(() => {
     setTavernId();

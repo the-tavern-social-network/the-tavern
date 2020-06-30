@@ -52,17 +52,15 @@
     100% 100%,
     0% 100%
   );
-  width: 100%;
   max-width: 35rem;
   padding: $gutter;
   margin-top: $gutter + 1rem;
   
-  &__Signup{
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-    text-decoration: underline;
+  @include sm {
+    padding: $gutter;
+    width: 100%;
   }
+  
   @include lg {
     width: 35%;
     position: absolute;
@@ -74,9 +72,16 @@
     max-width: 25rem;
     max-height: 280px;
     right: 20%;
-    bottom: 30%;
     left: 60%;
     top: 31%;
+  }
+
+  &__Signup{
+    margin-right: 1rem;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    text-decoration: underline;
   }
 
   &__Container {
@@ -143,6 +148,10 @@
       @include flex(center, space-around, row wrap);
       width: 100%;
     }
+  }
+
+  &__Error {
+    border: 1.5px solid red;
   }
 }
 

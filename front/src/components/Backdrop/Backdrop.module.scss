@@ -9,6 +9,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 2500;
+  transition: all 500ms ease-in-out;
 
   @include lg {
     top: 0;

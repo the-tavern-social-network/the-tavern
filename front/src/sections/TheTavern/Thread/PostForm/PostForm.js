@@ -44,6 +44,7 @@ const PostForm = ({
               type="textarea"
               reducerName="post"
               name="post"
+              post
             />
             <button className={styles.SendButton}>
               <img className={styles.SendButton__Fire} src={Fire} alt="Bouclier" />
