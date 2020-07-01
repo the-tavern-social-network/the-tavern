@@ -79,11 +79,11 @@
     position: absolute;
     width: 2.5rem;
     right: 0;
-    margin-right: 3rem;
-    margin-top: -20.5rem;
+    margin-right: -10.5rem;
+    margin-top: -18rem;
     z-index: 500;
     @include md {
-        right: 27rem;
+        right: 13.5rem;
         margin-left: -19rem;
         margin-top: 0.5rem;
     }

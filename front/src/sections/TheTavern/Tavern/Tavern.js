@@ -91,22 +91,23 @@ const Tavern = ({
         user={user}
         connection={connection}
         deleteTavern={deleteTavern}
+        inviteIntoTavern={inviteContact}
       />
         <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
-          <div>
-            <div>
-              <p>
-                <img title = {connection.extra.user.username}
-                className={styles.Tavern__Avatar} 
-                src={connection.extra.user.avatar}
-                alt={`Avatar de ${connection.extra.user.username}`}
-                /> 
-              </p>
-              <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
+          <div className={styles.ContactListMoreSelf}>
+              <div>
+                <p>
+                  <img title = {connection.extra.user.username}
+                  className={styles.Tavern__Avatar} 
+                  src={connection.extra.user.avatar}
+                  alt={`Avatar de ${connection.extra.user.username}`}
+                  /> 
+                </p>
+                <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
+              </div>
+              <ConnectedContactsList connectedContacts={connectedContacts}/>
             </div>
-            <ConnectedContactsList connectedContacts={connectedContacts}/>
-          </div>
         )}
           <Chat user={user} tavernId={match.params.id} connection={connection} />
         </div>
