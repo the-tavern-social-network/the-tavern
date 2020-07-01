@@ -20,6 +20,7 @@ const Tavern = ({
   tavernContactConnect,
   tavernContactDisconnect,
   inviteContact,
+  createTavern,
   deleteTavern,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
@@ -30,7 +31,7 @@ const Tavern = ({
   },[websiteName])
 
   useEffect(() => {
-    setTavernId();
+    setTavernId(match.params.id);
   }, []);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const Tavern = ({
       } else {
         connection.extra.user = user;
         connection.open(roomid);
+        createTavern(match.params.id);
         setUserHasJoined(true);
       }
     });
@@ -55,6 +57,19 @@ const Tavern = ({
 
     connection.onclose = (event) => {
       tavernContactDisconnect(event.userid);
+    };
+
+    // Event triggered when the stream ends
+    connection.onstreamended = (event) => {
+      deleteTavern(match.params.id);
+      if (event.userid === connection.userid) {
+        // disconnect with all users
+        connection.getAllParticipants().forEach((pid) => {
+          connection.disconnectWith(pid);
+        });
+        // Closes the connection
+        connection.closeSocket();
+      }
     };
 
     return () => {
@@ -93,7 +108,7 @@ const Tavern = ({
             <ConnectedContactsList connectedContacts={connectedContacts}/>
           </div>
         )}
-          <Chat user={user} connection={connection} />
+          <Chat user={user} tavernId={match.params.id} connection={connection} />
         </div>
     </div>
   );

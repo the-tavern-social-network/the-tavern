@@ -3,7 +3,7 @@ const io = require('../socket');
 
 module.exports = {
   async create(req, res, next) {
-    const alreadyExist = await TavernRequest.findOne({ where: { tavern_id: req.body.tavern_id } });
+    const alreadyExist = await TavernRequest.findOne({ where: { tavern_id: req.body.tavern_id, participant_id: req.body.participant_id} });
 
     if (alreadyExist) {
       return res.send({ message: 'Vous avez déjà envoyé une invitation à ce contact !' });

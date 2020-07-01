@@ -52,15 +52,5 @@ export default (connection, videoStreamContainer) => {
     }
   };
 
-  // Event triggered when the stream ends
-  connection.onstreamended = (event) => {
-    if (event.userid === connection.userid) {
-      // disconnect with all users
-      connection.getAllParticipants().forEach((pid) => {
-        connection.disconnectWith(pid);
-      });
-      // Closes the connection
-      connection.closeSocket();
-    }
-  };
+  
 };

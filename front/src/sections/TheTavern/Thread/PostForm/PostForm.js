@@ -68,15 +68,8 @@ const PostForm = ({
                 />
               ))
             ) : (
-              <div
-                style={{
-                  height: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  fontSize: '1.5em',
-                }}>
-                <h2>Pas d'invitation pour la tavern</h2>
+                <div className={styles.PostForm__TavernInvitation__None}>
+                  <h2>Pas d'invitation pour la tavern</h2>
               </div>
             )}
           </div>

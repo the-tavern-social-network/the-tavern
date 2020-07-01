@@ -15,6 +15,7 @@
 
   @include md {
     margin-top: 1.8rem;
+    margin-right: .75rem;
     top: 0;
     position: sticky;
     transform: none;
@@ -24,6 +25,8 @@
   }
   
   @include lg {
+    margin-right: 0;
+    width: calc(100% - 48%);
     margin-left: $gutter/2;
   }
   
@@ -56,9 +59,10 @@
     position: relative;
     z-index: 10;
 
-    @include md {
+    @include sm {
       margin: ($gutter * 2) 0 $gutter;
     }
+
 
     &:before {
       content: '';
@@ -91,6 +95,20 @@
       transform: translateX(-50%);
     }
 
+    &__None {
+      @include flex(center, center, row wrap);
+      height: 100%;
+      font-size: 1.2em;
+
+      @include md {
+        font-size: 1.1em;
+      }
+
+      @include xxl {  
+        font-size: 1.5em;
+      }
+    }
+
     &__Container {
       border: 1px solid #f2af0d;
       border-radius: 5px;
@@ -98,11 +116,26 @@
       background: url('../../../../assets/images/backgroundTavernAsk.png');
       background-color: #1a1412;
       background-size: cover;
-      background-position: 0 -4rem;
       height: 8rem;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: rgb(80, 63, 18) rgb(48, 31, 10);
+
+      @include sm {
+        background-position: 0 -5rem;
+      }
+
+      @include md {
+        background-position: 0 -2rem;
+      }
+
+      @include xl {
+        background-position: 0 -2rem;
+      }
+
+      @include xxl {
+        background-position: 0 -4rem;
+      }
 
       &::-webkit-scrollbar {
         -webkit-appearance: none;
@@ -144,6 +177,11 @@
       max-height: 8.5rem;
       height: fit-content;
       margin-top: 0rem;
+      overflow-x: hidden;
+    }
+
+    @include xl {
+      overflow-x: auto;
     }
   }
 
@@ -262,7 +300,7 @@
   resize: vertical;
   width: 100%;
   padding: 1rem;
-  height: 10rem;
+  height: 3rem;
 
   @include md {
     height: 8rem;

@@ -5,10 +5,12 @@ import {
   ADD_CHAT_MESSAGE,
   RESET_FIELDS,
   RESET_CHAT,
+  SET_TAVERN_ID,
+  DELETE_TAVERN,
 } from '../actions';
-import {} from '../actions/tavern';
 
 const INITIAL_STATE = {
+  list: [],
   connectedContacts: [],
   messages: [],
   message: '',
@@ -16,6 +18,16 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
+    // case SET_TAVERN_ID:
+    //   return {
+    //     ...state,
+    //     list: [
+    //       ...state.list, {
+    //       connectedContacts: [],
+    //       messages: [],
+    //       tavernId: action.tavernId,
+    //     }]
+    //   }
     case TAVERN_CONTACT_CONNECT:
       return {
         ...state,
@@ -28,6 +40,11 @@ export default (state = INITIAL_STATE, action = {}) => {
           (contact) => contact.connectionUserId !== action.userId,
         ),
       };
+    case DELETE_TAVERN:
+      return {
+        ...state,
+        list: state.list.filter(tavern=> tavern.tavernId !== action.tavernId)
+      }
     case INPUT_CHANGE:
       if (action.reducerName === 'tavern') {
         return {
