@@ -28,9 +28,17 @@ const PostForm = ({
     setIsOpen(!isOpen);
   };
 
+  let numberRequests =  user.pendingRequests.received.length + user.tavernRequests.length;
+  numberRequests = 200
+  numberRequests >= 100 ? numberRequests = '+99' : numberRequests = user.pendingRequests.received.length + user.tavernRequests.length
+  
   return (
     <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
       <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
+      {
+        numberRequests > 0 &&
+        <span className={styles.PostForm__NumberRequests}>{numberRequests}</span>
+      }
         <img className={styles.SelfAvatar} src={user.avatar} alt="" />
         <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
       </div>
