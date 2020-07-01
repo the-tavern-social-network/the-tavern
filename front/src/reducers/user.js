@@ -1,5 +1,5 @@
 import avatardefault from '../assets/images/avatar/Avatardefault.png';
-import { defaultTitles } from '../util'
+import { defaultTitles } from '../util';
 
 import {
   CONNECT,
@@ -21,6 +21,7 @@ import {
   TAVERN_INVITE,
   DELETE_TAVERN,
   DELETE_TAVERN_INVITE,
+  OPEN_TAVERN,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -125,9 +126,9 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         loggedUser: {
           ...state.loggedUser,
-          title: action.title
-        }
-      }
+          title: action.title,
+        },
+      };
     case CONTACT_UPDATE:
       const sent = state.loggedUser.pendingRequests.sent.map((contact) => {
         let updatedContact = contact;
@@ -172,7 +173,7 @@ export default (state = INITIAL_STATE, action = {}) => {
               {
                 gamemaster: action.gamemaster,
                 tavernId: action.tavernId,
-                date: action.date
+                date: action.date,
               },
             ],
           },
@@ -190,6 +191,22 @@ export default (state = INITIAL_STATE, action = {}) => {
         };
       }
       return state;
+    case OPEN_TAVERN:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          isGamemaster: true,
+        },
+      };
+    case DELETE_TAVERN:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          isGamemaster: false,
+        },
+      };
     default:
       return state;
   }

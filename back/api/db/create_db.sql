@@ -14,30 +14,10 @@ CREATE TABLE IF NOT EXISTS "users" (
   "avatar" TEXT NULL,
   "description" TEXT NULL,
   "birthdate" DATE NOT NULL,
-  "tavern_id" TEXT REFERENCES "taverns" ("tavern_id"),
-  "created_at" TIMESTAMP DEFAULT NOW(),
-  "updated_at" TIMESTAMP
-);
---
-CREATE TABLE IF NOT EXISTS "taverns" (
-  "id" SERIAL PRIMARY KEY,
-  "tavern_id" TEXT NOT NULL,
-  "gamemaster_id" INT NOT NULL REFERENCES "users" ("id")
-  ON DELETE CASCADE ON UPDATE CASCADE,
   "created_at" TIMESTAMP DEFAULT NOW(),
   "updated_at" TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS "messages" (
-  "id" SERIAL PRIMARY KEY,
-  "content" TEXT NOT NULL,
-  "tavern_id" TEXT NOT NULL REFERENCES "taverns" ("tavern_id"),
-  "user_id" INT NOT NULL REFERENCES "users" ("id")
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  "created_at" TIMESTAMP DEFAULT NOW(),
-  "updated_at" TIMESTAMP
-);
---
 CREATE TABLE IF NOT EXISTS "tavern_requests" (
   "id" SERIAL PRIMARY KEY,
   "tavern_id" TEXT NOT NULL REFERENCES "taverns" ("tavern_id"),
@@ -81,6 +61,5 @@ CREATE TABLE IF NOT EXISTS "Session" (
   "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
-ALTER TABLE "users" ADD CONSTRAINT fk_orders_customers FOREIGN KEY (customer_id) REFERENCES customers (id);
 
 END;
