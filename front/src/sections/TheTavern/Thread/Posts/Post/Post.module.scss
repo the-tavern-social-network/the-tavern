@@ -137,6 +137,23 @@
   @include flex(center, flex-start, row nowrap);
   word-wrap: break-word;
   width: 100%;
+  
+  & div:first-child {
+    @include flex(center, flex-start, row nowrap);
+  }
+
+  &__Heart {
+    margin-left: -0.8rem;
+    margin-right: 0.5rem;
+    font-size: 1.5em;
+    color: rgb(113, 98, 83);
+  }
+
+  &__CheckedHeart {
+    @extend .DateContainer__Heart;
+    color: #e2264d;
+  }
+  
 
   & div:last-child {
     margin-left: 1rem;
@@ -185,3 +202,4 @@
 .DeleteButton {
   font-size: 1.1em;
 }
+
