@@ -163,7 +163,7 @@ export default (state = INITIAL_STATE, action = {}) => {
         },
       };
     case TAVERN_INVITE:
-      if (action.participantId === state.loggedUser.id)
+      if (action.participantId === state.loggedUser.id) {
         return {
           ...state,
           loggedUser: {
@@ -178,6 +178,8 @@ export default (state = INITIAL_STATE, action = {}) => {
             ],
           },
         };
+      }
+      return state;
     case DELETE_TAVERN_INVITE:
       if (state.loggedUser.id === action.participantId) {
         return {

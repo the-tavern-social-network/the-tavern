@@ -7,7 +7,6 @@ import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
 
 import Fire from '../../../../assets/images/fire.svg';
-import cross from '../../../../assets/images/logocroix.svg';
 import AvatarDefault from '../../../../assets/images/Avatardefault.png';
 
 import styles from './PostForm.module.scss';

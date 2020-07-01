@@ -26,7 +26,19 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
     // eslint-disable-next-line
   }, []);
 
-  const checkInitiator = (user) => connection.isInitiator ? { ...user, username: `${user.username} / GameMaster` } : user
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+      if (!event.shiftKey) {
+        addChatMessage({ message: message, user: checkInitiator(user) });
+        connection.send({ type: 'message', message: message, user: checkInitiator(user) });
+        // connection.send({ type: 'diceRoll', message });
+        resetFields('tavern');
+      }
+    }
+  };
+
+  const checkInitiator = (user) =>
+    connection.isInitiator ? { ...user, username: `${user.username} / GameMaster` } : user;
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -53,21 +65,25 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
           <div key={message.user.id} className={styles.Chat__Messages__Message}>
             <p
               className={
-                message.user.username === `${user.username} / GameMaster` ||  message.user.username === user.username
+                message.user.username === `${user.username} / GameMaster` ||
+                message.user.username === user.username
                   ? styles.Chat__Messages__Message__Self
                   : styles.Chat__Messages__Message__Player
               }>
               {message.user.username}
             </p>
-            <p className={styles.Chat__Messages__Message__Content}>{message.message}</p>
+            <pre className={styles.Chat__Messages__Message__Content}>{message.message}</pre>
           </div>
         ))}
       </div>
-      <form className={styles.Chat__Message__Form} onSubmit={submitHandler}>
-        <Field type="textarea" cssClass={styles.Chat__Message__Input} reducerName="tavern" name="message" />
-        <div className={styles.Chat__Message__Input_Bloc}>
-          <button className={styles.Chat__Message__Form__Btn}>Envoyer</button>
-        </div>
+      <form className={styles.Chat__Message__Form} onKeyUp={handleEnter} onSubmit={submitHandler}>
+        <Field
+          type="textarea"
+          cssClass={styles.Chat__Message__Input}
+          reducerName="tavern"
+          name="message"
+        />
+        <button className={styles.Chat__Message__Form__Btn}>Envoyer</button>
       </form>
     </div>
   );

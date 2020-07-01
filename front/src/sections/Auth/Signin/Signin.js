@@ -11,8 +11,8 @@ import styles from './Signin.module.scss';
 
 import { websiteName } from '../../../util';
 
-
-const Signin = ({ match,
+const Signin = ({
+  match,
   history,
   login,
   resetFields,
@@ -24,14 +24,13 @@ const Signin = ({ match,
   password,
   setError,
 }) => {
-
   useEffect(() => {
     if (isLoggedIn) {
       history.push('/');
       resetFields('auth');
     }
   }, [isLoggedIn]);
-  
+
   useEffect(() => {
     resetFields('auth');
     unsetError();
@@ -44,8 +43,8 @@ const Signin = ({ match,
   const signinFormHandler = (event) => {
     event.preventDefault();
     if (!email || !password) {
-      return setError("Tous les champs doivent être renseignés", 'all fields', {
-        email: !email && true,        
+      return setError('Tous les champs doivent être renseignés', 'all fields', {
+        email: !email && true,
         password: !password && true,
       });
     }
@@ -54,12 +53,12 @@ const Signin = ({ match,
   };
 
   useEffect(() => {
-    document.title = `${websiteName} | Connexion`
-  }, [document.title])
+    document.title = `${websiteName} | Connexion`;
+  }, []);
 
   return (
     <>
-      { window.matchMedia('(min-width: 768px)').matches && <Presentation />}
+      {window.matchMedia('(min-width: 768px)').matches && <Presentation />}
       <form onSubmit={signinFormHandler} className={styles.Signin}>
         <img
           onClick={clickHandler}
@@ -76,10 +75,10 @@ const Signin = ({ match,
             type="email"
             name="email"
             cssClass={
-              hasError 
-              ? [styles.Signin__Email, styles.Signin__Field, styles.Signin__Error].join(' ') 
-              : [styles.Signin__Email, styles.Signin__Field].join(' ')
-              }
+              hasError
+                ? [styles.Signin__Email, styles.Signin__Field, styles.Signin__Error].join(' ')
+                : [styles.Signin__Email, styles.Signin__Field].join(' ')
+            }
           />
           <div className={styles.Password}>
             <label htmlFor="password">Mot de passe</label>
@@ -94,10 +93,10 @@ const Signin = ({ match,
             type="password"
             name="password"
             cssClass={
-              hasError 
-              ? [styles.Signin__Password, styles.Signin__Field, styles.Signin__Error].join(' ') 
-              : [styles.Signin__Password, styles.Signin__Field].join(' ')
-              }
+              hasError
+                ? [styles.Signin__Password, styles.Signin__Field, styles.Signin__Error].join(' ')
+                : [styles.Signin__Password, styles.Signin__Field].join(' ')
+            }
           />
           {hasError && <ErrorMessage message={errorMessage} />}
           <div className={styles.Signin__Btn__Container}>

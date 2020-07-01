@@ -7,8 +7,6 @@
   line-height: 1.4;
   max-width: 100%;
 
-
-
   @include lg {
     @include flex(stretch, center, column nowrap);
     margin: -($gutter/2) ($gutter/2) 0;
@@ -34,20 +32,26 @@
     &__Message {
       width: 100%;
       margin: ($gutter/2) 0;
+
       &__Self {
         text-align: right;
         color: #fff200;
         margin: ($gutter/4) 0;
-        
       }
+
       &__Player {
         text-align: left;
         color: white;
         margin: ($gutter/4) 0;
-        
       }
+
       &__Content {
         padding: ($gutter/3);
+        white-space: pre-wrap; /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
         //a voir apres la pres pour le break word//
         //white-space: pre-wrap;
         word-break: break-word;
@@ -63,32 +67,33 @@
   &__Message {
     &__Form {
       @include flex(center, space-between, row wrap);
-      //position: relative;
+      position: relative;
       word-wrap: break-word;
+
       &__Btn {
-        margin-right: 1rem;
         position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
         border: none;
         border-radius: 3px;
         right: 0.5rem;
         padding: ($gutter/3);
         color: #fff;
         background-color: #f3cc0d;
-        
       }
-
-
     }
 
     &__Input {
       padding: ($gutter/4);
       width: 100%;
-      height: 17vh;
+      height: 10vh;
+      padding-right: 5.5rem;
 
       @include lg {
-        height: 10vh;
+        height: 5vh;
         min-height: 6rem;
-      }   
+        padding-right: 5rem;
+      }
     }
   }
 }

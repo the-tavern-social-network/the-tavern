@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Presentation from './Presentation/Presentation';
 import styles from './Home.module.scss';
 
-import { websiteName } from '../../../util'
+import { websiteName } from '../../../util';
 
 const Home = ({ history, match }) => {
   const clickHandler = () => {
@@ -14,7 +14,7 @@ const Home = ({ history, match }) => {
 
   useEffect(() => {
     document.title = `${websiteName} | Authentification`;
-  }, [document.title])
+  }, []);
 
   return (
     <>

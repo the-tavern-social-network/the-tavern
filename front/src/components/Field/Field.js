@@ -3,7 +3,19 @@ import PropTypes from 'prop-types';
 
 import { getDate } from '../../util';
 
-const Field = ({ type, placeholder, reducerName, name, value, inputChange, cssClass, id, post, hasError, unsetError }) => {
+const Field = ({
+  type,
+  placeholder,
+  reducerName,
+  name,
+  value,
+  inputChange,
+  cssClass,
+  id,
+  post,
+  hasError,
+  unsetError,
+}) => {
   let field;
 
   const { year, month, day } = getDate();

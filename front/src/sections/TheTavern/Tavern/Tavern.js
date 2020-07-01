@@ -14,7 +14,6 @@ const Tavern = ({
   match,
   history,
   user,
-  isInitiator,
   resetChat,
   setTavernId,
   connectedContacts,
@@ -41,7 +40,6 @@ const Tavern = ({
         connection.dontCaptureUserMedia = true;
         connection.extra.user = { ...user, isGamemaster: false };
         connection.join(roomid);
-        // tavernContactConnect(connection.extra.user);
         setUserHasJoined(true);
       } else {
         connection.extra.user = { ...user, isGamemaster: true };
@@ -49,7 +47,6 @@ const Tavern = ({
         openTavern(connection.isInitiator);
         tavernContactConnect(connection.extra.user);
         setUserHasJoined(true);
-        console.log(connection);
       }
     });
 
@@ -90,25 +87,12 @@ const Tavern = ({
         history={history}
         user={user}
         connection={connection}
+        connectedContacts={connectedContacts}
         deleteTavern={deleteTavern}
         inviteIntoTavern={inviteContact}
       />
       <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
-    {/*<div className={styles.ContactListMoreSelf}>
-              <div>
-                <p>
-                  <img title = {connection.extra.user.username}
-                  className={styles.Tavern__Avatar} 
-                  src={connection.extra.user.avatar}
-                  alt={`Avatar de ${connection.extra.user.username}`}
-                  /> 
-                </p>
-                <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
-              </div>
-              <ConnectedContactsList connectedContacts={connectedContacts}/>
-            </div>
-            */}
           <div className={styles.ContactListMoreSelf}>
             <div>
               <p>
@@ -123,13 +107,6 @@ const Tavern = ({
                   ) : null,
                 )}
               </p>
-              {connectedContacts.find((contact) => contact.isGamemaster) ? (
-                <ContactList
-                  connection={connection}
-                  match={match}
-                  inviteIntoTavern={inviteContact}
-                />
-              ) : null}
             </div>
             <ConnectedContactsList connectedContacts={connectedContacts} user={user} />
           </div>

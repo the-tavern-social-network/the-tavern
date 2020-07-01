@@ -1,5 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SET_LOADING, SET_ERROR, UNSET_ERROR, SET_INITIAL_LOADING, SET_TAVERN_ID, ISRESOLVE } from '../actions';
+import {
+  SET_LOADING,
+  SET_ERROR,
+  UNSET_ERROR,
+  SET_INITIAL_LOADING,
+  SET_TAVERN_ID,
+  ISRESOLVE,
+} from '../actions';
 
 const INITIAL_STATE = {
   isResolve: false,
@@ -24,42 +31,41 @@ export default (state = INITIAL_STATE, action = {}) => {
       };
     case SET_ERROR:
       switch (action.errorType) {
-        case "all fields": 
-        return {
-          ...state,
-          errorMessage: action.errorMessage,
-          hasError: {...state.hasError, ...action.data},
-          isLoading: false,
+        case 'all fields':
+          return {
+            ...state,
+            errorMessage: action.errorMessage,
+            hasError: { ...state.hasError, ...action.data },
+            isLoading: false,
           };
         case 'email':
-        return {
-          ...state,
-          errorMessage: action.errorMessage,
-          hasError: {...state.hasError, email:true},
-          isLoading: false,
-          };
-        case "username too long": 
           return {
             ...state,
             errorMessage: action.errorMessage,
-            hasError: {...state.hasError, username: true},
+            hasError: { ...state.hasError, email: true },
             isLoading: false,
-          } 
-        case "password not matching":
-        return {
-          ...state,
-          errorMessage: action.errorMessage,
-          hasError: {...state.hasError, password: true, confirmPassword: true},
-          isLoading: false,
           };
-          case "invalid password":
+        case 'username too long':
           return {
             ...state,
             errorMessage: action.errorMessage,
-            hasError: {...state.hasError, password: true, confirmPassword: true},
+            hasError: { ...state.hasError, username: true },
             isLoading: false,
-            };
-        
+          };
+        case 'password not matching':
+          return {
+            ...state,
+            errorMessage: action.errorMessage,
+            hasError: { ...state.hasError, password: true, confirmPassword: true },
+            isLoading: false,
+          };
+        case 'invalid password':
+          return {
+            ...state,
+            errorMessage: action.errorMessage,
+            hasError: { ...state.hasError, password: true, confirmPassword: true },
+            isLoading: false,
+          };
       }
       return {
         ...state,
@@ -72,12 +78,12 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         hasError: false,
         errorMessage: '',
-      }
+      };
     case ISRESOLVE:
       return {
         ...state,
         isResolve: !state.isResolve,
-      }
+      };
     case SET_TAVERN_ID:
       return {
         ...state,
