@@ -8,15 +8,15 @@
 
 
   &__Avatar {
-    width: 3rem;
+    width: 2rem;
     border-radius: 50%;
-    border: 3px solid #fff200;
+    border: 3px solid #0adeb7;
     z-index: 400;
     @include md {
       width: 4rem;
       position : absolute ;
       top : 4rem;
-      right : 27rem;  
+      right : 13rem;  
   }
 
   }
@@ -28,5 +28,20 @@
         @include flex(center,space-between, column nowrap);
       }
     }
+  }
+}
+
+.ContactListMoreSelf{
+ margin-top: -1.6rem;
+  position: absolute;
+  margin-left: 0.5rem;
+  //position: relative;
+  z-index: 1000;
+  display: flex;
+  @include md {
+    margin-top: 0;
+    margin-left: 0;
+    position: relative;
+    display: block;
   }
 }

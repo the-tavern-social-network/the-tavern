@@ -12,7 +12,7 @@ const ContactList = ({connection, inviteIntoTavern, match}) => {
   
   return (
 <>
-    <img title="Liste des Contacts" className={styles.AddPlayer} onClick={()=>setContactListOpen(!contactListOpen)} src={addplayer} alt="Add PLayer" /> 
+    
     {contactListOpen ? 
       <div className={styles.AddPlayerContainer}>
         

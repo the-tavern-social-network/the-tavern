@@ -5,27 +5,13 @@
   z-index: 5;
   width: 100%;
   min-width: 20rem;
-
   min-height: 12rem;
-
   max-width: 75rem;
   z-index: 10;
   position: relative;
 
   @include lg {
     max-width: calc(100% - 27rem);
-  }
-
-  &__D20 {
-    position: absolute;
-    width: 3rem;
-    right: 5.6rem;
-    @include md {
-    position: absolute;
-    width: 3rem;
-    right: 5.6rem;
-
-    }
   }
 
   &__Logo {
@@ -38,19 +24,113 @@
   }
 
 
-  &__TavernExit {
+  &__Icons {
+    @include flex(center, space-between, row nowrap);
     cursor: pointer;
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+    min-width: 8rem;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 2px black;
     font-weight: 200;
     font-size: 0.8em;
     z-index: 100;
 
+    &__D20 {
+    width: 3rem;
+    right: 5.6rem;
+
+    @include md {
+    width: 3rem;
+    right: 5.6rem;
+    }
+  }
+
+  &__AddPlayer{
+    width: 2.5rem;
+    right: 3rem;
+    z-index: 500;
+
+    @include md {
+      right: 13.5rem;
+    }
+  }
+
     img {
       width: 2rem;
     }
   }
+}
+
+.AddPlayerContainer {
+    font-family: 'Nunito Sans', sans-serif;
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+    background-color: #331D0F;
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.6);
+    border-radius:5px;
+
+  &__Image {
+    position: absolute;
+    z-index: 500;
+    width: 2.5rem;
+  }
+
+  @include md {
+    font-family: 'Nunito Sans', sans-serif;
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+    background-color: #331D0F;
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.6);
+    border-radius:5px;
+  }
+
+  &__Image {
+      position: absolute;
+      z-index: 500;
+      width: 2.5rem;
+  }
+}
+
+
+.ContactList {
+  &__List{
+    &__Item{
+      display:flex;
+      border-bottom:1px solid black;
+      align-items: center;
+      padding-bottom: 0.5rem;
+
+      &__Btn{
+        margin-right: 0.5rem;
+        background-color : #77d4bd;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 2px;
+        border-color:#77d4bd ;
+        color: #fff;
+
+        &:hover{
+          background-color : #e19a2f;
+        }
+      }
+
+      &__Avatar {
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        width: 3rem;
+        border-radius: 50%;
+        margin-right : 0.5rem;
+      }
+
+      &__Content{
+        width : 90%;
+        margin-right : 1rem;
+      }
+    }
+  }
+
 }

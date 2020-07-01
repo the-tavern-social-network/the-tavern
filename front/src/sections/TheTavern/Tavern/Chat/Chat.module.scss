@@ -5,8 +5,11 @@
   margin: -($gutter/4) ($gutter/4) 0;
   font-size: 0.8rem;
   line-height: 1.4;
+  max-width: 100%;
 
-  @include md {
+
+
+  @include lg {
     @include flex(stretch, center, column nowrap);
     margin: -($gutter/2) ($gutter/2) 0;
     max-height: 100vh;
@@ -31,23 +34,27 @@
     &__Message {
       width: 100%;
       margin: ($gutter/2) 0;
-      word-wrap: break-word;
       &__Self {
         text-align: right;
         color: #fff200;
         margin: ($gutter/4) 0;
+        
       }
       &__Player {
         text-align: left;
         color: white;
         margin: ($gutter/4) 0;
+        
       }
       &__Content {
         padding: ($gutter/3);
-
+        //a voir apres la pres pour le break word//
+        //white-space: pre-wrap;
+        word-break: break-word;
+        //overflow-wrap: break-word;
+        //hyphens: auto;
         background-color: white;
         border-radius: 3px;
-
         color: black;
       }
     }

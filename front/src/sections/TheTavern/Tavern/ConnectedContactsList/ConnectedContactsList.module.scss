@@ -4,11 +4,13 @@
     font-family: 'Nunito Sans', sans-serif;
 
     &__List{
+        display: flex;
         @include md {
+            display: block;
             position : absolute ;
             z-index: 500;
             top : 8.5rem;
-            right : 27rem;
+            right : 13rem;
             
         }
         &__Item {
@@ -16,10 +18,15 @@
         }
 
         &__Avatar{
-            
-            border: 3px solid #0adeb7;
-            width: 3rem;
+            margin-left: 0.5rem;
+            width: 2rem;
             border-radius: 50%;
+            border: 2px solid #0adeb7;
+            @include md {
+                border: 3px solid #0adeb7;
+                width: 3rem;
+
+            }
         }
     }
 
