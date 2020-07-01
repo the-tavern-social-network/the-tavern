@@ -10,10 +10,10 @@ import d20 from '../../../../assets/images/d20.svg';
 import skull from '../../../../assets/images/skull.svg';
 
 const Invitation = ({
-  id,
-  username,
-  avatar,
   date,
+  user,
+  contact,
+  gamemaster,
   contactRequest,
   tavernRequest,
   acceptContact,
@@ -35,9 +35,9 @@ const Invitation = ({
               {date}
             </Moment>
           )}
-          <img className={styles.Invitation__Tavern__Avatar} src={avatar} alt="avatar" />
+          <img className={styles.Invitation__Tavern__Avatar} src={gamemaster.avatar} alt="avatar" />
           <p className={styles.Invitation__Tavern__Message__Container}>
-            <span className={styles.Invitation__Tavern__Username}>{username}</span>
+            <span className={styles.Invitation__Tavern__Username}>{gamemaster.username}</span>
             <span className={styles.Invitation__Tavern__Message}>
               Vous invite à jouer dans la Tavern !
             </span>
@@ -46,13 +46,17 @@ const Invitation = ({
         <div className={styles.Invitation__Tavern__Buttons__Container}>
           <button
             className={styles.Invitation__Tavern__Button__Add}
-            onClick={(event) => clickHandler('accept', id)}>
+            onClick={(event) =>
+              clickHandler('accept', { gamemasterId: gamemaster.id, participantId: user.id })
+            }>
             <img src={d20} alt="icone accepter" />
             Accepter
           </button>
           <button
             className={styles.Invitation__Tavern__Button__Decline}
-            onClick={(event) => clickHandler('reject', id)}>
+            onClick={(event) =>
+              clickHandler('reject', { gamemasterId: gamemaster.id, participantId: user.id })
+            }>
             <img src={skull} alt="icone skull" />
             Refuser
           </button>
@@ -66,17 +70,21 @@ const Invitation = ({
           <div className={styles.Asking}>
             <div className={styles.Request}>
               <div className={styles.Invitation__Container}>
-                <img className={styles.Avatar} src={avatar} alt="avatar" />
+                <img className={styles.Avatar} src={contact.avatar} alt="avatar" />
                 <div>
-                  <p className={styles.Name}>{username}</p>
+                  <p className={styles.Name}>{contact.username}</p>
                 </div>
               </div>
 
               <div className={styles.Buttons}>
-                <button className={styles.Add} onClick={(event) => clickHandler('accept', id)}>
+                <button
+                  className={styles.Add}
+                  onClick={(event) => clickHandler('accept', { contactId: contact.id })}>
                   Accepter
                 </button>
-                <button className={styles.Decline} onClick={(event) => clickHandler('reject', id)}>
+                <button
+                  className={styles.Decline}
+                  onClick={(event) => clickHandler('reject', { contactId: contact.id })}>
                   Refuser
                 </button>
               </div>
@@ -88,17 +96,17 @@ const Invitation = ({
             modalCancel={() => setIsDeleteModalOpen(false)}
             header="Suppression de demande de contact"
             message={`Voulez vous vraiment supprimer cette demande ?`}
-            modalConfirm={() => deleteHandler(id)}
+            modalConfirm={() => deleteHandler(contact.id)}
           />
         )}
       </>
     );
   }
 
-  const clickHandler = (type, id) => {
+  const clickHandler = (type, obj) => {
     if (contactRequest) {
       if (type === 'accept') {
-        acceptContact(id);
+        acceptContact(obj.contactId);
       } else if (type === 'reject') {
         setIsDeleteModalOpen(true);
       }
@@ -106,7 +114,7 @@ const Invitation = ({
       if (type === 'accept') {
         history.push(`/tavern/${tavernId}`);
       }
-      deleteTavern(tavernId);
+      deleteTavern(tavernId, +obj.gamemasterId, +obj.participantId);
     }
   };
 

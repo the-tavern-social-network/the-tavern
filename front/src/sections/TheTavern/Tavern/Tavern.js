@@ -7,50 +7,73 @@ import Chat from '../../../containers/TheTavern/Tavern/Chat';
 import ContactList from './ContactList/ContactList';
 import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
 
-import { websiteName }from '../../../util'
+import { websiteName } from '../../../util';
 import styles from './Tavern.module.scss';
 
 const Tavern = ({
   match,
   history,
   user,
+  isInitiator,
   resetChat,
   setTavernId,
   connectedContacts,
   tavernContactConnect,
   tavernContactDisconnect,
   inviteContact,
+  openTavern,
   deleteTavern,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
 
   useEffect(() => {
-    setTavernId();
+    document.title = `${websiteName} | Tavern`;
+  }, [websiteName]);
+
+  useEffect(() => {
+    setTavernId(match.params.id);
   }, []);
 
   useEffect(() => {
     connection.checkPresence(match.params.id, (isRoomExist, roomid) => {
       if (isRoomExist === true) {
         connection.dontCaptureUserMedia = true;
-        connection.extra.user = user;
+        connection.extra.user = { ...user, isGamemaster: false };
         connection.join(roomid);
+        // tavernContactConnect(connection.extra.user);
         setUserHasJoined(true);
       } else {
-        connection.extra.user = user;
+        connection.extra.user = { ...user, isGamemaster: true };
         connection.open(roomid);
+        openTavern(connection.isInitiator);
+        tavernContactConnect(connection.extra.user);
         setUserHasJoined(true);
+        console.log(connection);
       }
     });
 
     connection.onopen = (event) => {
-      const user = event.extra.user;
-      user.connectionUserId = event.userid;
-      tavernContactConnect(user);
+      const userToConnect = event.extra.user;
+      userToConnect.connectionUserId = event.userid;
+      tavernContactConnect(userToConnect);
     };
 
     connection.onclose = (event) => {
       tavernContactDisconnect(event.userid);
+    };
+
+    // Event triggered when the stream ends
+    connection.onstreamended = (event) => {
+      deleteTavern(match.params.id);
+      if (event.userid === connection.userid) {
+        // disconnect with all users
+        connection.getAllParticipants().forEach((pid) => {
+          connection.disconnectWith(pid);
+        });
+        // Closes the connection
+        connection.closeSocket();
+      }
     };
 
     return () => {
@@ -58,10 +81,6 @@ const Tavern = ({
       connection.attachStreams.forEach((stream) => stream.stop());
     };
   }, []);
-
-  const inviteIntoTavernHandler = (contactId, tavernId) => {
-    inviteContact(contactId, tavernId);
-  };
 
   return (
     <div className={styles.Tavern}>
@@ -73,24 +92,37 @@ const Tavern = ({
         connection={connection}
         deleteTavern={deleteTavern}
       />
-        <div className={styles.Tavern__Chat__Container}>
+      <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
           <div>
             <div>
               <p>
-                <img title = {connection.extra.user.username}
-                className={styles.Tavern__Avatar} 
-                src={connection.extra.user.avatar}
-                alt={`Avatar de ${connection.extra.user.username}`}
-                /> 
+                {connectedContacts.map((contact) =>
+                  contact.isGamemaster ? (
+                    <img
+                      title={contact.username}
+                      className={styles.Tavern__Avatar}
+                      src={contact.avatar}
+                      alt={`Avatar de ${contact.username}`}
+                    />
+                  ) : null,
+                )}
               </p>
-              <ContactList connection={connection} match={match} inviteIntoTavern={inviteContact} />
+              {connectedContacts.find((contact) => contact.isGamemaster) ? (
+                <ContactList
+                  connection={connection}
+                  match={match}
+                  inviteIntoTavern={inviteContact}
+                />
+              ) : (
+                <span>&copy;</span>
+              )}
             </div>
-            <ConnectedContactsList connectedContacts={connectedContacts}/>
+            <ConnectedContactsList connectedContacts={connectedContacts} user={user} />
           </div>
         )}
-          <Chat user={user} connection={connection} />
-        </div>
+        <Chat user={user} tavernId={match.params.id} connection={connection} />
+      </div>
     </div>
   );
 };

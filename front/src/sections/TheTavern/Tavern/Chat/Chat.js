@@ -53,7 +53,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
           <div key={message.user.id} className={styles.Chat__Messages__Message}>
             <p
               className={
-                message.user.username === `${user.username} / GameMaster`
+                message.user.username === `${user.username} / GameMaster` ||  message.user.username === user.username
                   ? styles.Chat__Messages__Message__Self
                   : styles.Chat__Messages__Message__Player
               }>

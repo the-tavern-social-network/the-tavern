@@ -5,7 +5,6 @@ export const defaultTitles = [
   "Apprenti aventurier",
   "Aventurier",
   "Elu de Edge",
-  "Détrousseur de serveuses",
   "Troubadour",
   "Aventurier testeur",
   "Buveur de biere sans alcool",

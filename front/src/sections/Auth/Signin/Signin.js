@@ -9,8 +9,21 @@ import ErrorMessage from '../../../components/Error/ErrorMessage';
 import Presentation from '../Home/Presentation/Presentation';
 import styles from './Signin.module.scss';
 
+import { websiteName } from '../../../util';
 
-const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unsetError, errorMessage }) => {
+
+const Signin = ({ match,
+  history,
+  login,
+  resetFields,
+  isLoggedIn,
+  hasError,
+  unsetError,
+  errorMessage,
+  email,
+  password,
+  setError,
+}) => {
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -18,6 +31,11 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
       resetFields('auth');
     }
   }, [isLoggedIn]);
+  
+  useEffect(() => {
+    resetFields('auth');
+    unsetError();
+  }, []);
 
   const clickHandler = (event) => {
     history.push('/auth');
@@ -25,9 +43,19 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
 
   const signinFormHandler = (event) => {
     event.preventDefault();
+    if (!email || !password) {
+      return setError("Tous les champs doivent être renseignés", 'all fields', {
+        email: !email && true,        
+        password: !password && true,
+      });
+    }
     unsetError();
     login();
   };
+
+  useEffect(() => {
+    document.title = `${websiteName} | Connexion`
+  }, [document.title])
 
   return (
     <>
@@ -47,7 +75,11 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
             placeholder="exemple@tavern.com"
             type="email"
             name="email"
-            cssClass={[styles.Signin__Email, styles.Signin__Field].join(' ')}
+            cssClass={
+              hasError 
+              ? [styles.Signin__Email, styles.Signin__Field, styles.Signin__Error].join(' ') 
+              : [styles.Signin__Email, styles.Signin__Field].join(' ')
+              }
           />
           <div className={styles.Password}>
             <label htmlFor="password">Mot de passe</label>
@@ -61,7 +93,11 @@ const Signin = ({ match, history, login, resetFields, isLoggedIn, hasError, unse
             placeholder="*****"
             type="password"
             name="password"
-            cssClass={[styles.Signin__Password, styles.Signin__Field].join(' ')}
+            cssClass={
+              hasError 
+              ? [styles.Signin__Password, styles.Signin__Field, styles.Signin__Error].join(' ') 
+              : [styles.Signin__Password, styles.Signin__Field].join(' ')
+              }
           />
           {hasError && <ErrorMessage message={errorMessage} />}
           <div className={styles.Signin__Btn__Container}>

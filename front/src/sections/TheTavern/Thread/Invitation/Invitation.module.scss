@@ -7,14 +7,19 @@
   background-color: #3a261d;
   transition: 0.3s;
   line-height: 1.5;
-  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
   font-family: 'Nunito sans', sans-serif;
+
+  @include md {
+    margin-bottom: 0.1rem;
+  }
 
   &:nth-child(1) {
     margin-top: 0;
   }
 
   @include md {
+    margin-top: 0.35rem;
     padding: 0.2rem;
   }
 

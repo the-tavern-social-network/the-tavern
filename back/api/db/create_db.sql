@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 
 CREATE TABLE IF NOT EXISTS "tavern_requests" (
   "id" SERIAL PRIMARY KEY,
-  "tavern_id" TEXT NOT NULL,
+  "tavern_id" TEXT NOT NULL REFERENCES "taverns" ("tavern_id"),
   "gamemaster_id" INT NOT NULL REFERENCES "users" ("id")
   ON DELETE CASCADE ON UPDATE CASCADE,
   "participant_id" INT NOT NULL REFERENCES "users" ("id")
@@ -60,5 +60,6 @@ CREATE TABLE IF NOT EXISTS "Session" (
   "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
   "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
 );
+
 
 END;

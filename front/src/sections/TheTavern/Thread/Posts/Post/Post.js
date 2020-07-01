@@ -11,6 +11,8 @@ import styles from './Post.module.scss';
 
 const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [clickedHeart, setClickedHeart] = useState(false);
+  
   const deleteBtnClickHandler = () => {
     setIsDeleteModalOpen(true);
   };
@@ -67,17 +69,29 @@ const Post = ({ post, deletePost, sendContactRequest, loggedUser }) => {
               : styles.PostFooter_between
           }>
           <div className={styles.DateContainer}>
-            <div className={styles.Day}>
-              <Moment add={{ hours: 2 }} format="DD/MM/YY">
-                {post.createdAt}
-              </Moment>
+            <div>
+              <div>
+              <label 
+                onClick={() => setClickedHeart(!clickedHeart)} 
+                className={
+                  clickedHeart 
+                    ? styles.DateContainer__CheckedHeart 
+                    : styles.DateContainer__Heart
+                    }
+                >❤</label>
             </div>
-            <div className={styles.Hour}>
-              <Moment add={{ hours: 2 }} format="HH">
-                {post.createdAt}
-              </Moment>
-              <span>h</span>
-              <Moment format="mm">{post.createdAt}</Moment>
+              <div className={styles.Day}>
+                <Moment add={{ hours: 2 }} format="DD/MM/YY">
+                  {post.createdAt}
+                </Moment>
+              </div>
+              <div className={styles.Hour}>
+                <Moment add={{ hours: 2 }} format="HH">
+                  {post.createdAt}
+                </Moment>
+                <span>h</span>
+                <Moment format="mm">{post.createdAt}</Moment>
+              </div>
             </div>
           </div>
           {post.author.username === loggedUser.username && (

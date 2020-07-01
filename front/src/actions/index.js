@@ -22,7 +22,7 @@ export const inputChange = (name, value, reducerName) => ({
 export const resetFields = (reducer) => ({ type: RESET_FIELDS, reducer });
 export const setInitialLoading = () => ({ type: SET_INITIAL_LOADING });
 export const setLoading = () => ({ type: SET_LOADING });
-export const setError = (errorMessage) => ({ type: SET_ERROR, errorMessage });
+export const setError = (errorMessage, errorType, data) => ({ type: SET_ERROR, errorMessage, errorType, data });
 export const unsetError = () => ({ type: UNSET_ERROR });
-export const setTavernId = () => ({ type: SET_TAVERN_ID });
+export const setTavernId = (tavernId) => ({ type: SET_TAVERN_ID, tavernId });
 export const isResolve = () => ({ type: ISRESOLVE });

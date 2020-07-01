@@ -19,7 +19,7 @@ const Nav = ({ logout, user, tavernId }) => {
       <div className={styles.Nav__Header__Welcome}>
         <h1>Bienvenue</h1>
         <h2 className={styles.Nav__Header__Welcome__User}>{user.username}</h2>
-        <span>{user.title}</span>
+        <span className={styles.Nav__Header__Welcome__Title}>{user.title}</span>
       </div>
       <nav className={styles.Nav}>
         <Link to="/" className={styles.Nav__Logo}>

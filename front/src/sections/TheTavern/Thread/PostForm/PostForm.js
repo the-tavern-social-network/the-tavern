@@ -44,6 +44,7 @@ const PostForm = ({
               type="textarea"
               reducerName="post"
               name="post"
+              post
             />
             <button className={styles.SendButton}>
               <img className={styles.SendButton__Fire} src={Fire} alt="Bouclier" />
@@ -59,7 +60,8 @@ const PostForm = ({
               user.tavernRequests.map(({ gamemaster, tavernId, date }) => (
                 <Invitation
                   key={gamemaster.id}
-                  {...gamemaster}
+                  gamemaster={gamemaster}
+                  user={user}
                   date={new Date(date)}
                   deleteTavern={deleteTavern}
                   tavernId={tavernId}
@@ -67,14 +69,7 @@ const PostForm = ({
                 />
               ))
             ) : (
-              <div
-                style={{
-                  height: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  fontSize: '1.5em',
-                }}>
+              <div className={styles.PostForm__TavernInvitation__None}>
                 <h2>Pas d'invitation pour la tavern</h2>
               </div>
             )}
@@ -88,7 +83,7 @@ const PostForm = ({
           {user.pendingRequests.received.map((contact) => (
             <Invitation
               key={contact.id}
-              {...contact}
+              contact={contact}
               acceptContact={acceptContact}
               deleteContact={deleteContact}
               deleteTavern={deleteTavern}

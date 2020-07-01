@@ -1,7 +1,6 @@
 // const Contact = require('./contact');
 const User = require('./user');
 const Post = require('./post');
-
 const TavernRequest = require('./tavernRequest');
 
 const Contact = require('./contact');

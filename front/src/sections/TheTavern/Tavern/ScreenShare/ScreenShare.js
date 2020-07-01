@@ -21,7 +21,6 @@ const Screen = ({ connection, history, match, resetChat, deleteTavern }) => {
 
   const clickHandler = (event) => {
     connection.closeSocket();
-    deleteTavern(match.params.id);
     resetChat();
     history.replace('/');
   };

@@ -4,6 +4,7 @@ export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
 export const RESET_CHAT = 'RESET_CHAT';
 export const INVITE_CONTACT = 'INVITE_CONTACT';
 export const TAVERN_INVITE = 'TAVERN_INVITE';
+export const OPEN_TAVERN = 'OPEN_TAVERN';
 export const DELETE_TAVERN = 'DELETE_TAVERN';
 export const DELETE_TAVERN_INVITE = 'DELETE_TAVERN_INVITE';
 
@@ -21,9 +22,15 @@ export const tavernInvite = (gamemaster, participantId, tavernId, date) => ({
   gamemaster,
   participantId,
   tavernId,
-  date
+  date,
 });
-export const deleteTavern = (tavernId) => ({ type: DELETE_TAVERN, tavernId });
+export const openTavern = (isInitiator) => ({ type: OPEN_TAVERN, isInitiator });
+export const deleteTavern = (tavernId, gamemasterId, participantId) => ({
+  type: DELETE_TAVERN,
+  tavernId,
+  gamemasterId,
+  participantId,
+});
 export const deleteTavernInvite = (participantId, tavernId) => ({
   type: DELETE_TAVERN_INVITE,
   participantId,
