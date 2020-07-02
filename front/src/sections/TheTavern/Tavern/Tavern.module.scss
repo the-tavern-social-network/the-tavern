@@ -1,11 +1,14 @@
 @import '../../../assets/scss/variables';
 
 .Tavern {
-  @include flex(stretch, space-between, row wrap);
+  @include flex(stretch, space-between, column nowrap);
   min-height: 100vh;
-  background-color:#0b0501;
+  background-color: #0b0501;
   background: url('../../../assets/images/wood3.jpg');
 
+  @include lg {
+    flex-flow: row wrap;
+  }
 
   &__Avatar {
     width: 2rem;
@@ -14,25 +17,27 @@
     z-index: 400;
     @include md {
       width: 4rem;
-      position : absolute ;
-      top : 4rem;
-      right : 13rem;  
-  }
-
+      position: absolute;
+      top: 4rem;
+      right: 13rem;
+    }
   }
 
   &__Chat {
     &__Container {
+      width: 100%;
+
       @include lg {
+        width: auto;
         color: #fff;
-        @include flex(center,space-between, column nowrap);
+        @include flex(center, space-between, column nowrap);
       }
     }
   }
 }
 
-.ContactListMoreSelf{
- margin-top: -1.6rem;
+.ContactListMoreSelf {
+  margin-top: -1.6rem;
   position: absolute;
   margin-left: 0.5rem;
   //position: relative;

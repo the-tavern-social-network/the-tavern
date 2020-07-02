@@ -14,7 +14,7 @@ import avatars from '../../../util/avatar';
 import Feather from '../../../assets/images/feather.svg';
 import Friends from '../../../assets/images/team.svg';
 
-import { websiteName } from '../../../util'
+import { websiteName } from '../../../util';
 
 const UserAccount = ({
   user,
@@ -29,8 +29,8 @@ const UserAccount = ({
   const [isTitlesShowed, setIsTitlesShowed] = useState(false);
 
   useEffect(() => {
-    document.title = `${websiteName} | Gestion de compte`
-  }, [document.title])
+    document.title = `${websiteName} | Gestion de compte`;
+  }, [websiteName]);
 
   const clickHandler = (event) => {
     setModalIsVisible(true);
@@ -89,7 +89,8 @@ const UserAccount = ({
         <div className={styles.UserAccount__Description}>
           <p className={styles.UserAccount__Description_Text}>{user.description}</p>
           <button className={styles.UserAccount__Description_Btn} onClick={handleEdit}>
-            <img title="Modifier description"
+            <img
+              title="Modifier description"
               className={styles.UserAccount__Description_Btn__Feather}
               src={Feather}
               alt="plume"
