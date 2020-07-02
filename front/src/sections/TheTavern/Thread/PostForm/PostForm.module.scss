@@ -272,6 +272,10 @@
   }
 }
 
+.Smiley {
+  width: 2rem;
+}
+
 .Triangle {
   margin: 0 2rem;
   border-right: 0.7rem solid transparent;
@@ -312,6 +316,7 @@
 }
 
 .Input {
+  font-family: 'Nunito Sans', sans-serif;
   resize: vertical;
   width: 100%;
   padding: 1rem;
@@ -331,10 +336,24 @@
   height: 2.3rem;
   border-radius: 4px;
   border: solid #f2af0d 1px;
+  transition: 0.2s;
+  box-shadow: 3px 2px 0px 0px #a96500;
+
+  &:hover {
+    background-color: #f2af0d;
+  }
+
+  &:active {
+    box-shadow: 0px 0px 0px 0px #a96500;
+    transform: translateX(4px);
+   }
 
   &__Fire {
     width: 1rem;
     margin-right: 0.3rem;
+    &:hover {
+      fill: #e61111;
+    }
   }
 }
 
