@@ -1,11 +1,15 @@
 @import '../../../assets/scss/variables';
 
 .UserAccount {
-  width: 95%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 55rem;
   margin: auto;
   padding: 1rem;
   border-radius: 5px;
+
+  @include lg {
+    width: 95%;
+  }
 
   &__DeleteBtn {
     position: relative;
@@ -38,7 +42,7 @@
     font-size: 1em;
 
     &_Text {
-      word-wrap: break-word;
+      word-break: break-word;
     }
 
     &__Bloc {
@@ -125,11 +129,16 @@
   padding-left: 1;
   padding-right: 1;
   border-radius: 5px 5px 0 0;
+
+  & div:last-child {
+    @include flex(center, center, row nowrap);
+  }
 }
 
 .Username {
-display: none;
-  @include sm {
+  display: none;
+
+  @include lg {
     display: block;
     color: #fff200;
     font-family: 'nunito sans', 'sans serif';
@@ -179,4 +188,14 @@ display: none;
   font-style: italic;
   cursor: pointer;
   position: relative;
+
+  &__Title {
+    @include sm {
+      margin-right: 1rem;
+    }
+
+    & span {
+      font-style: normal;
+    }
+  }
 }

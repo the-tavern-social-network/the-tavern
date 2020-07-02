@@ -54,24 +54,25 @@ const UserAccount = ({
           Supprimer Compte
         </button>
         <h1 className={styles.Username}>{user.username}</h1>
-        <div className={styles.TitleContainer}>
-          <h2
-            title="Changer de titre"
-            className={styles.Title}
-            onClick={() => setIsTitlesShowed(true)}>
-            {user.title} ▾
-          </h2>
-          {isTitlesShowed && <Titles show={setIsTitlesShowed} />}
+        <div>
+          <div className={styles.TitleContainer}>
+            <h2
+              title="Changer de titre"
+              className={styles.TitleContainer__Title}
+              onClick={() => setIsTitlesShowed(true)}>
+              {user.title} <span>▾</span>
+            </h2>
+            {isTitlesShowed && <Titles show={setIsTitlesShowed} />}
+          </div>
+          <img
+            className={styles.UserAccount__Avatar}
+            src={user.avatar === null ? AvatarDefault : user.avatar}
+            alt="avatar de l'utilisateur"
+            onClick={() => setModalAvatar(!isModalAvatar)}
+            title="Modifier l'avatar"
+            style={{ cursor: 'pointer' }}
+          />
         </div>
-
-        <img
-          className={styles.UserAccount__Avatar}
-          src={user.avatar === null ? AvatarDefault : user.avatar}
-          alt="avatar de l'utilisateur"
-          onClick={() => setModalAvatar(!isModalAvatar)}
-          title="Modifier l'avatar"
-          style={{ cursor: 'pointer' }}
-        />
       </div>
       {isEditing ? (
         <form className={styles.UserAccount__Description_Editing_Form} onSubmit={handleSubmit}>

@@ -1,21 +1,33 @@
 @import '../../../assets/scss/variables';
 
 .Tavern {
-  @include flex(stretch, space-between, column nowrap);
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: auto 25rem;
+  grid-template-areas: 'screen' 'chat';
   min-height: 100vh;
   background-color: #0b0501;
   background: url('../../../assets/images/wood3.jpg');
 
-  @include lg {
-    flex-flow: row wrap;
+  @include md {
+    grid-template-rows: auto 35rem;
+  }
+
+  @include xl {
+    @include flex(stretch, space-between, row nowrap);
   }
 
   &__Avatar {
     width: 2rem;
     border-radius: 50%;
-    border: 3px solid #0adeb7;
+    border: 3px solid $gold;
     z-index: 400;
+
     @include md {
+      width: 3rem;
+    }
+
+    @include xl {
       width: 4rem;
       position: absolute;
       top: 4rem;
@@ -26,8 +38,10 @@
   &__Chat {
     &__Container {
       width: 100%;
+      grid-area: chat;
 
-      @include lg {
+      @include xl {
+        grid-area: none;
         width: auto;
         color: #fff;
         @include flex(center, space-between, column nowrap);

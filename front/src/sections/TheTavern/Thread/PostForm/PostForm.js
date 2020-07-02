@@ -1,3 +1,5 @@
+
+=======
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -115,3 +117,4 @@ PostForm.propTypes = {
 };
 
 export default PostForm;
+

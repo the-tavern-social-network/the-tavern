@@ -28,7 +28,7 @@ export const auth = (store) => (next) => async (action) => {
           birthdate: auth.birthdate,
         };
         const { data: user } = await axios.post(`${apiUrl}/auth/signup`, data);
-        
+
         delete user.password;
         store.dispatch(isResolve());
       } catch (err) {
