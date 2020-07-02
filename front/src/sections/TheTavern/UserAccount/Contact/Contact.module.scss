@@ -85,6 +85,13 @@
     padding-right: 0.4rem;
     border:3px solid #19130F;
     color: #fff;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition:         transform .8s ease-in-out;
+
+    &:hover {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
     @include md {
 
     }
