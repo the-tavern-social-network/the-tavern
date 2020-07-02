@@ -93,6 +93,7 @@ const Tavern = ({
       />
       <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
+
           <div className={styles.ContactListMoreSelf}>
             <div>
               <p>
