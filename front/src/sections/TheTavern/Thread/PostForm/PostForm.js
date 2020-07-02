@@ -61,7 +61,8 @@ const PostForm = ({
               user.tavernRequests.map(({ gamemaster, tavernId, date }) => (
                 <Invitation
                   key={gamemaster.id}
-                  {...gamemaster}
+                  gamemaster={gamemaster}
+                  user={user}
                   date={new Date(date)}
                   deleteTavern={deleteTavern}
                   tavernId={tavernId}
@@ -69,8 +70,8 @@ const PostForm = ({
                 />
               ))
             ) : (
-                <div className={styles.PostForm__TavernInvitation__None}>
-                  <h2>Pas d'invitation pour la tavern</h2>
+              <div className={styles.PostForm__TavernInvitation__None}>
+                <h2>Pas d'invitation pour la tavern</h2>
               </div>
             )}
           </div>
@@ -83,7 +84,7 @@ const PostForm = ({
           {user.pendingRequests.received.map((contact) => (
             <Invitation
               key={contact.id}
-              {...contact}
+              contact={contact}
               acceptContact={acceptContact}
               deleteContact={deleteContact}
               deleteTavern={deleteTavern}
