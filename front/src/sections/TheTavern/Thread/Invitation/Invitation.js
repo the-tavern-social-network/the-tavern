@@ -127,7 +127,7 @@ const Invitation = ({
 };
 
 Invitation.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   avatar: PropTypes.string,
   acceptContact: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
@@ -135,6 +135,7 @@ Invitation.propTypes = {
 
 Invitation.defaultProps = {
   avatar: '',
+  username: '',
 };
 
 export default Invitation;

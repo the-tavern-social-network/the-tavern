@@ -99,6 +99,7 @@ const Tavern = ({
                 {connectedContacts.map((contact) =>
                   contact.isGamemaster ? (
                     <img
+                      key={contact.id}
                       title={contact.username}
                       className={styles.Tavern__Avatar}
                       src={contact.avatar}
