@@ -7,14 +7,14 @@ const InvitationHeader = ({ label, number }) => {
   return (
     <div className={styles.InvitationHeader}>
       <div>{label}</div>
-      {
-        number > 0 &&
-        <span className={styles.InvitationHeader__Number}>{number}</span>
-      }
+      {number > 0 && <span className={styles.InvitationHeader__Number}>{number}</span>}
     </div>
   );
 };
 
-InvitationHeader.propTypes = {};
+InvitationHeader.propTypes = {
+  label: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+};
 
 export default InvitationHeader;

@@ -85,6 +85,9 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(deleteTavernInvite(participantId, tavernId));
       });
 
+      socketCanal.on('disconnected_user', ({ user, message }) => {
+        socketCanal.removeAllListeners();
+      });
       break;
     default:
       next(action);

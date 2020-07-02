@@ -58,6 +58,7 @@ const Screen = ({
         {contactListOpen ? (
           connectedContacts.find((contact) => contact.isGamemaster) ? (
             <ContactList
+              connectedContacts={connectedContacts}
               connection={connection}
               match={match}
               inviteIntoTavern={inviteIntoTavern}

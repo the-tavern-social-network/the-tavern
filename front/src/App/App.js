@@ -6,7 +6,7 @@ import ProtectedRoute from '../containers/ProtectedRoute';
 import Auth from '../sections/Auth/Auth';
 import TheTavern from '../containers/TheTavern/TheTavern';
 
-const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
+const App = ({ isUserLogged, isInitialLoading, fetchPosts }) => {
   useEffect(() => {
     isUserLogged();
     fetchPosts();
@@ -17,9 +17,7 @@ const App = ({ isUserLogged, fetchPosts, isInitialLoading }) => {
       {!isInitialLoading && (
         <Switch>
           <>
-            <Route path="/admin">
-              test
-            </Route>
+            <Route path="/admin">test</Route>
             <Route path="/auth" component={Auth} />
             <ProtectedRoute path="/" component={TheTavern} />
           </>

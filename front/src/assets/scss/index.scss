@@ -29,7 +29,7 @@
     &::-webkit-scrollbar-thumb {
       cursor: pointer;
       border-radius: 5px;
-      background: rgb(83, 187, 180);
+      background: #251b11;
     }
 
     &::-webkit-scrollbar-thumb:window-inactive {
@@ -37,7 +37,7 @@
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background: rgb(87, 235, 220);
+      background: #412f1d;
     }
   }
 }

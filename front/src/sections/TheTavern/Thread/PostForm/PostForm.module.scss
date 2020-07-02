@@ -320,8 +320,10 @@
   width: 100%;
   padding: 1rem;
   height: 3rem;
+  overflow: hidden;
 
   @include md {
+    overflow: auto;
     height: 8rem;
   }
 }
@@ -345,7 +347,7 @@
   &:active {
     box-shadow: 0px 0px 0px 0px #a96500;
     transform: translateX(4px);
-   }
+  }
 
   &__Fire {
     width: 1rem;

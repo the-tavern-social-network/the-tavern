@@ -4,7 +4,6 @@ import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
-import ContactList from './ContactList/ContactList';
 import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
 
 import { websiteName } from '../../../util';
@@ -16,6 +15,7 @@ const Tavern = ({
   user,
   resetChat,
   setTavernId,
+  // connection,
   connectedContacts,
   tavernContactConnect,
   tavernContactDisconnect,
@@ -28,7 +28,7 @@ const Tavern = ({
 
   useEffect(() => {
     document.title = `${websiteName} | Tavern`;
-  }, [websiteName]);
+  }, []);
 
   useEffect(() => {
     setTavernId(match.params.id);
@@ -93,7 +93,6 @@ const Tavern = ({
       />
       <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
-
           <div className={styles.ContactListMoreSelf}>
             <div>
               <p>
@@ -113,7 +112,12 @@ const Tavern = ({
             <ConnectedContactsList connectedContacts={connectedContacts} user={user} />
           </div>
         )}
-        <Chat user={user} tavernId={match.params.id} connection={connection} />
+        <Chat
+          user={user}
+          tavernId={match.params.id}
+          connectedContacts={connectedContacts}
+          connection={connection}
+        />
       </div>
     </div>
   );

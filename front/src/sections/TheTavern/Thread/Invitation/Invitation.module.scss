@@ -90,8 +90,17 @@
     &__Button {
       &__Add {
         @include flex(center, flex-end, row);
-        clip-path: polygon(100% 0, 100% 100%, 0 100%, 11% 77%, 3% 61%, 10% 43%, 2% 24%, 8% 14%, 0 0);
-
+        clip-path: polygon(
+          100% 0,
+          100% 100%,
+          0 100%,
+          11% 77%,
+          3% 61%,
+          10% 43%,
+          2% 24%,
+          8% 14%,
+          0 0
+        );
         padding: 0.3rem;
         max-width: 7rem;
         width: 100%;
@@ -104,15 +113,19 @@
         transition: 0.5s;
         background-position: 0 0;
         background-size: 300% auto;
-        background-image: linear-gradient(to right, #4ac29a 0%, rgb(131, 245, 224) 51%, #4ac29a 100%);
+        background-image: linear-gradient(
+          to right,
+          #4ac29a 0%,
+          rgb(131, 245, 224) 51%,
+          #4ac29a 100%
+        );
         //background-color: #03c9a5;
         color: white;
-    
+
         &:hover,
         &:active {
           background-position: 70%;
         }
-        
 
         @include xxl {
           font-size: 0.9em;
@@ -125,16 +138,31 @@
 
       &__Decline {
         @extend .Invitation__Tavern__Button__Add;
-        clip-path: polygon(0 0, 0 100%, 100% 100%, 90% 80%, 100% 70%, 90% 50%, 100% 34%, 94% 16%, 100% 0);
+        clip-path: polygon(
+          0 0,
+          0 100%,
+          100% 100%,
+          90% 80%,
+          100% 70%,
+          90% 50%,
+          100% 34%,
+          94% 16%,
+          100% 0
+        );
         justify-content: flex-start;
         margin-right: 0;
         transition: 0.5s;
         background-position: 0 0;
         background-size: 300% auto;
-        background-image: linear-gradient(to right, #d92626 0%, rgb(255, 126, 126) 51%, #d92626 100%);
+        background-image: linear-gradient(
+          to right,
+          #d92626 0%,
+          rgb(255, 126, 126) 51%,
+          #d92626 100%
+        );
         //background-color: #03c9a5;
         color: white;
-    
+
         &:hover,
         &:active {
           background-position: 70%;
@@ -196,6 +224,11 @@
   width: fit-content;
   padding: 0.3rem;
   padding-left: 0.8rem;
+  transition: 0.4s;
+  &:active {
+    border: solid #0dab8e 1px;
+    background-color: #0dab8e;
+  }
 
   @include md {
     font-size: 0.9em;
@@ -209,6 +242,11 @@
   border: solid #d92626 1px;
   margin-left: $gutter/4;
   padding-right: 0.8rem;
+  transition: 0.4s;
+  &:active {
+    border: solid #a70000 1px;
+    background-color: #a70000;
+  }
 
   @include md {
     margin-left: $gutter/4;

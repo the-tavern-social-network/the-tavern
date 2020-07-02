@@ -20,7 +20,11 @@ module.exports = {
       date: tavernRequest.createdAt,
     });
 
-    res.send({ message: 'Invitation envoyée avec succès !' });
+    const participant = await User.findByPk(+tavernRequest.participant_id, {
+      include: 'tavernRequests',
+    });
+
+    res.send({ message: 'Invitation envoyée avec succès !', participant, gamemaster });
   },
 
   async delete(req, res, next) {

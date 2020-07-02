@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { wsConnect, logout } from '../../actions'
+import { wsConnect, logout } from '../../actions';
 
-import TheTavern from '../../sections/TheTavern/TheTavern'
+import TheTavern from '../../sections/TheTavern/TheTavern';
 
-const mapStateToProps = (state) => ({
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   wsConnect: () => dispatch(wsConnect()),

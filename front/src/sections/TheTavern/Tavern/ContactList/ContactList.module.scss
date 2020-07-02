@@ -51,6 +51,16 @@
 
         &:hover {
           background-color: #e19a2f;
+
+          &:active {
+            background-color: #e19a2f;
+          }
+        }
+
+        &__Invited {
+          @extend .ContactList__List__Item__Btn;
+          background-color: #e19a2f;
+          cursor: not-allowed;
         }
       }
 

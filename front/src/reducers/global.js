@@ -66,13 +66,14 @@ export default (state = INITIAL_STATE, action = {}) => {
             hasError: { ...state.hasError, password: true, confirmPassword: true },
             isLoading: false,
           };
+        default:
+          return {
+            ...state,
+            errorMessage: action.errorMessage,
+            hasError: true,
+            isLoading: false,
+          };
       }
-      return {
-        ...state,
-        errorMessage: action.errorMessage,
-        hasError: true,
-        isLoading: false,
-      };
     case UNSET_ERROR:
       return {
         ...state,

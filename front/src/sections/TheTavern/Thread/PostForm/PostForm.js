@@ -1,5 +1,3 @@
-
-=======
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,10 +7,6 @@ import Invitation from '../Invitation/Invitation';
 import Search from '../Search/Search';
 
 import Fire from '../../../../assets/images/fire.svg';
-
-//import cross from '../../../../assets/images/logocroix.svg';
-import smiley from '../../../../assets/images/smiling.svg';
-
 import AvatarDefault from '../../../../assets/images/Avatardefault.png';
 
 import styles from './PostForm.module.scss';
@@ -34,17 +28,17 @@ const PostForm = ({
     setIsOpen(!isOpen);
   };
 
-  let numberRequests =  user.pendingRequests.received.length + user.tavernRequests.length;
-  numberRequests = 200
-  numberRequests >= 100 ? numberRequests = '+99' : numberRequests = user.pendingRequests.received.length + user.tavernRequests.length
-  
+  let numberRequests = user.pendingRequests.received.length + user.tavernRequests.length;
+  numberRequests >= 100
+    ? (numberRequests = '+99')
+    : (numberRequests = user.pendingRequests.received.length + user.tavernRequests.length);
+
   return (
     <div className={!isOpen ? styles.PostForm : [styles.PostForm, styles.PostForm__Open].join(' ')}>
       <div className={styles.Drawer} onClick={() => setIsOpen(!isOpen)}>
-      {
-        numberRequests > 0 &&
-        <span className={styles.PostForm__NumberRequests}>{numberRequests}</span>
-      }
+        {numberRequests > 0 && (
+          <span className={styles.PostForm__NumberRequests}>{numberRequests}</span>
+        )}
         <img className={styles.SelfAvatar} src={user.avatar} alt="" />
         <span className={!isOpen ? styles.Triangle : styles.Triangle__Down}></span>
       </div>
@@ -117,4 +111,3 @@ PostForm.propTypes = {
 };
 
 export default PostForm;
-

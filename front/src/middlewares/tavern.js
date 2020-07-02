@@ -7,11 +7,16 @@ export const tavern = (store) => (next) => async (action) => {
   switch (action.type) {
     case INVITE_CONTACT:
       try {
-        await axios.post(`${apiUrl}/tavern`, {
+        const { data } = await axios.post(`${apiUrl}/tavern`, {
           gamemaster_id: +user.loggedUser.id,
           participant_id: +action.contactId,
           tavern_id: action.tavernId,
         });
+
+        action.participant = data.participant;
+        action.gamemaster = data.gamemaster;
+
+        next(action);
       } catch (err) {
         console.trace(err);
       }

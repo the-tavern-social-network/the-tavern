@@ -22,6 +22,7 @@ import {
   DELETE_TAVERN,
   DELETE_TAVERN_INVITE,
   OPEN_TAVERN,
+  INVITE_CONTACT,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -52,6 +53,7 @@ export default (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         isEditing: !state.isEditing,
+        description: state.isEditing ? state.description : state.loggedUser.description,
       };
     case INPUT_CHANGE:
       if (action.reducerName === 'user') {
@@ -160,6 +162,16 @@ export default (state = INITIAL_STATE, action = {}) => {
           pendingRequests: { ...state.loggedUser.pendingRequests, sent, received },
           contacts,
           tavernRequests,
+        },
+      };
+    case INVITE_CONTACT:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          contacts: state.loggedUser.contacts
+            .filter((contact) => +contact.id !== +action.participant.id)
+            .concat(action.participant),
         },
       };
     case TAVERN_INVITE:

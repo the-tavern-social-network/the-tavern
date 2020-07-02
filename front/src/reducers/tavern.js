@@ -1,4 +1,5 @@
 import {
+  INVITE_CONTACT,
   TAVERN_CONTACT_CONNECT,
   TAVERN_CONTACT_DISCONNECT,
   INPUT_CHANGE,
@@ -7,9 +8,13 @@ import {
   RESET_CHAT,
   OPEN_TAVERN,
   DELETE_TAVERN,
+  // SET_TAVERN_ID,
 } from '../actions';
 
+// import RTCMultiConnection from 'rtcmulticonnection';
+
 const INITIAL_STATE = {
+  // connection: new RTCMultiConnection(),
   connectedContacts: [],
   messages: [],
   message: '',
@@ -21,15 +26,27 @@ export default (state = INITIAL_STATE, action = {}) => {
     // case SET_TAVERN_ID:
     //   return {
     //     ...state,
-    //     list: [
-    //       ...state.list, {
-    //       connectedContacts: [],
-    //       messages: [],
-    //       tavernId: action.tavernId,
-    //     }]
-    //   }
+    //     connection: new RTCMultiConnection(),
+    //   };
     case OPEN_TAVERN:
       return { ...state, isInitiator: action.isInitiator || false };
+    case INVITE_CONTACT:
+      const requester = state.connectedContacts.find(
+        (connectedContact) => +connectedContact.id === +action.gamemaster.id,
+      );
+
+      const contactIndex = requester.contacts.findIndex(
+        (contact) => +contact.id === action.participant.id,
+      );
+
+      requester.contacts.splice(contactIndex, 1, action.participant);
+
+      return {
+        ...state,
+        connectedContacts: state.connectedContacts
+          .filter((connectedContact) => +connectedContact.id !== +action.gamemaster.id)
+          .concat(requester),
+      };
     case TAVERN_CONTACT_CONNECT:
       return {
         ...state,
