@@ -193,7 +193,7 @@ export default (state = INITIAL_STATE, action = {}) => {
       }
       return state;
     case DELETE_TAVERN_INVITE:
-      if (state.loggedUser.id === action.participantId) {
+      if (state.loggedUser.id === action.participant.id) {
         return {
           ...state,
           loggedUser: {

@@ -25,14 +25,15 @@ export const tavernInvite = (gamemaster, participantId, tavernId, date) => ({
   date,
 });
 export const openTavern = (isInitiator) => ({ type: OPEN_TAVERN, isInitiator });
-export const deleteTavern = (tavernId, gamemasterId, participantId) => ({
+export const deleteTavern = (tavernId, gamemaster, participant) => ({
   type: DELETE_TAVERN,
   tavernId,
-  gamemasterId,
-  participantId,
+  gamemaster,
+  participant,
 });
-export const deleteTavernInvite = (participantId, tavernId) => ({
+export const deleteTavernInvite = (gamemaster, participant, tavernId) => ({
   type: DELETE_TAVERN_INVITE,
-  participantId,
+  gamemaster,
+  participant,
   tavernId,
 });

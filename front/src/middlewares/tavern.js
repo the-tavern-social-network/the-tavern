@@ -24,11 +24,15 @@ export const tavern = (store) => (next) => async (action) => {
     case DELETE_TAVERN:
       try {
         const data = {
-          gamemaster_id: +action.gamemasterId,
-          participant_id: +action.participantId,
+          gamemaster_id: +action.gamemaster.id,
+          participant_id: +action.participant.id,
         };
 
-        await axios.delete(`${apiUrl}/tavern/${action.tavernId}`, { data });
+        await axios.delete(`${apiUrl}/tavern/${action.tavernId}`, {
+          data,
+        });
+
+        next(action);
       } catch (err) {
         console.trace(err);
       } finally {

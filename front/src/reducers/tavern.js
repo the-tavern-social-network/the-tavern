@@ -8,6 +8,7 @@ import {
   RESET_CHAT,
   OPEN_TAVERN,
   DELETE_TAVERN,
+  DELETE_TAVERN_INVITE,
   // SET_TAVERN_ID,
 } from '../actions';
 
@@ -30,7 +31,7 @@ export default (state = INITIAL_STATE, action = {}) => {
     //   };
     case OPEN_TAVERN:
       return { ...state, isInitiator: action.isInitiator || false };
-    case INVITE_CONTACT:
+    case INVITE_CONTACT: {
       const requester = state.connectedContacts.find(
         (connectedContact) => +connectedContact.id === +action.gamemaster.id,
       );
@@ -47,6 +48,31 @@ export default (state = INITIAL_STATE, action = {}) => {
           .filter((connectedContact) => +connectedContact.id !== +action.gamemaster.id)
           .concat(requester),
       };
+    }
+    case DELETE_TAVERN_INVITE: {
+      const requester = state.connectedContacts.find(
+        (connectedContact) => +connectedContact.id === +action.gamemaster.id,
+      );
+
+      if (!requester) {
+        return state;
+      }
+
+      const contactIndex = requester.contacts.findIndex(
+        (contact) => +contact.id === action.participant.id,
+      );
+
+      requester.contacts[contactIndex].tavernRequests = requester.contacts[
+        contactIndex
+      ].tavernRequests.filter((tavernRequest) => tavernRequest.tavern_id !== action.tavernId);
+
+      return {
+        ...state,
+        connectedContacts: state.connectedContacts
+          .filter((connectedContact) => +connectedContact.id !== +action.gamemaster.id)
+          .concat(requester),
+      };
+    }
     case TAVERN_CONTACT_CONNECT:
       return {
         ...state,
