@@ -35,6 +35,21 @@ const ConnectedContactsList = ({ connectedContacts, user }) => {
   );
 };
 
-ConnectedContactsList.propTypes = {};
+ConnectedContactsList.propTypes = {
+  connectedContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      isGamemaster: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    isGamemaster: PropTypes.bool.isRequired,
+  }),
+};
 
 export default ConnectedContactsList;

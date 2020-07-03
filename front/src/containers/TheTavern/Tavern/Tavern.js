@@ -10,6 +10,8 @@ import {
   inviteContact,
   openTavern,
   deleteTavern,
+  addChatMessage,
+  clearConnectedContactsList,
 } from '../../../actions';
 
 const mapStateToProps = (state) => ({
@@ -26,6 +28,8 @@ const mapDispatchToProps = (dispatch) => ({
   inviteContact: (contactId, tavernId) => dispatch(inviteContact(contactId, tavernId)),
   openTavern: (isInitiator) => dispatch(openTavern(isInitiator)),
   deleteTavern: (tavernId) => dispatch(deleteTavern(tavernId)),
+  addChatMessage: (message) => dispatch(addChatMessage(message)),
+  clearConnectedContactsList: () => dispatch(clearConnectedContactsList()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tavern);

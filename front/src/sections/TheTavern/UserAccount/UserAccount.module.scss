@@ -142,7 +142,6 @@
     display: block;
     color: #fff200;
     font-family: 'nunito sans', 'sans serif';
-    width: 100%;
     text-align: right;
     font-weight: 400;
     margin-right: 0.6rem;
@@ -190,12 +189,14 @@
   position: relative;
 
   &__Title {
+    @include flex(center, center, row nowrap);
     @include sm {
       margin-right: 1rem;
     }
 
     & span {
       font-style: normal;
+      font-size: 1.5rem;
     }
   }
 }

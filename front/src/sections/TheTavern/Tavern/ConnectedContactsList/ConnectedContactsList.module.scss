@@ -1,36 +1,32 @@
 @import '../../../../assets/scss/variables';
 
 .ConnectedContactsList {
-    font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 
-    &__List{
-        display: flex;
-        @include md {
-            display: block;
-            position : absolute ;
-            z-index: 500;
-            top : 8.5rem;
-            right : 13rem;
-            
-        }
-        &__Item {
-
-        }
-
-        &__Avatar{
-            margin-left: 0.5rem;
-            width: 2rem;
-            border-radius: 50%;
-            border: 2px solid #0adeb7;
-            @include md {
-                border: 3px solid #0adeb7;
-                width: 3rem;
-
-            }
-        }
+  &__List {
+    display: flex;
+    @include xl {
+      display: block;
+      position: absolute;
+      z-index: 500;
+      top: 8.5rem;
+      right: 13rem;
+    }
+    &__Item {
     }
 
-    &__Title{
-
+    &__Avatar {
+      margin-left: 0.5rem;
+      width: 2rem;
+      border-radius: 50%;
+      border: 2px solid #0adeb7;
+      @include md {
+        border: 3px solid #0adeb7;
+        width: 3rem;
+      }
     }
+  }
+
+  &__Title {
+  }
 }

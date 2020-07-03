@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Field from '../../../../containers/components/Field';
 import styles from './Chat.module.scss';
-
+import { v4 as uuidv4 } from 'uuid';
 const Chat = ({ connection, message, messages, addChatMessage, resetFields, user }) => {
   const messagesContainer = useRef(null);
 
@@ -20,7 +20,7 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
       if (event.data.type === 'message') {
         addChatMessage({ message: event.data.message, user: event.data.user });
       } else if (event.data.type === 'diceRoll') {
-        // ...
+        addChatMessage({ message: event.data.message });
       }
     };
     // eslint-disable-next-line
@@ -31,7 +31,6 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
       if (!event.shiftKey) {
         addChatMessage({ message: message, user: checkInitiator(user) });
         connection.send({ type: 'message', message: message, user: checkInitiator(user) });
-        // connection.send({ type: 'diceRoll', message });
         resetFields('tavern');
       }
     }
@@ -48,7 +47,6 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
 
     addChatMessage({ message, user: checkInitiator(user) });
     connection.send({ type: 'message', message, user: checkInitiator(user) });
-    // connection.send({ type: 'diceRoll', message });
     resetFields('tavern');
   };
 
@@ -62,17 +60,30 @@ const Chat = ({ connection, message, messages, addChatMessage, resetFields, user
           </p>
         </div>
         {messages.map((message) => (
-          <div key={message.user.id} className={styles.Chat__Messages__Message}>
-            <p
+          <div key={uuidv4()} className={styles.Chat__Messages__Message}>
+            {message.user && (
+              <p
+                className={
+                  message.user.isGamemaster &&
+                  message.user.username === `${user.username} / GameMaster`
+                    ? styles.Chat__Messages__Message__Gamemaster__Self
+                    : message.user.isGamemaster
+                    ? styles.Chat__Messages__Message__Gamemaster
+                    : message.user.username === user.username
+                    ? styles.Chat__Messages__Message__Self
+                    : styles.Chat__Messages__Message__Player
+                }>
+                {message.user.username}
+              </p>
+            )}
+            <pre
               className={
-                message.user.username === `${user.username} / GameMaster` ||
-                message.user.username === user.username
-                  ? styles.Chat__Messages__Message__Self
-                  : styles.Chat__Messages__Message__Player
+                message.user
+                  ? styles.Chat__Messages__Message__Content
+                  : styles.Chat__Messages__DiceRoll
               }>
-              {message.user.username}
-            </p>
-            <pre className={styles.Chat__Messages__Message__Content}>{message.message}</pre>
+              {message.message}
+            </pre>
           </div>
         ))}
       </div>

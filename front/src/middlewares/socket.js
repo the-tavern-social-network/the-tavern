@@ -81,10 +81,13 @@ export const socket = (store) => (next) => (action) => {
         store.dispatch(tavernInvite(gamemaster, participantId, tavernId, date));
       });
 
-      socketCanal.on('delete_tavern_invite', ({ participantId, tavernId }) => {
-        store.dispatch(deleteTavernInvite(participantId, tavernId));
+      socketCanal.on('delete_tavern_invite', ({ gamemaster, participant, tavernId }) => {
+        store.dispatch(deleteTavernInvite(gamemaster, participant, tavernId));
       });
 
+      socketCanal.on('disconnected_user', ({ user, message }) => {
+        socketCanal.removeAllListeners();
+      });
       break;
     default:
       next(action);

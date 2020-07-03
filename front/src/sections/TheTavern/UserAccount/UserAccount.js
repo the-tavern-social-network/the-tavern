@@ -30,7 +30,7 @@ const UserAccount = ({
 
   useEffect(() => {
     document.title = `${websiteName} | Gestion de compte`;
-  }, [websiteName]);
+  }, []);
 
   const clickHandler = (event) => {
     setModalIsVisible(true);
@@ -53,8 +53,8 @@ const UserAccount = ({
         <button onClick={clickHandler} className={styles.UserAccount__DeleteBtn}>
           Supprimer Compte
         </button>
-        <h1 className={styles.Username}>{user.username}</h1>
         <div>
+          <h1 className={styles.Username}>{user.username}</h1>
           <div className={styles.TitleContainer}>
             <h2
               title="Changer de titre"

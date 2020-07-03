@@ -62,13 +62,37 @@
       height: 100%;
     }
 
+    &__DiceRoll {
+      padding: 0.66667rem;
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+      word-break: break-word;
+      background-color: rgb(214, 189, 152);
+      border-radius: 3px;
+      color: rgb(66, 40, 16);
+      border: 2px solid rgb(155, 99, 27);
+    }
+
     &__Message {
       width: 100%;
       margin: ($gutter/2) 0;
 
+      &__Gamemaster {
+        color: #fff200;
+        text-align: left;
+
+        &__Self {
+          color: #fff200;
+          text-align: right;
+        }
+      }
+
       &__Self {
         text-align: right;
-        color: #fff200;
+        color: white;
         margin: ($gutter/4) 0;
       }
 
@@ -107,19 +131,30 @@
 
       &__Btn {
         position: absolute;
-        top: 50%;
+        top: 60%;
         transform: translate(0, -50%);
         border: none;
         border-radius: 3px;
         right: 0.5rem;
         padding: ($gutter/3);
         color: #fff;
-        background-color: #f3cc0d;
+        background-color: #f2af0d;
+        border: solid #f2af0d 1px;
+        transition: 0.2s;
+        box-shadow: 3px 2px 0px 0px #a96500;
+
+        &:hover {
+          background-color: #f2af0d;
+        }
+
+        &:active {
+          box-shadow: 0px 0px 0px 0px #a96500;
+          transform: translate(0.2rem, -50%);
+        }
       }
     }
 
     &__Input {
-
       resize: none;
 
       font-family: 'Nunito Sans', sans-serif;

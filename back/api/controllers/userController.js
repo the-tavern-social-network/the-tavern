@@ -28,7 +28,10 @@ module.exports = {
     const include = Object.keys(Post.associations);
 
     if (req.body.avatar) {
-      const posts = await Post.findAll({ include });
+      const posts = await Post.findAll({
+        include,
+        order: [['id', 'ASC']],
+      });
       io.getIo().emit('save_posts', posts);
     }
 

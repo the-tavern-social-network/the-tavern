@@ -51,7 +51,7 @@ app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
 
 app.use('*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'public', "index.html"));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 sequelize
@@ -61,10 +61,6 @@ sequelize
     const io = require('./api/socket').init(server);
     io.on('connection', (socket) => {
       RTCMultiConnectionServer.addSocket(socket);
-
-      socket.on('disconnect', () => {
-        console.log('User disconnected');
-      });
     });
   })
   .catch((err) => console.trace(err));

@@ -15,7 +15,7 @@ class User extends Model {
 
       const contactsArray = [];
       for (const request of requests) {
-        contactsArray.push(await User.findByPk(request.contact_id));
+        contactsArray.push(await User.findByPk(request.contact_id, { include: 'tavernRequests' }));
       }
 
       return contactsArray;

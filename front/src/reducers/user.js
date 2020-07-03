@@ -22,6 +22,7 @@ import {
   DELETE_TAVERN,
   DELETE_TAVERN_INVITE,
   OPEN_TAVERN,
+  INVITE_CONTACT,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -52,6 +53,7 @@ export default (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         isEditing: !state.isEditing,
+        description: state.isEditing ? state.description : state.loggedUser.description,
       };
     case INPUT_CHANGE:
       if (action.reducerName === 'user') {
@@ -162,6 +164,16 @@ export default (state = INITIAL_STATE, action = {}) => {
           tavernRequests,
         },
       };
+    case INVITE_CONTACT:
+      return {
+        ...state,
+        loggedUser: {
+          ...state.loggedUser,
+          contacts: state.loggedUser.contacts
+            .filter((contact) => +contact.id !== +action.participant.id)
+            .concat(action.participant),
+        },
+      };
     case TAVERN_INVITE:
       if (action.participantId === state.loggedUser.id) {
         return {
@@ -181,7 +193,7 @@ export default (state = INITIAL_STATE, action = {}) => {
       }
       return state;
     case DELETE_TAVERN_INVITE:
-      if (state.loggedUser.id === action.participantId) {
+      if (state.loggedUser.id === action.participant.id) {
         return {
           ...state,
           loggedUser: {
@@ -201,14 +213,24 @@ export default (state = INITIAL_STATE, action = {}) => {
           isGamemaster: true,
         },
       };
-    case DELETE_TAVERN:
+    case DELETE_TAVERN: {
+      let contacts;
+      if (action.gamemaster.id === state.loggedUser.id) {
+        contacts = [...state.loggedUser.contacts];
+        const contactIndex = contacts.findIndex(
+          (contact) => +contact.id === +action.participant.id,
+        );
+        contacts.splice(contactIndex, 1, action.participant);
+      }
       return {
         ...state,
         loggedUser: {
           ...state.loggedUser,
           isGamemaster: false,
+          contacts: contacts ? contacts : [...state.loggedUser.contacts],
         },
       };
+    }
     default:
       return state;
   }

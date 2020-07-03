@@ -19,7 +19,6 @@
   &__Header {
     grid-area: header;
 
-
     @include lg {
       position: fixed;
       z-index: 1;
@@ -27,15 +26,14 @@
       grid-area: none;
       width: 16rem;
       background-color: white;
-      background-image: url('../../../../assets/images/background10.png');
+      background: url('../../../../assets/images/background10.png');
       background-repeat: no-repeat;
-      background-position: -2rem;
+      background-position: -5rem;
       background-size: cover;
-
     }
 
     &__Welcome {
-      margin-top: $gutter *0.7 ;
+      margin-top: $gutter * 0.7;
       margin-left: $gutter + 2.5;
       position: absolute;
       font-weight: 700;
@@ -44,25 +42,24 @@
         display: none;
       }
 
-
-    &__Title {
-      font-style: italic;
-      clip-path: polygon(0% 0%, 0% 98%, 100% 99%, 97% 77%, 99% 59%, 95% 32%, 100% 1%);
-      background-color: rgb(255, 217, 0);
-      box-shadow: 10px 5px 5px black;
-      border-radius: 2px;
-      font-weight: 200;
-      color: white;
-      font-size: 1em;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      background-position: 0 0;
-      background-size: 300% auto;
-      background-image: linear-gradient(to right,  #b08510 0%,  #ffe992 51%,  #b08510 100%);
-      @include lg {
-        display: none;
+      &__Title {
+        font-style: italic;
+        clip-path: polygon(0% 0%, 0% 98%, 100% 99%, 97% 77%, 99% 59%, 95% 32%, 100% 1%);
+        background-color: rgb(255, 217, 0);
+        box-shadow: 10px 5px 5px black;
+        border-radius: 2px;
+        font-weight: 200;
+        color: white;
+        font-size: 1em;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        background-position: 0 0;
+        background-size: 300% auto;
+        background-image: linear-gradient(to right, #b08510 0%, #ffe992 51%, #b08510 100%);
+        @include lg {
+          display: none;
+        }
       }
-    }
 
       &__User {
         color: $gold;
@@ -103,10 +100,11 @@
   &__Menu {
     @include flex(center, center, row wrap);
     position: absolute;
+    cursor: pointer;
     top: -1.1rem;
     right: -1.1rem;
     background-color: #5b3d20;
-    border: solid 3px #18120E;
+    border: solid 3px #18120e;
     border-radius: 50%;
     height: 6.1rem;
     width: 6.1rem;

@@ -20,7 +20,11 @@ module.exports = {
       date: tavernRequest.createdAt,
     });
 
-    res.send({ message: 'Invitation envoyée avec succès !' });
+    const participant = await User.findByPk(+tavernRequest.participant_id, {
+      include: 'tavernRequests',
+    });
+
+    res.send({ message: 'Invitation envoyée avec succès !', participant, gamemaster });
   },
 
   async delete(req, res, next) {
@@ -37,15 +41,26 @@ module.exports = {
       where,
     });
 
+    if (tavernRequest) await tavernRequest.destroy();
+
+    const gamemaster = await User.findByPk(tavernRequest.gamemaster_id);
+    const participant = await User.findByPk(+tavernRequest.participant_id, {
+      include: 'tavernRequests',
+    });
+
     if (tavernRequest) {
       io.getIo().emit('delete_tavern_invite', {
-        participantId: tavernRequest.participant_id,
+        gamemaster,
+        participant,
         tavernId: tavernRequest.tavern_id,
       });
-
-      await tavernRequest.destroy();
     }
 
-    res.send({ tavernId: tavern_id, message: 'Cette tavern est fermée !' });
+    res.send({
+      tavernId: tavern_id,
+      message: 'Cette tavern est fermée !',
+      gamemaster,
+      participant,
+    });
   },
 };

@@ -2,21 +2,22 @@ export const websiteName = 'TheTavern';
 export const apiUrl = 'http://localhost:8080/api/v1';
 
 export const defaultTitles = [
-  "Apprenti aventurier",
-  "Aventurier",
-  "Elu de Edge",
-  "Troubadour",
-  "Aventurier testeur",
-  "Buveur de biere sans alcool",
-  "Maître du Monde",
-  "Mage Noir",
-  "Filou des dés",
-  "Mendiant de passage",
-  "Prếcheur de gameplay",
-  "Vigile du roleplay",
-  "Maitre trapéziste",
-  "Roi des flatulences méphitiques",
-  "Soldat à Grosse Epée",
+  'Apprenti aventurier',
+  'Aventurier',
+  'Prêtre de Haidge',
+  'Troubadour',
+  'Aventurière incroyable',
+  'Demon du jeu',
+  'Buveur de boisson',
+  'Maître du Monde',
+  'Mage Noir',
+  'Filou des dés',
+  'Mendiant de passage',
+  'Prếcheur de gameplay',
+  'Vigile du roleplay',
+  'Maitre trapéziste',
+  'En a gros sur la patate',
+  'Coincé dans un donjon',
 ].sort();
 
 export const getDate = () => {

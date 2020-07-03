@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 
 import Chat from '../../../sections/TheTavern/Tavern/Chat/Chat';
 import { addChatMessage, resetFields } from '../../../actions';
-import { getMessagesByTavernId } from '../../../selectors'
 
 const mapStateToProps = (state, ownProps) => ({
   message: state.tavern.message,

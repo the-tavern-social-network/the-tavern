@@ -1,4 +1,5 @@
 import {
+  INVITE_CONTACT,
   TAVERN_CONTACT_CONNECT,
   TAVERN_CONTACT_DISCONNECT,
   INPUT_CHANGE,
@@ -6,7 +7,8 @@ import {
   RESET_FIELDS,
   RESET_CHAT,
   OPEN_TAVERN,
-  DELETE_TAVERN,
+  DELETE_TAVERN_INVITE,
+  CLEAR_CONNECTED_CONTACTS_LIST,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -18,18 +20,55 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
-    // case SET_TAVERN_ID:
-    //   return {
-    //     ...state,
-    //     list: [
-    //       ...state.list, {
-    //       connectedContacts: [],
-    //       messages: [],
-    //       tavernId: action.tavernId,
-    //     }]
-    //   }
     case OPEN_TAVERN:
       return { ...state, isInitiator: action.isInitiator || false };
+    case INVITE_CONTACT: {
+      const requester = state.connectedContacts.find(
+        (connectedContact) => +connectedContact.id === +action.gamemaster.id,
+      );
+
+      const contactIndex = requester.contacts.findIndex(
+        (contact) => +contact.id === action.participant.id,
+      );
+
+      requester.contacts.splice(contactIndex, 1, action.participant);
+
+      return {
+        ...state,
+        connectedContacts: state.connectedContacts
+          .filter((connectedContact) => +connectedContact.id !== +action.gamemaster.id)
+          .concat(requester),
+      };
+    }
+    case DELETE_TAVERN_INVITE: {
+      const requester = state.connectedContacts.find(
+        (connectedContact) => +connectedContact.id === +action.gamemaster.id,
+      );
+
+      if (!requester) {
+        return state;
+      }
+
+      const contactIndex = requester.contacts.findIndex(
+        (contact) => +contact.id === action.participant.id,
+      );
+
+      requester.contacts[contactIndex].tavernRequests = requester.contacts[
+        contactIndex
+      ].tavernRequests.filter((tavernRequest) => tavernRequest.tavern_id !== action.tavernId);
+
+      return {
+        ...state,
+        connectedContacts: state.connectedContacts
+          .filter((connectedContact) => +connectedContact.id !== +action.gamemaster.id)
+          .concat(requester),
+      };
+    }
+    case CLEAR_CONNECTED_CONTACTS_LIST:
+      return {
+        ...state,
+        connectedContacts: [],
+      };
     case TAVERN_CONTACT_CONNECT:
       return {
         ...state,
@@ -41,11 +80,6 @@ export default (state = INITIAL_STATE, action = {}) => {
         connectedContacts: state.connectedContacts.filter(
           (contact) => contact.connectionUserId !== action.userId,
         ),
-      };
-    case DELETE_TAVERN:
-      return {
-        ...state,
-        connectedContacts: [],
       };
     case INPUT_CHANGE:
       if (action.reducerName === 'tavern') {

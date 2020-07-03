@@ -4,7 +4,6 @@ import RTCMultiConnection from 'rtcmulticonnection';
 
 import ScreenShare from './ScreenShare/ScreenShare';
 import Chat from '../../../containers/TheTavern/Tavern/Chat';
-import ContactList from './ContactList/ContactList';
 import ConnectedContactsList from './ConnectedContactsList/ConnectedContactsList';
 
 import { websiteName } from '../../../util';
@@ -22,13 +21,18 @@ const Tavern = ({
   inviteContact,
   openTavern,
   deleteTavern,
+  addChatMessage,
+  clearConnectedContactsList,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
 
+  const [rolledDices, setRolledDices] = useState(1);
+  const [dicesValue, setDicesValue] = useState(1);
+
   useEffect(() => {
     document.title = `${websiteName} | Tavern`;
-  }, [websiteName]);
+  }, []);
 
   useEffect(() => {
     setTavernId(match.params.id);
@@ -62,7 +66,7 @@ const Tavern = ({
 
     // Event triggered when the stream ends
     connection.onstreamended = (event) => {
-      deleteTavern(match.params.id);
+      // deleteTavern(match.params.id);
       if (event.userid === connection.userid) {
         // disconnect with all users
         connection.getAllParticipants().forEach((pid) => {
@@ -86,14 +90,17 @@ const Tavern = ({
         match={match}
         history={history}
         user={user}
+        addChatMessage={addChatMessage}
         connection={connection}
         connectedContacts={connectedContacts}
         deleteTavern={deleteTavern}
         inviteIntoTavern={inviteContact}
+        setDicesValue={setDicesValue}
+        setRolledDices={setRolledDices}
+        clearConnectedContactsList={clearConnectedContactsList}
       />
       <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
-
           <div className={styles.ContactListMoreSelf}>
             <div>
               <p>
@@ -113,7 +120,14 @@ const Tavern = ({
             <ConnectedContactsList connectedContacts={connectedContacts} user={user} />
           </div>
         )}
-        <Chat user={user} tavernId={match.params.id} connection={connection} />
+        <Chat
+          user={user}
+          tavernId={match.params.id}
+          connectedContacts={connectedContacts}
+          connection={connection}
+          rolledDices={rolledDices}
+          dicesValue={dicesValue}
+        />
       </div>
     </div>
   );

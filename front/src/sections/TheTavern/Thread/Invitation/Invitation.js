@@ -47,7 +47,7 @@ const Invitation = ({
           <button
             className={styles.Invitation__Tavern__Button__Add}
             onClick={(event) =>
-              clickHandler('accept', { gamemasterId: gamemaster.id, participantId: user.id })
+              clickHandler('accept', { gamemaster: gamemaster, participant: user })
             }>
             <img src={d20} alt="icone accepter" />
             Accepter
@@ -55,7 +55,7 @@ const Invitation = ({
           <button
             className={styles.Invitation__Tavern__Button__Decline}
             onClick={(event) =>
-              clickHandler('reject', { gamemasterId: gamemaster.id, participantId: user.id })
+              clickHandler('reject', { gamemaster: gamemaster, participant: user })
             }>
             <img src={skull} alt="icone skull" />
             Refuser
@@ -114,7 +114,7 @@ const Invitation = ({
       if (type === 'accept') {
         history.push(`/tavern/${tavernId}`);
       }
-      deleteTavern(tavernId, +obj.gamemasterId, +obj.participantId);
+      deleteTavern(tavernId, obj.gamemaster, obj.participant);
     }
   };
 

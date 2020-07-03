@@ -12,8 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
   resetFields: (reducer) => dispatch(resetFields(reducer)),
   acceptContact: (contactId) => dispatch(acceptContact(contactId)),
   deleteContact: (isContact, contactId) => dispatch(deleteContact(isContact, contactId)),
-  deleteTavern: (tavernId, gamemasterId, participantId) =>
-    dispatch(deleteTavern(tavernId, gamemasterId, participantId)),
+  deleteTavern: (tavernId, gamemaster, participant) =>
+    dispatch(deleteTavern(tavernId, gamemaster, participant)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

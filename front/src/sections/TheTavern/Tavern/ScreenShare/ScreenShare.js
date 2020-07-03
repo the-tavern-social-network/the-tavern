@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import ContactList from '../ContactList/ContactList';
+import DiceRoller from '../DiceRoller/DiceRoller';
 
 import door from '../../../../../src/assets/images/door.svg';
 import logo from '../../../../../src/assets/images/logo1.svg';
@@ -17,8 +18,14 @@ const Screen = ({
   connectedContacts,
   inviteIntoTavern,
   deleteTavern,
+  setDicesValue,
+  setRolledDices,
+  user,
+  addChatMessage,
+  clearConnectedContactsList,
 }) => {
   const [contactListOpen, setContactListOpen] = useState(false);
+  const [areDicesShown, setAreDicesShown] = useState(false);
   const videoStream = useRef(null);
 
   useEffect(() => {
@@ -31,8 +38,18 @@ const Screen = ({
   }, [connection]);
 
   const clickHandler = (event) => {
+    if (connection.extra.user.isGamemaster) {
+      for (const contact of connection.extra.user.contacts) {
+        contact.tavernRequests.forEach((tavernRequest) => {
+          if (+tavernRequest.gamemaster_id === +connection.extra.user.id)
+            deleteTavern(match.params.id, connection.extra.user, contact);
+        });
+      }
+    }
+
     connection.closeSocket();
     resetChat();
+    clearConnectedContactsList();
     history.replace('/');
   };
 
@@ -40,7 +57,22 @@ const Screen = ({
     <div className={styles.ScreenContainer} ref={videoStream}>
       <img className={styles.ScreenContainer__Logo} src={logo} alt="logo" />
       <div className={styles.ScreenContainer__Icons}>
-        <img className={styles.ScreenContainer__Icons__D20} src={d20} alt="d20" />
+        <img
+          onClick={() => setAreDicesShown(!areDicesShown)}
+          className={styles.ScreenContainer__Icons__D20}
+          src={d20}
+          alt="d20"
+        />
+        {areDicesShown && (
+          <DiceRoller
+            addChatMessage={addChatMessage}
+            user={user}
+            connection={connection}
+            setDicesValue={setDicesValue}
+            setRolledDices={setRolledDices}
+          />
+        )}
+
         <img
           title="Liste des Contacts"
           className={styles.ScreenContainer__Icons__AddPlayer}
@@ -58,6 +90,7 @@ const Screen = ({
         {contactListOpen ? (
           connectedContacts.find((contact) => contact.isGamemaster) ? (
             <ContactList
+              connectedContacts={connectedContacts}
               connection={connection}
               match={match}
               inviteIntoTavern={inviteIntoTavern}
