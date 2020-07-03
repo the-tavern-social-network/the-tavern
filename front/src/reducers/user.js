@@ -213,14 +213,24 @@ export default (state = INITIAL_STATE, action = {}) => {
           isGamemaster: true,
         },
       };
-    case DELETE_TAVERN:
+    case DELETE_TAVERN: {
+      let contacts;
+      if (action.gamemaster.id === state.loggedUser.id) {
+        contacts = [...state.loggedUser.contacts];
+        const contactIndex = contacts.findIndex(
+          (contact) => +contact.id === +action.participant.id,
+        );
+        contacts.splice(contactIndex, 1, action.participant);
+      }
       return {
         ...state,
         loggedUser: {
           ...state.loggedUser,
           isGamemaster: false,
+          contacts: contacts ? contacts : [...state.loggedUser.contacts],
         },
       };
+    }
     default:
       return state;
   }

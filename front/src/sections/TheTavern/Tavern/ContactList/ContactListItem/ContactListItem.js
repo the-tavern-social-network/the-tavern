@@ -44,6 +44,14 @@ const ContactListItem = ({ contact, match, inviteIntoTavern, connectedContacts, 
   );
 };
 
-ContactListItem.propTypes = {};
+ContactListItem.propTypes = {
+  contact: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  inviteIntoTavern: PropTypes.func.isRequired,
+  connectedContact: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+  connection: PropTypes.object.isRequired,
+};
 
 export default ContactListItem;

@@ -7,7 +7,6 @@ import NavLinks from './NavLinks/NavLinks';
 import Sword from '../../../../components/Sword/Sword';
 
 import logo from '../../../../assets/images/logo1.svg';
-// import menu from '../../../../assets/images/menu.svg';
 import styles from './Nav.module.scss';
 import './Swords-styles.scss';
 
@@ -52,60 +51,3 @@ Nav.propTypes = {
 };
 
 export default Nav;
-
-/* <div className={styles.Menu}>
-    <div className={styles.Sword}>
-      <div className={styles.FirstContainer__Container}>
-        <div className={styles.FirstSword}>
-          <div className={styles.FirstSword__FirstHandleOrb__HandleOrb}></div>
-          <div className={styles.FirstHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstHandle__Handle}></div>
-          <div className={styles.FirstSmallHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstLargeHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstBlade}>
-            <div className={styles.FirstBladeTop__BladeTop}></div>
-            <div className={styles.FirstBladeLeft__BladeLeft}></div>
-            <div className={styles.FirstBladeRight__BladeRight}></div>
-            <div className={styles.FirstBladeBottom__BladeBottom}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.Sword}>
-      <div className={styles.FirstContainer__Container}>
-        <div className={styles.FirstSword}>
-          <div className={styles.FirstHandleOrb__HandleOrb}></div>
-          <div className={styles.FirstHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstHandle__Handle}></div>
-          <div className={styles.FirstsmallHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstLargeHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstBlade}>
-            <div className={styles.FirstBladeTop__BladeTop}></div>
-            <div className={styles.FirstBladeLeft__BladeLeft}></div>
-            <div className={styles.FirstBladeRight__BladeRight}></div>
-            <div className={styles.FirstBladeBottom__BladeBottom}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className={styles.Sword}>
-      <div className={styles.FirstContainer__Container}>
-        <div className={styles.FirstSword}>
-          <div className={styles.FirstHandleOrb__HandleOrb}></div>
-          <div className={styles.FirstHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstHandle__Handle}></div>
-          <div className={styles.FirstsmallHandleBlock__HandleBlock}></div>
-          <div className={styles.FirstLargeHandleBlockCurve__HandleBlockCurve}></div>
-          <div className={styles.FirstBlade}>
-            <div className={styles.FirstBladeTop__BladeTop}></div>
-            <div className={styles.FirstBladeLeft__BladeLeft}></div>
-            <div className={styles.FirstBladeRight__BladeRight}></div>
-            <div className={styles.FirstBladeBottom__BladeBottom}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> */

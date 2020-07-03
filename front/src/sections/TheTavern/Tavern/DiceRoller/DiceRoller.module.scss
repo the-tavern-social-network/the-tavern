@@ -1,0 +1,40 @@
+@import '../../../../assets/scss/variables';
+
+.DiceRoller {
+  font-family: 'Nunito sans', sans-serif;
+  height: fit-content;
+  padding: 0 0.5rem;
+  width: 10rem;
+  position: absolute;
+  top: 2rem;
+  right: 6rem;
+  border-radius: 5px;
+  background-color: #331d0f;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.6);
+
+  &__Multiplier {
+    @include flex(center, center, column nowrap);
+    color: #1dffd6;
+    padding: 0.5rem;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200;
+    width: 100%;
+    max-width: 20rem;
+    border-bottom: 1px solid black;
+  }
+
+  &__Dice {
+    &__Container {
+      @include flex(center, center, row wrap);
+      text-align: center;
+      padding: 0.3rem;
+    }
+  }
+
+  &__Result {
+    &__Container {
+      color: #1dffd6;
+      text-align: center;
+    }
+  }
+}

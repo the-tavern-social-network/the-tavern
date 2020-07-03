@@ -1,7 +1,19 @@
 @import '../../../../../assets/scss/variables';
 
+@keyframes fadeIn {
+  from {
+    transform: translate(0, -2rem);
+    opacity: 0.2;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
 .Container {
   position: relative;
+  animation: fadeIn 1s ease-in-out;
   margin: $gutter/1.5 auto;
   width: 90%;
 

@@ -7,6 +7,7 @@ export const TAVERN_INVITE = 'TAVERN_INVITE';
 export const OPEN_TAVERN = 'OPEN_TAVERN';
 export const DELETE_TAVERN = 'DELETE_TAVERN';
 export const DELETE_TAVERN_INVITE = 'DELETE_TAVERN_INVITE';
+export const CLEAR_CONNECTED_CONTACTS_LIST = 'CLEAR_CONNECTED_CONTACTS_LIST';
 
 export const tavernContactConnect = (user) => ({ type: TAVERN_CONTACT_CONNECT, user });
 export const tavernContactDisconnect = (userId) => ({ type: TAVERN_CONTACT_DISCONNECT, userId });
@@ -37,3 +38,4 @@ export const deleteTavernInvite = (gamemaster, participant, tavernId) => ({
   participant,
   tavernId,
 });
+export const clearConnectedContactsList = () => ({ type: CLEAR_CONNECTED_CONTACTS_LIST });

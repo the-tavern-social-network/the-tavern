@@ -7,15 +7,11 @@ import {
   RESET_FIELDS,
   RESET_CHAT,
   OPEN_TAVERN,
-  DELETE_TAVERN,
   DELETE_TAVERN_INVITE,
-  // SET_TAVERN_ID,
+  CLEAR_CONNECTED_CONTACTS_LIST,
 } from '../actions';
 
-// import RTCMultiConnection from 'rtcmulticonnection';
-
 const INITIAL_STATE = {
-  // connection: new RTCMultiConnection(),
   connectedContacts: [],
   messages: [],
   message: '',
@@ -24,11 +20,6 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
-    // case SET_TAVERN_ID:
-    //   return {
-    //     ...state,
-    //     connection: new RTCMultiConnection(),
-    //   };
     case OPEN_TAVERN:
       return { ...state, isInitiator: action.isInitiator || false };
     case INVITE_CONTACT: {
@@ -73,6 +64,11 @@ export default (state = INITIAL_STATE, action = {}) => {
           .concat(requester),
       };
     }
+    case CLEAR_CONNECTED_CONTACTS_LIST:
+      return {
+        ...state,
+        connectedContacts: [],
+      };
     case TAVERN_CONTACT_CONNECT:
       return {
         ...state,
@@ -84,11 +80,6 @@ export default (state = INITIAL_STATE, action = {}) => {
         connectedContacts: state.connectedContacts.filter(
           (contact) => contact.connectionUserId !== action.userId,
         ),
-      };
-    case DELETE_TAVERN:
-      return {
-        ...state,
-        connectedContacts: [],
       };
     case INPUT_CHANGE:
       if (action.reducerName === 'tavern') {

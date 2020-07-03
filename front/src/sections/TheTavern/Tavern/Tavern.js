@@ -15,16 +15,20 @@ const Tavern = ({
   user,
   resetChat,
   setTavernId,
-  // connection,
   connectedContacts,
   tavernContactConnect,
   tavernContactDisconnect,
   inviteContact,
   openTavern,
   deleteTavern,
+  addChatMessage,
+  clearConnectedContactsList,
 }) => {
   const [connection] = useState(new RTCMultiConnection());
   const [userHasJoined, setUserHasJoined] = useState(false);
+
+  const [rolledDices, setRolledDices] = useState(1);
+  const [dicesValue, setDicesValue] = useState(1);
 
   useEffect(() => {
     document.title = `${websiteName} | Tavern`;
@@ -62,7 +66,7 @@ const Tavern = ({
 
     // Event triggered when the stream ends
     connection.onstreamended = (event) => {
-      deleteTavern(match.params.id);
+      // deleteTavern(match.params.id);
       if (event.userid === connection.userid) {
         // disconnect with all users
         connection.getAllParticipants().forEach((pid) => {
@@ -86,10 +90,14 @@ const Tavern = ({
         match={match}
         history={history}
         user={user}
+        addChatMessage={addChatMessage}
         connection={connection}
         connectedContacts={connectedContacts}
         deleteTavern={deleteTavern}
         inviteIntoTavern={inviteContact}
+        setDicesValue={setDicesValue}
+        setRolledDices={setRolledDices}
+        clearConnectedContactsList={clearConnectedContactsList}
       />
       <div className={styles.Tavern__Chat__Container}>
         {userHasJoined && (
@@ -117,6 +125,8 @@ const Tavern = ({
           tavernId={match.params.id}
           connectedContacts={connectedContacts}
           connection={connection}
+          rolledDices={rolledDices}
+          dicesValue={dicesValue}
         />
       </div>
     </div>

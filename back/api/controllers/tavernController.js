@@ -41,6 +41,8 @@ module.exports = {
       where,
     });
 
+    if (tavernRequest) await tavernRequest.destroy();
+
     const gamemaster = await User.findByPk(tavernRequest.gamemaster_id);
     const participant = await User.findByPk(+tavernRequest.participant_id, {
       include: 'tavernRequests',
@@ -52,8 +54,6 @@ module.exports = {
         participant,
         tavernId: tavernRequest.tavern_id,
       });
-
-      await tavernRequest.destroy();
     }
 
     res.send({

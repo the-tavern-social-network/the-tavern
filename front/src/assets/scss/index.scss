@@ -10,6 +10,10 @@
   color: #fff;
 }
 
+iframe {
+  display: none;
+}
+
 @include lg {
   html {
     scroll-behavior: smooth;
