@@ -142,10 +142,13 @@ module.exports = {
   },
 
   logout: async (req, res, next) => {
+    // Send the disconnected_user event to the frontend to signal that the user has logged out
     io.getIo().emit('disconnected_user', {
       user: req.session.user,
       message: `${req.session.user.username} s'est déconnecté !`,
     });
+
+    // Destroys the session and sends an object with the property user wich is an empty object and isLoggedIn set to false
     req.session.destroy(() => {
       res.send({ user: {}, isLoggedIn: false });
     });

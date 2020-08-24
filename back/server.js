@@ -24,18 +24,21 @@ const store = new SequelizeStore({
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+// Tells expres to parse json
 app.use(express.json());
 app.use(multer().none());
+// Initializes the session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    maxAge: 3600000 * 24 * 7,
+    maxAge: 3600000 * 24 * 7, // The maximum age (in milliseconds) of a valid session.
     store,
   }),
 );
 
+// Allowing localhost:3000 to access the api
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Credentials', true);
@@ -50,6 +53,8 @@ app.use(baseUrl, tavernRoutes);
 app.use(baseUrl, associationsRoutes);
 app.use(baseUrl, mainRoutes);
 
+// Catch all route
+// Sends the index.html located in the public folder each time a route is not found
 app.use('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -57,10 +62,13 @@ app.use('*', (req, res, next) => {
 sequelize
   .authenticate()
   .then(() => {
+    // Stores the server in a constant
     const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    // Initializes the socket
     const io = require('./api/socket').init(server);
-    io.on('connection', (socket) => {
+    io.on('connection', socket => {
+      // Adds the socket to the webRTC multiconnection server for the screensharing feature
       RTCMultiConnectionServer.addSocket(socket);
     });
   })
-  .catch((err) => console.trace(err));
+  .catch(err => console.trace(err));

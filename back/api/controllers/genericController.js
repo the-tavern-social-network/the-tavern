@@ -1,7 +1,6 @@
 const models = require('../models');
 const capitalize = require('../util/capitalize');
 const io = require('../socket');
-const { TavernRequest } = require('../models');
 
 module.exports = {
   async getAll(req, res, next) {
@@ -144,7 +143,7 @@ module.exports = {
       const tavernRequests = await models.TavernRequest.findAll({
         where: { gamemaster_id: response.id },
       });
-      tavernRequests.forEach((tavernRequest) => tavernRequest.destroy());
+      tavernRequests.forEach(tavernRequest => tavernRequest.destroy());
     }
 
     // Deletes the found entry
